@@ -1,0 +1,93 @@
+@font-face {
+    font-family: "game-guide";
+    src: url("/static/fonts/icons/game-guide.eot?uarmrv");
+    src: url("/static/fonts/icons/game-guide.eot?uarmrv#iefix") format("embedded-opentype"),
+        url("/static/fonts/icons/game-guide.ttf?uarmrv") format("truetype"),
+        url("/static/fonts/icons/game-guide.woff?uarmrv") format("woff"),
+        url("/static/fonts/icons/game-guide.svg?uarmrv#sabasclb") format("svg");
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: "infosite";
+    src: url("/static/fonts/icons/infosite.eot?3wrnwh");
+    src: url("/static/fonts/icons/infosite.eot?3wrnwh#iefix") format("embedded-opentype"),
+        url("/static/fonts/icons/infosite.ttf?3wrnwh") format("truetype"),
+        url("/static/fonts/icons/infosite.woff?3wrnwh") format("woff"),
+        url("/static/fonts/icons/infosite.svg?3wrnwh#infosite") format("svg");
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: "Noto";
+    src: url("/static/fonts/noto/NotoSerif-Regular.ttf") format("truetype");
+    font-weight: 500;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Noto";
+    src: url("/static/fonts/noto/NotoSerif-Bold.ttf") format("truetype");
+    font-weight: 700;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Noto-Thai";
+    src: url("/static/fonts/noto/NotoSerifThai-Regular.ttf") format("truetype");
+    font-weight: 500;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Noto-Thai";
+    src: url("/static/fonts/noto/NotoSerifThai-Bold.ttf") format("truetype");
+    font-weight: 700;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Noto-ZH-CN";
+    src: url("/static/fonts/noto/NotoSerifZHCN-Regular.ttf") format("truetype");
+    font-weight: 500;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Noto-ZH-CN";
+    src: url("/static/fonts/noto/NotoSerifZHCN-Bold.ttf") format("truetype");
+    font-weight: 700;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Noto-ZH-TW";
+    src: url("/static/fonts/noto/NotoSerifZHTW-Regular.ttf") format("truetype");
+    font-weight: 500;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Noto-ZH-TW";
+    src: url("/static/fonts/noto/NotoSerifZHTW-Bold.ttf") format("truetype");
+    font-weight: 700;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "SanFranciscoDisplay";
+    src: url("/static/fonts/SF-Pro-Display-Regular.otf") format("opentype");
+    font-weight: 500;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "SanFranciscoDisplay";
+    src: url("/static/fonts/SF-Pro-Display-Semibold.otf") format("opentype");
+    font-weight: 600;
+    font-display: swap;
+}
