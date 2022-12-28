@@ -63,3 +63,5 @@ export const GAMES = {
     MINI_SE_DIE_3: 57,
     MINI_SE_DIE_4: 58,
 };
+
+export const buildVersion = process.env.buildVersion;
