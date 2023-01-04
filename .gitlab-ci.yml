@@ -1,8 +1,4 @@
 include:
-    - project: "ci/repos-ci/pentagon_l1_game_guides"
+    - project: "ci/repos-ci/pentagon_l1_information_site"
       ref: master
       file: "gitlab-ci.yml"
-
-    - project: "ci/repos-ci/pentagon_l2_game_guides"
-      ref: master
-      file: "gitlab-ci-mixing.yml"
