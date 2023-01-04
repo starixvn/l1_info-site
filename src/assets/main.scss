@@ -5,8 +5,9 @@
 
 [data-theme="light"] {
     --page-background: #fff;
-    --primary-color: #F89820;
+    --primary-color: #f89820;
     --text-color: #262626;
+    --master-solid-color: #cf200b;
 
     // scrollbar
     --scrollbar-background: #f5f5f5;
@@ -15,7 +16,12 @@
     // font-size
     --font-size: 1.4rem;
     --font-size-table: 1.4rem;
-    
+}
+
+#__next,
+body,
+html {
+    height: 100%;
 }
 
 html {
@@ -27,18 +33,16 @@ html {
     --font-family: "SanFranciscoDisplay", arial, sans-serif;
     // z-index
     --header-index: 1071;
-    --popup-guide-history-index: 100;    
-    height: 100%;
+    --popup-guide-history-index: 100;
 }
 
 body {
     padding: 0;
     margin: 0;
-    background-color: transparent;    
+    background-color: transparent;
     color: var(--text-color);
     font: 500 1.6rem/1.5 var(--font-family);
-    overscroll-behavior: contain;    
-    height: 100%;
+    overscroll-behavior: contain;
 }
 
 .game-container {
@@ -101,9 +105,13 @@ label {
 .btn-primary {
     height: 4rem;
     width: 21.8rem;
-    background: linear-gradient(0deg, rgba(204,27,5,1) 0%, rgba(230,111,97,1) 100%);
-    border-color: #FA624F;
+    background: linear-gradient(0deg, rgba(204, 27, 5, 1) 0%, rgba(230, 111, 97, 1) 100%);
+    border-color: #fa624f;
     font-size: 1.6rem;
     text-transform: uppercase;
-    border-radius: 0.7rem;    
+    border-radius: 0.7rem;
+}
+
+.color-primary {
+    color: var();
 }

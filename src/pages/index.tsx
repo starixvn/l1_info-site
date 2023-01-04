@@ -4,28 +4,28 @@ import React, { useEffect, useRef, useState } from "react";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import Data from "../components/data";
-import GameItem from "../components/game-item";
 import { GameBanner } from "../components/game-banner";
+import GameItems from "../components/game-items";
 
-const Home = () => {
+function Home() {
     const [isLoading, setIsLoading] = useState(true);
     const [item, setItem] = useState(Data);
     const router = useRouter();
     const wrapperRef = useRef<HTMLDivElement>(null);
-    const handleSelectGameType = (gameType: string) => {
+
+    const handleSetGameCategory = (gameCategory: number) => {
         const newItem = Data.filter((newData) => {
-            return newData.gameType === gameType;
+            return newData.gameCategory === gameCategory;
         });
         setItem(newItem);
     };
-    const dataGameType = new Set(Data.flatMap((val) => val.gameType));
-    const menuItems = Array.from(dataGameType);
-
+    const dataGameType = new Set(Data.flatMap((val) => val.gameCategory));
+    const menuItems = Array.from(dataGameType).sort();
     useEffect(() => {
         if (router.isReady) {
             setIsLoading(false);
         }
-    }, [router.isReady]);
+    }, [router]);
 
     if (isLoading) {
         return <></>;
@@ -33,14 +33,14 @@ const Home = () => {
 
     return (
         <div ref={wrapperRef} id="container-home" className="container-home">
-            <Header handleSelectGameType={handleSelectGameType} setItem={setItem} menuItems={menuItems} />
+            <Header handleSetGameCategory={handleSetGameCategory} setItem={setItem} menuItems={menuItems} />
             <div className="main-content">
                 <GameBanner />
-                <GameItem gameData={item} />
+                <GameItems gameData={item} />
             </div>
             <Footer />
         </div>
     );
-};
+}
 
 export default Home;

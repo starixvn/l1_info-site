@@ -2,14 +2,22 @@ export interface IObjectKeys {
     [key: string]: string;
 }
 
-export const locales: IObjectKeys = { en: "en", vi: "vi", th: "th", id: "id", zh_cn: "zh_cn", zh_tw: "zh_tw" };
-export const Themes = {
-    light: "light"
+export const locales = { en: "en", vi: "vi", th: "th", id: "id", zh_cn: "zh_cn", zh_tw: "zh_tw" };
+
+export const languageMapper = { "en-US": "en", "vi-VN": "vi", "th-TH": "th", "id-ID": "id", "zh-CN": "zh_cn", "zh-TW": "zh_tw" };
+export const LanguageLocaleMapper = {
+    en: "en-US",
+    vi: "vi-VN",
+    th: "th-TH",
+    id: "id-ID",
+    zh_cn: "zh-CN",
+    zh_tw: "zh-TW",
 };
 
-export const ENVIRONMENT = { sm: "sm", sc: "sc" };
-
-export const PROJECTS = { L1: "L1", L2: "L2" };
+export const languageNameMapper = { en: "English", vi: "Tiếng Việt" };
+export const Themes = {
+    light: "light",
+};
 
 export const GAMES = {
     BIG_SMALL: 1,
@@ -65,3 +73,14 @@ export const GAMES = {
 };
 
 export const buildVersion = process.env.buildVersion;
+
+export interface GameProps {
+    id: string;
+    title: string;
+    type: string;
+    publishedAt: string;
+    stock: number;
+    price: string;
+    averageRating: number;
+    ratings: number;
+}
