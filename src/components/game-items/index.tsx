@@ -6,8 +6,7 @@ import Axios from "axios";
 
 export function randomString(length: number) {
     let result = "";
-    const characters =
-        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
     const charactersLength = characters.length;
     for (var i = 0; i < length; i++) {
         result += characters.charAt(Math.floor(Math.random() * charactersLength));
@@ -40,7 +39,7 @@ export const GameItem: React.FC<{ gameData: any }> = (item) => {
             browserUserAgent: navigator.userAgent,
             auth: {
                 operatorId: "ONEworks1",
-                operatorSecret: "ONEworks1@20luminet&"
+                operatorSecret: "ONEworks1@20luminet&",
             },
             token: "",
             redirectUrl: "#",
@@ -58,11 +57,11 @@ export const GameItem: React.FC<{ gameData: any }> = (item) => {
             instantMode: 1,
             devIp: "",
             operatorToken: "ONEworks1Token",
-            setDefaultBalance: false
+            setDefaultBalance: false,
         };
 
-        Axios.get(domain + "/setting/data").then((data) => request.setting = data.data);
-        Axios.get(domain + "/signin/ip", { timeout: 10000 }).then((data) => request.ip = data.data);
+        Axios.get(domain + "/setting/data").then((data) => (request.setting = data.data));
+        Axios.get(domain + "/signin/ip", { timeout: 10000 }).then((data) => (request.ip = data.data));
         Axios.post(domain + "/signin/sso", request)
             .then((data) => data.data)
             .then((data) => (data.error ? Promise.reject(data.error) : data))
@@ -86,12 +85,12 @@ export const GameItem: React.FC<{ gameData: any }> = (item) => {
                             <div className={Styles["game-icon"]}>
                                 <img
                                     className="icon-bg"
-                                    src={`/static/images/game-icon/icon-bg-${game.gameName}.png?v=${buildVersion}`}
+                                    src={`/static/images/game-icon/icon-bg-${game.gameId}.png?v=${buildVersion}`}
                                     alt="game-icon"
                                 ></img>
                                 <img
                                     className={Styles["icon-name"]}
-                                    src={`/static/images/game-icon/icon-name-${game.gameName}.png?v=${buildVersion}`}
+                                    src={`/static/images/game-icon/icon-name-${game.gameId}.png?v=${buildVersion}`}
                                     alt="game-icon"
                                 ></img>
                                 {game.isNew ? <div className={Styles["game-tag"]}>New</div> : <></>}

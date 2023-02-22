@@ -3,24 +3,14 @@
 @import "./components/icons";
 @import "./home-page.scss";
 
-[data-theme="light"] {
+#__next,
+body,
+html {
     --page-background: #fff;
     --primary-color: #f89820;
     --text-color: #262626;
     --master-solid-color: #cf200b;
 
-    // scrollbar
-    --scrollbar-background: #f5f5f5;
-    --scrollbar-thumb-background: #828282;
-
-    // font-size
-    --font-size: 1.4rem;
-    --font-size-table: 1.4rem;
-}
-
-#__next,
-body,
-html {
     height: 100%;
 }
 
@@ -113,5 +103,5 @@ label {
 }
 
 .color-primary {
-    color: var();
+    color: var(--master-solid-color);
 }
