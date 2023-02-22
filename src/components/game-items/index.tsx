@@ -67,9 +67,9 @@ export const GameItem: React.FC<{ gameData: any }> = (item) => {
             .then((data) => data.data)
             .then((data) => (data.error ? Promise.reject(data.error) : data))
             .then((data) => {
-                window.open(data.redirectUrl);
+                window.open(data.redirectUrl + "&gameId=${gameId}`");
                 // settoken(token);
-                // window.open(`https://games.lumigame.com/?token=${data.token}&lang=vi-VN&gameId=${gameId}`);
+                // window.open(`${domain}?token=${data.token}&lang=vi-VN&gameId=${gameId}`);
             })
             .catch();
 
