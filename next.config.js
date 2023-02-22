@@ -9,23 +9,22 @@ const appSettings = {
     gameSettings,
 };
 
-module.exports = {
-    i18n,
+const nextConfig = {
+    reactStrictMode: true,
     publicRuntimeConfig: appSettings,
     generateBuildId: async () => {
         return uuidv4();
     },
-    excludeFile: (str) => /\*.{spec,test}.js/.test(str),
-    webpack: (config, options) => {
-        if (!options.isServer) {
-            config.resolve.alias["@sentry/node"] = "@sentry/browser";
-        }
-        config.plugins.push(
-            new options.webpack.DefinePlugin({
-                "process.env.NEXT_IS_SERVER": JSON.stringify(options.isServer.toString()),
-            })
-        );
-
+    excludeFile: (str) => /node_modules/.test(str) || /\*.{spec,test}.js/.test(str),
+    i18n,
+    experimental: {
+        forceSwcTransforms: true,
+    },
+    basePath,
+    env: {
+        buildVersion: uuidv4(),
+    },
+    webpack: (config, { isServer }) => {
         config.module.rules.push({
             test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2|mp3)$/,
             use: {
@@ -36,10 +35,17 @@ module.exports = {
             },
         });
 
+        if (isServer) {
+            config.externals.push(({ context, request }, callback) => {
+                if (/\.test\.(jsx?|tsx?)$/.test(request)) {
+                    return callback(null, "mock");
+                }
+                callback();
+            });
+        }
+
         return config;
     },
-    basePath,
-    env: {
-        buildVersion: uuidv4(),
-    },
 };
+
+module.exports = nextConfig;

@@ -18,4 +18,5 @@ export default {
         "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy",
     },
     testResultsProcessor: "jest-sonar-reporter",
+    testEnvironment: "jest-environment-jsdom",
 };
