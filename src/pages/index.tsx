@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import React, { useEffect, useRef, useState } from "react";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 import Header from "../components/header";
 import Footer from "../components/footer";
@@ -42,5 +43,11 @@ function Home() {
         </div>
     );
 }
+
+export const getStaticProps = async ({ locale = "en" }) => ({
+    props: {
+        ...(await serverSideTranslations(locale, ["common"])),
+    },
+});
 
 export default Home;
