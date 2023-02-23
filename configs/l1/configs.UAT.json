@@ -3,5 +3,6 @@
         "dsn": "https://936d6f9d99064ccdab5bece39bc3bc07@sentryuat.sabagame.com/258",
         "environment": "UAT"
     },
-    "system": "L1"
+    "system": "L1",
+    "enableSourceMap": false
 }
