@@ -22,17 +22,8 @@ const GameDetails = () => {
             <section className="container list-container">
                 <div className={Styles["game-detail-top"]}>
                     <div className={Styles["game-name"]}>{game?.gameName}</div>
-                    <div className={Styles["game-icon"]}>
-                        <img
-                            className="icon-bg"
-                            src={`/static/images/game-icon/icon-bg-${game.gameId}.png?v=${buildVersion}`}
-                            alt="game-icon"
-                        ></img>
-                        <img
-                            className={Styles["icon-name"]}
-                            src={`/static/images/game-icon/icon-name-${game.gameId}.png?v=${buildVersion}`}
-                            alt="game-icon"
-                        ></img>
+                    <div className={Styles["game-icon-container"]}>
+                        <GameIcon gameId={game.gameId} isSmallSize={false} />
                     </div>
 
                     <button type="button" className="btn btn-primary">

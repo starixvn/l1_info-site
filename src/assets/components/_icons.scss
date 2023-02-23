@@ -14,6 +14,18 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-email:before {
+    content: "\e902";
+    color: #fff;
+}
+.icon-letstalk:before {
+    content: "\e903";
+    color: #fff;
+}
+.icon-telegram:before {
+    content: "\e904";
+    color: #fff;
+}
 .icon-rtp:before {
     content: "\e900";
     color: #cf200b;
@@ -22,7 +34,6 @@
     content: "\e901";
     color: #cf200b;
 }
-
 .icon-info:before {
     content: "\e924";
     color: #cf200b;
@@ -31,7 +42,6 @@
     content: "\e925";
     color: #cf200b;
 }
-
 .icon-type:before {
     content: "\e929";
     color: #cf200b;

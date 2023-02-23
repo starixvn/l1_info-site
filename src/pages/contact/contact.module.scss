@@ -1,0 +1,92 @@
+@import "../../assets/components/buttons";
+
+.btn-primary {
+    width: 100%;
+    border: none;
+    color: #fff;
+}
+
+.btn-telegram {
+    @extend .btn-primary;
+    text-transform: none;
+    background: linear-gradient(0deg, #29a9eb 0%, #23a0dd 100%);
+}
+
+.btn-email {
+    @extend .btn-primary;
+    text-transform: none;
+    background: linear-gradient(0deg, #cf240f 0%, #e36657 100%);
+}
+
+.btn-letstalk {
+    @extend .btn-primary;
+    text-transform: none;
+    background: linear-gradient(0deg, #2ea8ca 0%, #60d289 100%);
+}
+
+.intro-container {
+    margin-bottom: 5rem;
+    text-align: center;
+
+    .title {
+        font-size: 4rem;
+    }
+
+    .intro {
+        font-size: 2rem;
+    }
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 80rem;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.form-group {
+    margin-bottom: 2.9rem;
+}
+
+.form-control {
+    width: 100%;
+    height: 4.6rem;
+    display: block;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    background-color: #d9d9d9;
+}
+
+.form-required::before {
+    content: "*";
+    display: inline-block;
+    color: #ff0000;
+    padding-right: 0.5rem;
+}
+
+@media (min-width: 768px) {
+    .form-container {
+        flex-direction: row;
+    }
+    .form-control {
+        width: 47rem;
+    }
+
+    .contact-button {
+        width: 24rem;
+        border-left: 1px solid #d9d9d9;
+        padding-left: 4rem;
+    }
+
+    .btn-group {
+        margin-bottom: 2rem;
+        .btn-name {
+            display: block;
+            font-weight: bold;
+            line-height: 3rem;
+        }
+    }
+}
