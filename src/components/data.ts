@@ -1,7 +1,19 @@
 import { GAMES } from "../common/constants";
 import { gameCategory } from "./header/constants";
 
-const Data = [
+export interface IGameData {
+    gameId: number;
+    gameName: string;
+    displayedName: string;
+    isNew: boolean;
+    intro: string;
+    gameType: string;
+    gameCategory: gameCategory;
+    rtp: number;
+    tag: string;
+}
+
+const Data: IGameData[] = [
     {
         gameId: GAMES.BLOCKCHAIN_BACCARAT,
         gameName: "BlockChainBaccarat",

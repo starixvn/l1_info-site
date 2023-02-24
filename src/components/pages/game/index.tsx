@@ -1,24 +1,18 @@
-import type { NextPage } from "next";
-import { useRouter } from "next/router";
 import React, { useRef } from "react";
-import { buildVersion } from "../../common/constants";
-import Footer from "../../components/footer";
-import { GameBanner } from "../../components/game-banner";
+import { buildVersion } from "../../../common/constants";
+import { IGameData } from "../../data";
+import { GameBanner } from "../../game-banner";
+import GameIcon from "../../game-icon";
+import SimilarGames from "../../similar-games";
 import Styles from "./game-detail.module.scss";
-import Data from "../../components/data";
-import SimilarGames from "../../components/similar-games";
-import GameIcon from "../../components/game-icon";
 
-const GameDetails = () => {
-    const game = Data[2];
-    const router = useRouter();
+const GameDetails: React.FC<{ game: IGameData }> = ({ game }) => {
     const wrapperRef = useRef<HTMLDivElement>(null);
 
+    console.log("GameDetails");
     return (
-        <div ref={wrapperRef} id="container-home" className="container-home">
-            <div className="main-content">
-                <GameBanner />
-            </div>
+        <>
+            {" "}
             <section className="container list-container">
                 <div className={Styles["game-detail-top"]}>
                     <div className={Styles["game-name"]}>{game?.gameName}</div>
@@ -110,8 +104,8 @@ const GameDetails = () => {
                 </div>
                 <SimilarGames />
             </section>
-            <Footer />
-        </div>
+        </>
     );
 };
+
 export default GameDetails;

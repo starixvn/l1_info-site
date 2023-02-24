@@ -3,6 +3,8 @@ import { buildVersion } from "../../common/constants";
 import Styles from "./game-item.module.scss";
 import { GameInfo } from "./type";
 import Axios from "axios";
+import { IGameData } from "../data";
+import GameDetails from "../pages/game";
 
 export function randomString(length: number) {
     let result = "";
@@ -14,7 +16,7 @@ export function randomString(length: number) {
     return result;
 }
 
-export const GameItem: React.FC<{ gameData: any }> = (item) => {
+export const GameItems: React.FC<{ gameData: IGameData[]; updateGameData: Function }> = ({ gameData, updateGameData }) => {
     const [domain, setDomain] = useState("https://l1-glbs2.lumigame.com");
     const [token, settoken] = useState("");
 
@@ -75,14 +77,18 @@ export const GameItem: React.FC<{ gameData: any }> = (item) => {
         event && event.preventDefault();
     };
 
+    const openDetail = (game: any) => {
+        updateGameData(game);
+    };
+
     return (
         <section className="container list-container">
-            {item.gameData.map((game: GameInfo) => {
+            {gameData.map((game: GameInfo) => {
                 return (
                     <div className={Styles["game-container"]} key={game.gameId}>
                         <div className={Styles["game-name"]}>{game.displayedName}</div>
                         <div className={Styles["game-play"]}>
-                            <div className={Styles["game-icon"]}>
+                            <div className={Styles["game-icon"]} onClick={() => openDetail(game)}>
                                 <img
                                     className="icon-bg"
                                     src={`/static/images/game-icon/icon-bg-${game.gameId}.png?v=${buildVersion}`}
@@ -143,4 +149,5 @@ export const GameItem: React.FC<{ gameData: any }> = (item) => {
         </section>
     );
 };
-export default GameItem;
+
+export default GameItems;
