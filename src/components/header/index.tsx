@@ -68,32 +68,36 @@ export const Header: React.FC<{ handleSetGameCategory: Function; setItem: Functi
                     <img className="img-fluid logo" src="/static/images/logo.svg" alt="logo"></img>
                 </a>
                 <div className={`${Styles["navbar-collapse"]} ${Styles["collapse"]}`} id="navbarNavDropdown">
-                    <li
-                        className={`${Styles["menu-item"]} ${selectCategory === -1 ? Styles["menu-selected"] : ""}`}
-                        onClick={() => handleOtherCategory(-1)}
-                    >
-                        <span className={Styles["menu-text"]}>All Games</span>
-                    </li>
-                    {menuItems.map((gameCategory: number, index) => {
-                        return (
-                            <li
-                                className={`${Styles["menu-item"]} ${index === selectCategory ? Styles["menu-selected"] : ""}`}
-                                onClick={() => onSelectCategory(gameCategory)}
-                                key={gameCategory}
-                            >
-                                <span className={Styles["menu-text"]}>{t(`category-${gameCategory}`)}</span>
-                            </li>
-                        );
-                    })}
-                    <li
+                    <ul className={Styles["category-container"]}>
+                        <li
+                            className={`${Styles["menu-item"]} ${selectCategory === -1 ? Styles["menu-selected"] : ""}`}
+                            onClick={() => handleOtherCategory(-1)}
+                        >
+                            <span className={Styles["menu-text"]}>All Games</span>
+                        </li>
+                        {menuItems.map((gameCategory: number, index) => {
+                            return (
+                                <li
+                                    className={`${Styles["menu-item"]} ${index === selectCategory ? Styles["menu-selected"] : ""}`}
+                                    onClick={() => onSelectCategory(gameCategory)}
+                                    key={gameCategory}
+                                >
+                                    <span className={Styles["menu-text"]}>{t(`category-${gameCategory}`)}</span>
+                                </li>
+                            );
+                        })}
+                    </ul>
+
+                    <div
                         className={`${Styles["menu-item"]} ${selectCategory === -2 ? Styles["menu-selected"] : ""}`}
                         onClick={() => handleOtherCategory(-2)}
                     >
                         <span className={Styles["menu-text"]}>Contact Us</span>
-                    </li>
-                    <li className={Styles["menu-item"]}>
+                    </div>
+
+                    <div className={Styles["menu-item"]}>
                         <Languages />
-                    </li>
+                    </div>
                 </div>
             </nav>
         </div>

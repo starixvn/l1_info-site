@@ -40,17 +40,20 @@
     margin-bottom: 2rem;
 
     .group-icon {
-        display: inline-flex;
+        display: block;
         margin-right: 3rem;
         font-size: 1.6rem;
-        align-items: center;
-        gap: 1rem;
+
+        &:not(:last-child) {
+            margin-bottom: 2rem;
+        }
     }
 
     .detail-group {
         display: flex;
-        flex-direction: row;
         column-gap: 5rem;
+        row-gap: 3rem;
+        flex-direction: column;
     }
 }
 
@@ -92,6 +95,25 @@
     }
 
     .flex-detail {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr 45rem;
+    }
+
+    .game-detail-bottom {
+        .detail-group {
+            flex-direction: row;
+        }
+    }
+}
+
+@media (min-width: 576px) {
+    .game-detail-bottom {
+        .group-icon {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            &:not(:last-child) {
+                margin-bottom: 0;
+            }
+        }
     }
 }

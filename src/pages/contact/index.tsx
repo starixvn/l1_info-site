@@ -5,11 +5,11 @@ export const ContactUs: React.FC = () => {
         <>
             <div className={Styles["intro-container"]}>
                 <div className={Styles["title"]}>Contact Us</div>
-                <div className={Styles["intro"]}>
+                <div className={Styles["contact-intro"]}>
                     Expertise in various platform features allows users to have smooth operating experience across different platforms
                 </div>
             </div>
-            <p className="text-center">Please fill in the information and we will contact you as soon as possible.</p>
+            <p className={Styles["small-intro"]}>Please fill in the information and we will contact you as soon as possible.</p>
             <div className={Styles["form-container"]}>
                 <form>
                     <div className={Styles["form-group"]}>
@@ -33,21 +33,21 @@ export const ContactUs: React.FC = () => {
                         <label className={Styles["btn-name"]}>Telegram</label>
                         <button className={Styles["btn-telegram"]}>
                             <span className="icon-telegram" />
-                            @SABASports_CS
+                            <label className={Styles["text"]}>@SABASports_CS</label>
                         </button>
                     </div>
                     <div className={Styles["btn-group"]}>
                         <label className={Styles["btn-name"]}>Email</label>
                         <button className={Styles["btn-email"]}>
                             <span className="icon-email" />
-                            @SABASports_CS
+                            <label className={Styles["text"]}>@SABASports_CS</label>
                         </button>
                     </div>
                     <div className={Styles["btn-group"]}>
                         <label className={Styles["btn-name"]}>Letstalk</label>
                         <button className={Styles["btn-letstalk"]}>
                             <span className="icon-letstalk" />
-                            t258111754
+                            <label className={Styles["text"]}>t258111754</label>
                         </button>
                     </div>
                 </div>

@@ -6,35 +6,69 @@
     color: #fff;
 }
 
-.btn-telegram {
-    @extend .btn-primary;
+.btn-icon {
+    display: flex;
+    align-items: center;
+    width: 4.6rem;
+    border: none;
+    color: #fff;
     text-transform: none;
+    height: 4.6rem;
+    border-radius: 1rem;
+    padding: 0;
+
+    > span {
+        width: 4.6rem;
+    }
+}
+
+.btn-telegram {
+    @extend .btn-icon;
     background: linear-gradient(0deg, #29a9eb 0%, #23a0dd 100%);
 }
 
 .btn-email {
-    @extend .btn-primary;
-    text-transform: none;
+    @extend .btn-icon;
     background: linear-gradient(0deg, #cf240f 0%, #e36657 100%);
 }
 
 .btn-letstalk {
-    @extend .btn-primary;
-    text-transform: none;
+    @extend .btn-icon;
     background: linear-gradient(0deg, #2ea8ca 0%, #60d289 100%);
+}
+
+.contact-button {
+    margin-top: 5rem;
+    display: flex;
+    justify-content: center;
+    column-gap: 2rem;
+
+    .text {
+        display: none;
+    }
+
+    .btn-name {
+        display: none;
+    }
 }
 
 .intro-container {
     margin-bottom: 5rem;
     text-align: center;
+    padding: 0 2rem;
 
     .title {
         font-size: 4rem;
     }
 
-    .intro {
+    .contact-intro {
         font-size: 2rem;
     }
+}
+
+.small-intro {
+    padding: 0 2rem;
+    text-align: center;
 }
 
 .form-container {
@@ -76,6 +110,8 @@
     }
 
     .contact-button {
+        flex-direction: column;
+        margin-top: 0;
         width: 24rem;
         border-left: 1px solid #d9d9d9;
         padding-left: 4rem;
@@ -88,5 +124,12 @@
             font-weight: bold;
             line-height: 3rem;
         }
+        .text {
+            display: block;
+        }
+    }
+
+    .btn-icon {
+        width: 20rem;
     }
 }
