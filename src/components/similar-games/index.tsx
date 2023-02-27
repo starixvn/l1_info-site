@@ -1,6 +1,8 @@
 import React from "react";
+
 import GameIcon from "../game-icon";
 import Styles from "./similar-games.module.scss";
+
 export const SimilarGames: React.FC = () => {
     return (
         <div className={Styles["similar-game"]}>
@@ -13,4 +15,5 @@ export const SimilarGames: React.FC = () => {
         </div>
     );
 };
+
 export default SimilarGames;

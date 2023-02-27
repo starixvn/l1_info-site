@@ -1,27 +1,32 @@
 import React, { useState } from "react";
+
 import Data from "../data";
 import Styles from "./header.module.scss";
 import { useTranslation } from "next-i18next";
 import Languages from "../language-switcher";
 import Link from "next/link";
+import { GameCategory } from "../type";
 
 export const Header: React.FC<{ handleSetGameCategory: Function; setItem: Function; menuItems: number[] }> = ({
     handleSetGameCategory,
     setItem,
     menuItems,
 }) => {
-    const [selectCategory, setSelectCategory] = useState<number>(-1);
+    const [selectCategory, setSelectCategory] = useState<number>(0);
     const { t } = useTranslation();
+
     const onSelectCategory = (gameCategory: number) => {
         handleCategorySelected(gameCategory);
+        if (gameCategory === GameCategory.AllGames) {
+            console.log("AllGames");
+            setItem(Data);
+            return;
+        }
+
         handleSetGameCategory(gameCategory);
     };
-    const handleCategorySelected = (i: number) => {
-        setSelectCategory(i);
-    };
 
-    const handleOtherCategory = (i: number) => {
-        setItem(Data);
+    const handleCategorySelected = (i: number) => {
         setSelectCategory(i);
     };
 
@@ -34,12 +39,6 @@ export const Header: React.FC<{ handleSetGameCategory: Function; setItem: Functi
                 <div className={`${Styles["navbar-collapse"]} ${Styles["collapse"]}`} id="navbarNavDropdown">
                     <div className={Styles["category-container"]}>
                         <ul className={Styles["category-list"]}>
-                            <li
-                                className={`${Styles["menu-item"]} ${selectCategory === -1 ? Styles["menu-selected"] : ""}`}
-                                onClick={() => handleOtherCategory(-1)}
-                            >
-                                <span className={Styles["menu-text"]}>All Games</span>
-                            </li>
                             {menuItems.map((gameCategory: number, index) => {
                                 return (
                                     <li
@@ -58,7 +57,7 @@ export const Header: React.FC<{ handleSetGameCategory: Function; setItem: Functi
                     <div className="d-flex">
                         <div
                             className={`${Styles["menu-item"]} ${selectCategory === -2 ? Styles["menu-selected"] : ""}`}
-                            onClick={() => handleOtherCategory(-2)}
+                            onClick={() => onSelectCategory(-2)}
                         >
                             <span className={Styles["menu-text"]}>
                                 <Link className={Styles["menu-link"]} href="/contact">

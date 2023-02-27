@@ -1,12 +1,10 @@
 import React from "react";
-import { Trans, withTranslation } from "next-i18next";
-import { withRouter } from "next/router";
 
 import Data, { IGameData } from "./data";
 import Footer from "./footer";
 import { GameBanner } from "./game-banner";
 import Header from "./header";
-import { gameCategory } from "./header/constants";
+import { GameCategory, GameType, ITags } from "./type";
 
 export enum EStatus {
     ClickCategory,
@@ -25,7 +23,7 @@ interface IProps {}
 abstract class PageBase extends React.PureComponent<IProps, IState> {
     constructor(props: IProps) {
         super(props);
-        const dataGameType = new Set(Data.flatMap((val) => val.gameCategory));
+        const dataGameType = new Set(Data.flatMap((val) => val.gameCategory - 1));
         const menuItems = Array.from(dataGameType).sort();
 
         this.state = {
@@ -37,10 +35,10 @@ abstract class PageBase extends React.PureComponent<IProps, IState> {
                 displayedName: "",
                 isNew: false,
                 intro: "",
-                gameType: "",
-                gameCategory: gameCategory.Others,
+                gameType: GameType.AllGames,
+                gameCategory: GameCategory.AllGames,
                 rtp: 0,
-                tag: "",
+                tag: ITags.RoundBased,
             },
             status: EStatus.ClickCategory,
         };

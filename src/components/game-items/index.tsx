@@ -1,10 +1,9 @@
 import React, { useState } from "react";
+
 import { buildVersion } from "../../common/constants";
 import Styles from "./game-item.module.scss";
-import { GameInfo } from "./type";
 import Axios from "axios";
 import { IGameData } from "../data";
-import GameDetails from "../pages/game";
 
 export function randomString(length: number) {
     let result = "";
@@ -83,7 +82,7 @@ export const GameItems: React.FC<{ gameData: IGameData[]; updateGameData: Functi
 
     return (
         <section className="container list-container">
-            {gameData.map((game: GameInfo) => {
+            {gameData.map((game: IGameData) => {
                 return (
                     <div className={Styles["game-container"]} key={game.gameId}>
                         <div className={Styles["game-name"]}>{game.displayedName}</div>

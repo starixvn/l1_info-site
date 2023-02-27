@@ -1,3 +1,6 @@
+import { GameCategory, GameType } from "./../../components/type";
+import { ITags } from "../../components/type";
+
 export interface IObjectKeys {
     [key: string]: string;
 }
@@ -84,3 +87,28 @@ export interface GameProps {
     averageRating: number;
     ratings: number;
 }
+
+export const TagsName = {
+    [ITags.RoundBased]: "Round-based",
+    [ITags.Classic25PayLines]: "Classic - 25 paylines",
+    [ITags.Cascading5x6]: "Cascading - 5x6",
+    [ITags.TurnBased]: "Turn-based",
+};
+
+export const GameTypeName = {
+    [GameType.AllGames]: "All Games",
+    [GameType.DiceGame]: "Dice Game",
+    [GameType.Roulette]: "Roulette",
+    [GameType.CardGame]: "Card Game",
+    [GameType.Slot]: "Slot",
+    [GameType.Lottery]: "Lottery",
+    [GameType.BitcoinMaster]: "Bitcoin Master",
+};
+
+export const GameCategoryName = {
+    [GameCategory.AllGames]: "All Games",
+    [GameCategory.Dices]: "Dices",
+    [GameCategory.Casino]: "Casino",
+    [GameCategory.Slots]: "Slots",
+    [GameCategory.Others]: "Others",
+};

@@ -1,15 +1,12 @@
-import React, { useRef } from "react";
-import { buildVersion } from "../../../common/constants";
+import React from "react";
+
+import { buildVersion, GameTypeName, TagsName } from "../../../common/constants";
 import { IGameData } from "../../data";
-import { GameBanner } from "../../game-banner";
 import GameIcon from "../../game-icon";
 import SimilarGames from "../../similar-games";
 import Styles from "./game-detail.module.scss";
 
 const GameDetails: React.FC<{ game: IGameData }> = ({ game }) => {
-    const wrapperRef = useRef<HTMLDivElement>(null);
-
-    console.log("GameDetails");
     return (
         <>
             {" "}
@@ -32,7 +29,7 @@ const GameDetails: React.FC<{ game: IGameData }> = ({ game }) => {
                         <div className={Styles["detail-group"]}>
                             <div className={Styles["detail-item-text"]}>
                                 <span>
-                                    Game Type: <span className="color-primary">{game.gameType}</span>
+                                    Game Type: <span className="color-primary">{GameTypeName[game.gameType]}</span>
                                 </span>
                             </div>
                             <div className={Styles["detail-item"]}>
@@ -43,7 +40,7 @@ const GameDetails: React.FC<{ game: IGameData }> = ({ game }) => {
                         </div>
                         <div className={Styles["detail-item"]}>
                             <span>
-                                Tag: <span className="color-primary">{game.tag}</span>
+                                Tag: <span className="color-primary">{TagsName[game.tag]}</span>
                             </span>
                         </div>
                         <div className={Styles["detail-item-icon"]}>
