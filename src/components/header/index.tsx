@@ -3,27 +3,7 @@ import Data from "../data";
 import Styles from "./header.module.scss";
 import { useTranslation } from "next-i18next";
 import Languages from "../language-switcher";
-
-const Link = (item: any) => {
-    return (
-        <a href="#" className="menu__link">
-            {item}
-        </a>
-    );
-};
-
-const MenuItem = (props: { active: any; className: string; item: any; clicked: any }) => {
-    const { active, className, item, clicked } = props;
-    const cName = !active ? className : `${className} menu__item_active`;
-    const handleOnClick = () => {
-        props.clicked();
-    };
-    return (
-        <li className={cName} onClick={clicked && handleOnClick()}>
-            <Link item={item} className="Linklink" />
-        </li>
-    );
-};
+import Link from "next/link";
 
 export const Header: React.FC<{ handleSetGameCategory: Function; setItem: Function; menuItems: number[] }> = ({
     handleSetGameCategory,
@@ -48,55 +28,49 @@ export const Header: React.FC<{ handleSetGameCategory: Function; setItem: Functi
     return (
         <div id="header" className={Styles["header"]}>
             <nav className={`${Styles["navbar"]} ${Styles["navbar-expand"]}`}>
-                <button
-                    className={Styles["navbar-toggler"]}
-                    type="button"
-                    data-toggle="collapse"
-                    data-target="#navbarNavDropdown"
-                    aria-controls="navbarNavDropdown"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation"
-                >
-                    <div className="hamburger">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-                </button>
                 <a className="navbar-brand" href="#">
-                    <img className="img-fluid logo" src="/static/images/logo.svg" alt="logo"></img>
+                    <img className={Styles.logo} src="/static/images/logo.svg" alt="logo"></img>
                 </a>
                 <div className={`${Styles["navbar-collapse"]} ${Styles["collapse"]}`} id="navbarNavDropdown">
-                    <ul className={Styles["category-container"]}>
-                        <li
-                            className={`${Styles["menu-item"]} ${selectCategory === -1 ? Styles["menu-selected"] : ""}`}
-                            onClick={() => handleOtherCategory(-1)}
-                        >
-                            <span className={Styles["menu-text"]}>All Games</span>
-                        </li>
-                        {menuItems.map((gameCategory: number, index) => {
-                            return (
-                                <li
-                                    className={`${Styles["menu-item"]} ${index === selectCategory ? Styles["menu-selected"] : ""}`}
-                                    onClick={() => onSelectCategory(gameCategory)}
-                                    key={gameCategory}
-                                >
-                                    <span className={Styles["menu-text"]}>{t(`category-${gameCategory}`)}</span>
-                                </li>
-                            );
-                        })}
-                    </ul>
-
-                    <div
-                        className={`${Styles["menu-item"]} ${selectCategory === -2 ? Styles["menu-selected"] : ""}`}
-                        onClick={() => handleOtherCategory(-2)}
-                    >
-                        <span className={Styles["menu-text"]}>Contact Us</span>
+                    <div className={Styles["category-container"]}>
+                        <ul className={Styles["category-list"]}>
+                            <li
+                                className={`${Styles["menu-item"]} ${selectCategory === -1 ? Styles["menu-selected"] : ""}`}
+                                onClick={() => handleOtherCategory(-1)}
+                            >
+                                <span className={Styles["menu-text"]}>All Games</span>
+                            </li>
+                            {menuItems.map((gameCategory: number, index) => {
+                                return (
+                                    <li
+                                        className={`${Styles["menu-item"]} ${index === selectCategory ? Styles["menu-selected"] : ""}`}
+                                        onClick={() => onSelectCategory(gameCategory)}
+                                        key={gameCategory}
+                                    >
+                                        <span className={Styles["menu-text"]}>{t(`category-${gameCategory}`)}</span>
+                                    </li>
+                                );
+                            })}
+                        </ul>
+                        <div className={Styles["category-overlay"]}></div>
                     </div>
 
-                    <div className={Styles["menu-item"]}>
-                        <Languages />
+                    <div className="d-flex">
+                        <div
+                            className={`${Styles["menu-item"]} ${selectCategory === -2 ? Styles["menu-selected"] : ""}`}
+                            onClick={() => handleOtherCategory(-2)}
+                        >
+                            <span className={Styles["menu-text"]}>
+                                <Link className={Styles["menu-link"]} href="/contact">
+                                    <span className={Styles["icon-contact"]} />
+                                    <span className="d-none d-sm-none d-md-inline-block">Contact Us</span>
+                                </Link>
+                            </span>
+                        </div>
+
+                        <div className={Styles["header-language"]}>
+                            <Languages />
+                        </div>
                     </div>
                 </div>
             </nav>

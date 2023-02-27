@@ -14,6 +14,15 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-arrow:before {
+    content: "\e905";
+    color: #fff;
+}
+.icon-contact:before {
+    content: "\e906";
+    color: #fff;
+}
+
 .icon-email:before {
     content: "\e902";
     color: #fff;
