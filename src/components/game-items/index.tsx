@@ -4,6 +4,7 @@ import { buildVersion } from "../../common/constants";
 import Styles from "./game-item.module.scss";
 import Axios from "axios";
 import { IGameData } from "../data";
+import { useTranslation } from "react-i18next";
 
 export function randomString(length: number) {
     let result = "";
@@ -18,6 +19,8 @@ export function randomString(length: number) {
 export const GameItems: React.FC<{ gameData: IGameData[]; updateGameData: Function }> = ({ gameData, updateGameData }) => {
     const [domain, setDomain] = useState("https://l1-glbs2.lumigame.com");
     const [token, settoken] = useState("");
+    const { t: detailT } = useTranslation("detail");
+    const { t } = useTranslation();
 
     const playForFunAction = (event: any, gameId: number) => {
         event && event.preventDefault();
@@ -85,7 +88,7 @@ export const GameItems: React.FC<{ gameData: IGameData[]; updateGameData: Functi
             {gameData.map((game: IGameData) => {
                 return (
                     <div className={Styles["game-container"]} key={game.gameId}>
-                        <div className={Styles["game-name"]}>{game.displayedName}</div>
+                        <div className={Styles["game-name"]}>{detailT<string>(`${game.gameName}.displayedName`)}</div>
                         <div className={Styles["game-play"]}>
                             <div className={Styles["game-icon"]} onClick={() => openDetail(game)}>
                                 <img
@@ -101,11 +104,11 @@ export const GameItems: React.FC<{ gameData: IGameData[]; updateGameData: Functi
                                 {game.isNew ? <div className={Styles["game-tag"]}>New</div> : <></>}
                             </div>
                             <button type="button" className="btn btn-primary" onClick={(event) => playForFunAction(event, game.gameId)}>
-                                Play for fun
+                                {t<string>("playForFun")}
                             </button>
                         </div>
                         <div className={Styles["game-detail"]}>
-                            <div className={Styles["game-intro"]}>{game.intro}</div>
+                            <div className={Styles["game-intro"]}>{detailT<string>(`${game.gameName}.detail`)}</div>
                             <div className={Styles["detail-item"]}>
                                 <span className={`${Styles["detail-icon"]} icon-info`}></span>
                                 <span>Game Rules</span>

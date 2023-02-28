@@ -46,7 +46,7 @@ export const Header: React.FC<{ handleSetGameCategory: Function; setItem: Functi
                                         onClick={() => onSelectCategory(gameCategory)}
                                         key={gameCategory}
                                     >
-                                        <span className={Styles["menu-text"]}>{t(`category-${gameCategory}`)}</span>
+                                        <span className={Styles["menu-text"]}>{t<string>(`category-${gameCategory}`)}</span>
                                     </li>
                                 );
                             })}
@@ -62,7 +62,7 @@ export const Header: React.FC<{ handleSetGameCategory: Function; setItem: Functi
                             <span className={Styles["menu-text"]}>
                                 <Link className={Styles["menu-link"]} href="/contact">
                                     <span className={Styles["icon-contact"]} />
-                                    <span className="d-none d-sm-none d-md-inline-block">Contact Us</span>
+                                    <span className="d-none d-sm-none d-md-inline-block">{t<string>("contact")}</span>
                                 </Link>
                             </span>
                         </div>

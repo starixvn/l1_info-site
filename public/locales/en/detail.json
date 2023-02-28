@@ -1,0 +1,14 @@
+{
+    "BlockChainBaccarat": {
+        "displayedName": "BlockChain Baccarat",
+        "detail": "Blockchain baccarat - a card game with Fairness Guarantees, the new breakthrough with blockchain technology. The game uses 8 decks of cards (416 cards, excluding the Joker). There are 7 betting options, and Punters can bet on one or more betting options shown on the game table."
+    },
+    "BigSmall": {
+        "displayedName": "Big Small",
+        "detail": "Big Small or commonly known as Sicbo or Tai Sai, is a game played with three dice. The players place bets and predict the total points of the three dice are BIG or SMALL."
+    },
+    "Baccarat": {
+        "displayedName": "Baccarat ",
+        "detail": "Baccarat is one of the most often-played card games in the casino. The game is played with one standard 52-card deck (excluding the Joker). There are 7 betting options and Punters can bet on one or more betting options shown on the game table."
+    }
+}

@@ -1,3 +1,18 @@
 .language-container {
-    color: #fff;
+    display: flex;
+}
+
+.flag {
+    width: 3.6rem;
+}
+
+.dropdown > button {
+    font-size: 1.6rem;
+    background-color: transparent !important;
+    border-color: transparent !important;
+    text-transform: uppercase;
+}
+
+.item {
+    font-size: 1.6rem;
 }

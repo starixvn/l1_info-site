@@ -1,6 +1,8 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
-export const Footer: React.FC = () => {
-    return <footer className="footer">© Copyright 2022 Saba sports All Rights Reserved.</footer>;
+const Footer = () => {
+    const { t } = useTranslation();
+    return <footer className="footer">{t<string>("copyright")}</footer>;
 };
 export default Footer;
