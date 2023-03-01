@@ -20,7 +20,7 @@ const InstallationGuide = () => {
     const guidesData: Array<GuideContent> = [
         {
             title: "Step 1",
-            content: "User phone to scan the QR code or Tab on AppStore icon to download",
+            content: "User phone to <span class='{0}'>scan</span> the QR code or Tab on AppStore icon to download",
             image: "1",
             width: 150,
             height: 50
@@ -110,7 +110,7 @@ const InstallationGuide = () => {
                         return <div className="col-xs-2 col-md-2" key={index} style={{ marginBottom: "10px" }}>
                             <div className={`${Styles["panel"]} ${Styles["panel-default"]}`}>
                                 <div className={Styles["panel-body"]}>
-                                    <div style={{ height: "100px" }}>
+                                    <div style={{ height: "150px" }}>
                                         <div><button style={{ fontWeight: "bold", background: "#f19706", color: "black", marginTop: "30px", marginBottom: "10px" }}>{guide.title}</button></div>
                                         <span>{<Markup content={StringFormat(guide.content, Styles["highlight-text"])} />} </span></div>
                                     <div><img src={`${imagesPath}guide-${guide.image}.png`} className="img-fluid" /></div>
