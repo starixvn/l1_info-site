@@ -1,5 +1,7 @@
 import React from "react";
+
 import Styles from "./game-icon.module.scss";
+
 export const GameIcon: React.FC<{ gameId: number; isSmallSize?: boolean }> = ({ gameId, isSmallSize }) => {
     return (
         <div className={`${Styles["game-icon"]} ${isSmallSize ? Styles["icon-small"] : ""}`}>

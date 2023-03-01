@@ -6,10 +6,9 @@ import GameIcon from "../../game-icon";
 import SimilarGames from "../../similar-games";
 import Styles from "./game-detail.module.scss";
 
-const GameDetails: React.FC<{ game: IGameData }> = ({ game }) => {
+const GameDetails: React.FC<{ game: IGameData; gameIdsSimilar: number[] | undefined }> = ({ game, gameIdsSimilar }) => {
     return (
         <>
-            {" "}
             <section className="container list-container">
                 <div className={Styles["game-detail-top"]}>
                     <div className={Styles["game-name"]}>{game?.gameName}</div>
@@ -99,7 +98,7 @@ const GameDetails: React.FC<{ game: IGameData }> = ({ game }) => {
                         </button>
                     </div>
                 </div>
-                <SimilarGames />
+                <SimilarGames gameIds={gameIdsSimilar ?? []} />
             </section>
         </>
     );

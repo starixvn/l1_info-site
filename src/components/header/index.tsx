@@ -6,28 +6,25 @@ import { useTranslation } from "next-i18next";
 import Languages from "../language-switcher";
 import Link from "next/link";
 import { GameCategory } from "../type";
+import { GameCategoryRouter } from "../../common/constants";
 
-export const Header: React.FC<{ handleSetGameCategory: Function; setItem: Function; menuItems: number[] }> = ({
+export const Header: React.FC<{ handleSetGameCategory: Function; setItem: Function; menuItems: number[]; category: number }> = ({
     handleSetGameCategory,
     setItem,
     menuItems,
+    category = 0,
 }) => {
-    const [selectCategory, setSelectCategory] = useState<number>(0);
-    const { t } = useTranslation();
+    const [selectCategory, setSelectCategory] = useState<number>(category);
+    const { t } = useTranslation("common");
 
     const onSelectCategory = (gameCategory: number) => {
-        handleCategorySelected(gameCategory);
+        setSelectCategory(gameCategory);
         if (gameCategory === GameCategory.AllGames) {
-            console.log("AllGames");
             setItem(Data);
             return;
         }
 
         handleSetGameCategory(gameCategory);
-    };
-
-    const handleCategorySelected = (i: number) => {
-        setSelectCategory(i);
     };
 
     return (
@@ -46,7 +43,13 @@ export const Header: React.FC<{ handleSetGameCategory: Function; setItem: Functi
                                         onClick={() => onSelectCategory(gameCategory)}
                                         key={gameCategory}
                                     >
-                                        <span className={Styles["menu-text"]}>{t<string>(`category-${gameCategory}`)}</span>
+                                        <Link
+                                            className={Styles["menu-text"]}
+                                            href="/category/[category]"
+                                            as={`/category/${GameCategoryRouter[gameCategory]}`}
+                                        >
+                                            {t(`common:category-${gameCategory}`)}
+                                        </Link>
                                     </li>
                                 );
                             })}

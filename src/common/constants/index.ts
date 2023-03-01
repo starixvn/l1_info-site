@@ -1,11 +1,11 @@
-import { GameCategory, GameType } from "./../../components/type";
+import { GameCategory, GameType, TObjectKeyValue } from "./../../components/type";
 import { ITags } from "../../components/type";
 
 export interface IObjectKeys {
     [key: string]: string;
 }
 
-export const locales = { en: "en", vi: "vi", th: "th", id: "id", zh_cn: "zh_cn", zh_tw: "zh_tw" };
+export const locales = { en: "en", vi: "vi" };
 
 export const languageMapper = { "en-US": "en", "vi-VN": "vi", "th-TH": "th", "id-ID": "id", "zh-CN": "zh_cn", "zh-TW": "zh_tw" };
 export const LanguageLocaleMapper = {
@@ -105,10 +105,42 @@ export const GameTypeName = {
     [GameType.BitcoinMaster]: "Bitcoin Master",
 };
 
-export const GameCategoryName = {
-    [GameCategory.AllGames]: "All Games",
-    [GameCategory.Dices]: "Dices",
-    [GameCategory.Casino]: "Casino",
-    [GameCategory.Slots]: "Slots",
-    [GameCategory.Others]: "Others",
+export const GameCategoryRouter: TObjectKeyValue = {
+    [GameCategory.AllGames]: "allGames",
+    [GameCategory.Dices]: "dices",
+    [GameCategory.Casino]: "casino",
+    [GameCategory.Slots]: "slots",
+    [GameCategory.Others]: "others",
 };
+
+export const GAMES_CATEGORY = [
+    { [GameCategoryRouter[GameCategory.Casino]]: "BlockChainBaccarat" },
+    { [GameCategoryRouter[GameCategory.Dices]]: "BigSmall" },
+    { [GameCategoryRouter[GameCategory.Casino]]: "Baccarat" },
+    { [GameCategoryRouter[GameCategory.Casino]]: "Roulette" },
+    { [GameCategoryRouter[GameCategory.Others]]: "RNGLottery" },
+    { [GameCategoryRouter[GameCategory.Slots]]: "TreasureIsland" },
+
+    // { [GameCategoryRouter[GameCategory.Dices]]: "SeDie" },
+    // { [GameCategoryRouter[GameCategory.Dices]]: "SeDieWar" },
+    // { [GameCategoryRouter[GameCategory.Dices]]: "MiniSeDie" },
+    // { [GameCategoryRouter[GameCategory.Dices]]: "SicBo" },
+    // { [GameCategoryRouter[GameCategory.Dices]]: "TurboOddEven" },
+    // { [GameCategoryRouter[GameCategory.Dices]]: "BigSmallCity" },
+    // { [GameCategoryRouter[GameCategory.Dices]]: "VIPFishPrawnCrab" },
+    // { [GameCategoryRouter[GameCategory.Dices]]: "FishPrawnCrab" },
+    // { [GameCategoryRouter[GameCategory.Casino]]: "DragonTiger" },
+    // { [GameCategoryRouter[GameCategory.Casino]]: "Blackjack" },
+    // { [GameCategoryRouter[GameCategory.Casino]]: "ThreeCards" },
+    // { [GameCategoryRouter[GameCategory.Casino]]: "CasinoHold’em" },
+    // { [GameCategoryRouter[GameCategory.Casino]]: "TexasHold’em" },
+    // { [GameCategoryRouter[GameCategory.Casino]]: "Hi-Lo" },
+    // { [GameCategoryRouter[GameCategory.Slots]]: "WaytoGoal" },
+    // { [GameCategoryRouter[GameCategory.Slots]]: "FourGuardians" },
+    // { [GameCategoryRouter[GameCategory.Slots]]: "TheLegendofHeroes" },
+    // { [GameCategoryRouter[GameCategory.Slots]]: "NightclubLady" },
+    // { [GameCategoryRouter[GameCategory.Slots]]: "FruitSlot" },
+    // { [GameCategoryRouter[GameCategory.Others]]: "KenoProMax" },
+    // { [GameCategoryRouter[GameCategory.Others]]: "MegaKeno" },
+    // { [GameCategoryRouter[GameCategory.Others]]: "BitcoinMaster" },
+];

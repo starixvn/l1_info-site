@@ -1,31 +1,18 @@
-import React from "react";
-import { IGameData } from "../../data";
-import GameItems from "../../game-items";
-import PageBase, { EStatus } from "../../pageBase";
-import GameDetails from "../game";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 
-class Dashboard extends PageBase {
-    constructor(props: any) {
-        super(props);
+import { GameCategoryRouter } from "../../../common/constants";
 
-        this.openDetailGame = this.openDetailGame.bind(this);
-        this.updateGameData = this.updateGameData.bind(this);
-    }
+const Dashboard = () => {
+    const router = useRouter();
 
-    updateGameData(data: IGameData) {
-        this.setState({ gameItem: data, status: EStatus.OpenDetailGame });
-    }
-
-    renderContent() {
-        if (this.state.status === EStatus.OpenDetailGame) {
-            return <GameDetails game={this.state.gameItem} />;
+    useEffect(() => {
+        if (router.isReady) {
+            router.push(`/category/${GameCategoryRouter[0]}`);
         }
-        return <GameItems gameData={this.state.gameItems} updateGameData={this.updateGameData} />;
-    }
+    }, [router]);
 
-    openDetailGame() {
-        return <GameDetails game={this.state.gameItem} />;
-    }
-}
+    return <></>;
+};
 
 export default Dashboard;

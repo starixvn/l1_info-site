@@ -2,6 +2,10 @@ export type Props = {
     queryGame: number;
 };
 
+export type TObjectKeyValue = {
+    [key: string]: string;
+};
+
 export enum GameCategory {
     AllGames = 0,
     Dices,
@@ -25,4 +29,11 @@ export enum ITags {
     Classic25PayLines,
     Cascading5x6,
     TurnBased,
+}
+
+export interface IStaticProps<IParams> {
+    params: IParams;
+    locales: string[];
+    locale: string;
+    defaultLocale: string;
 }

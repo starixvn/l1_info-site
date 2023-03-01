@@ -1,10 +1,11 @@
 import React, { useState } from "react";
+import { useRouter } from "next/router";
 
-import { buildVersion } from "../../common/constants";
+import { buildVersion, GameCategoryRouter } from "../../common/constants";
 import Styles from "./game-item.module.scss";
 import Axios from "axios";
 import { IGameData } from "../data";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "next-i18next";
 
 export function randomString(length: number) {
     let result = "";
@@ -16,11 +17,11 @@ export function randomString(length: number) {
     return result;
 }
 
-export const GameItems: React.FC<{ gameData: IGameData[]; updateGameData: Function }> = ({ gameData, updateGameData }) => {
+export const GameItems: React.FC<{ gameData: IGameData[]; updateGameData?: Function }> = ({ gameData }) => {
+    const router = useRouter();
     const [domain, setDomain] = useState("https://l1-glbs2.lumigame.com");
     const [token, settoken] = useState("");
-    const { t: detailT } = useTranslation("detail");
-    const { t } = useTranslation();
+    const { t } = useTranslation("detail");
 
     const playForFunAction = (event: any, gameId: number) => {
         event && event.preventDefault();
@@ -79,8 +80,9 @@ export const GameItems: React.FC<{ gameData: IGameData[]; updateGameData: Functi
         event && event.preventDefault();
     };
 
-    const openDetail = (game: any) => {
-        updateGameData(game);
+    const openDetail = (game: IGameData) => {
+        console.log(game);
+        router.push(`/category/${GameCategoryRouter[game.gameCategory]}/${game.gameName.trim()}`);
     };
 
     return (
@@ -88,7 +90,7 @@ export const GameItems: React.FC<{ gameData: IGameData[]; updateGameData: Functi
             {gameData.map((game: IGameData) => {
                 return (
                     <div className={Styles["game-container"]} key={game.gameId}>
-                        <div className={Styles["game-name"]}>{detailT<string>(`${game.gameName}.displayedName`)}</div>
+                        <div className={Styles["game-name"]}>{t<string>(`${game.gameName}.displayedName`)}</div>
                         <div className={Styles["game-play"]}>
                             <div className={Styles["game-icon"]} onClick={() => openDetail(game)}>
                                 <img
@@ -108,7 +110,7 @@ export const GameItems: React.FC<{ gameData: IGameData[]; updateGameData: Functi
                             </button>
                         </div>
                         <div className={Styles["game-detail"]}>
-                            <div className={Styles["game-intro"]}>{detailT<string>(`${game.gameName}.detail`)}</div>
+                            <div className={Styles["game-intro"]}>{t<string>(`${game.gameName}.detail`)}</div>
                             <div className={Styles["detail-item"]}>
                                 <span className={`${Styles["detail-icon"]} icon-info`}></span>
                                 <span>Game Rules</span>

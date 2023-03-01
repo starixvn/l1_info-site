@@ -1,13 +1,11 @@
 import { useRouter } from "next/router";
-import React, { Suspense, useEffect, useRef, useState } from "react";
-import "./i18n";
+import React, { useEffect, useState } from "react";
 
 import Dashboard from "../components/pages/dashboard";
-import { useTranslation } from "react-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 function Home() {
     const [isLoading, setIsLoading] = useState(true);
-    const { i18n } = useTranslation();
     const router = useRouter();
 
     useEffect(() => {
@@ -16,21 +14,17 @@ function Home() {
         }
     }, [router]);
 
-    useEffect(() => {
-        i18n.changeLanguage("en");
-    }, []);
-
     if (isLoading) {
         return <></>;
     }
 
-    return (
-        <Suspense fallback={null}>
-            <div id="container-home" className="container-home">
-                <Dashboard />
-            </div>
-        </Suspense>
-    );
+    return <Dashboard />;
 }
+
+export const getStaticProps = async ({ locale = "en" }) => ({
+    props: {
+        ...(await serverSideTranslations(locale, ["common", "detail"])),
+    },
+});
 
 export default Home;
