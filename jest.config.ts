@@ -10,7 +10,7 @@ export default {
             useBabelrc: true,
         },
     },
-    coveragePathIgnorePatterns: ["node_modules", ".d.ts"],
+    coveragePathIgnorePatterns: ["node_modules", ".d.ts", ".next", "coverage", "public"],
     coverageReporters: ["json", "lcov", "text", "text-summary"],
     transformIgnorePatterns: ["/node_modules/", "^.+\\.module\\.(css|sass|scss)$"],
     moduleNameMapper: {
@@ -19,4 +19,5 @@ export default {
     },
     testResultsProcessor: "jest-sonar-reporter",
     testEnvironment: "jest-environment-jsdom",
+    setupFilesAfterEnv: ["jest-extended", "@testing-library/jest-dom/extend-expect", "./__mocks__/global.js"],
 };

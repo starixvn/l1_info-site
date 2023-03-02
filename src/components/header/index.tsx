@@ -1,30 +1,17 @@
 import React, { useState } from "react";
 
-import Data from "../data";
 import Styles from "./header.module.scss";
 import { useTranslation } from "next-i18next";
 import Languages from "../language-switcher";
 import Link from "next/link";
-import { GameCategory } from "../type";
 import { GameCategoryRouter } from "../../common/constants";
 
-export const Header: React.FC<{ handleSetGameCategory: Function; setItem: Function; menuItems: number[]; category: number }> = ({
-    handleSetGameCategory,
-    setItem,
-    menuItems,
-    category = 0,
-}) => {
+export const Header: React.FC<{ menuItems: number[]; category: number }> = ({ menuItems, category = 0 }) => {
     const [selectCategory, setSelectCategory] = useState<number>(category);
     const { t } = useTranslation("common");
 
     const onSelectCategory = (gameCategory: number) => {
         setSelectCategory(gameCategory);
-        if (gameCategory === GameCategory.AllGames) {
-            setItem(Data);
-            return;
-        }
-
-        handleSetGameCategory(gameCategory);
     };
 
     return (

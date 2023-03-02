@@ -1,5 +1,6 @@
 import React from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { GetStaticPaths } from "next";
 
 import Data from "../../components/data";
 import Category from "../../components/pages/category";
@@ -12,42 +13,27 @@ interface IParamsData {
     category: string;
 }
 
-export const Categories = (props: TPropsBase) => {
+const Categories = (props: TPropsBase) => {
     return <Category {...props} />;
 };
 
-export const getStaticPaths = async (props: any) => {
-    const handlePaths = () => {
-        let paths: any = [];
-        Object.values(locales).forEach((locale) => {
-            paths = [...paths, ...Object.values(GameCategoryRouter).map((name) => ({ params: { category: name }, locale }))];
-        });
-        return paths;
-    };
-    const paths = handlePaths();
+const getStaticPaths: GetStaticPaths = async () => {
+    const paths = Object.values(locales).flatMap((locale) =>
+        Object.values(GameCategoryRouter).map((category) => ({ params: { category }, locale }))
+    );
     return { paths, fallback: false };
 };
 
-export const getStaticProps = async (context: IStaticProps<IParamsData>) => {
-    const { params } = context;
-    const locale = context.locale || "en";
+const getStaticProps = async ({ params, locale = "en" }: IStaticProps<IParamsData>) => {
+    const DataSort = Data.sort((a, b) => a.gameId - b.gameId);
+    const gameData =
+        params.category === GameCategoryRouter[GameCategory.AllGames]
+            ? DataSort
+            : DataSort.filter((game) => GameCategoryRouter[game.gameCategory] === params.category);
 
-    console.log("static props", locale);
-    const handleGameData = () => {
-        if (params.category === GameCategoryRouter[GameCategory.AllGames]) {
-            return Data;
-        }
-        return Data.filter((game) => GameCategoryRouter[game.gameCategory] === params.category);
-    };
-    const gameData = handleGameData();
     const category = +getKeyByValue(GameCategoryRouter, params.category);
-    return {
-        props: {
-            gameData,
-            category,
-            ...(await serverSideTranslations(locale, ["common", "detail"])),
-        },
-    };
+    const translations = await serverSideTranslations(locale, ["common", "detail"]);
+    return { props: { gameData, category, ...translations } };
 };
 
-export default Categories;
+export { Categories as default, getStaticPaths, getStaticProps };

@@ -1,4 +1,5 @@
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { GetStaticPaths } from "next";
 
 import { GAMES_CATEGORY, locales } from "../../../common/constants";
 import Data from "../../../components/data";
@@ -11,51 +12,7 @@ interface IParamsData {
     game: string;
 }
 
-export const getStaticPaths = async () => {
-    const handlePaths = () => {
-        let paths: any = [];
-        Object.values(locales).forEach((locale) => {
-            paths = [
-                ...paths,
-                ...GAMES_CATEGORY.map((game) => ({
-                    params: { category: Object.keys(game)[0], game: Object.values(game)[0] },
-                    locale,
-                })),
-            ];
-        });
-        return paths;
-    };
-    const paths = handlePaths();
-
-    console.log(paths);
-
-    // const paths = GAMES_CATEGORY.map((game) => ({ params: { category: Object.keys(game)[0], game: Object.values(game)[0] } }));
-
-    return { paths, fallback: false };
-};
-
-export const getStaticProps = async (props: IStaticProps<IParamsData>) => {
-    const { params } = props;
-    const { game } = params;
-    const locale = props.locale || "en";
-
-    const gameData = Data.filter((data) => data.gameName === game);
-    const gameIdsSimilar = Data.filter((data) => data.gameCategory === gameData[0].gameCategory && gameData[0].gameId !== data.gameId).map(
-        (game) => game.gameId
-    );
-    const category = gameData[0].gameCategory;
-
-    return {
-        props: {
-            gameData,
-            gameIdsSimilar,
-            category,
-            ...(await serverSideTranslations(locale, ["common", "detail"])),
-        },
-    };
-};
-
-export default class DetailGame extends PageBase<TPropsBase, IStateBase> {
+class DetailGame extends PageBase<TPropsBase, IStateBase> {
     constructor(props: TPropsBase) {
         super(props);
     }
@@ -65,3 +22,42 @@ export default class DetailGame extends PageBase<TPropsBase, IStateBase> {
         return <GameDetails game={gameData[0]} gameIdsSimilar={gameIdsSimilar} />;
     }
 }
+
+const getStaticPaths: GetStaticPaths = async () => {
+    const games = GAMES_CATEGORY.map((game) => Object.entries(game)[0]);
+    const paths = Object.values(locales).flatMap((locale) =>
+        games.map(([category, game]) => ({
+            params: { category, game },
+            locale,
+        }))
+    );
+
+    return { paths, fallback: false };
+};
+
+const getStaticProps = async ({ params, locale = "en" }: IStaticProps<IParamsData>) => {
+    const { game } = params;
+    const DataSort = Data.sort((a, b) => a.gameId - b.gameId);
+    const gameData = DataSort.find((data) => data.gameName === game);
+
+    if (!gameData) {
+        return {
+            notFound: true,
+        };
+    }
+
+    const gameIdsSimilar = DataSort.filter((data) => data.gameCategory === gameData.gameCategory && data.gameId !== gameData.gameId).map(
+        (game) => game.gameId
+    );
+
+    return {
+        props: {
+            gameData: [gameData],
+            gameIdsSimilar,
+            category: gameData.gameCategory,
+            ...(await serverSideTranslations(locale, ["common", "detail"])),
+        },
+    };
+};
+
+export { DetailGame as default, getStaticPaths, getStaticProps };
