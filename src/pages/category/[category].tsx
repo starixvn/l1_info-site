@@ -25,11 +25,11 @@ const getStaticPaths: GetStaticPaths = async () => {
 };
 
 const getStaticProps = async ({ params, locale = "en" }: IStaticProps<IParamsData>) => {
-    const DataSort = Data.sort((a, b) => a.gameId - b.gameId);
+    const sortData = Data.sort((a, b) => a.gameId - b.gameId);
     const gameData =
         params.category === GameCategoryRouter[GameCategory.AllGames]
-            ? DataSort
-            : DataSort.filter((game) => GameCategoryRouter[game.gameCategory] === params.category);
+            ? sortData
+            : sortData.filter((game) => GameCategoryRouter[game.gameCategory] === params.category);
 
     const category = +getKeyByValue(GameCategoryRouter, params.category);
     const translations = await serverSideTranslations(locale, ["common", "detail"]);

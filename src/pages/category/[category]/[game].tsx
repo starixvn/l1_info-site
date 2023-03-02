@@ -37,8 +37,8 @@ const getStaticPaths: GetStaticPaths = async () => {
 
 const getStaticProps = async ({ params, locale = "en" }: IStaticProps<IParamsData>) => {
     const { game } = params;
-    const DataSort = Data.sort((a, b) => a.gameId - b.gameId);
-    const gameData = DataSort.find((data) => data.gameName === game);
+    const sortData = Data.sort((a, b) => a.gameId - b.gameId);
+    const gameData = sortData.find((data) => data.gameName === game);
 
     if (!gameData) {
         return {
@@ -46,7 +46,7 @@ const getStaticProps = async ({ params, locale = "en" }: IStaticProps<IParamsDat
         };
     }
 
-    const gameIdsSimilar = DataSort.filter((data) => data.gameCategory === gameData.gameCategory && data.gameId !== gameData.gameId).map(
+    const gameIdsSimilar = sortData.filter((data) => data.gameCategory === gameData.gameCategory && data.gameId !== gameData.gameId).map(
         (game) => game.gameId
     );
 
