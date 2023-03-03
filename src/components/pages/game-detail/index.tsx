@@ -6,13 +6,29 @@ import GameIcon from "../../game-icon";
 import SimilarGames from "../../similar-games";
 import Styles from "./game-detail.module.scss";
 
+const detailIconClass = "detail-item-icon";
+
+const DetailIcon: React.FC<{ icon: string; text: string; subpath?: string; format?: string }> = ({
+    icon,
+    text,
+    subpath = "compatibility",
+    format = "svg",
+}) => {
+    return (
+        <span className={Styles["group-icon"]}>
+            <img className="icon-bg" src={`/static/images/${subpath}/${icon}.${format}`} alt={icon}></img>
+            {text}
+        </span>
+    );
+};
+
 const GameDetails: React.FC<{ game: IGameData; gameIdsSimilar: number[] | undefined }> = ({ game, gameIdsSimilar }) => {
     return (
         <>
             <section className="container list-container">
                 <div className={Styles["game-detail-top"]}>
                     <div className={Styles["game-name"]}>{game?.gameName}</div>
-                    <div className={Styles["game-icon-container"]}>
+                    <div className={Styles["game-i, con-container"]}>
                         <GameIcon gameId={game.gameId} isSmallSize={false} />
                     </div>
 
@@ -42,48 +58,35 @@ const GameDetails: React.FC<{ game: IGameData; gameIdsSimilar: number[] | undefi
                                 Tag: <span className="color-primary">{TagsName[game.tag]}</span>
                             </span>
                         </div>
-                        <div className={Styles["detail-item-icon"]}>
+
+                        <div className={Styles[detailIconClass]}>
                             <p>Browser Compatibility </p>
-                            <span className={Styles["group-icon"]}>
-                                <img className="icon-bg" src="/static/images/compatibility/icon-chrome.svg" alt="game-icon"></img>
-                                Google Chrome
-                            </span>
-                            <span className={Styles["group-icon"]}>
-                                <img className="icon-bg" src="/static/images/compatibility/icon-safari.svg" alt="game-icon"></img>
-                                Safari
-                            </span>
-                            <span className={Styles["group-icon"]}>
-                                <img className="icon-bg" src="/static/images/compatibility/icon-coccoc.svg" alt="game-icon"></img>
-                                Cốc Cốc
-                            </span>
+                            <DetailIcon text="Google Chrome" icon="icon-chrome" />
+                            <DetailIcon text="Safari" icon="icon-safari" />
+                            <DetailIcon text="Cốc Cốc" icon="icon-coccoc" />
                         </div>
-                        <div className={Styles["detail-item-icon"]}>
+
+                        <div className={Styles[detailIconClass]}>
                             <p>Compatible With</p>
-                            <span className={Styles["group-icon"]}>
-                                <img className="icon-bg" src="/static/images/compatibility/icon-ios.svg" alt="game-icon"></img>
-                                iOS
-                            </span>
-                            <span className={Styles["group-icon"]}>
-                                <img className="icon-bg" src="/static/images/compatibility/icon-android.svg" alt="game-icon"></img>
-                                Android
-                            </span>
-                            <span className={Styles["group-icon"]}>
-                                <img className="icon-bg" src="/static/images/compatibility/icon-window.svg" alt="game-icon"></img>
-                                Window
-                            </span>
-                            <span className={Styles["group-icon"]}>
-                                <img className="icon-bg" src="/static/images/compatibility/icon-macos.svg" alt="game-icon"></img>
-                                Mac OS
-                            </span>
+                            <DetailIcon text="iOS" icon="icon-ios" />
+                            <DetailIcon text="Android" icon="icon-android" />
+                            <DetailIcon text="Window" icon="icon-window" />
+                            <DetailIcon text="Mac OS" icon="icon-macos" />
                         </div>
-                        <div className={Styles["detail-item-icon"]}>
+
+                        <div className={Styles[detailIconClass]}>
                             <p>Languages </p>
                             <span className="icon-cn">
-                                <img className="icon-bg" src="/static/images/icon-languages/en.svg" alt="game-icon"></img>
-                                <img className="icon-bg" src="/static/images/icon-languages/vi.svg" alt="game-icon"></img>
-                                <img className="icon-bg" src="/static/images/icon-languages/cn.svg" alt="game-icon"></img>
-                                <img className="icon-bg" src="/static/images/icon-languages/th.svg" alt="game-icon"></img>
-                                <img className="icon-bg" src="/static/images/icon-languages/id.svg" alt="game-icon"></img>
+                                {["en", "vi", "cn", "th", "id"].map((name) => {
+                                    return (
+                                        <img
+                                            key={name}
+                                            className="icon-bg"
+                                            src={`/static/images/icon-languages/${name}.svg`}
+                                            alt="game-icon"
+                                        ></img>
+                                    );
+                                })}
                             </span>
                         </div>
                     </div>
