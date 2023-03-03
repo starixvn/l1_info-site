@@ -157,3 +157,24 @@
         }
     }
 }
+
+.customize-slick-next {
+    &::before{
+        content: '';
+    }
+    right: 10%;
+    z-index: 1;
+    height: auto;
+    width: auto;
+}
+
+.customize-slick-prev {
+    &::before{
+        content: '';
+    }
+    left: 10%;
+    z-index: 1;
+    height: auto;
+    width: auto;
+}
+

@@ -39,7 +39,7 @@ const GameDetails: React.FC<{ game: IGameData; gameIdsSimilar: number[] | undefi
                         Play for fun
                     </button>
                     <div className={Styles["game-intro"]}>
-                        <div className={Styles["intro"]}>{game.intro}</div>
+                        <div className={Styles["intro"]}>{t<string>(`detail:${game.gameName}.detail`)}</div>
                     </div>
                 </div>
                 <div className={Styles["flex-detail"]}>
