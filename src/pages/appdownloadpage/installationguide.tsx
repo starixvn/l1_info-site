@@ -9,8 +9,6 @@ interface GuideContent {
     title: string;
     content: string;
     image: string;
-    width: number;
-    height: number;
 }
 
 const InstallationGuide = () => {
@@ -18,37 +16,27 @@ const InstallationGuide = () => {
         {
             title: "Step 1",
             content: "User phone to <span class='{0}'>scan</span> the QR code or Tab on AppStore icon to download",
-            image: "1",
-            width: 150,
-            height: 50
+            image: "Example-step1"
         },
         {
             title: "Step 2",
             content: "Select <span class='{0}'>Get the App</span> to redirect to AppleStore",
-            image: "2",
-            width: 250,
-            height: 450
+            image: "Example-step2"
         },
         {
             title: "Step 3",
             content: "You will redirect to <span class='{0}'>App Name</span> on AppStore instead of 'Saba Game'. Tap on <span>Get</span> to install 'App Name' app",
-            image: "3",
-            width: 250,
-            height: 450
+            image: "Example-step3"
         },
         {
             title: "Step 4",
             content: "Open <span class='{0}'>App Name</span> to launch the 'Saba Game' app",
-            image: "4",
-            width: 250,
-            height: 450
+            image: "Example-step4"
         },
         {
             title: "Step 5",
             content: "Please use the betting account given by your Upline to login",
-            image: "5",
-            width: 250,
-            height: 450
+            image: "Example-step5"
         }
     ];
 
@@ -62,10 +50,10 @@ const InstallationGuide = () => {
                 guides && guides.map((guide, index) => {
                     return <div className={`col-xs-2 col-md-2 text-center ${Styles["step"]}`} key={index} >
                         <div className={`${Styles["content"]}`}>
-                            <div> <button>{guide.title}</button></div>
-                            <span>{<Markup content={StringFormat(guide.content, Styles["highlight-text"])} />} </span>
+                            <div ><span className={Styles["title"]}> {guide.title}</span></div>
+                            <div ><span className={Styles["detail"]}>{<Markup content={StringFormat(guide.content, Styles["highlight-text"])} />} </span></div>
                         </div>
-                        <div className="text-center"> <img src={`${imagesPath}guide-${guide.image}.png`} className="img-fluid" alt="" /> </div>
+                        <div className="text-center"> <img src={`${imagesPath}${guide.image}.png`} className="img-fluid" alt="" /> </div>
                     </div>
                 })
             }

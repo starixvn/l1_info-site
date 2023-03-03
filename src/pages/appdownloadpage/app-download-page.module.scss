@@ -1,162 +1,210 @@
 .container {
-    background: #0c558a !important;
-    color: white !important;
-    padding: 10px;
-  
-    .logo {
-      height: 60px !important;
-      width: 200px !important;
-      margin: 20px !important;
-    }
-  
-    .highlight-text {
-      color: #f19706;
-    }
-  
-    .card-chip {
-      margin-left: 30px;
-      height: 90px;
-      width: 130px;
-    }
-  
-    .download-session {
-      font-weight: bold;
-      color: #f19706;
-      margin-top: 20px;
-  
-      .qr-code {
-        div {
-          display: inline-block;
-        }
+	font-family: 'Roboto';
+	font-weight: 300;
+	background-image: url("/static/images/app-download/bg-desktop.jpg");
+	background-attachment: fixed;
+	color: white !important;
+	padding: 10px;
 
-        img {
-          height: 60px;
-          width: 200px;
-          margin-left: 20px;
-          margin-right: 20px;
-          display: block;
-        }
-      }
-    }
-  
-    .desktop-description {
-      margin-left: 30px;
-  
-      .roulette-chip {
-        height: 200px;
-        width: 250px;
-        margin-top: 10px;
-      }
-  
-      div {
-        margin-top: 10px;
-      }
-    }
-  
-    .mobile-description {
-      margin-top: 20px;
-      .roulette-chip {
-        height: 80px;
-        width: 80px;
-      }
-  
-      div {
-        display: inline-block;
-  
-        &:nth-child(1) {
-          width: 100%;
-        }
-  
-        &:nth-child(21) {
-          width: 25%;
-        }
-  
-        &:nth-child(3) {
-          width: 75%;
-          :last-child {
-            margin-left: 20px;
-          }
-        }
-      }
-    }
-  
-    .app-download {
-      .title {
-        font-size: 32px;
-        font-weight: bold;
-        color: #f19706;
-      }
-      img {
-        height: 60px;
-        width: 300px;
-        margin-top: 40px;
-        display: block;
-      }
-    }
-  
-    .installation-guide {
-      margin-top: 50px;
-  
-      .title {
-        font-weight: bold;
-        color: #f19706;
-        cursor: pointer;
-        display: block;
-        font-size: 32px;
-      }
-      .apple-logo {
-        height: 30px;
-        width: 50px;
-      }
-    }
-  
-    .steps {
-      .step {
-        margin-bottom: 20px;
-        .content {
-          min-height: 150px;
-          margin-bottom: 10px;
-        }
-  
-        button {
-          font-weight: bold;
-          background: #f19706;
-          color: black;
-          margin-top: 30px;
-          margin-bottom: 10px;
-          display: inline;
-          width: 100px;
-          pointer-events: none;
-        }
-      }
-    }
-  }
-  
-  @media only screen and (max-width: 480px) {
-    .container {
-      .app-download {
-        .title {
-          font-size: 20px;
-        }
-        img {
-          margin-top: 25px;
-        }
-      }
-      .installation-guide {
-        .title {
-          font-size: 20px;
-        }
-      }
-  
-      .steps {
-        .step {
-          margin-bottom: 30px;
-          .content {
-            min-height: 50px;
-            margin-bottom: 20px;
-          }
-        }
-      }
-    }
-  }
-  
+	.logo {
+		margin: 20px !important;
+		transform:scale(0.7);
+	}
+
+	.offer {
+		font-size: 24px;
+		font-weight: 400;
+	}
+
+	.highlight-text {
+		color: #f19706;
+	}
+
+	.card-chip {
+		margin-left: 30px;
+		height: 90px;
+		width: 130px;
+	}
+
+	.download-title {
+		font-size: 36px;
+		color: #f19706;
+		margin-top: 50px;
+	}
+
+	.description {
+		font-size: 24px;
+
+		ul {
+			margin-top: 40px;
+			li {
+				.arrow {
+					height: 20px;
+					margin-right: 10px;
+					margin-bottom: 5px;
+				}
+
+				line-height: 40px;
+				margin-bottom: 20px;
+				display: block;
+			}
+		}
+	}
+
+	.app-download {
+		color: #f19706;
+
+		.qr-code {
+			div {
+				display: inline-block;
+			}
+
+			img {
+				height: 70px;
+				width: 250px;
+				margin-left: 20px;
+				margin-right: 30px;
+				display: block;
+				margin-top: 40px;
+			}
+		}
+	}
+
+
+	.installation-guide {
+		margin-top: 50px;
+
+		.title {
+			color: #f19706;
+			cursor: pointer;
+			display: block;
+			font-size: 32px;
+		}
+
+		.apple-logo {
+			margin: 20px;
+			height: 50px;
+			width: 200px;
+		}
+	}
+
+	.steps {
+		.step {
+			margin-bottom: 20px;
+
+			.content {
+				min-height: 150px;
+				margin-bottom: 10px;
+
+				.title {
+					background-image: url("/static/images/app-download/Label-step.png");
+					background-size: cover;
+					color: white;
+					margin-top: 30px;
+					margin-bottom: 10px;
+					width: 100px;
+					pointer-events: none;
+					border-radius: 20px;
+					display: inline-block;
+					font-size: 20px;
+				}
+
+				.detail {
+					font-size: 14px;
+				}
+			}
+		}
+	}
+}
+
+@media only screen and (max-width: 1370px) {
+	.container {
+		.steps {
+			.step {
+				.content {
+					min-height: 170px;
+				}
+			}
+		}
+	}
+}
+
+
+
+@media only screen and (max-width: 1024px) {
+	.container {
+		.steps {
+			.step {
+				.content {
+					min-height: 230px;
+				}
+			}
+		}
+	}
+}
+
+@media only screen and (max-width: 768px) {
+	.container {
+		background-image: url("/static/images/app-download/bg-mobile.jpg");
+
+		.offer {
+			font-size: 18px;
+		}
+
+		.download-title {
+			font-size: 28px;
+			margin-top: 30px;
+		}
+
+		.app-download {
+			.qr-code {
+				text-align: center;
+
+				img {
+					transform:scale(1);
+					margin-left: 10px;
+					margin-right: 10px;
+				}
+			}
+		}
+
+		.description {
+
+			font-size: 16px;
+
+			ul {
+				margin-left: 20px;
+				margin-top: 40px;
+
+				li {
+					line-height: 2.5rem;
+				}
+			}
+		}
+
+		.steps {
+			.step {
+				margin-bottom: 30px;
+
+				.content {
+					min-height: 150px;
+					margin-bottom: 20px;
+
+					.title {
+						font-size: 22px;
+					}
+
+					.detail {
+						font-size: 20px;
+					}
+				}
+
+				img {
+					max-width: 80%;
+				}
+			}
+		}
+	}
+}
+
+

@@ -3,8 +3,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { v4 as uuidv4 } from "uuid";
 import { TFunction, useTranslation } from "next-i18next";
 import InstallationGuide from "./installationguide";
-import { useRouter } from 'next/router';
-import { isMobileOnly, isIOS } from "react-device-detect";
+import { isMobileOnly } from "react-device-detect";
 import Styles from "./app-download-page.module.scss";
 import ScrollToTop from "react-scroll-to-top";
 import { QRCodeCanvas } from "qrcode.react";
@@ -19,11 +18,11 @@ interface QrCodeDeeplink {
 const DownloadSection = () => {
     const deepLinks: Array<QrCodeDeeplink> = [
         {
-            image: `${imagesPath}3.png`,
+            image: `${imagesPath}button-dl-ios.png`,
             url: "https://hackernoon.com/how-to-build-a-qr-code-generator-in-react"
         },
         {
-            image: `${imagesPath}4.png`,
+            image: `${imagesPath}button-dl-android.png`,
             url: "https://css-tricks.com/snippets/css/media-queries-for-standard-devices/"
         },
 
@@ -33,15 +32,14 @@ const DownloadSection = () => {
     useEffect(() => setQrData(deepLinks), []);
 
     return (
-        <div className={Styles["download-session"]}>
-            <span className={Styles["title"]}>APP DOWNLOAD</span>
+        <div >
             {
-                qrData && qrData.map((item, index) => {
+                qrData && qrData.map((item: QrCodeDeeplink, index: number) => {
                     return (<div className={Styles["qr-code"]} key={index}>
                         <div><img src={item.image} alt="" /></div>
                         <div><QRCodeCanvas
                             value={item.url}
-                            size={70}
+                            size={isMobileOnly ? 80 : 90}
                             level={"L"}
                         /></div>
                     </div>);
@@ -60,55 +58,48 @@ const AppDownloadPage = () => {
         <div className={Styles["container"]} >
             <div className="row">
                 <div className="text-center">
-                    <img className={Styles["logo"]} src={`${imagesPath}2.png`} alt="" />
+                    <img className={Styles["logo"]} src={`${imagesPath}logo-saba.png`} alt="" />
                 </div>
             </div>
             <div className="row">
-                {!isMobile && <div className="col-xs-3 col-md-3"><img className={Styles["card-chip"]} src={`${imagesPath}1.png`} alt="" /></div>}
-                <div className="col-xs-7 col-md-7 text-center" style={{ fontSize: "18px" }}>
-                    Offer variety and high Entertainment Game, there is always something <span className={hightlightText}>new to play</span>
+                <div className={`col-12 text-center ${Styles["offer"]}`}>
+                    Offer variety and high Entertainment Game,
+                </div>
+                <div className={`col-12 text-center ${Styles["offer"]}`}>
+                    there is always something <span className={hightlightText}>new to play</span>
                 </div>
             </div>
             <div className="row">
-                <div className="col-md-4">
-                    {isMobile && <div className={Styles["mobile-description"]}>
-                        <div>
-                            + Excellent Online Casino Platform
-                        </div>
-                        <div>
-                            <img className={Styles["roulette-chip"]} src={`/static/images/app-download/5.png`} alt="" />
-                        </div>
-                        <div >
-                            <div>+ Player can choose to play via a <span className={hightlightText}>Web Browser</span> or <span className={hightlightText}>Mobile App</span></div>
-                            <div>+ More Instant! More Convenient!</div>
-                        </div>
-                    </div>
-                    }
-                    {!isMobile && <div className={Styles["desktop-description"]}>
-                        <div> + Excellent Online Casino Platform </div>
-                        <div> + Player can choose to play via a <span className={hightlightText}>Web Browser</span> or <span className={hightlightText}>Mobile App</span> </div>
-                        <div> + More Instant! More Convenient! </div>
-                        <img className={Styles["roulette-chip"]} src={`/static/images/app-download/5.png`} alt="" />
-                    </div>
-                    }
+                <div className={`col-12 text-center ${Styles["download-title"]}`} >
+                    APP DOWNLOAD
                 </div>
-                <div className="col-md-1"></div>
-                <div className={`col-md-7 order-first order-md-2 ${Styles["app-download"]}  ${isMobile ? "text-center" : ""}`}>
+            </div>
+            <div className="row">
+                <div className="col-md-1"> </div>
+                <div className={`col-md-5 col-xs-12  ${Styles["description"]}`}>
+                    <ul>
+                        <li> <img className={Styles["arrow"]} src={`${imagesPath}arrow.png`} alt="" /> Excellent Online Casino Platform</li>
+                        <li> <img className={Styles["arrow"]} src={`${imagesPath}arrow.png`} alt="" />Player can choose to play via a <span className={hightlightText}>Web Browser</span> or <span className={hightlightText}>Mobile App</span></li>
+                        <li> <img className={Styles["arrow"]} src={`${imagesPath}arrow.png`} alt="" />More Instant! More Convenient!</li>
+                    </ul>
+                </div>
+                <div className={`col-md-6 order-first order-md-2 ${Styles["app-download"]}  ${isMobile ? "text-center" : ""}`}>
                     <DownloadSection />
                 </div>
             </div>
             <div className="row text-center">
-                <div className={`col-xs-12 col-md-12 ${Styles["installation-guide"]}`}>
+                <div className={`col-12 ${Styles["installation-guide"]}`}>
                     <div className={Styles["title"]}> INSTALLATION GUIDE</div>
-                    <img className={Styles["apple-logo"]} src={`/static/images/app-download/apple-logo.png`} alt="" />
+                    <img className={Styles["apple-logo"]} src={`/static/images/app-download/ios-label.png`} alt="" />
                 </div>
                 <InstallationGuide />
             </div>
             {
                 isMobile && (<div className={`${Styles["app-download"]} text-center`}  >
-                    <div>
-                        <DownloadSection />
+                    <div className={`${Styles["download-title"]}`} >
+                        APP DOWNLOAD
                     </div>
+                    <DownloadSection />
                 </div>)
             }
             <ScrollToTop smooth />
