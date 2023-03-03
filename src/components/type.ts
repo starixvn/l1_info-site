@@ -31,6 +31,11 @@ export enum ITags {
     TurnBased,
 }
 
+export enum IVolatility {
+    Medium,
+    MediumHigh,
+}
+
 export interface IStaticProps<IParams> {
     params: IParams;
     locales: string[];

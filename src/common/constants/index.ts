@@ -32,7 +32,7 @@ const GAMES = {
     SIC_BO: 25,
     VIP_FISH_PRAWN_CRAB: 26,
     VIP_BACCARAT: 27,
-    VIP_SE_DIE_WAR: 28,
+    SE_DIE_WAR: 28,
     FOUR_GUARDIANS: 29,
     LOTTERY: 31,
     THREE_CARDS: 35,
@@ -45,7 +45,7 @@ const GAMES = {
     TEXAS_HOLDEM_POKER: 42,
     BITCOIN_MASTER: 43,
     HILO: 45,
-    NightClubGuide: 46,
+    NIGHCLUB_LADY: 46,
     TREASURE_ISLAND: 47,
     UNBALANCEDBIGSMALL1: 50,
     BLOCKCHAIN_BACCARAT: 48,
@@ -58,6 +58,7 @@ const GAMES = {
     MINI_SE_DIE_2: 56,
     MINI_SE_DIE_3: 57,
     MINI_SE_DIE_4: 58,
+    FRUIT_SLOT: 59,
 };
 
 const buildVersion = process.env.buildVersion;

@@ -1,14 +1,114 @@
 {
-    "BlockChainBaccarat": {
-        "displayedName": "BlockChain Baccarat",
-        "detail": "Xóc Đĩa VIP là phiên bản đặc biệt của trò Xóc Đĩa, với hạn mức cược được nâng cấp, mở rộng. Trò chơi có luật chơi rất đơn giản, chỉ gồm 1 bát úp, 1 đĩa và 4 đồng xu. Trong đó, 4 đồng xu được thiết kế 2 mặt đỏ và trắng. Người chơi sẽ đặt cược vào các lựa chọn (cửa) có sẵn. Kết quả thắng thua sẽ phụ thuộc vào số mặt đỏ hoặc trắng được lật của đồng xu sau khi xóc."
+    "SeDie": {
+        "displayedName": "Xóc Đĩa",
+        "detail": "Xóc Đĩa là trò chơi có nguồn gốc dân gian từ lâu đời. Trò chơi có luật chơi rất đơn giản, chỉ gồm 1 bát úp, 1 đĩa và 4 đồng xu. Trong đó, 4 đồng xu được thiết kế 2 mặt đỏ và trắng. Người chơi sẽ đặt cược vào các lựa chọn (cửa) có sẵn. Kết quả thắng thua sẽ phụ thuộc vào số mặt đỏ hoặc trắng được lật của đồng xu sau khi xóc."
+    },
+    "SeDieWar": {
+        "displayedName": "Xóc Đĩa Đối Kháng",
+        "detail": "Xóc Đĩa Đối Kháng là phiên bản hoàn toàn mới của trò Xóc Đĩa truyền thống. Trò chơi gồm 2 bộ xu, một cho Nhà Con và một cho Nhà Cái. Mỗi bộ gồm 1 bát úp, 1 đĩa và 4 đồng xu. Trong đó, 4 đồng xu được thiết kế 2 mặt đỏ và trắng. Người chơi sẽ đặt cược vào các lựa chọn (cửa) có sẵn. Kết quả thắng thua sẽ phụ thuộc vào số mặt đỏ hoặc trắng được lật của đồng xu sau khi xóc."
+    },
+    "MiniSeDie": {
+        "displayedName": "Xóc Đĩa Mini",
+        "detail": "Xóc Đĩa Mini - phiên bản Multiplay, với tính năng độc đáo cho phép chơi cùng lúc 4 bàn game (Xóc Đĩa Mini, Xóc Đĩa Mini 2, Xóc Đĩa Mini 3 và Xóc Đĩa Mini 4) với nhiều trải nghiệm mới hấp dẫn. Trò chơi có luật chơi rất đơn giản, chỉ gồm 1 bát úp, 1 đĩa và 4 đồng xu. Trong đó, 4 đồng xu được thiết kế 2 mặt đỏ và trắng. Người chơi sẽ đặt cược vào các lựa chọn (cửa) có sẵn. Kết quả thắng thua sẽ phụ thuộc vào số mặt đỏ hoặc trắng được lật của đồng xu sau khi xóc."
+    },
+    "SicBo": {
+        "displayedName": "Tài Xỉu Sic Bo",
+        "detail": "Tài Xỉu Sic Bo là trò chơi đổ xúc xắc, rất được yêu thích tại các casino. Trò chơi có luật và cách chơi đơn giản, sử dụng ba viên xúc xắc (xí ngầu) 6 mặt, các mặt lần lượt từ 1 đến 6 chấm, tương ứng từ 1 đến 6 điểm. Người chơi đặt cược và dự đoán tổng điểm của 3 viên xúc xắc, cũng như điểm số của viên xúc xắc xuất hiện trong kết quả. "
     },
     "BigSmall": {
         "displayedName": "Tài Xỉu",
         "detail": "Tài Xỉu là trò chơi đổ xúc xắc đơn giản, trò chơi sử dụng 3 viên xúc xắc (xí ngầu) 6 mặt và người chơi sẽ dự đoán xem kết quả là Tài hay Xỉu."
     },
+    "Turbo Odd Even": {
+        "displayedName": "Chẵn Lẻ Siêu Tốc",
+        "detail": "Chẵn Lẻ Siêu Tốc là trò chơi đổ xúc xắc, có luật chơi rất đơn giản. Trò chơi sử dụng 3 viên xúc xắc (xí ngầu) 6 mặt và người chơi sẽ dự đoán xem kết quả là Chẵn hay Lẻ."
+    },
+    "Big Small City": {
+        "displayedName": "Tài Xỉu City",
+        "detail": "Tài Xỉu City - tựa game Tài Xỉu không cân cửa hoàn toàn mới. Trò chơi gồm 4 bàn game: Las Vegas, Marina Bay, Macau và Monte Carlo, trong đó Marina Bay và Monte Carlo là phiên bản siêu tốc với thời gian cược được rút ngắn. Tài Xỉu City cho phép chơi cùng lúc 4 bàn game với nhiều trải nghiệm mới hấp dẫn. Trò chơi sử dụng 3 viên xúc xắc (xí ngầu) 6 mặt và người chơi sẽ dự đoán xem kết quả là Tài hay Xỉu."
+    },
+    "WayToGoal": {
+        "displayedName": "Đường Đến Khung Thành",
+        "detail": "“Đường Đến Khung Thành” là thể loại Slot game (game xèng), được xây dựng với giao diện hấp dẫn mang đậm dấu ấn World Cup. Trò chơi gồm 3 hàng 5 cột, với tất cả 11 biểu tượng khác nhau. Người chơi sẽ thắng nếu có các biểu tượng giống nhau nằm trên cùng một dòng cược mà người chơi đã chọn."
+    },
+    "FourGuardians": {
+        "displayedName": "Long Lân Quy Phụng",
+        "detail": "“Long Lân Quy Phụng” là thể loại Slot game (game xèng), được xây dựng dựa trên câu chuyện về tứ linh vật Long - Lân - Quy - Phụng rất nổi tiếng. Trò chơi gồm 3 hàng 5 cột, với tất cả 11 biểu tượng khác nhau. Người chơi sẽ thắng nếu có các biểu tượng giống nhau nằm trên cùng một dòng cược mà người chơi đã chọn. "
+    },
+    "HeroesSlot": {
+        "displayedName": "Anh Hùng Chim Lạc",
+        "detail": "“Anh Hùng Chim Lạc” là thể loại Slot game (game xèng), được xây dựng dựa trên câu chuyện cổ tích Lạc Long Quân rất nổi tiếng. Trò chơi gồm 3 hàng 5 cột, với tất cả 11 biểu tượng khác nhau. Người chơi sẽ thắng nếu có các biểu tượng giống nhau nằm trên cùng một dòng cược mà người chơi đã chọn."
+    },
+    "NightclubLady": {
+        "displayedName": "Gái Nhảy",
+        "detail": "“Gái Nhảy” là thể loại Slot game (game xèng), được xây dựng với giao diện hấp dẫn với chủ đề Hot Girls & Dance Club. Trò chơi gồm 3 hàng 5 cột, với tất cả 11 biểu tượng khác nhau. Người chơi sẽ thắng nếu có các biểu tượng giống nhau nằm trên cùng một dòng cược mà người chơi đã chọn."
+    },
+    "TreasureIsland": {
+        "displayedName": "Đảo Châu Báu",
+        "detail": "Đảo Châu Báu là một thể loại Slot game xếp tầng (Game xèng xếp tầng) trực tuyến đã trở nên cực kỳ phổ biến với người chơi vì nó mang lại nhiều cơ hội chiến thắng hơn so với các Slot game kiểu cũ. Trò chơi bao gồm sáu cột, năm hàng và mười biểu tượng khác nhau."
+    },
+    "KenoProMax ": {
+        "displayedName": "Keno Pro Max ",
+        "detail": "Keno Pro Max là trò cá cược trực tuyến rất được yêu thích. Trò chơi bao gồm 80 quả bóng được đánh số từ 1 đến 80, hệ thống sẽ lấy ngẫu nhiên 20 quả bóng trong số 80 quả bóng. Người chơi sẽ đặt cược và dự đoán tổng điểm của 20 quả bóng này. "
+    },
+    "MegaKeno": {
+        "displayedName": "Mega Keno",
+        "detail": "“Mega Keno - Multiplay” là thể loại game phòng RNG với tính năng mới, độc đáo cho phép chơi cùng lúc 8 bàn game (Mega Keno, Mega Keno 2, Keno Mini, Keno Mini 2, Keno Đông, Keno Tây, Keno Nam, Keno Bắc ) với nhiều trải nghiệm mới hấp dẫn"
+    },
+    "BlockchainBaccarat": {
+        "displayedName": "Blockchain Baccarat",
+        "detail": "Blockchain Baccarat - một sản phẩm game bài mang nhiều đột phá với công nghệ blockchain tiên tiến. Trò chơi sử dụng 8 bộ bài (416 lá không bao gồm lá Joker) và sẽ có 7 lựa chọn (cửa) trên bàn chơi bao gồm 3 cửa chính (Nhà Con, Nhà Cái, Hòa) và 4 cửa phụ (Tài, Xỉu, Con Đôi, Cái Đôi). Người chơi sẽ dự đoán kết quả và đặt cược vào lựa chọn mong muốn."
+    },
     "Baccarat": {
         "displayedName": "Cào Baccarat",
         "detail": "Cào Baccarat hay còn gọi là bài Cào, là trò đánh bài nổi tiếng và rất được yêu thích tại các sòng bài trên thế giới.Trò chơi sử dụng bộ bài tây 52 lá (không bao gồm lá Joker) và sẽ có 7 lựa chọn (cửa) trên bàn chơi bao gồm 3 cửa chính (Nhà Con, Nhà Cái, Hòa) và 4 cửa phụ (Tài, Xỉu, Con Đôi, Cái Đôi). Người chơi sẽ dự đoán kết quả và đặt cược vào lựa chọn mong muốn."
+    },
+    "VipFishPrawnCrab": {
+        "displayedName": "Bầu Cua VIP",
+        "detail": "Bầu Cua VIP là phiên bản đặc biệt của trò Bầu Cua với thể loại game phòng, cùng nhiều loại hình cá cược mới - hấp dẫn.Trò chơi sử dụng 3 viên xúc xắc (xí ngầu) 6 mặt, mỗi mặt sẽ có một biểu tượng (linh vật) ứng với một cửa trên bàn chơi. "
+    },
+    "FishPrawnCrab": {
+        "displayedName": "Bầu Cua",
+        "detail": "Bầu Cua hay còn gọi là bầu cua tôm cá, là trò chơi dân gian rất phổ biến ở Châu Á. Trò chơi sử dụng 3 viên xúc xắc (xí ngầu) 6 mặt, mỗi mặt sẽ có một biểu tượng (linh vật) ứng với một cửa trên bàn chơi."
+    },
+    "DragonTiger": {
+        "displayedName": "Rồng Hổ",
+        "detail": "Rồng Hổ hấp dẫn người chơi với lối chơi khá đơn giản. Trò chơi sử dụng bộ bài tây 52 lá (không bao gồm lá Joker) và sẽ có 3 lựa chọn (cửa) trên bàn chơi: cửa Rồng, cửa Hổ và cửa Hòa. Người chơi sẽ dự đoán kết quả và đặt cược vào lựa chọn mà bạn mong muốn. "
+    },
+    "Roulette": {
+        "displayedName": "Roulette",
+        "detail": "Roulette là trò đánh bạc nổi tiếng, có luật chơi và cách chơi rất đơn giản. Trò chơi bao gồm 1 viên bi và 1 bàn quay bên trong có các ô số từ 0 đến 36. Mỗi ô số được đánh dấu bằng các màu đỏ - đen xen kẽ, trong đó ô số “0” được tô màu xanh. Viên bi sẽ được xoay ngược chiều với bàn quay, người chơi đặt cược và dự đoán ô số mà viên bi sẽ dừng lại. "
+    },
+    "RNGLottery": {
+        "displayedName": "Xổ Số RNG",
+        "detail": "Xổ Số RNG là trò chơi Lô Đề cá cược thu hút nhiều người chơi. Trò chơi có luật chơi và cách chơi rất đơn giản, người chơi đặt cược vào con số yêu thích, kết quả thắng thua sẽ được tính toán bằng cách khớp các số dựa trên 27 kết quả của 8 giải thưởng. "
+    },
+    "Blackjack": {
+        "displayedName": "Blackjack",
+        "detail": "Blackjack là một trong 10 trò đánh bạc được yêu thích nhất tại các Casino. Trò chơi có luật chơi và cách chơi rất đơn giản, sử dụng 6 bộ bài tây 52 lá (không bao gồm lá Joker) và Người Chơi sẽ so điểm trực tiếp với Nhà Cái. Trong Blackjack, 21 là điểm số cao nhất, Người Chơi cố gắng rút bài sao cho tổng điểm của các bài càng gần hoặc bằng 21 điểm nhưng không được vượt quá 21. Bên nào gần 21 điểm hơn thì bên đó giành chiến thắng."
+    },
+    "Three Cards": {
+        "displayedName": "3 Lá Đỏ Đen",
+        "detail": "3 Lá Đỏ Đen hấp dẫn người chơi với lối chơi khá đơn giản. Trò chơi sử dụng bộ bài tây 52 lá (không bao gồm lá Joker) và sẽ có 6 lựa chọn (cửa) trên bàn chơi bao gồm 2 cửa chính Đỏ, Đen và 4 cửa phụ Rô (♦), Cơ (♥), Bích (♠) , Chuồn (♣). Mỗi phiên sẽ có 3 lá bài được rút, người chơi đặt cược vào các lựa chọn mong muốn. Kết quả thắng thua sẽ được tính dựa trên chất của các lá bài."
+    },
+    "BitCoinMaster": {
+        "displayedName": "BitCoin Master",
+        "detail": "Bitcoin Master là thể loại game cá cược hoàn toàn mới, cho phép người chơi đặt cược dựa trên giá trị Bitcoin trong 60 giây kế tiếp. Có 4 lựa chọn để đặt cược: Tăng, Giảm, Chẵn, Lẻ."
+    },
+    "Casino": {
+        "displayedName": "Casino Hold’em",
+        "detail": "Casino Hold’em là một trong những game bài trực tuyến được yêu thích nhất tại các sòng Casino. Trò chơi có luật chơi rất đơn giản, sử dụng một bộ bài tây 52 lá (không bao gồm lá Joker) và Người Chơi sẽ so bài trực tiếp với Nhà Cái. Thắng thua sẽ được quyết định dựa trên sức mạnh tay bài (5 lá) của mỗi bên. Tính năng hoán đổi bài độc đáo, cho phép Người Chơi hoán đổi 2 lá bài tẩy với Nhà Cái, trước khi các lá bài tẩy của Người Chơi được lật."
+    },
+    "Texas": {
+        "displayedName": "Texas Hold’em",
+        "detail": "Texas Hold’em là một trong top 10 game Poker nổi tiếng thế giới. Trò chơi sử dụng một bộ bài tây 52 lá (không bao gồm lá Joker) và Người Chơi sẽ so bài trực tiếp với Nhà Cái. Kết quả thắng thua sẽ được quyết định dựa trên sức mạnh của tay bài (5 lá) của mỗi bên."
+    },
+    "HiLo": {
+        "displayedName": "Cao Thấp",
+        "detail": "Cao Thấp là thể loại game bài - mini rất được yêu thích bởi sự đơn giản trong luật chơi. Trò chơi sử dụng bộ bài tây 52 lá (không bao gồm lá Joker), người chơi sẽ dự đoán lá bài xuất hiện tiếp theo sẽ Cao hơn hay Thấp hơn lá bài hiện tại. "
+    },
+    "FruitSlot": {
+        "displayedName": "Xèng Hoa Quả",
+        "detail": "Trò chơi Xèng Hoa Quả được lấy cảm hứng từ trò xèng trái cây truyền thống với nhiều cải tiến nhằm mang đến cho người chơi những trải nghiệm mới đầy hấp dẫn và gay cấn."
     }
 }
