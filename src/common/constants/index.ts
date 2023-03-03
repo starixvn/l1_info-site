@@ -3,6 +3,13 @@ import { ITags } from "../../components/type";
 
 const locales = { en: "en", vi: "vi" };
 
+export const languageMapper = { "en-US": "en", "vi-VN": "vi" };
+
+export const LanguageLocaleMapper = {
+    en: "en-US",
+    vi: "vi-VN",
+};
+
 const Themes = {
     light: "light",
 };

@@ -32,7 +32,7 @@ const GameDetails: React.FC<{ game: IGameData; gameIdsSimilar: number[] | undefi
                 <div className={Styles["game-detail-top"]}>
                     <div className={Styles["game-name"]}>{game?.gameName}</div>
                     <div className={Styles["game-i, con-container"]}>
-                        <GameIcon gameId={game.gameId} isSmallSize={false} />
+                        <GameIcon gameId={game.gameId} isSmallSize={false} isNew={game.isNew} />
                     </div>
 
                     <button type="button" className="btn btn-primary">

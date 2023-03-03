@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
-import { useTranslation } from "next-i18next";
+import { i18n, useTranslation } from "next-i18next";
 
-import { buildVersion, GameCategoryName, GameTypeName, TagsName } from "../../common/constants";
+import { GameCategoryName, GameTypeName, TagsName, LanguageLocaleMapper } from "../../common/constants";
 import Styles from "./game-item.module.scss";
 import Axios from "axios";
 import { IGameData } from "../data";
 import { LanguageIcons } from "../icon";
+import GameIcon from "../game-icon";
 
 export function randomString(length: number) {
     let result = "";
@@ -89,29 +90,18 @@ export const GameItems: React.FC<{ gameData: IGameData[]; updateGameData?: Funct
     return (
         <section className="container list-container">
             {gameData.map((game: IGameData) => {
+                const gameName = game.gameName.replace(/\s/g, "").toLowerCase();
                 return (
                     <div className={Styles["game-container"]} key={game.gameId}>
-                        <div className={Styles["game-name"]}>{t<string>(`detail:${game.gameName}.displayedName`)}</div>
+                        <div className={Styles["game-name"]}>{t<string>(`detail:${gameName}.displayedName`)}</div>
                         <div className={Styles["game-play"]}>
-                            <div className={Styles["game-icon"]} onClick={() => openDetail(game)}>
-                                <img
-                                    className="icon-bg"
-                                    src={`/static/images/game-icon/icon-bg-${game.gameId}.png?v=${buildVersion}`}
-                                    alt="game-icon"
-                                ></img>
-                                <img
-                                    className={Styles["icon-name"]}
-                                    src={`/static/images/game-icon/icon-name-${game.gameId}.png?v=${buildVersion}`}
-                                    alt="game-icon"
-                                ></img>
-                                {game.isNew ? <div className={Styles["game-tag"]}>New</div> : <></>}
-                            </div>
+                            <GameIcon gameId={game.gameId} isSmallSize={false} isNew={game.isNew} />
                             <button type="button" className="btn btn-primary" onClick={(event) => playForFunAction(event, game.gameId)}>
                                 {t<string>("common:playForFun")}
                             </button>
                         </div>
                         <div className={Styles["game-detail"]}>
-                            <div className={Styles["game-intro"]}>{t<string>(`detail:${game.gameName}.detail`)}</div>
+                            <div className={Styles["game-intro"]}>{t<string>(`detail:${gameName}.detail`)}</div>
                             <div className={Styles["detail-item"]}>
                                 <span className={`${Styles["detail-icon"]} icon-info`}></span>
                                 <span>Game Rules</span>

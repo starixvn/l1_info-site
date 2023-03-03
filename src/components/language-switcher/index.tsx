@@ -8,8 +8,7 @@ import Styles from "./languages.module.scss";
 const Languages = () => {
     const router = useRouter();
     const [language, setLanguage] = useState<string>("en");
-    const country = language === "vi" ? "vi" : "en";
-    const flagIcon = `/static/images/icon-languages/${country}.svg`;
+    const flagIcon = `/static/images/icon-languages/${router.locale}.svg`;
 
     const handleLanguageChange = (lang: string) => {
         console.log(lang);
@@ -21,7 +20,7 @@ const Languages = () => {
     return (
         <div className={Styles["language-container"]}>
             <img className={Styles.flag} src={flagIcon} alt="game-icon"></img>
-            <DropdownButton className={Styles.dropdown} title={country} variant="dark">
+            <DropdownButton className={Styles.dropdown} title={router.locale} variant="dark">
                 <Dropdown.Item className={Styles.item} onClick={() => handleLanguageChange("vi")}>
                     <img className={Styles.flag} src="/static/images/icon-languages/vi.svg" alt="game-icon"></img>VI
                 </Dropdown.Item>
