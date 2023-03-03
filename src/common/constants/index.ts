@@ -1,28 +1,13 @@
 import { GameCategory, GameType, TObjectKeyValue } from "./../../components/type";
 import { ITags } from "../../components/type";
 
-export interface IObjectKeys {
-    [key: string]: string;
-}
+const locales = { en: "en", vi: "vi" };
 
-export const locales = { en: "en", vi: "vi" };
-
-export const languageMapper = { "en-US": "en", "vi-VN": "vi", "th-TH": "th", "id-ID": "id", "zh-CN": "zh_cn", "zh-TW": "zh_tw" };
-export const LanguageLocaleMapper = {
-    en: "en-US",
-    vi: "vi-VN",
-    th: "th-TH",
-    id: "id-ID",
-    zh_cn: "zh-CN",
-    zh_tw: "zh-TW",
-};
-
-export const languageNameMapper = { en: "English", vi: "Tiếng Việt" };
-export const Themes = {
+const Themes = {
     light: "light",
 };
 
-export const GAMES = {
+const GAMES = {
     BIG_SMALL: 1,
     SE_DIE: 2,
     FISH_PRAWN_CRAB: 3,
@@ -75,37 +60,26 @@ export const GAMES = {
     MINI_SE_DIE_4: 58,
 };
 
-export const buildVersion = process.env.buildVersion;
+const buildVersion = process.env.buildVersion;
 
-export interface GameProps {
-    id: string;
-    title: string;
-    type: string;
-    publishedAt: string;
-    stock: number;
-    price: string;
-    averageRating: number;
-    ratings: number;
-}
-
-export const TagsName = {
-    [ITags.RoundBased]: "Round-based",
-    [ITags.Classic25PayLines]: "Classic - 25 paylines",
-    [ITags.Cascading5x6]: "Cascading - 5x6",
-    [ITags.TurnBased]: "Turn-based",
+const TagsName: TObjectKeyValue = {
+    [ITags.RoundBased]: "roundBased",
+    [ITags.Classic25PayLines]: "classic25PayLines",
+    [ITags.Cascading5x6]: "cascading5x6",
+    [ITags.TurnBased]: "turnBased",
 };
 
-export const GameTypeName = {
-    [GameType.AllGames]: "All Games",
-    [GameType.DiceGame]: "Dice Game",
-    [GameType.Roulette]: "Roulette",
-    [GameType.CardGame]: "Card Game",
-    [GameType.Slot]: "Slot",
-    [GameType.Lottery]: "Lottery",
-    [GameType.BitcoinMaster]: "Bitcoin Master",
+const GameTypeName: TObjectKeyValue = {
+    [GameType.AllGames]: "allGames",
+    [GameType.DiceGame]: "diceGame",
+    [GameType.Roulette]: "roulette",
+    [GameType.CardGame]: "cardGame",
+    [GameType.Slot]: "slot",
+    [GameType.Lottery]: "lottery",
+    [GameType.BitcoinMaster]: "bitcoinMaster",
 };
 
-export const GameCategoryRouter: TObjectKeyValue = {
+const GameCategoryName: TObjectKeyValue = {
     [GameCategory.AllGames]: "allGames",
     [GameCategory.Dices]: "dices",
     [GameCategory.Casino]: "casino",
@@ -113,34 +87,36 @@ export const GameCategoryRouter: TObjectKeyValue = {
     [GameCategory.Others]: "others",
 };
 
-export const GAMES_CATEGORY = [
-    { [GameCategoryRouter[GameCategory.Casino]]: "BlockChainBaccarat" },
-    { [GameCategoryRouter[GameCategory.Dices]]: "BigSmall" },
-    { [GameCategoryRouter[GameCategory.Casino]]: "Baccarat" },
-    { [GameCategoryRouter[GameCategory.Casino]]: "Roulette" },
-    { [GameCategoryRouter[GameCategory.Others]]: "RNGLottery" },
-    { [GameCategoryRouter[GameCategory.Slots]]: "TreasureIsland" },
+const GAMES_CATEGORY = [
+    { [GameCategoryName[GameCategory.Casino]]: "BlockChainBaccarat" },
+    { [GameCategoryName[GameCategory.Dices]]: "BigSmall" },
+    { [GameCategoryName[GameCategory.Casino]]: "Baccarat" },
+    { [GameCategoryName[GameCategory.Casino]]: "Roulette" },
+    { [GameCategoryName[GameCategory.Others]]: "RNGLottery" },
+    { [GameCategoryName[GameCategory.Slots]]: "TreasureIsland" },
 
-    // { [GameCategoryRouter[GameCategory.Dices]]: "SeDie" },
-    // { [GameCategoryRouter[GameCategory.Dices]]: "SeDieWar" },
-    // { [GameCategoryRouter[GameCategory.Dices]]: "MiniSeDie" },
-    // { [GameCategoryRouter[GameCategory.Dices]]: "SicBo" },
-    // { [GameCategoryRouter[GameCategory.Dices]]: "TurboOddEven" },
-    // { [GameCategoryRouter[GameCategory.Dices]]: "BigSmallCity" },
-    // { [GameCategoryRouter[GameCategory.Dices]]: "VIPFishPrawnCrab" },
-    // { [GameCategoryRouter[GameCategory.Dices]]: "FishPrawnCrab" },
-    // { [GameCategoryRouter[GameCategory.Casino]]: "DragonTiger" },
-    // { [GameCategoryRouter[GameCategory.Casino]]: "Blackjack" },
-    // { [GameCategoryRouter[GameCategory.Casino]]: "ThreeCards" },
-    // { [GameCategoryRouter[GameCategory.Casino]]: "CasinoHold’em" },
-    // { [GameCategoryRouter[GameCategory.Casino]]: "TexasHold’em" },
-    // { [GameCategoryRouter[GameCategory.Casino]]: "Hi-Lo" },
-    // { [GameCategoryRouter[GameCategory.Slots]]: "WaytoGoal" },
-    // { [GameCategoryRouter[GameCategory.Slots]]: "FourGuardians" },
-    // { [GameCategoryRouter[GameCategory.Slots]]: "TheLegendofHeroes" },
-    // { [GameCategoryRouter[GameCategory.Slots]]: "NightclubLady" },
-    // { [GameCategoryRouter[GameCategory.Slots]]: "FruitSlot" },
-    // { [GameCategoryRouter[GameCategory.Others]]: "KenoProMax" },
-    // { [GameCategoryRouter[GameCategory.Others]]: "MegaKeno" },
-    // { [GameCategoryRouter[GameCategory.Others]]: "BitcoinMaster" },
+    // { [GameCategoryName[GameCategory.Dices]]: "SeDie" },
+    // { [GameCategoryName[GameCategory.Dices]]: "SeDieWar" },
+    // { [GameCategoryName[GameCategory.Dices]]: "MiniSeDie" },
+    // { [GameCategoryName[GameCategory.Dices]]: "SicBo" },
+    // { [GameCategoryName[GameCategory.Dices]]: "TurboOddEven" },
+    // { [GameCategoryName[GameCategory.Dices]]: "BigSmallCity" },
+    // { [GameCategoryName[GameCategory.Dices]]: "VIPFishPrawnCrab" },
+    // { [GameCategoryName[GameCategory.Dices]]: "FishPrawnCrab" },
+    // { [GameCategoryName[GameCategory.Casino]]: "DragonTiger" },
+    // { [GameCategoryName[GameCategory.Casino]]: "Blackjack" },
+    // { [GameCategoryName[GameCategory.Casino]]: "ThreeCards" },
+    // { [GameCategoryName[GameCategory.Casino]]: "CasinoHold’em" },
+    // { [GameCategoryName[GameCategory.Casino]]: "TexasHold’em" },
+    // { [GameCategoryName[GameCategory.Casino]]: "Hi-Lo" },
+    // { [GameCategoryName[GameCategory.Slots]]: "WaytoGoal" },
+    // { [GameCategoryName[GameCategory.Slots]]: "FourGuardians" },
+    // { [GameCategoryName[GameCategory.Slots]]: "TheLegendofHeroes" },
+    // { [GameCategoryName[GameCategory.Slots]]: "NightclubLady" },
+    // { [GameCategoryName[GameCategory.Slots]]: "FruitSlot" },
+    // { [GameCategoryName[GameCategory.Others]]: "KenoProMax" },
+    // { [GameCategoryName[GameCategory.Others]]: "MegaKeno" },
+    // { [GameCategoryName[GameCategory.Others]]: "BitcoinMaster" },
 ];
+
+export { locales, Themes, GAMES, buildVersion, TagsName, GameTypeName, GameCategoryName, GAMES_CATEGORY };

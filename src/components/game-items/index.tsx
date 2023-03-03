@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
+import { useTranslation } from "next-i18next";
 
-import { buildVersion, GameCategoryRouter } from "../../common/constants";
+import { buildVersion, GameCategoryName, GameTypeName, TagsName } from "../../common/constants";
 import Styles from "./game-item.module.scss";
 import Axios from "axios";
 import { IGameData } from "../data";
-import { useTranslation } from "next-i18next";
+import { LanguageIcons } from "../icon";
 
 export function randomString(length: number) {
     let result = "";
@@ -21,7 +22,7 @@ export const GameItems: React.FC<{ gameData: IGameData[]; updateGameData?: Funct
     const router = useRouter();
     const [domain, setDomain] = useState("https://l1-glbs2.lumigame.com");
     const [token, settoken] = useState("");
-    const { t } = useTranslation("detail");
+    const { t } = useTranslation(["common", "detail"]);
 
     const playForFunAction = (event: any, gameId: number) => {
         event && event.preventDefault();
@@ -82,7 +83,7 @@ export const GameItems: React.FC<{ gameData: IGameData[]; updateGameData?: Funct
 
     const openDetail = (game: IGameData) => {
         console.log(game);
-        router.push(`/category/${GameCategoryRouter[game.gameCategory]}/${game.gameName.trim()}`);
+        router.push(`/category/${GameCategoryName[game.gameCategory]}/${game.gameName.trim()}`);
     };
 
     return (
@@ -90,7 +91,7 @@ export const GameItems: React.FC<{ gameData: IGameData[]; updateGameData?: Funct
             {gameData.map((game: IGameData) => {
                 return (
                     <div className={Styles["game-container"]} key={game.gameId}>
-                        <div className={Styles["game-name"]}>{t<string>(`${game.gameName}.displayedName`)}</div>
+                        <div className={Styles["game-name"]}>{t<string>(`detail:${game.gameName}.displayedName`)}</div>
                         <div className={Styles["game-play"]}>
                             <div className={Styles["game-icon"]} onClick={() => openDetail(game)}>
                                 <img
@@ -106,11 +107,11 @@ export const GameItems: React.FC<{ gameData: IGameData[]; updateGameData?: Funct
                                 {game.isNew ? <div className={Styles["game-tag"]}>New</div> : <></>}
                             </div>
                             <button type="button" className="btn btn-primary" onClick={(event) => playForFunAction(event, game.gameId)}>
-                                {t<string>("playForFun")}
+                                {t<string>("common:playForFun")}
                             </button>
                         </div>
                         <div className={Styles["game-detail"]}>
-                            <div className={Styles["game-intro"]}>{t<string>(`${game.gameName}.detail`)}</div>
+                            <div className={Styles["game-intro"]}>{t<string>(`detail:${game.gameName}.detail`)}</div>
                             <div className={Styles["detail-item"]}>
                                 <span className={`${Styles["detail-icon"]} icon-info`}></span>
                                 <span>Game Rules</span>
@@ -119,7 +120,7 @@ export const GameItems: React.FC<{ gameData: IGameData[]; updateGameData?: Funct
                                 <div className={Styles["detail-item"]}>
                                     <span className={`${Styles["detail-icon"]} icon-type`}></span>
                                     <span>
-                                        Game Type: <strong>{game.gameType}</strong>
+                                        Game Type: <strong>{t<string>(`common:gameType-${GameTypeName[game.gameType]}`)}</strong>
                                     </span>
                                 </div>
                                 <div className={Styles["detail-item"]}>
@@ -131,20 +132,14 @@ export const GameItems: React.FC<{ gameData: IGameData[]; updateGameData?: Funct
                                 <div className={Styles["detail-item"]}>
                                     <span className={`${Styles["detail-icon"]} icon-tag`}></span>
                                     <span>
-                                        Tag: <strong>{game.tag}</strong>
+                                        Tag: <strong>{t<string>(`common:tag-${TagsName[game.tag]}`)}</strong>
                                     </span>
                                 </div>
                             </div>
                             <div className={Styles["detail-item"]}>
                                 <span className={`${Styles["detail-icon"]} icon-language`}></span>
                                 <span>Languages: </span>
-                                <span className="icon-cn">
-                                    <img className="icon-bg" src="/static/images/icon-languages/en.svg" alt="game-icon"></img>
-                                    <img className="icon-bg" src="/static/images/icon-languages/vi.svg" alt="game-icon"></img>
-                                    <img className="icon-bg" src="/static/images/icon-languages/cn.svg" alt="game-icon"></img>
-                                    <img className="icon-bg" src="/static/images/icon-languages/th.svg" alt="game-icon"></img>
-                                    <img className="icon-bg" src="/static/images/icon-languages/id.svg" alt="game-icon"></img>
-                                </span>
+                                <LanguageIcons />
                             </div>
                         </div>
                     </div>

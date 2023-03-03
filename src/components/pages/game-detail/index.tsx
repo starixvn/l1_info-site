@@ -1,8 +1,10 @@
 import React from "react";
+import { useTranslation } from "next-i18next";
 
 import { buildVersion, GameTypeName, TagsName } from "../../../common/constants";
 import { IGameData } from "../../data";
 import GameIcon from "../../game-icon";
+import { LanguageIcons } from "../../icon";
 import SimilarGames from "../../similar-games";
 import Styles from "./game-detail.module.scss";
 
@@ -23,6 +25,7 @@ const DetailIcon: React.FC<{ icon: string; text: string; subpath?: string; forma
 };
 
 const GameDetails: React.FC<{ game: IGameData; gameIdsSimilar: number[] | undefined }> = ({ game, gameIdsSimilar }) => {
+    const { t } = useTranslation(["common", "detail"]);
     return (
         <>
             <section className="container list-container">
@@ -44,7 +47,8 @@ const GameDetails: React.FC<{ game: IGameData; gameIdsSimilar: number[] | undefi
                         <div className={Styles["detail-group"]}>
                             <div className={Styles["detail-item-text"]}>
                                 <span>
-                                    Game Type: <span className="color-primary">{GameTypeName[game.gameType]}</span>
+                                    Game Type:{" "}
+                                    <span className="color-primary">{t<string>(`common:gameType-${GameTypeName[game.gameType]}`)}</span>
                                 </span>
                             </div>
                             <div className={Styles["detail-item"]}>
@@ -55,7 +59,7 @@ const GameDetails: React.FC<{ game: IGameData; gameIdsSimilar: number[] | undefi
                         </div>
                         <div className={Styles["detail-item"]}>
                             <span>
-                                Tag: <span className="color-primary">{TagsName[game.tag]}</span>
+                                Tag: <span className="color-primary">{t<string>(`common:tag-${GameTypeName[game.tag]}`)}</span>
                             </span>
                         </div>
 
@@ -76,18 +80,7 @@ const GameDetails: React.FC<{ game: IGameData; gameIdsSimilar: number[] | undefi
 
                         <div className={Styles[detailIconClass]}>
                             <p>Languages </p>
-                            <span className="icon-cn">
-                                {["en", "vi", "cn", "th", "id"].map((name) => {
-                                    return (
-                                        <img
-                                            key={name}
-                                            className="icon-bg"
-                                            src={`/static/images/icon-languages/${name}.svg`}
-                                            alt="game-icon"
-                                        ></img>
-                                    );
-                                })}
-                            </span>
+                            <LanguageIcons />
                         </div>
                     </div>
                     <div className={Styles["play-for-fun"]}>

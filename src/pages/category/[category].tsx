@@ -4,7 +4,7 @@ import { GetStaticPaths } from "next";
 
 import Data from "../../components/data";
 import Category from "../../components/pages/category";
-import { GameCategoryRouter, locales } from "../../common/constants";
+import { GameCategoryName, locales } from "../../common/constants";
 import { TPropsBase } from "../../components/pageBase";
 import { GameCategory, IStaticProps } from "../../components/type";
 import { getKeyByValue } from "../../helpers/function-helper";
@@ -19,7 +19,7 @@ const Categories = (props: TPropsBase) => {
 
 const getStaticPaths: GetStaticPaths = async () => {
     const paths = Object.values(locales).flatMap((locale) =>
-        Object.values(GameCategoryRouter).map((category) => ({ params: { category }, locale }))
+        Object.values(GameCategoryName).map((category) => ({ params: { category }, locale }))
     );
     return { paths, fallback: false };
 };
@@ -27,11 +27,11 @@ const getStaticPaths: GetStaticPaths = async () => {
 const getStaticProps = async ({ params, locale = "en" }: IStaticProps<IParamsData>) => {
     const sortData = Data.sort((a, b) => a.gameId - b.gameId);
     const gameData =
-        params.category === GameCategoryRouter[GameCategory.AllGames]
+        params.category === GameCategoryName[GameCategory.AllGames]
             ? sortData
-            : sortData.filter((game) => GameCategoryRouter[game.gameCategory] === params.category);
+            : sortData.filter((game) => GameCategoryName[game.gameCategory] === params.category);
 
-    const category = +getKeyByValue(GameCategoryRouter, params.category);
+    const category = +getKeyByValue(GameCategoryName, params.category);
     const translations = await serverSideTranslations(locale, ["common", "detail"]);
     return { props: { gameData, category, ...translations } };
 };

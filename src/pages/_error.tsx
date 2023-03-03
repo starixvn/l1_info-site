@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import { useRouter } from "next/router";
-import { IObjectKeys } from "../common/constants";
+import { TObjectKeyValue } from "../components/type";
 
-const errorMsg: IObjectKeys = {
+const errorMsg: TObjectKeyValue = {
     en: "An error has occurred, please contact CSD for details.",
     vi: "Đã xảy ra lỗi. Vui lòng liên hệ với bộ phận CSKH để được hỗ trợ.",
 };

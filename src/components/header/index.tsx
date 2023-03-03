@@ -4,7 +4,7 @@ import Styles from "./header.module.scss";
 import { useTranslation } from "next-i18next";
 import Languages from "../language-switcher";
 import Link from "next/link";
-import { GameCategoryRouter } from "../../common/constants";
+import { GameCategoryName } from "../../common/constants";
 
 export const Header: React.FC<{ menuItems: number[]; category: number }> = ({ menuItems, category = 0 }) => {
     const [selectCategory, setSelectCategory] = useState<number>(category);
@@ -24,18 +24,15 @@ export const Header: React.FC<{ menuItems: number[]; category: number }> = ({ me
                     <div className={Styles["category-container"]}>
                         <ul className={Styles["category-list"]}>
                             {menuItems.map((gameCategory: number, index) => {
+                                const name = GameCategoryName[gameCategory];
                                 return (
                                     <li
                                         className={`${Styles["menu-item"]} ${index === selectCategory ? Styles["menu-selected"] : ""}`}
                                         onClick={() => onSelectCategory(gameCategory)}
                                         key={gameCategory}
                                     >
-                                        <Link
-                                            className={Styles["menu-text"]}
-                                            href="/category/[category]"
-                                            as={`/category/${GameCategoryRouter[gameCategory]}`}
-                                        >
-                                            {t(`common:category-${gameCategory}`)}
+                                        <Link className={Styles["menu-text"]} href="/category/[category]" as={`/category/${name}`}>
+                                            {t(`common:category-${name}`)}
                                         </Link>
                                     </li>
                                 );
