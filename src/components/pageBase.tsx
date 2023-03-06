@@ -6,6 +6,7 @@ import Footer from "./footer";
 import { GameBanner } from "./game-banner";
 import Header from "./header";
 import { SSRProvider } from "react-bootstrap";
+import { GameCategory } from "./type";
 
 export enum EStatus {
     ClickCategory,
@@ -25,8 +26,7 @@ export type TPropsBase = {
 abstract class PageBase<P extends TPropsBase, S extends IStateBase> extends React.PureComponent<P, S> {
     constructor(props: P) {
         super(props);
-        const dataGameType = new Set(Data.flatMap((val) => val.gameCategory - 1));
-        const menuItems = Array.from(dataGameType).sort();
+        const menuItems = Object.values(GameCategory).filter((value) => typeof value === "number");
 
         this.state = {
             menuItems: menuItems,
