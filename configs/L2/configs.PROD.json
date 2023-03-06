@@ -4,5 +4,6 @@
         "environment": "PROD"
     },
     "system": "L2",
-    "enableSourceMap": false
+    "enableSourceMap": false,
+    "guideUrl": "https://guides.vgaming.win"
 }

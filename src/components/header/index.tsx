@@ -7,10 +7,11 @@ import Link from "next/link";
 import { GameCategoryName } from "../../common/constants";
 
 type THeaderProps = {
-    menuItems: number[];
-    category: number;
+    isOpenGameGuide: boolean;
+    menuItems?: number[];
+    category?: number;
 };
-export const Header: React.FC<THeaderProps> = ({ menuItems, category = 0 }) => {
+export const Header: React.FC<THeaderProps> = ({ menuItems, category = 0, isOpenGameGuide }) => {
     const [selectCategory, setSelectCategory] = useState<number>(category);
     const { t } = useTranslation("common");
 
@@ -22,41 +23,48 @@ export const Header: React.FC<THeaderProps> = ({ menuItems, category = 0 }) => {
         <div id="header" className={Styles["header"]}>
             <nav className={`${Styles["navbar"]} ${Styles["navbar-expand"]}`}>
                 <a className="navbar-brand" href="#">
-                    <img className={Styles.logo} src="/static/images/logo.svg" alt="logo"></img>
+                    <img className={Styles.logo} src={`/static/images/logo.svg?v=1`} alt="logo"></img>
                 </a>
                 <div className={`${Styles["navbar-collapse"]} ${Styles["collapse"]}`} id="navbarNavDropdown">
-                    <div className={Styles["category-container"]}>
-                        <ul className={Styles["category-list"]}>
-                            {menuItems.map((gameCategory: number, index) => {
-                                const name = GameCategoryName[gameCategory];
-                                return (
-                                    <li
-                                        className={`${Styles["menu-item"]} ${index === selectCategory ? Styles["menu-selected"] : ""}`}
-                                        onClick={() => onSelectCategory(gameCategory)}
-                                        key={gameCategory}
-                                    >
-                                        <Link className={Styles["menu-text"]} href="/category/[category]" as={`/category/${name}`}>
-                                            {t(`common:category-${name}`)}
-                                        </Link>
-                                    </li>
-                                );
-                            })}
-                        </ul>
-                        <div className={Styles["category-overlay"]}></div>
-                    </div>
+                    {!isOpenGameGuide && (
+                        <div className={Styles["category-container"]}>
+                            <ul className={Styles["category-list"]}>
+                                {menuItems &&
+                                    menuItems.map((gameCategory: number, index) => {
+                                        const name = GameCategoryName[gameCategory];
+                                        return (
+                                            <li
+                                                className={`${Styles["menu-item"]} ${
+                                                    index === selectCategory ? Styles["menu-selected"] : ""
+                                                }`}
+                                                onClick={() => onSelectCategory(gameCategory)}
+                                                key={gameCategory}
+                                            >
+                                                <Link className={Styles["menu-text"]} href="/category/[category]" as={`/category/${name}`}>
+                                                    {t(`common:category-${name}`)}
+                                                </Link>
+                                            </li>
+                                        );
+                                    })}
+                            </ul>
+                            <div className={Styles["category-overlay"]}></div>
+                        </div>
+                    )}
 
                     <div className="d-flex align-items-center">
-                        <div
-                            className={`${Styles["menu-item"]} ${selectCategory === -2 ? Styles["menu-selected"] : ""}`}
-                            onClick={() => onSelectCategory(-2)}
-                        >
-                            <span className={Styles["menu-text"]}>
-                                <Link className={Styles["menu-link"]} href="/contact">
-                                    <span className={Styles["icon-contact"]} />
-                                    <span className="d-none d-sm-none d-md-inline-block">{t<string>("contact")}</span>
-                                </Link>
-                            </span>
-                        </div>
+                        {!isOpenGameGuide && (
+                            <div
+                                className={`${Styles["menu-item"]} ${selectCategory === -2 ? Styles["menu-selected"] : ""}`}
+                                onClick={() => onSelectCategory(-2)}
+                            >
+                                <span className={Styles["menu-text"]}>
+                                    <Link className={Styles["menu-link"]} href="/contact">
+                                        <span className={Styles["icon-contact"]} />
+                                        <span className="d-none d-sm-none d-md-inline-block">{t<string>("contact")}</span>
+                                    </Link>
+                                </span>
+                            </div>
+                        )}
 
                         <div className={Styles["header-language"]}>
                             <Languages />

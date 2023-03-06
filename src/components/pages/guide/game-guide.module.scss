@@ -1,0 +1,21 @@
+.container-guide {
+    margin-top: 8rem;
+    margin-bottom: 1rem;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    .guide-iframe {
+        border: none;
+    }
+    overflow: hidden;
+}
+
+.guide-loading {
+    text-align: center;
+    position: absolute;
+    left: calc(50% - 1.5rem);
+}
+
+.guide-iframe{
+    margin-top: 2rem;
+}

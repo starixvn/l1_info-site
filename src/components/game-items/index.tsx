@@ -8,6 +8,7 @@ import { IGameData } from "../data";
 import { LanguageIcons } from "../icon";
 import GameIcon from "../game-icon";
 import Styles from "./game-item.module.scss";
+import Link from "next/link";
 
 export function randomString(length: number) {
     let result = "";
@@ -28,7 +29,7 @@ export const GameItems: React.FC<TGameItems> = ({ gameData }) => {
     const router = useRouter();
     const [domain, setDomain] = useState("https://l1-glbs2.lumigame.com");
     const [token, settoken] = useState("");
-    const { t } = useTranslation(["common", "detail"]);
+    const { t, i18n } = useTranslation(["common", "detail"]);
 
     const playForFunAction = (event: any, gameId: number) => {
         event && event.preventDefault();
@@ -116,9 +117,15 @@ export const GameItems: React.FC<TGameItems> = ({ gameData }) => {
                             <div className={Styles["game-intro"]} onClick={() => openDetail(gameData)}>
                                 {t<string>(`detail:${gameName}.detail`)}
                             </div>
-                            <div className={Styles["detail-item"]}>
-                                <span className={`${Styles["detail-icon"]} icon-info`}></span>
-                                <span>{t("common:game-rules")}</span>
+                            <div className={`${Styles["detail-item"]} ${Styles["guide"]}`}>
+                                <a
+                                    href={`/${i18n.language}/game-guide?gameId=${gameData.gameId}`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    <span className={`${Styles["detail-icon"]} icon-info`}></span>
+                                    <span>{t("common:game-rules")}</span>
+                                </a>
                             </div>
                             <div className={Styles["detail-group"]}>
                                 <div className={Styles["detail-item"]}>

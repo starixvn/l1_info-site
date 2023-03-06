@@ -42,3 +42,28 @@ export interface IStaticProps<IParams> {
     locale: string;
     defaultLocale: string;
 }
+
+export interface TGameConfigs {
+    minBet: number;
+    maxBet: number;
+    odds: Record<string, number> | any;
+    maxBetPerChoices: Record<string, number>;
+    betLevels?: number[];
+    betMultiplier?: number;
+    coinValues?: number[];
+    maxWinPerRound?: number;
+    coin?: number;
+    level?: number;
+    jackpot?: { winningRatio: number };
+    stakeLevels?: number[];
+}
+
+export type TUserStakeLevel = {
+    minBet: number;
+    maxBet: number;
+};
+
+export interface TConfigs {
+    userStakeLevel: TUserStakeLevel;
+    gameConfigs: TGameConfigs;
+}

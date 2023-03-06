@@ -4,5 +4,6 @@
         "environment": "LOCAL"
     },
     "system": "L2",
-    "enableSourceMap": true
+    "enableSourceMap": true,
+    "guideUrl": "https://l2-guide.lumigame.com"
 }

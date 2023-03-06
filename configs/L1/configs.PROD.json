@@ -4,5 +4,6 @@
         "environment": "PROD"
     },
     "system": "L1",
-    "enableSourceMap": false
+    "enableSourceMap": false,
+    "guideUrl": "https://guides.sabagame.com"
 }

@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import Dashboard from "../components/pages/dashboard";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
-function Home() {
+const Home = () => {
     const [isLoading, setIsLoading] = useState(true);
     const router = useRouter();
 
@@ -19,7 +19,7 @@ function Home() {
     }
 
     return <Dashboard />;
-}
+};
 
 export const getStaticProps = async ({ locale = "en" }) => ({
     props: {

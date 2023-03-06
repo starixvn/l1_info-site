@@ -1,7 +1,7 @@
 import React from "react";
 import { WithTranslation } from "next-i18next";
 
-import Data, { IGameData } from "./data";
+import { IGameData } from "./data";
 import Footer from "./footer";
 import { GameBanner } from "./game-banner";
 import Header from "./header";
@@ -23,6 +23,14 @@ export type TPropsBase = {
     gameIdsSimilar?: number[];
 } & WithTranslation;
 
+export const Container: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+    return (
+        <div id="container-home" className="container-home">
+            {children}
+        </div>
+    );
+};
+
 abstract class PageBase<P extends TPropsBase, S extends IStateBase> extends React.PureComponent<P, S> {
     constructor(props: P) {
         super(props);
@@ -40,14 +48,14 @@ abstract class PageBase<P extends TPropsBase, S extends IStateBase> extends Reac
         const { menuItems } = this.state;
         return (
             <SSRProvider>
-                <div id="container-home" className="container-home">
-                    <Header menuItems={menuItems} category={category} />
+                <Container>
+                    <Header menuItems={menuItems} category={category} isOpenGameGuide={false} />
                     <div className="main-content">
                         <GameBanner />
                         {gameData ? this.renderContent() : null}
                     </div>
                     <Footer />
-                </div>
+                </Container>
             </SSRProvider>
         );
     }

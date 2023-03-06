@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 
 import { GameCategoryName } from "../../common/constants";
 
-const PageCategory = () => {
+const Category = () => {
     const router = useRouter();
 
     useEffect(() => {
@@ -13,4 +13,4 @@ const PageCategory = () => {
     }, [router]);
 };
 
-export default PageCategory;
+export default Category;

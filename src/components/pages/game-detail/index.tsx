@@ -1,7 +1,7 @@
 import React from "react";
 import { useTranslation } from "next-i18next";
 
-import { buildVersion, GameTypeName } from "../../../common/constants";
+import { GameTypeName } from "../../../common/constants";
 import { IGameData } from "../../data";
 import GameIcon from "../../game-icon";
 import { LanguageIcons } from "../../icon";
@@ -22,7 +22,7 @@ const DetailIcon: React.FC<{ icon: string; text: string; subpath?: string; forma
 }) => {
     return (
         <span className={Styles["group-icon"]}>
-            <img className="icon-bg" src={`/static/images/${subpath}/${icon}.${format}`} alt={icon}></img>
+            <img className="icon-bg" src={`/static/images/${subpath}/${icon}.${format}?v=1`} alt={icon}></img>
             {text}
         </span>
     );
@@ -90,7 +90,7 @@ const GameDetails: React.FC<TGameDetails> = ({ game, gameIdsSimilar }) => {
                     <div className={Styles["play-for-fun"]}>
                         <img
                             className={Styles["banner-game"]}
-                            src={`/static/images/game-banner/banner_${game.gameId}.png?v=${buildVersion}`}
+                            src={`/static/images/game-banner/banner_${game.gameId}.png?v=1`}
                             alt="game-icon"
                         ></img>
                         <button type="button" className="btn btn-primary">

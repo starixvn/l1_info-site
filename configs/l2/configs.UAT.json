@@ -4,5 +4,6 @@
         "environment": "UAT"
     },
     "system": "L2",
-    "enableSourceMap": false
+    "enableSourceMap": false,
+    "guideUrl": "https://l2guidesuat.sgamesuat.com"
 }

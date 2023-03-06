@@ -20,10 +20,10 @@ export const GameIcon: React.FC<TGameIconProps> = ({ gameId, isSmallSize, isNew,
             className={`${Styles["game-icon"]} ${isSmallSize ? Styles["icon-small"] : ""}`}
             onClick={() => gameData && openDetail && openDetail(gameData)}
         >
-            <img className="icon-bg" src={`/static/images/game-icon/icon-bg-${gameId}.png`} alt="game-icon"></img>
+            <img className="icon-bg" src={`/static/images/game-icon/icon-bg-${gameId}.png?v=1`} alt="game-icon"></img>
             <img
                 className={Styles["icon-name"]}
-                src={`/static/images/game-icon/icon-name-${gameId}_${router.locale}.png`}
+                src={`/static/images/game-icon/icon-name-${gameId}_${router.locale}.png?v=1`}
                 alt="game-icon"
             ></img>
             {isNew ? <div className={Styles["game-tag"]}>New</div> : <></>}
