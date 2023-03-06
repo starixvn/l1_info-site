@@ -9,6 +9,7 @@
 	.logo {
 		margin: 20px !important;
 		transform:scale(0.7);
+		content: url("/static/images/app-download/logo-saba.png");
 	}
 
 	.offer {
@@ -42,6 +43,7 @@
 					height: 20px;
 					margin-right: 10px;
 					margin-bottom: 5px;
+					content: url("/static/images/app-download/arrow.png");
 				}
 
 				line-height: 40px;
@@ -82,6 +84,7 @@
 		}
 
 		.apple-logo {
+			content: url("/static/images/app-download/ios-label.png");
 			margin: 20px;
 			height: 50px;
 			width: 200px;
@@ -97,7 +100,7 @@
 				margin-bottom: 10px;
 
 				.title {
-					background-image: url("/static/images/app-download/Label-step.png");
+					background-image: url("/static/images/app-download/label-step.png");
 					background-size: cover;
 					color: white;
 					margin-top: 30px;
