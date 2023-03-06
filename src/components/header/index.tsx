@@ -6,7 +6,11 @@ import Languages from "../language-switcher";
 import Link from "next/link";
 import { GameCategoryName } from "../../common/constants";
 
-export const Header: React.FC<{ menuItems: number[]; category: number }> = ({ menuItems, category = 0 }) => {
+type THeaderProps = {
+    menuItems: number[];
+    category: number;
+};
+export const Header: React.FC<THeaderProps> = ({ menuItems, category = 0 }) => {
     const [selectCategory, setSelectCategory] = useState<number>(category);
     const { t } = useTranslation("common");
 

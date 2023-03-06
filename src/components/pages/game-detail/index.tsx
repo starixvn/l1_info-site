@@ -1,15 +1,19 @@
 import React from "react";
 import { useTranslation } from "next-i18next";
 
-import { buildVersion, GameTypeName, TagsName } from "../../../common/constants";
+import { buildVersion, GameTypeName } from "../../../common/constants";
 import { IGameData } from "../../data";
 import GameIcon from "../../game-icon";
 import { LanguageIcons } from "../../icon";
 import SimilarGames from "../../similar-games";
 import Styles from "./game-detail.module.scss";
 
-const detailIconClass = "detail-item-icon";
+type TGameDetails = {
+    game: IGameData;
+    gameIdsSimilar: number[] | undefined;
+};
 
+const detailIconClass = "detail-item-icon";
 const DetailIcon: React.FC<{ icon: string; text: string; subpath?: string; format?: string }> = ({
     icon,
     text,
@@ -24,7 +28,7 @@ const DetailIcon: React.FC<{ icon: string; text: string; subpath?: string; forma
     );
 };
 
-const GameDetails: React.FC<{ game: IGameData; gameIdsSimilar: number[] | undefined }> = ({ game, gameIdsSimilar }) => {
+const GameDetails: React.FC<TGameDetails> = ({ game, gameIdsSimilar }) => {
     const { t } = useTranslation(["common", "detail"]);
     return (
         <>

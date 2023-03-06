@@ -1,11 +1,25 @@
 import { useRouter } from "next/router";
 import React from "react";
+
+import { IGameData } from "../data";
 import Styles from "./game-icon.module.scss";
 
-export const GameIcon: React.FC<{ gameId: number; isSmallSize?: boolean; isNew?: boolean }> = ({ gameId, isSmallSize, isNew }) => {
+type TGameIconProps = {
+    gameId: number;
+    isSmallSize?: boolean;
+    isNew?: boolean;
+    gameData?: IGameData;
+    openDetail?: (gameData: IGameData) => void;
+};
+
+export const GameIcon: React.FC<TGameIconProps> = ({ gameId, isSmallSize, isNew, gameData, openDetail }) => {
     const router = useRouter();
+
     return (
-        <div className={`${Styles["game-icon"]} ${isSmallSize ? Styles["icon-small"] : ""}`}>
+        <div
+            className={`${Styles["game-icon"]} ${isSmallSize ? Styles["icon-small"] : ""}`}
+            onClick={() => gameData && openDetail && openDetail(gameData)}
+        >
             <img className="icon-bg" src={`/static/images/game-icon/icon-bg-${gameId}.png`} alt="game-icon"></img>
             <img
                 className={Styles["icon-name"]}
