@@ -19,7 +19,7 @@ const Data: IGameData[] = [
         isNew: false,
         gameType: GameType.DiceGame,
         gameCategory: GameCategory.Dices,
-        rtp: 96.3,
+        rtp: 98,
         tag: ITags.RoundBased,
     },
     {
@@ -28,7 +28,7 @@ const Data: IGameData[] = [
         isNew: false,
         gameType: GameType.DiceGame,
         gameCategory: GameCategory.Dices,
-        rtp: 96.3,
+        rtp: 97,
         tag: ITags.RoundBased,
     },
     {
@@ -37,7 +37,7 @@ const Data: IGameData[] = [
         isNew: false,
         gameType: GameType.DiceGame,
         gameCategory: GameCategory.Dices,
-        rtp: 96.3,
+        rtp: 98,
         tag: ITags.RoundBased,
     },
     {
@@ -46,7 +46,7 @@ const Data: IGameData[] = [
         isNew: true,
         gameType: GameType.DiceGame,
         gameCategory: GameCategory.Dices,
-        rtp: 96.3,
+        rtp: 97,
         tag: ITags.RoundBased,
     },
     {
@@ -55,7 +55,7 @@ const Data: IGameData[] = [
         isNew: false,
         gameType: GameType.DiceGame,
         gameCategory: GameCategory.Dices,
-        rtp: 96.3,
+        rtp: 98,
         tag: ITags.RoundBased,
     },
     {
@@ -64,7 +64,7 @@ const Data: IGameData[] = [
         isNew: false,
         gameType: GameType.DiceGame,
         gameCategory: GameCategory.Dices,
-        rtp: 96.3,
+        rtp: 98,
         tag: ITags.RoundBased,
     },
     {
@@ -73,7 +73,7 @@ const Data: IGameData[] = [
         isNew: false,
         gameType: GameType.DiceGame,
         gameCategory: GameCategory.Dices,
-        rtp: 96.3,
+        rtp: 98,
         tag: ITags.RoundBased,
     },
     {
@@ -82,7 +82,7 @@ const Data: IGameData[] = [
         isNew: false,
         gameType: GameType.Slot,
         gameCategory: GameCategory.Slots,
-        rtp: 96.3,
+        rtp: 97,
         tag: ITags.Classic25PayLines,
         volatility: IVolatility.Medium,
     },
@@ -92,7 +92,7 @@ const Data: IGameData[] = [
         isNew: false,
         gameType: GameType.Slot,
         gameCategory: GameCategory.Slots,
-        rtp: 96.3,
+        rtp: 97,
         tag: ITags.Classic25PayLines,
         volatility: IVolatility.Medium,
     },
@@ -102,7 +102,7 @@ const Data: IGameData[] = [
         isNew: false,
         gameType: GameType.Slot,
         gameCategory: GameCategory.Slots,
-        rtp: 96.3,
+        rtp: 97,
         tag: ITags.Classic25PayLines,
         volatility: IVolatility.Medium,
     },
@@ -112,7 +112,7 @@ const Data: IGameData[] = [
         isNew: false,
         gameType: GameType.Slot,
         gameCategory: GameCategory.Slots,
-        rtp: 96.3,
+        rtp: 97,
         tag: ITags.Classic25PayLines,
         volatility: IVolatility.Medium,
     },
@@ -122,7 +122,7 @@ const Data: IGameData[] = [
         isNew: false,
         gameType: GameType.Slot,
         gameCategory: GameCategory.Slots,
-        rtp: 96.3,
+        rtp: 97,
         tag: ITags.Cascading5x6,
         volatility: IVolatility.MediumHigh,
     },
@@ -132,7 +132,7 @@ const Data: IGameData[] = [
         isNew: false,
         gameType: GameType.Lottery,
         gameCategory: GameCategory.Others,
-        rtp: 96.3,
+        rtp: 96,
         tag: ITags.RoundBased,
     },
     {
@@ -141,7 +141,7 @@ const Data: IGameData[] = [
         isNew: false,
         gameType: GameType.Lottery,
         gameCategory: GameCategory.Others,
-        rtp: 96.3,
+        rtp: 96,
         tag: ITags.RoundBased,
     },
     {
@@ -150,7 +150,7 @@ const Data: IGameData[] = [
         isNew: true,
         gameType: GameType.CardGame,
         gameCategory: GameCategory.Casino,
-        rtp: 96.3,
+        rtp: 98,
         tag: ITags.RoundBased,
     },
     {
@@ -159,7 +159,7 @@ const Data: IGameData[] = [
         isNew: false,
         gameType: GameType.CardGame,
         gameCategory: GameCategory.Casino,
-        rtp: 96.3,
+        rtp: 98,
         tag: ITags.RoundBased,
     },
     {
@@ -168,7 +168,7 @@ const Data: IGameData[] = [
         isNew: false,
         gameType: GameType.DiceGame,
         gameCategory: GameCategory.Dices,
-        rtp: 96.3,
+        rtp: 96,
         tag: ITags.RoundBased,
     },
     {
@@ -177,7 +177,7 @@ const Data: IGameData[] = [
         isNew: false,
         gameType: GameType.DiceGame,
         gameCategory: GameCategory.Dices,
-        rtp: 96.3,
+        rtp: 96,
         tag: ITags.RoundBased,
     },
     {
@@ -186,7 +186,7 @@ const Data: IGameData[] = [
         isNew: false,
         gameType: GameType.CardGame,
         gameCategory: GameCategory.Casino,
-        rtp: 96.3,
+        rtp: 96,
         tag: ITags.RoundBased,
     },
     {
@@ -195,7 +195,7 @@ const Data: IGameData[] = [
         isNew: false,
         gameType: GameType.Roulette,
         gameCategory: GameCategory.Casino,
-        rtp: 96.3,
+        rtp: 97,
         tag: ITags.RoundBased,
     },
     {
@@ -204,7 +204,7 @@ const Data: IGameData[] = [
         isNew: false,
         gameType: GameType.Lottery,
         gameCategory: GameCategory.Others,
-        rtp: 96.3,
+        rtp: 98,
         tag: ITags.RoundBased,
     },
     {
@@ -213,7 +213,7 @@ const Data: IGameData[] = [
         isNew: false,
         gameType: GameType.CardGame,
         gameCategory: GameCategory.Casino,
-        rtp: 96.3,
+        rtp: 98,
         tag: ITags.TurnBased,
     },
     {
@@ -222,7 +222,7 @@ const Data: IGameData[] = [
         isNew: false,
         gameType: GameType.CardGame,
         gameCategory: GameCategory.Casino,
-        rtp: 96.3,
+        rtp: 98,
         tag: ITags.RoundBased,
     },
     {
@@ -231,7 +231,7 @@ const Data: IGameData[] = [
         isNew: false,
         gameType: GameType.BitcoinMaster,
         gameCategory: GameCategory.Others,
-        rtp: 96.3,
+        rtp: 96,
         tag: ITags.RoundBased,
     },
     {
@@ -240,7 +240,7 @@ const Data: IGameData[] = [
         isNew: false,
         gameType: GameType.CardGame,
         gameCategory: GameCategory.Casino,
-        rtp: 96.3,
+        rtp: 98,
         tag: ITags.TurnBased,
     },
     {
@@ -249,7 +249,7 @@ const Data: IGameData[] = [
         isNew: false,
         gameType: GameType.CardGame,
         gameCategory: GameCategory.Casino,
-        rtp: 96.3,
+        rtp: 98,
         tag: ITags.TurnBased,
     },
     {
@@ -258,7 +258,7 @@ const Data: IGameData[] = [
         isNew: false,
         gameType: GameType.CardGame,
         gameCategory: GameCategory.Casino,
-        rtp: 96.3,
+        rtp: 94,
         tag: ITags.RoundBased,
     },
     {
@@ -267,7 +267,7 @@ const Data: IGameData[] = [
         isNew: false,
         gameType: GameType.Slot,
         gameCategory: GameCategory.Slots,
-        rtp: 96.3,
+        rtp: 97,
         tag: ITags.RoundBased,
     },
 ];

@@ -45,7 +45,7 @@ export const Header: React.FC<THeaderProps> = ({ menuItems, category = 0 }) => {
                         <div className={Styles["category-overlay"]}></div>
                     </div>
 
-                    <div className="d-flex">
+                    <div className="d-flex align-items-center">
                         <div
                             className={`${Styles["menu-item"]} ${selectCategory === -2 ? Styles["menu-selected"] : ""}`}
                             onClick={() => onSelectCategory(-2)}

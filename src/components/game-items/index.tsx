@@ -92,7 +92,7 @@ export const GameItems: React.FC<TGameItems> = ({ gameData }) => {
     };
 
     return (
-        <section className="container list-container">
+        <section className="container">
             {gameData.map((gameData: IGameData) => {
                 const gameName = gameData.gameName.replace(/\s/g, "").toLowerCase();
                 return (
@@ -118,31 +118,32 @@ export const GameItems: React.FC<TGameItems> = ({ gameData }) => {
                             </div>
                             <div className={Styles["detail-item"]}>
                                 <span className={`${Styles["detail-icon"]} icon-info`}></span>
-                                <span>Game Rules</span>
+                                <span>{t("common:game-rules")}</span>
                             </div>
                             <div className={Styles["detail-group"]}>
                                 <div className={Styles["detail-item"]}>
                                     <span className={`${Styles["detail-icon"]} icon-type`}></span>
                                     <span>
-                                        Game Type: <strong>{t<string>(`common:gameType-${GameTypeName[gameData.gameType]}`)}</strong>
+                                        {t("common:game-type")}:{" "}
+                                        <strong>{t<string>(`common:gameType-${GameTypeName[gameData.gameType]}`)}</strong>
                                     </span>
                                 </div>
                                 <div className={Styles["detail-item"]}>
                                     <span className={`${Styles["detail-icon"]} icon-rtp`}></span>
                                     <span>
-                                        RTP: <strong>{gameData.rtp}</strong>
+                                        {t("common:rtp")}: <strong>{gameData.rtp}%</strong>
                                     </span>
                                 </div>
                                 <div className={Styles["detail-item"]}>
                                     <span className={`${Styles["detail-icon"]} icon-tag`}></span>
                                     <span>
-                                        Tag: <strong>{t<string>(`common:tag-${TagsName[gameData.tag]}`)}</strong>
+                                        {t("common:tag")}: <strong>{t<string>(`common:tag-${TagsName[gameData.tag]}`)}</strong>
                                     </span>
                                 </div>
                             </div>
                             <div className={Styles["detail-item"]}>
                                 <span className={`${Styles["detail-icon"]} icon-language`}></span>
-                                <span>Languages: </span>
+                                <span>{t("common:language")}: </span>
                                 <LanguageIcons />
                             </div>
                         </div>

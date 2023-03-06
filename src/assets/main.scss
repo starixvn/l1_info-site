@@ -126,3 +126,32 @@ label {
         background: #151e2c;
     }
 }
+
+.slick-dots {
+    bottom: 0;
+    margin-bottom: 0.5rem;
+
+    @media (min-width: 992px) {
+        margin-bottom: 1.8rem;
+    }
+}
+
+.slick-dots li button {
+    border: 0.2rem solid rgba($color: #fff, $alpha: 0.5);
+    border-radius: 50%;
+    width: 1.3rem;
+    height: 1.3rem;
+
+    @media (min-width: 992px) {
+        width: 1.8rem;
+        height: 1.8rem;
+    }
+}
+
+.slick-dots .slick-active button {
+    background-color: #fff;
+}
+
+.slick-dots li button:before {
+    content: "";
+}

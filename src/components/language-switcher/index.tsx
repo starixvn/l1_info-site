@@ -11,7 +11,6 @@ const Languages = () => {
     const flagIcon = `/static/images/icon-languages/${router.locale}.svg`;
 
     const handleLanguageChange = (lang: string) => {
-        console.log(lang);
         setLanguage(lang);
         i18n && i18n.changeLanguage(lang);
         router.push(router.pathname, router.asPath, { locale: lang });

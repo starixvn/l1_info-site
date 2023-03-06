@@ -25,15 +25,12 @@ class DetailGame extends PageBase<TPropsBase, IStateBase> {
 
 const getStaticPaths: GetStaticPaths = async () => {
     const games = GAMES_CATEGORY.map((game) => Object.entries(game)[0]);
-
     const paths = Object.values(locales).flatMap((locale) =>
         games.map(([category, gameName]) => ({
             params: { category, gameName },
             locale,
         }))
     );
-
-    console.log(paths);
 
     return { paths, fallback: false };
 };

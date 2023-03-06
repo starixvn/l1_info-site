@@ -159,22 +159,30 @@
 }
 
 .customize-slick-next {
-    &::before{
-        content: '';
+    &::before {
+        content: "";
     }
     right: 10%;
     z-index: 1;
-    height: auto;
-    width: auto;
+    height: 3rem;
+    width: 3rem;
+    @media (min-width: 992px) {
+        height: 5rem;
+        width: 5rem;
+    }
 }
 
 .customize-slick-prev {
-    &::before{
-        content: '';
+    &::before {
+        content: "";
     }
     left: 10%;
     z-index: 1;
-    height: auto;
-    width: auto;
-}
+    height: 3rem;
+    width: 3rem;
 
+    @media (min-width: 992px) {
+        height: 5rem;
+        width: 5rem;
+    }
+}
