@@ -23,7 +23,7 @@ const Home = (props: TPropsBase) => {
         return <></>;
     }
 
-    return <Dashboard {...props} />;
+    return window.location.hostname.toLocaleLowerCase().includes('appdownload') ? <AppLandingPageComponent locale={'en'} /> : <Dashboard />;
 };
 
 const getStaticProps = async ({ locale = "en" }) => {
