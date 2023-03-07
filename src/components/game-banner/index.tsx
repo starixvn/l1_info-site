@@ -1,8 +1,8 @@
-import React, { useEffect, useMemo } from "react";
+import React, { useEffect, useState } from "react";
 import Slider, { CustomArrowProps } from "react-slick";
-import { buildVersion } from "../../common/constants";
-import { isMobile, isMobileOnly } from "react-device-detect";
+import { isMobile } from "react-device-detect";
 
+import { buildVersion } from "../../common/constants";
 import Styles from "./game-banner.module.scss";
 
 const NextArrow = (props: CustomArrowProps) => {
@@ -31,38 +31,44 @@ const BannerItem: React.FC<{ name: string }> = ({ name }) => {
     );
 };
 
-export class GameBanner extends React.PureComponent {
-    render() {
-        const settings = {
-            dots: true,
-            infinite: true,
-            speed: 500,
-            autoplaySpeed: 5000,
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            adaptiveHeight: true,
-            swipeToSlide: true,
-            initialSlide: 1,
-            autoplay: true,
-            pauseOnHover: true,
-            nextArrow: <NextArrow />,
-            prevArrow: <PrevArrow />,
-        };
+const GameBanner = () => {
+    const [banners, setBanners] = useState<string[]>([]);
+
+    useEffect(() => {
         const nameMobile = ["banner-1_mobile.jpg", "banner-2_mobile.jpg", "banner-3_mobile.jpg"];
         const nameDesktop = ["banner-1.jpg", "banner-2.jpg", "banner-3.jpg"];
-        const bannerName = isMobile ? nameMobile : nameDesktop;
+        setBanners(isMobile ? nameMobile : nameDesktop);
+    }, []);
 
-        return (
-            <React.Fragment>
-                <section className="banner-top">
+    const settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        autoplaySpeed: 5000,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        adaptiveHeight: true,
+        swipeToSlide: true,
+        initialSlide: 1,
+        autoplay: true,
+        pauseOnHover: true,
+        nextArrow: <NextArrow />,
+        prevArrow: <PrevArrow />,
+    };
+
+    return (
+        <React.Fragment>
+            <section className="banner-top">
+                {banners.length > 0 && (
                     <Slider {...settings}>
-                        {bannerName.map((name) => {
-                            console.log(name);
+                        {banners.map((name) => {
                             return <BannerItem key={name} name={name} />;
                         })}
                     </Slider>
-                </section>
-            </React.Fragment>
-        );
-    }
-}
+                )}
+            </section>
+        </React.Fragment>
+    );
+};
+
+export default GameBanner;

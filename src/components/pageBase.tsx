@@ -3,7 +3,7 @@ import { WithTranslation } from "next-i18next";
 
 import { IGameData } from "./data";
 import Footer from "./footer";
-import { GameBanner } from "./game-banner";
+import GameBanner from "./game-banner";
 import Header from "./header";
 import { SSRProvider } from "react-bootstrap";
 import { GameCategory } from "./type";
