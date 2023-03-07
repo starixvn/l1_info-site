@@ -105,6 +105,10 @@ label {
     z-index: 10;
 }
 
+.navbar-brand {
+    cursor: pointer;
+}
+
 .dropdown-toggle::after {
     font-family: "infosite" !important;
     margin-left: 1rem;

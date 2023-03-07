@@ -39,7 +39,7 @@ const GuideComponent: React.FC<Props> = ({ gameId, userStakeLevel, gameConfigs }
     const [selectedOption, setSelectedOption] = useState<TOption | null>();
     const [options, setOptions] = useState<TOption[]>();
     const minMaxBetParams = `&minBet=${userStakeLevel?.minBet}&maxBet=${userStakeLevel?.maxBet}`;
-    const srcPath = `${guideUrl}/${i18n.language}/?gId=${gameId}&t=${theme}${minMaxBetParams}&f=sc&v=${Date.now()}`;
+    const srcPath = `${guideUrl}/${i18n.language}/?gId=${selectedOption?.value}&t=${theme}${minMaxBetParams}&f=sc&v=${Date.now()}`;
 
     const handleResize = () => {
         if (wrapperRef?.current) {
@@ -88,12 +88,16 @@ const GuideComponent: React.FC<Props> = ({ gameId, userStakeLevel, gameConfigs }
         <Container>
             <Header isOpenGameGuide={true} />
             <div className={`container ${Styles["container-guide"]}`} ref={wrapperRef}>
-                <Select
-                    value={selectedOption}
-                    defaultValue={selectedOption}
-                    onChange={(value) => onChangeOption(value)}
-                    options={options}
-                />
+                <div className={`d-flex align-items-center ${Styles["select-game"]}`}>
+                    <span>Game</span>
+                    <Select
+                        value={selectedOption}
+                        defaultValue={selectedOption}
+                        onChange={(value) => onChangeOption(value)}
+                        options={options}
+                        className={Styles["dropdown"]}
+                    />
+                </div>
 
                 {isLoading && (
                     <div className={Styles["guide-loading"]}>

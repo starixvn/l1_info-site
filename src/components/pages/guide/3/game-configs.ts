@@ -1,3 +1,5 @@
+import { TGameConfigs } from "../../../type";
+
 const choicesMaxBet = {
     crab: 2000,
     fish: 2000,
@@ -13,7 +15,7 @@ const odds = {
     triple: 6,
 };
 
-const GameConfigs = {
+const GameConfigs: TGameConfigs = {
     maxBetPerChoices: choicesMaxBet,
     maxBet: 2000,
     minBet: 1,

@@ -1,13 +1,13 @@
 .game-container {
     padding-bottom: 3rem;
     padding-top: 3rem;
-    border-bottom: 1px solid #CECECE;
+    border-bottom: 1px solid #cecece;
 
     .game-name {
         font-size: 3rem;
         color: #110901;
         text-align: center;
-        &:hover{
+        &:hover {
             cursor: pointer;
         }
     }
@@ -20,19 +20,19 @@
         padding: 0.8rem;
         margin-bottom: 1.1rem;
         border-radius: 1.5rem;
-        border: 1px solid #CECECE;
-        box-shadow: 0 0 10px rgba(0,0,0,0.25);
+        border: 1px solid #cecece;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
     }
 
     .icon-name {
         position: absolute;
         top: 0.7rem;
         left: 0.7rem;
-    }  
-    
+    }
+
     .game-intro {
         margin-bottom: 2rem;
-        &:hover{
+        &:hover {
             cursor: pointer;
         }
     }
@@ -47,7 +47,7 @@
         font-size: 1.5rem;
         text-align: center;
         color: #fff;
-        background: #F8990B;
+        background: #f8990b;
         border-top-left-radius: 1.5rem;
         border-bottom-right-radius: 1.5rem;
     }
@@ -67,10 +67,19 @@
         line-height: 3.2rem;
         margin-bottom: 1rem;
     }
+    .guide {
+        color: var(--text-color);
+        text-decoration: none;
+        cursor: pointer;
+
+        &:hover {
+            color: var(--master-solid-color);
+        }
+    }
 
     .detail-icon {
         display: inline-block;
-        width: 3.2rem;        
+        width: 3.2rem;
         font-size: 2rem;
         line-height: 3.2rem;
     }
@@ -80,7 +89,6 @@
         column-gap: 5rem;
         flex-direction: column;
     }
-    
 }
 
 @media (min-width: 992px) {
@@ -95,7 +103,7 @@
     }
 
     .game-play {
-        grid-column: 1;        
+        grid-column: 1;
         grid-row: 1 / span 2;
     }
 
@@ -110,10 +118,9 @@
             flex-direction: row;
         }
     }
-    
 }
-.guide{
-    &:hover{
+.guide {
+    &:hover {
         cursor: pointer;
     }
 }
