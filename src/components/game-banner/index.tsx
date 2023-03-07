@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect, useMemo } from "react";
 import Slider, { CustomArrowProps } from "react-slick";
 import { buildVersion } from "../../common/constants";
-import { isMobile } from "react-device-detect";
+import { isMobile, isMobileOnly } from "react-device-detect";
+
 import Styles from "./game-banner.module.scss";
 
 const NextArrow = (props: CustomArrowProps) => {
@@ -23,10 +24,9 @@ const PrevArrow = (props: CustomArrowProps) => {
 };
 
 const BannerItem: React.FC<{ name: string }> = ({ name }) => {
-    const mobileClass = isMobile ? "_mobile" : "_desktop";
     return (
         <div>
-            <img className="img" src={`/static/images/banners/${name}${mobileClass}.jpg`} alt="bg"></img>
+            <img className="img" src={`/static/images/banners/${name}`} alt="bg"></img>
         </div>
     );
 };
@@ -48,12 +48,16 @@ export class GameBanner extends React.PureComponent {
             nextArrow: <NextArrow />,
             prevArrow: <PrevArrow />,
         };
-        const bannerName = ["banner-1", "banner-2", "banner-3"];
+        const nameMobile = ["banner-1_mobile.jpg", "banner-2_mobile.jpg", "banner-3_mobile.jpg"];
+        const nameDesktop = ["banner-1.jpg", "banner-2.jpg", "banner-3.jpg"];
+        const bannerName = isMobile ? nameMobile : nameDesktop;
+
         return (
             <React.Fragment>
                 <section className="banner-top">
                     <Slider {...settings}>
                         {bannerName.map((name) => {
+                            console.log(name);
                             return <BannerItem key={name} name={name} />;
                         })}
                     </Slider>
