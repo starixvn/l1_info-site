@@ -6,6 +6,7 @@ import { useTranslation } from "next-i18next";
 import Languages from "../language-switcher";
 import Link from "next/link";
 import { GameCategoryName } from "../../common/constants";
+import { ECategoryOther } from "../type";
 
 type THeaderProps = {
     isOpenGameGuide: boolean;
@@ -61,8 +62,10 @@ export const Header: React.FC<THeaderProps> = ({ menuItems, category = 0, isOpen
                     <div className="d-flex align-items-center">
                         {!isOpenGameGuide && (
                             <div
-                                className={`${Styles["menu-item"]} ${selectCategory === -2 ? Styles["menu-selected"] : ""}`}
-                                onClick={() => onSelectCategory(-2)}
+                                className={`${Styles["menu-item"]} ${
+                                    selectCategory === ECategoryOther.contactUS ? Styles["menu-selected"] : ""
+                                }`}
+                                onClick={() => onSelectCategory(ECategoryOther.contactUS)}
                             >
                                 <span className={Styles["menu-text"]}>
                                     <Link className={Styles["menu-link"]} href="/contact">

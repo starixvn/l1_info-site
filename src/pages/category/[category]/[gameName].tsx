@@ -1,3 +1,4 @@
+import React from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { GetStaticPaths } from "next";
 
@@ -37,7 +38,7 @@ const getStaticPaths: GetStaticPaths = async () => {
 
 const getStaticProps = async ({ params, locale = "en" }: IStaticProps<IParamsData>) => {
     const { gameName: game } = params;
-    const sortData = Data.sort((a, b) => a.gameId - b.gameId);
+    const sortData = Data.sort((a, b) => b.gameId - a.gameId);
     const gameData = sortData.find((data) => GAME_ID_MAPPING_ROUTER[data.gameId] === game);
 
     if (!gameData) {

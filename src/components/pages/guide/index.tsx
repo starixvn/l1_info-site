@@ -6,8 +6,8 @@ import { isMobileOnly, isIOS, browserVersion } from "react-device-detect";
 import Select from "react-select";
 import { useRouter } from "next/router";
 
-import Styles from "./game-guide.module.scss";
-import { TGameConfigs, TUserStakeLevel } from "../../type";
+import Styles from "./guide.module.scss";
+import { IGameConfigs, TUserStakeLevel } from "../../type";
 import appSettings from "../../../common/app-settings";
 import Loader from "../../loader";
 import Header from "../../header";
@@ -18,7 +18,7 @@ import Data from "../../data";
 type Props = {
     gameId: number;
     userStakeLevel: TUserStakeLevel;
-    gameConfigs: TGameConfigs;
+    gameConfigs: IGameConfigs;
 };
 
 type TOption = {
@@ -57,7 +57,7 @@ const GuideComponent: React.FC<Props> = ({ gameId, userStakeLevel, gameConfigs }
 
     const onChangeOption = (option: TOption | null) => {
         setSelectedOption(option);
-        const asPath = `/game-guide?gameId=${option?.value ? +option?.value : 1}`;
+        const asPath = `/guide?gameId=${option?.value ? +option?.value : 1}`;
         router.push(router.pathname, asPath, { shallow: true });
     };
 
@@ -73,7 +73,7 @@ const GuideComponent: React.FC<Props> = ({ gameId, userStakeLevel, gameConfigs }
     }, [wrapperRef]);
 
     useEffect(() => {
-        const sortData = Data.sort((a, b) => a.gameId - b.gameId);
+        const sortData = Data.sort((a, b) => b.gameId - a.gameId);
         const formatData: TOption[] = sortData.map((data) => ({
             value: data.gameId.toString(),
             label: t<string>(`${data.gameName.replace(/\s/g, "").toLowerCase()}.displayedName`),
@@ -82,7 +82,7 @@ const GuideComponent: React.FC<Props> = ({ gameId, userStakeLevel, gameConfigs }
 
         setOptions(formatData);
         onChangeOption(currentValue);
-    }, []);
+    }, [i18n.language]);
 
     return (
         <Container>

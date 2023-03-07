@@ -1,12 +1,13 @@
 import React from "react";
 import { WithTranslation } from "next-i18next";
+import { WithRouterProps } from "next/dist/client/with-router";
 
 import { IGameData } from "./data";
 import Footer from "./footer";
 import GameBanner from "./game-banner";
 import Header from "./header";
 import { SSRProvider } from "react-bootstrap";
-import { GameCategory } from "./type";
+import { EGameCategory } from "./type";
 
 export enum EStatus {
     ClickCategory,
@@ -21,7 +22,8 @@ export type TPropsBase = {
     category: number;
     gameData: IGameData[];
     gameIdsSimilar?: number[];
-} & WithTranslation;
+} & WithTranslation &
+    WithRouterProps;
 
 export const Container: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     return (
@@ -34,7 +36,7 @@ export const Container: React.FC<{ children: React.ReactNode }> = ({ children })
 abstract class PageBase<P extends TPropsBase, S extends IStateBase> extends React.PureComponent<P, S> {
     constructor(props: P) {
         super(props);
-        const menuItems = Object.values(GameCategory).filter((value) => typeof value === "number");
+        const menuItems = Object.values(EGameCategory).filter((value) => typeof value === "number");
 
         this.state = {
             menuItems: menuItems,
@@ -44,7 +46,7 @@ abstract class PageBase<P extends TPropsBase, S extends IStateBase> extends Reac
     abstract renderContent(): JSX.Element;
 
     render() {
-        const { category, gameData } = this.props;
+        const { category } = this.props;
         const { menuItems } = this.state;
         return (
             <SSRProvider>
@@ -52,7 +54,7 @@ abstract class PageBase<P extends TPropsBase, S extends IStateBase> extends Reac
                     <Header menuItems={menuItems} category={category} isOpenGameGuide={false} />
                     <div className="main-content">
                         <GameBanner />
-                        {gameData ? this.renderContent() : null}
+                        {this.renderContent()}
                     </div>
                     <Footer />
                 </Container>

@@ -1,12 +1,12 @@
-export type Props = {
-    queryGame: number;
-};
-
 export type TObjectKeyValue = {
     [key: string]: string;
 };
 
-export enum GameCategory {
+export enum ECategoryOther {
+    contactUS = -1,
+}
+
+export enum EGameCategory {
     AllGames = 0,
     Dices,
     Casino,
@@ -14,7 +14,7 @@ export enum GameCategory {
     Others,
 }
 
-export enum GameType {
+export enum EGameType {
     AllGames,
     DiceGame,
     CardGame,
@@ -24,14 +24,14 @@ export enum GameType {
     BitcoinMaster,
 }
 
-export enum ITags {
+export enum ETags {
     RoundBased,
     Classic25PayLines,
     Cascading5x6,
     TurnBased,
 }
 
-export enum IVolatility {
+export enum EVolatility {
     Medium,
     MediumHigh,
 }
@@ -43,7 +43,7 @@ export interface IStaticProps<IParams> {
     defaultLocale: string;
 }
 
-export interface TGameConfigs {
+export interface IGameConfigs {
     minBet: number;
     maxBet: number;
     odds: Record<string, number> | any;
@@ -62,8 +62,3 @@ export type TUserStakeLevel = {
     minBet: number;
     maxBet: number;
 };
-
-export interface TConfigs {
-    userStakeLevel: TUserStakeLevel;
-    gameConfigs: TGameConfigs;
-}

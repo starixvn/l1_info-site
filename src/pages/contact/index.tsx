@@ -1,61 +1,21 @@
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React from "react";
 import { useTranslation } from "next-i18next";
-import Styles from "./contact.module.scss";
 
-export const ContactUs: React.FC = () => {
-    const { t } = useTranslation();
-    return (
-        <>
-            <div className={Styles["intro-container"]}>
-                <div className={Styles["title"]}>Contact Us</div>
-                <div className={Styles["contact-intro"]}>
-                    Expertise in various platform features allows users to have smooth operating experience across different platforms
-                </div>
-            </div>
-            <p className={Styles["small-intro"]}>Please fill in the information and we will contact you as soon as possible.</p>
-            <div className={Styles["form-container"]}>
-                <form>
-                    <div className={Styles["form-group"]}>
-                        <label className={Styles["form-label"]}>What is your brand name?</label>
-                        <input className={Styles["form-control"]} type="text" />
-                    </div>
-                    <div className={Styles["form-group"]}>
-                        <label className={Styles["form-label"]}>Remarks</label>
-                        <input className={Styles["form-control"]} type="text" />
-                    </div>
-                    <div className={Styles["form-group"]}>
-                        <label htmlFor="validationEmail" className={Styles["form-required"]}>
-                            Contact Email
-                        </label>
-                        <input className={Styles["form-control"]} type="text" id="validationEmail" />
-                    </div>
-                    <button className={Styles["btn-primary"]}>Complete</button>
-                </form>
-                <div className={Styles["contact-button"]}>
-                    <div className={Styles["btn-group"]}>
-                        <label className={Styles["btn-name"]}>Telegram</label>
-                        <button className={Styles["btn-telegram"]}>
-                            <span className="icon-telegram" />
-                            <label className={Styles["text"]}>@SABASports_CS</label>
-                        </button>
-                    </div>
-                    <div className={Styles["btn-group"]}>
-                        <label className={Styles["btn-name"]}>Email</label>
-                        <button className={Styles["btn-email"]}>
-                            <span className="icon-email" />
-                            <label className={Styles["text"]}>@SABASports_CS</label>
-                        </button>
-                    </div>
-                    <div className={Styles["btn-group"]}>
-                        <label className={Styles["btn-name"]}>Letstalk</label>
-                        <button className={Styles["btn-letstalk"]}>
-                            <span className="icon-letstalk" />
-                            <label className={Styles["text"]}>t258111754</label>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </>
-    );
+import { TPropsBase } from "../../components/pageBase";
+import ContactComponent from "../../components/pages/contact-us";
+import { ECategoryOther } from "../../components/type";
+
+const Contact = (props: TPropsBase) => {
+    const data = { ...props, ...useTranslation("common") };
+
+    return <ContactComponent {...data} />;
 };
-export default ContactUs;
+
+const getStaticProps = async ({ locale = "en" }) => {
+    const translations = await serverSideTranslations(locale, ["common", "detail"]);
+
+    return { props: { category: ECategoryOther.contactUS, ...translations } };
+};
+
+export { Contact as default, getStaticProps };

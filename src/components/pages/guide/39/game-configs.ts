@@ -1,4 +1,4 @@
-import { TGameConfigs } from "../../../type";
+import { IGameConfigs } from "../../../type";
 
 const choicesMaxBet = {
     aaBet: 10000,
@@ -29,7 +29,7 @@ const odds = {
     CallBet_callBet: 2,
 };
 
-const GameConfigs: TGameConfigs = {
+const GameConfigs: IGameConfigs = {
     maxBetPerChoices: choicesMaxBet,
     maxBet: 2000,
     minBet: 1,

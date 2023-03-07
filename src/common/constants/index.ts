@@ -1,5 +1,5 @@
-import { GameCategory, GameType, TObjectKeyValue } from "./../../components/type";
-import { ITags } from "../../components/type";
+import { EGameCategory, EGameType, TObjectKeyValue } from "./../../components/type";
+import { ETags } from "../../components/type";
 
 const locales = { en: "en", vi: "vi" };
 
@@ -68,28 +68,28 @@ const GAMES = {
 const buildVersion = process.env.buildVersion;
 
 const TagsName: TObjectKeyValue = {
-    [ITags.RoundBased]: "roundBased",
-    [ITags.Classic25PayLines]: "classic25PayLines",
-    [ITags.Cascading5x6]: "cascading5x6",
-    [ITags.TurnBased]: "turnBased",
+    [ETags.RoundBased]: "roundBased",
+    [ETags.Classic25PayLines]: "classic25PayLines",
+    [ETags.Cascading5x6]: "cascading5x6",
+    [ETags.TurnBased]: "turnBased",
 };
 
 const GameTypeName: TObjectKeyValue = {
-    [GameType.AllGames]: "allGames",
-    [GameType.DiceGame]: "diceGame",
-    [GameType.Roulette]: "roulette",
-    [GameType.CardGame]: "cardGame",
-    [GameType.Slot]: "slot",
-    [GameType.Lottery]: "lottery",
-    [GameType.BitcoinMaster]: "bitcoinMaster",
+    [EGameType.AllGames]: "allGames",
+    [EGameType.DiceGame]: "diceGame",
+    [EGameType.Roulette]: "roulette",
+    [EGameType.CardGame]: "cardGame",
+    [EGameType.Slot]: "slot",
+    [EGameType.Lottery]: "lottery",
+    [EGameType.BitcoinMaster]: "bitcoinMaster",
 };
 
 const GameCategoryName: TObjectKeyValue = {
-    [GameCategory.AllGames]: "allGames",
-    [GameCategory.Dices]: "dices",
-    [GameCategory.Casino]: "casino",
-    [GameCategory.Slots]: "slots",
-    [GameCategory.Others]: "others",
+    [EGameCategory.AllGames]: "allGames",
+    [EGameCategory.Dices]: "dices",
+    [EGameCategory.Casino]: "casino",
+    [EGameCategory.Slots]: "slots",
+    [EGameCategory.Others]: "others",
 };
 
 const ROUTER_GAMES_NAME = {
@@ -124,34 +124,34 @@ const ROUTER_GAMES_NAME = {
 };
 
 const GAMES_CATEGORY = [
-    { [GameCategoryName[GameCategory.Casino]]: ROUTER_GAMES_NAME.blockChainBaccarat },
-    { [GameCategoryName[GameCategory.Dices]]: ROUTER_GAMES_NAME.bigSmall },
-    { [GameCategoryName[GameCategory.Casino]]: ROUTER_GAMES_NAME.baccarat },
-    { [GameCategoryName[GameCategory.Casino]]: ROUTER_GAMES_NAME.roulette },
-    { [GameCategoryName[GameCategory.Others]]: ROUTER_GAMES_NAME.RNGLottery },
-    { [GameCategoryName[GameCategory.Slots]]: ROUTER_GAMES_NAME.treasureIsland },
-    { [GameCategoryName[GameCategory.Dices]]: ROUTER_GAMES_NAME.seDie },
-    { [GameCategoryName[GameCategory.Dices]]: ROUTER_GAMES_NAME.seDieWar },
-    { [GameCategoryName[GameCategory.Dices]]: ROUTER_GAMES_NAME.miniSeDie },
-    { [GameCategoryName[GameCategory.Dices]]: ROUTER_GAMES_NAME.sicBo },
-    { [GameCategoryName[GameCategory.Dices]]: ROUTER_GAMES_NAME.turboOddEven },
-    { [GameCategoryName[GameCategory.Dices]]: ROUTER_GAMES_NAME.bigSmallCity },
-    { [GameCategoryName[GameCategory.Dices]]: ROUTER_GAMES_NAME.VIPFishPrawnCrab },
-    { [GameCategoryName[GameCategory.Dices]]: ROUTER_GAMES_NAME.fishPrawnCrab },
-    { [GameCategoryName[GameCategory.Casino]]: ROUTER_GAMES_NAME.dragonTiger },
-    { [GameCategoryName[GameCategory.Casino]]: ROUTER_GAMES_NAME.blackjack },
-    { [GameCategoryName[GameCategory.Casino]]: ROUTER_GAMES_NAME.threeCards },
-    { [GameCategoryName[GameCategory.Casino]]: ROUTER_GAMES_NAME.casinoHoldEm },
-    { [GameCategoryName[GameCategory.Casino]]: ROUTER_GAMES_NAME.texasHoldEm },
-    { [GameCategoryName[GameCategory.Casino]]: ROUTER_GAMES_NAME.hiLo },
-    { [GameCategoryName[GameCategory.Slots]]: ROUTER_GAMES_NAME.wayToGoal },
-    { [GameCategoryName[GameCategory.Slots]]: ROUTER_GAMES_NAME.fourGuardians },
-    { [GameCategoryName[GameCategory.Slots]]: ROUTER_GAMES_NAME.theLegendOfHeroes },
-    { [GameCategoryName[GameCategory.Slots]]: ROUTER_GAMES_NAME.nightclubLady },
-    { [GameCategoryName[GameCategory.Slots]]: ROUTER_GAMES_NAME.fruitSlot },
-    { [GameCategoryName[GameCategory.Others]]: ROUTER_GAMES_NAME.kenoProMax },
-    { [GameCategoryName[GameCategory.Others]]: ROUTER_GAMES_NAME.megaKeno },
-    { [GameCategoryName[GameCategory.Others]]: ROUTER_GAMES_NAME.bitcoinMaster },
+    { [GameCategoryName[EGameCategory.Casino]]: ROUTER_GAMES_NAME.blockChainBaccarat },
+    { [GameCategoryName[EGameCategory.Dices]]: ROUTER_GAMES_NAME.bigSmall },
+    { [GameCategoryName[EGameCategory.Casino]]: ROUTER_GAMES_NAME.baccarat },
+    { [GameCategoryName[EGameCategory.Casino]]: ROUTER_GAMES_NAME.roulette },
+    { [GameCategoryName[EGameCategory.Others]]: ROUTER_GAMES_NAME.RNGLottery },
+    { [GameCategoryName[EGameCategory.Slots]]: ROUTER_GAMES_NAME.treasureIsland },
+    { [GameCategoryName[EGameCategory.Dices]]: ROUTER_GAMES_NAME.seDie },
+    { [GameCategoryName[EGameCategory.Dices]]: ROUTER_GAMES_NAME.seDieWar },
+    { [GameCategoryName[EGameCategory.Dices]]: ROUTER_GAMES_NAME.miniSeDie },
+    { [GameCategoryName[EGameCategory.Dices]]: ROUTER_GAMES_NAME.sicBo },
+    { [GameCategoryName[EGameCategory.Dices]]: ROUTER_GAMES_NAME.turboOddEven },
+    { [GameCategoryName[EGameCategory.Dices]]: ROUTER_GAMES_NAME.bigSmallCity },
+    { [GameCategoryName[EGameCategory.Dices]]: ROUTER_GAMES_NAME.VIPFishPrawnCrab },
+    { [GameCategoryName[EGameCategory.Dices]]: ROUTER_GAMES_NAME.fishPrawnCrab },
+    { [GameCategoryName[EGameCategory.Casino]]: ROUTER_GAMES_NAME.dragonTiger },
+    { [GameCategoryName[EGameCategory.Casino]]: ROUTER_GAMES_NAME.blackjack },
+    { [GameCategoryName[EGameCategory.Casino]]: ROUTER_GAMES_NAME.threeCards },
+    { [GameCategoryName[EGameCategory.Casino]]: ROUTER_GAMES_NAME.casinoHoldEm },
+    { [GameCategoryName[EGameCategory.Casino]]: ROUTER_GAMES_NAME.texasHoldEm },
+    { [GameCategoryName[EGameCategory.Casino]]: ROUTER_GAMES_NAME.hiLo },
+    { [GameCategoryName[EGameCategory.Slots]]: ROUTER_GAMES_NAME.wayToGoal },
+    { [GameCategoryName[EGameCategory.Slots]]: ROUTER_GAMES_NAME.fourGuardians },
+    { [GameCategoryName[EGameCategory.Slots]]: ROUTER_GAMES_NAME.theLegendOfHeroes },
+    { [GameCategoryName[EGameCategory.Slots]]: ROUTER_GAMES_NAME.nightclubLady },
+    { [GameCategoryName[EGameCategory.Slots]]: ROUTER_GAMES_NAME.fruitSlot },
+    { [GameCategoryName[EGameCategory.Others]]: ROUTER_GAMES_NAME.kenoProMax },
+    { [GameCategoryName[EGameCategory.Others]]: ROUTER_GAMES_NAME.megaKeno },
+    { [GameCategoryName[EGameCategory.Others]]: ROUTER_GAMES_NAME.bitcoinMaster },
 ];
 
 const GAME_ID_MAPPING_ROUTER = {

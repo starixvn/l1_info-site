@@ -117,7 +117,7 @@ export const GameItems: React.FC<TGameItems> = ({ gameData }) => {
                                 {t<string>(`detail:${gameName}.detail`)}
                             </div>
                             <a
-                                href={`/${i18n.language}/game-guide?gameId=${gameData.gameId}`}
+                                href={`/${i18n.language}/guide?gameId=${gameData.gameId}`}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className={`${Styles["detail-item"]} ${Styles["guide"]}`}

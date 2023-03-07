@@ -1,4 +1,4 @@
-import { TGameConfigs } from "../../../type";
+import { IGameConfigs } from "../../../type";
 
 const odds = {
     bar: 100,
@@ -22,7 +22,7 @@ const odds = {
     watermelon3: 3,
 };
 
-const GameConfigs: TGameConfigs = {
+const GameConfigs: IGameConfigs = {
     maxBetPerChoices: {},
     maxBet: 2000,
     minBet: 1,
