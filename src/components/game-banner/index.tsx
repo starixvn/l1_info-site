@@ -1,8 +1,8 @@
 import React from "react";
 import Slider, { CustomArrowProps } from "react-slick";
-
 import { buildVersion } from "../../common/constants";
-import Styles from "./game-category.module.scss";
+import { isMobile } from "react-device-detect";
+import Styles from "./game-banner.module.scss";
 
 const NextArrow = (props: CustomArrowProps) => {
     const { className, onClick } = props;
@@ -23,9 +23,10 @@ const PrevArrow = (props: CustomArrowProps) => {
 };
 
 const BannerItem: React.FC<{ name: string }> = ({ name }) => {
+    const mobileClass = isMobile ? "_mobile" : "_desktop";
     return (
         <div>
-            <img className="img" src={`/static/images/banners/${name}?v=${buildVersion}`} alt="bg"></img>
+            <img className="img" src={`/static/images/banners/${name}${mobileClass}.jpg`} alt="bg"></img>
         </div>
     );
 };
@@ -47,7 +48,7 @@ export class GameBanner extends React.PureComponent {
             nextArrow: <NextArrow />,
             prevArrow: <PrevArrow />,
         };
-        const bannerName = ["banner-1.jpg", "banner-2.jpg", "banner-3.jpg"];
+        const bannerName = ["banner-1", "banner-2", "banner-3"];
         return (
             <React.Fragment>
                 <section className="banner-top">

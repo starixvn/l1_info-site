@@ -92,7 +92,7 @@ ul {
     padding: 2.6rem 1rem 8.8rem 1rem;
 }
 
-@media (min-width: 992px) {
+@media only screen and (min-width: 992px) {
     .banner-top {
         padding-top: 8rem;
     }
@@ -101,7 +101,7 @@ ul {
     }
 }
 
-@media (max-width: 768px) {
+@media  (max-width: 768px) {
     .format-mobile {
         width: 100%;
     }
