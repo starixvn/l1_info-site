@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useRouter } from "next/router";
 
 import Styles from "./header.module.scss";
 import { useTranslation } from "next-i18next";
@@ -14,6 +15,7 @@ type THeaderProps = {
 export const Header: React.FC<THeaderProps> = ({ menuItems, category = 0, isOpenGameGuide }) => {
     const [selectCategory, setSelectCategory] = useState<number>(category);
     const { t } = useTranslation("common");
+    const router = useRouter();
 
     const onSelectCategory = (gameCategory: number) => {
         setSelectCategory(gameCategory);
@@ -22,7 +24,12 @@ export const Header: React.FC<THeaderProps> = ({ menuItems, category = 0, isOpen
     return (
         <div id="header" className={Styles["header"]}>
             <nav className={`${Styles["navbar"]} ${Styles["navbar-expand"]}`}>
-                <a className="navbar-brand" href="#">
+                <a
+                    className="navbar-brand"
+                    onClick={() => {
+                        router.push("/");
+                    }}
+                >
                     <img className={Styles.logo} src={`/static/images/logo.svg?v=1`} alt="logo"></img>
                 </a>
                 <div className={`${Styles["navbar-collapse"]} ${Styles["collapse"]}`} id="navbarNavDropdown">
