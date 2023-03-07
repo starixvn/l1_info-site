@@ -3,6 +3,7 @@
 	font-weight: 300;
 	background-image: url("/static/images/app-download/bg-desktop.jpg");
 	background-attachment: fixed;
+	background-size: cover;
 	color: white !important;
 	padding: 10px;
 
@@ -19,12 +20,6 @@
 
 	.highlight-text {
 		color: #f19706;
-	}
-
-	.card-chip {
-		margin-left: 30px;
-		height: 90px;
-		width: 130px;
 	}
 
 	.download-title {

@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import InstallationGuide from "./installationguide";
 import { isMobileOnly } from "react-device-detect";
-import Styles from "./app-download-page.module.scss";
+import Styles from "./app-landing-page.module.scss";
 import ScrollToTop from "react-scroll-to-top";
 import { QRCodeCanvas } from "qrcode.react";
 import { getAppDownloadPageTranslationResource } from "./languages";
 import { Markup } from "interweave";
 import { StringFormat } from "../../helpers/string-helper";
-import { IAppDownloadPageResource } from "./languages/types";
+import { IAppLandingPageResource } from "./languages/types";
 
 interface QrCodeDeeplink {
     image: string;
@@ -49,11 +49,11 @@ const DownloadSection = () => {
     );
 }
 
-const AppDownloadPageModule: React.FunctionComponent<{ locale: string }> = ({ locale }) => {
+const AppLandingPageComponent: React.FunctionComponent<{ locale: string }> = ({ locale }) => {
     const [isMobile, setIsMobile] = useState<boolean>();
     useEffect(() => setIsMobile(isMobileOnly), []);
 
-    const [resources, setResources] = useState<IAppDownloadPageResource>();
+    const [resources, setResources] = useState<IAppLandingPageResource>();
     useEffect(() => setResources(getAppDownloadPageTranslationResource(locale)), []);
 
     const hightlightText = Styles["highlight-text"];
@@ -117,4 +117,4 @@ const AppDownloadPageModule: React.FunctionComponent<{ locale: string }> = ({ lo
     ) : <></>;
 };
 
-export default AppDownloadPageModule;
+export default AppLandingPageComponent;

@@ -1,4 +1,4 @@
-import { IAppDownloadPageResource } from "./types";
+import { IAppLandingPageResource } from "./types";
 import { th } from "./th";
 import { en } from "./en";
 import { id } from "./id";
@@ -7,7 +7,7 @@ import { tw } from "./tw";
 import { vi } from "./vi";
 import { getTranslationResource } from "../../../helpers/resource-helper";
 
-const supportedLanguages: { [name: string]: IAppDownloadPageResource } = {
+const supportedLanguages: { [name: string]: IAppLandingPageResource } = {
     en: en,
     th: th,
     id: id,
@@ -17,5 +17,5 @@ const supportedLanguages: { [name: string]: IAppDownloadPageResource } = {
 };
 
 export const getAppDownloadPageTranslationResource = (langKey: string | undefined) => {
-    return getTranslationResource<IAppDownloadPageResource>(langKey, supportedLanguages, en);
+    return getTranslationResource<IAppLandingPageResource>(langKey, supportedLanguages, en);
 };

@@ -1,13 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import React from "react";
 import { Markup } from "interweave";
-import Styles from "./app-download-page.module.scss";
+import Styles from "./app-landing-page.module.scss";
 import { StringFormat } from "../../helpers/string-helper";
-import { IAppDownloadPageResource } from "./languages/types";
+import { IAppLandingPageResource } from "./languages/types";
 
-const imagesPath = "/static/images/app-download/";
-
-const InstallationGuide: React.FunctionComponent<{ resources: IAppDownloadPageResource }> = ({ resources }) => {
+const InstallationGuide: React.FunctionComponent<{ resources: IAppLandingPageResource }> = ({ resources }) => {
     return (
         <div className={`row ${Styles["steps"]}`}>
             <div className="col-xs-1 col-md-1" ></div>
@@ -18,7 +15,7 @@ const InstallationGuide: React.FunctionComponent<{ resources: IAppDownloadPageRe
                             <div ><span className={Styles["title"]}> {guide.title}</span></div>
                             <div ><span className={Styles["detail"]}>{<Markup content={StringFormat(guide.content, Styles["highlight-text"])} />} </span></div>
                         </div>
-                        <div className="text-center"> <img src={`${imagesPath}${guide.image}.png`} className="img-fluid" alt="" /> </div>
+                        <img src={`/static/images/app-download/${guide.image}.png`} className="img-fluid" alt="" />
                     </div>
                 })
             }

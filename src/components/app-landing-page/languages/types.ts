@@ -1,4 +1,4 @@
-export interface IAppDownloadPageResource {
+export interface IAppLandingPageResource {
     appDownload: string;
     introductions: Array<string>;
     descriptions: Array<string>;

@@ -1,8 +1,8 @@
-import { IAppDownloadPageResource } from "./types";
+import { IAppLandingPageResource } from "./types";
 
-export const id: IAppDownloadPageResource = {
+export const tw: IAppLandingPageResource = {
     appDownload: "APP DOWNLOAD",
-    introductions: ["Offer variety and high Entertainment Game,", "there is always something <span class='{0}'>new to play</span>"],
+    introductions: ['"Offer variety and high Entertainment Game,', `there is always something <span class='{0}'>new to play</span>"`],
     descriptions: [
         "Excellent Online Casino Platform</li>",
         "Player can choose to play via a <span class='{0}'>Web Browser</span> or <span class='{0}'>Mobile App</span>",
