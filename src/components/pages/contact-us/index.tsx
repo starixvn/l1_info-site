@@ -82,7 +82,7 @@ class ContactComponent extends PageBase<TPropsBase, IStateBase> {
 
     renderContent() {
         return (
-            <div>
+            <div className={Styles["contact-container"]}>
                 {this.renderIntro()}
                 <p className={Styles["small-intro"]}>{this.props.t("common:fillin")}</p>
                 <div className={Styles["form-container"]}>

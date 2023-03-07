@@ -43,7 +43,7 @@ const Data: IGameData[] = [
     {
         gameId: GAMES.SIC_BO,
         gameName: "Sic Bo",
-        isNew: true,
+        isNew: false,
         gameType: EGameType.DiceGame,
         gameCategory: EGameCategory.Dices,
         rtp: 97,
@@ -147,7 +147,7 @@ const Data: IGameData[] = [
     {
         gameId: GAMES.BLOCKCHAIN_BACCARAT,
         gameName: "Blockchain Baccarat",
-        isNew: true,
+        isNew: false,
         gameType: EGameType.CardGame,
         gameCategory: EGameCategory.Casino,
         rtp: 98,
