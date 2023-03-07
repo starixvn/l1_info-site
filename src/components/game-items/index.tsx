@@ -8,7 +8,6 @@ import { IGameData } from "../data";
 import { LanguageIcons } from "../icon";
 import GameIcon from "../game-icon";
 import Styles from "./game-item.module.scss";
-import Link from "next/link";
 
 export function randomString(length: number) {
     let result = "";
@@ -124,33 +123,33 @@ export const GameItems: React.FC<TGameItems> = ({ gameData }) => {
                                     rel="noopener noreferrer"
                                 >
                                     <span className={`${Styles["detail-icon"]} icon-info`}></span>
-                                    <span>{t("common:game-rules")}</span>
+                                    <span>{t<string>("common:game-rules")}</span>
                                 </a>
                             </div>
                             <div className={Styles["detail-group"]}>
                                 <div className={Styles["detail-item"]}>
                                     <span className={`${Styles["detail-icon"]} icon-type`}></span>
                                     <span>
-                                        {t("common:game-type")}:{" "}
+                                        {t<string>("common:game-type")}:{" "}
                                         <strong>{t<string>(`common:gameType-${GameTypeName[gameData.gameType]}`)}</strong>
                                     </span>
                                 </div>
                                 <div className={Styles["detail-item"]}>
                                     <span className={`${Styles["detail-icon"]} icon-rtp`}></span>
                                     <span>
-                                        {t("common:rtp")}: <strong>{gameData.rtp}%</strong>
+                                        {t<string>("common:rtp")}: <strong>{gameData.rtp}%</strong>
                                     </span>
                                 </div>
                                 <div className={Styles["detail-item"]}>
                                     <span className={`${Styles["detail-icon"]} icon-tag`}></span>
                                     <span>
-                                        {t("common:tag")}: <strong>{t<string>(`common:tag-${TagsName[gameData.tag]}`)}</strong>
+                                        {t<string>("common:tag")}: <strong>{t<string>(`common:tag-${TagsName[gameData.tag]}`)}</strong>
                                     </span>
                                 </div>
                             </div>
                             <div className={Styles["detail-item"]}>
                                 <span className={`${Styles["detail-icon"]} icon-language`}></span>
-                                <span>{t("common:language")}: </span>
+                                <span>{t<string>("common:language")}: </span>
                                 <LanguageIcons />
                             </div>
                         </div>

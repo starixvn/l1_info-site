@@ -48,7 +48,7 @@ export const Header: React.FC<THeaderProps> = ({ menuItems, category = 0, isOpen
                                                 key={gameCategory}
                                             >
                                                 <Link className={Styles["menu-text"]} href="/category/[category]" as={`/category/${name}`}>
-                                                    {t(`common:category-${name}`)}
+                                                    {t<string>(`common:category-${name}`)}
                                                 </Link>
                                             </li>
                                         );

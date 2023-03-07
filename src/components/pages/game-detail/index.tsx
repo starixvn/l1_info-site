@@ -9,7 +9,7 @@ import SimilarGames from "../../similar-games";
 import Styles from "./game-detail.module.scss";
 
 type TGameDetails = {
-    game: IGameData;
+    gameData: IGameData;
     gameIdsSimilar: number[] | undefined;
 };
 
@@ -28,22 +28,23 @@ const DetailIcon: React.FC<{ icon: string; text: string; subpath?: string; forma
     );
 };
 
-const GameDetails: React.FC<TGameDetails> = ({ game, gameIdsSimilar }) => {
+const GameDetails: React.FC<TGameDetails> = ({ gameData, gameIdsSimilar }) => {
     const { t } = useTranslation(["common", "detail"]);
+    const gameName = gameData.gameName.replace(/\s/g, "").toLowerCase();
     return (
         <>
             <section className="container list-container">
                 <div className={Styles["game-detail-top"]}>
-                    <div className={Styles["game-name"]}>{game?.gameName}</div>
+                    <div className={Styles["game-name"]}> {t<string>(`detail:${gameName}.displayedName`)}</div>
                     <div className={Styles["game-i, con-container"]}>
-                        <GameIcon gameId={game.gameId} isSmallSize={false} isNew={game.isNew} />
+                        <GameIcon gameId={gameData.gameId} isSmallSize={false} isNew={gameData.isNew} />
                     </div>
 
                     <button type="button" className="btn btn-primary">
-                        Play for fun
+                        {t<string>("common:playForFun")}
                     </button>
                     <div className={Styles["game-intro"]}>
-                        <div className={Styles["intro"]}>{t<string>(`detail:${game.gameName}.detail`)}</div>
+                        <div className={Styles["intro"]}>{t<string>(`detail:${gameName}.detail`)}</div>
                     </div>
                 </div>
                 <div className={Styles["flex-detail"]}>
@@ -51,31 +52,32 @@ const GameDetails: React.FC<TGameDetails> = ({ game, gameIdsSimilar }) => {
                         <div className={Styles["detail-group"]}>
                             <div className={Styles["detail-item-text"]}>
                                 <span>
-                                    Game Type:{" "}
-                                    <span className="color-primary">{t<string>(`common:gameType-${GameTypeName[game.gameType]}`)}</span>
+                                    {t<string>("common:game-type")}:{" "}
+                                    <span className="color-primary">{t<string>(`common:gameType-${GameTypeName[gameData.gameType]}`)}</span>
                                 </span>
                             </div>
                             <div className={Styles["detail-item"]}>
                                 <span>
-                                    RTP: <span className="color-primary">{game.rtp}%</span>
+                                    {t<string>("common:rtp")}: <span className="color-primary">{gameData.rtp}%</span>
                                 </span>
                             </div>
                         </div>
                         <div className={Styles["detail-item"]}>
                             <span>
-                                Tag: <span className="color-primary">{t<string>(`common:tag-${GameTypeName[game.tag]}`)}</span>
+                                {t<string>("common:tag")}:{" "}
+                                <span className="color-primary">{t<string>(`common:tag-${GameTypeName[gameData.tag]}`)}</span>
                             </span>
                         </div>
 
                         <div className={Styles[detailIconClass]}>
-                            <p>Browser Compatibility </p>
+                            <p>{t<string>("common:browser")}</p>
                             <DetailIcon text="Google Chrome" icon="icon-chrome" />
                             <DetailIcon text="Safari" icon="icon-safari" />
                             <DetailIcon text="Cốc Cốc" icon="icon-coccoc" />
                         </div>
 
                         <div className={Styles[detailIconClass]}>
-                            <p>Compatible With</p>
+                            <p>{t<string>("common:compatible")}</p>
                             <DetailIcon text="iOS" icon="icon-ios" />
                             <DetailIcon text="Android" icon="icon-android" />
                             <DetailIcon text="Window" icon="icon-window" />
@@ -83,25 +85,25 @@ const GameDetails: React.FC<TGameDetails> = ({ game, gameIdsSimilar }) => {
                         </div>
 
                         <div className={Styles[detailIconClass]}>
-                            <p>Languages </p>
+                            <p>{t<string>("common:language")} </p>
                             <LanguageIcons />
                         </div>
                     </div>
                     <div className={Styles["play-for-fun"]}>
                         <img
                             className={Styles["banner-game"]}
-                            src={`/static/images/game-banner/banner_${game.gameId}.png?v=1`}
+                            src={`/static/images/game-banner/banner_${gameData.gameId}.png?v=1`}
                             alt="game-icon"
                         ></img>
                         <button type="button" className="btn btn-primary">
-                            Play for fun
+                            {t<string>("common:playForFun")}
                         </button>
                     </div>
                 </div>
-                <SimilarGames gameIds={gameIdsSimilar ?? []} />
+                <SimilarGames gameIds={gameIdsSimilar ?? []} t={t} />
             </section>
         </>
     );
 };
 
-export default GameDetails;
+export default React.memo(GameDetails);

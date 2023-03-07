@@ -19,7 +19,7 @@ class DetailGame extends PageBase<TPropsBase, IStateBase> {
 
     renderContent() {
         const { gameData, gameIdsSimilar } = this.props;
-        return <GameDetails game={gameData[0]} gameIdsSimilar={gameIdsSimilar} />;
+        return <GameDetails gameData={gameData[0]} gameIdsSimilar={gameIdsSimilar} />;
     }
 }
 
