@@ -75,7 +75,7 @@ const GuideComponent: React.FC<Props> = ({ gameId, userStakeLevel, gameConfigs }
     useEffect(() => {
         const formatData: TOption[] = GAMES_SORT.map((data) => ({
             value: data.gameId.toString(),
-            label: t<string>(`${data.gameName.replace(/\s/g, "").toLowerCase()}.displayedName`),
+            label: t<string>(`${data.gameId}.displayedName`),
         }));
         const currentValue = formatData.find((data) => +data.value === +gameId) ?? null;
 

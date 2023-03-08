@@ -1,12 +1,13 @@
 import React from "react";
 import { useTranslation } from "next-i18next";
 
-import { GameTypeName } from "../../../common/constants";
+import { GameCategoryName, GameTypeName, TagsName } from "../../../common/constants";
 import { IGame } from "../../data";
 import GameIcon from "../../game-icon";
 import { LanguageIcons } from "../../icon";
 import SimilarGames from "../../similar-games";
 import Styles from "./game-detail.module.scss";
+import { useRouter } from "next/router";
 
 type TGameDetails = {
     game: IGame;
@@ -29,14 +30,19 @@ const DetailIcon: React.FC<{ icon: string; text: string; subpath?: string; forma
 };
 
 const GameDetails: React.FC<TGameDetails> = ({ game, gameIdsSimilar }) => {
+    const router = useRouter();
     const { t } = useTranslation(["common", "detail"]);
-    const gameName = game.gameName.replace(/\s/g, "").toLowerCase();
+    const openDetail = (game: IGame) => {
+        router.push(`/category/${GameCategoryName[game.gameCategory]}/${game.gameId}`);
+    };
+    const currentLang = router.locale !== "vi" ? `_${router.locale}` : "";
+    console.log(currentLang);
     return (
         <>
             <section className="container list-container">
                 <div className={Styles["game-detail-top"]}>
-                    <div className={Styles["game-name"]}> {t<string>(`detail:${gameName}.displayedName`)}</div>
-                    <div className={Styles["game-i, con-container"]}>
+                    <div className={Styles["game-name"]}> {t<string>(`detail:${game.gameId}.displayedName`)}</div>
+                    <div className={Styles["game-icon-container"]}>
                         <GameIcon gameId={game.gameId} isSmallSize={false} isNew={game.isNew} />
                     </div>
 
@@ -44,7 +50,7 @@ const GameDetails: React.FC<TGameDetails> = ({ game, gameIdsSimilar }) => {
                         {t<string>("common:playForFun")}
                     </button>
                     <div className={Styles["game-intro"]}>
-                        <div className={Styles["intro"]}>{t<string>(`detail:${gameName}.detail`)}</div>
+                        <div className={Styles["intro"]}>{t<string>(`detail:${game.gameId}.detail`)}</div>
                     </div>
                 </div>
                 <div className={Styles["flex-detail"]}>
@@ -65,7 +71,7 @@ const GameDetails: React.FC<TGameDetails> = ({ game, gameIdsSimilar }) => {
                         <div className={Styles["detail-item"]}>
                             <span>
                                 {t<string>("common:tag")}:{" "}
-                                <span className="color-primary">{t<string>(`common:tag-${GameTypeName[game.tag]}`)}</span>
+                                <span className="color-primary">{t<string>(`common:tag-${TagsName[game.tag]}`)}</span>
                             </span>
                         </div>
 
@@ -89,18 +95,20 @@ const GameDetails: React.FC<TGameDetails> = ({ game, gameIdsSimilar }) => {
                             <LanguageIcons />
                         </div>
                     </div>
-                    <div className={Styles["play-for-fun"]}>
-                        <img
-                            className={Styles["banner-game"]}
-                            src={`/static/images/game-banner/banner_${game.gameId}.png?v=1`}
-                            alt="game-icon"
-                        ></img>
-                        <button type="button" className="btn btn-primary">
-                            {t<string>("common:playForFun")}
-                        </button>
-                    </div>
+                    {game.isBanner && (
+                        <div className={Styles["play-for-fun"]}>
+                            <img
+                                className={Styles["banner-game"]}
+                                src={`/static/images/game-banner/banner_${game.gameId}${currentLang}.png?v=1`}
+                                alt="game-icon"
+                            ></img>
+                            <button type="button" className="btn btn-primary">
+                                {t<string>("common:playForFun")}
+                            </button>
+                        </div>
+                    )}
                 </div>
-                <SimilarGames gameIds={gameIdsSimilar ?? []} t={t} />
+                <SimilarGames gameIds={gameIdsSimilar ?? []} t={t} openDetail={openDetail} />
             </section>
         </>
     );

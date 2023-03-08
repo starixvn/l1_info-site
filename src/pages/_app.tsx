@@ -8,7 +8,7 @@ import Head from "next/head";
 
 const App = ({ Component, pageProps }: AppProps) => {
     return (
-        <ThemeProvider attribute="class" defaultTheme={Themes.light} enableSystem={false} storageKey="info-site-mode">
+        <ThemeProvider attribute="class" defaultTheme={Themes.infoSite} enableSystem={false} storageKey="info-site-mode">
             <Head>
                 <title>Saba Info Site</title>
             </Head>

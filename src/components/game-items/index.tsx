@@ -94,11 +94,10 @@ export const GameItems: React.FC<TGameItems> = ({ game }) => {
     return (
         <section className="container">
             {game.map((game: IGame) => {
-                const gameName = game.gameName.replace(/\s/g, "").toLowerCase();
                 return (
                     <div className={Styles["game-container"]} key={game.gameId}>
                         <div className={Styles["game-name"]} onClick={() => openDetail(game)}>
-                            {t<string>(`detail:${gameName}.displayedName`)}
+                            {t<string>(`detail:${game.gameId}.displayedName`)}
                         </div>
                         <div className={Styles["game-play"]}>
                             <GameIcon gameId={game.gameId} game={game} isSmallSize={false} isNew={game.isNew} openDetail={openDetail} />
@@ -108,7 +107,7 @@ export const GameItems: React.FC<TGameItems> = ({ game }) => {
                         </div>
                         <div className={Styles["game-detail"]}>
                             <div className={Styles["game-intro"]} onClick={() => openDetail(game)}>
-                                {t<string>(`detail:${gameName}.detail`)}
+                                {t<string>(`detail:${game.gameId}.detail`)}
                             </div>
                             <a
                                 href={`/${i18n.language}/guide?gameId=${game.gameId}`}

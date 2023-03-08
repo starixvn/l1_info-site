@@ -12,6 +12,7 @@ export const LanguageLocaleMapper = {
 
 const Themes = {
     light: "light",
+    infoSite: "info-site",
 };
 
 const GAMES = {
