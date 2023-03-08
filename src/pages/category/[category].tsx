@@ -2,7 +2,7 @@ import React from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { GetStaticPaths } from "next";
 
-import Data from "../../components/data";
+import { DataSort } from "../../components/data";
 import Category from "../../components/pages/category";
 import { GameCategoryName, locales } from "../../common/constants";
 import { TPropsBase } from "../../components/pageBase";
@@ -25,11 +25,10 @@ const getStaticPaths: GetStaticPaths = async () => {
 };
 
 const getStaticProps = async ({ params, locale = "en" }: IStaticProps<IParamsData>) => {
-    const sortData = Data.sort((a, b) => b.gameId - a.gameId);
     const gameData =
         params.category === GameCategoryName[EGameCategory.AllGames]
-            ? sortData
-            : sortData.filter((game) => GameCategoryName[game.gameCategory] === params.category);
+            ? DataSort
+            : DataSort.filter((game) => GameCategoryName[game.gameCategory] === params.category);
 
     const category = +getKeyByValue(GameCategoryName, params.category);
     const translations = await serverSideTranslations(locale, ["common", "detail"]);

@@ -11,8 +11,8 @@ export const GameGuide: React.FC = () => {
     const [gameId, setGameId] = useState<number>(0);
     const [gameConfigs, setGameConfigs] = useState<any>({});
 
-    const getGameConfig = (path: string, config: Function): any => {
-        return import(`../../components/pages/guide/${path}/game-configs.ts`).then((mod: any) => {
+    const getGameConfig = (config: Function): any => {
+        return import(`../../components/pages/guide/game-configs/game-configs-${gameId}`).then((mod: any) => {
             config(mod.default);
         });
     };
@@ -26,10 +26,10 @@ export const GameGuide: React.FC = () => {
     }, [router.isReady]);
 
     useEffect(() => {
-        gameId > 0 && getGameConfig(gameId.toString(), setGameConfigs);
+        gameId > 0 && getGameConfig(setGameConfigs);
     }, [gameId]);
 
-    if (isLoading) {
+    if (isLoading || !gameConfigs) {
         return <></>;
     }
 

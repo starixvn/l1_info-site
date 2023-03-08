@@ -62,3 +62,5 @@ export type TUserStakeLevel = {
     minBet: number;
     maxBet: number;
 };
+
+export type TMinMaxBet = TUserStakeLevel;

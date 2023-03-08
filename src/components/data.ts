@@ -272,4 +272,6 @@ const Data: IGameData[] = [
     },
 ];
 
-export default Data;
+const DataSort = Data.sort((a, b) => b.gameId - a.gameId);
+
+export { Data, DataSort };
