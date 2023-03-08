@@ -1,6 +1,6 @@
 .game-container {
-    padding-bottom: 3rem;
-    padding-top: 3rem;
+    padding: 3rem 1rem;
+
     border-bottom: 1px solid #cecece;
 
     .game-name {
@@ -32,6 +32,8 @@
 
     .game-intro {
         margin-bottom: 2rem;
+        line-height: 2;
+
         &:hover {
             cursor: pointer;
         }

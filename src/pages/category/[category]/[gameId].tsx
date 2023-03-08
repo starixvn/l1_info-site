@@ -19,8 +19,8 @@ class DetailGame extends PageBase<TPropsBase, IStateBase> {
     }
 
     renderContent() {
-        const { game, gameIdsSimilar } = this.props;
-        return <GameDetails game={game[0]} gameIdsSimilar={gameIdsSimilar} />;
+        const { game, gamesSimilar } = this.props;
+        return <GameDetails game={game[0]} gamesSimilar={gamesSimilar} />;
     }
 }
 
@@ -45,14 +45,14 @@ const getStaticProps = async ({ params, locale = "en" }: IStaticProps<IParamsDat
         };
     }
 
-    const gameIdsSimilar = GAMES_SORT.filter((data) => data.gameCategory === game.gameCategory && data.gameId !== game.gameId).map(
-        (game) => game.gameId
+    const gamesSimilar = GAMES_SORT.filter((data) => data.gameCategory === game.gameCategory && data.gameId !== game.gameId).map(
+        (game) => game
     );
 
     return {
         props: {
             game: [game],
-            gameIdsSimilar,
+            gamesSimilar,
             category: game.gameCategory,
             ...(await serverSideTranslations(locale, ["common", "detail"])),
         },

@@ -1,16 +1,19 @@
 import { TFunction } from "i18next";
+import { useRouter } from "next/router";
 import React from "react";
 import Slider from "react-slick";
+import { GameCategoryName } from "../../common/constants";
 import { IGame } from "../data";
 import GameIcon from "../game-icon";
 import Styles from "./similar-games.module.scss";
 
-export const SimilarGames: React.FC<{ gameIds: number[]; t: TFunction; openDetail: (gameData: IGame) => void }> = ({
-    gameIds,
-    t,
-    openDetail,
-}) => {
-    if (gameIds.length === 0) {
+export const SimilarGames: React.FC<{ games: IGame[]; t: TFunction }> = ({ games, t }) => {
+    const router = useRouter();
+    const openDetail = (game: IGame) => {
+        router.push(`/category/${GameCategoryName[game.gameCategory]}/${game.gameId}`);
+    };
+
+    if (games.length === 0) {
         return <></>;
     }
 
@@ -61,8 +64,8 @@ export const SimilarGames: React.FC<{ gameIds: number[]; t: TFunction; openDetai
             <div className={Styles["title"]}>{t<string>("similar-games")}</div>
             <div className={Styles["icon-container"]}>
                 <Slider {...settings}>
-                    {gameIds.map((id: number) => {
-                        return <GameIcon key={id} gameId={id} isSmallSize={true} openDetail={openDetail} />;
+                    {games.map((game: IGame) => {
+                        return <GameIcon key={game.gameId} gameId={game.gameId} game={game} isSmallSize={true} openDetail={openDetail} />;
                     })}
                 </Slider>
             </div>

@@ -3,7 +3,6 @@ import { EGameCategory, EGameType, ETags, EVolatility } from "./type";
 
 export interface IGame {
     gameId: number;
-    gameName: string;
     isNew: boolean;
     gameType: EGameType;
     gameCategory: EGameCategory;
@@ -16,7 +15,6 @@ export interface IGame {
 const Games: IGame[] = [
     {
         gameId: GAMES.SE_DIE,
-        gameName: "Se Die",
         isNew: false,
         gameType: EGameType.DiceGame,
         gameCategory: EGameCategory.Dices,
@@ -26,7 +24,6 @@ const Games: IGame[] = [
     },
     {
         gameId: GAMES.SE_DIE_WAR,
-        gameName: "Se Die War",
         isNew: false,
         gameType: EGameType.DiceGame,
         gameCategory: EGameCategory.Dices,
@@ -36,17 +33,15 @@ const Games: IGame[] = [
     },
     {
         gameId: GAMES.MINI_SE_DIE,
-        gameName: "Mini Se Die",
         isNew: false,
         gameType: EGameType.DiceGame,
         gameCategory: EGameCategory.Dices,
         rtp: 98,
         tag: ETags.RoundBased,
-        isBanner: false,
+        isBanner: true,
     },
     {
         gameId: GAMES.SIC_BO,
-        gameName: "Sic Bo",
         isNew: false,
         gameType: EGameType.DiceGame,
         gameCategory: EGameCategory.Dices,
@@ -56,7 +51,6 @@ const Games: IGame[] = [
     },
     {
         gameId: GAMES.BIG_SMALL,
-        gameName: "Big Small",
         isNew: false,
         gameType: EGameType.DiceGame,
         gameCategory: EGameCategory.Dices,
@@ -66,7 +60,6 @@ const Games: IGame[] = [
     },
     {
         gameId: GAMES.TURBO_ODD_EVEN,
-        gameName: "Turbo Odd Even",
         isNew: false,
         gameType: EGameType.DiceGame,
         gameCategory: EGameCategory.Dices,
@@ -76,7 +69,6 @@ const Games: IGame[] = [
     },
     {
         gameId: GAMES.UNBALANCEDBIGSMALL1,
-        gameName: "Big Small City",
         isNew: false,
         gameType: EGameType.DiceGame,
         gameCategory: EGameCategory.Dices,
@@ -86,7 +78,6 @@ const Games: IGame[] = [
     },
     {
         gameId: GAMES.WAY_TO_GOAL,
-        gameName: "Way To Goal",
         isNew: false,
         gameType: EGameType.Slot,
         gameCategory: EGameCategory.Slots,
@@ -97,7 +88,6 @@ const Games: IGame[] = [
     },
     {
         gameId: GAMES.FOUR_GUARDIANS,
-        gameName: "Four Guardians",
         isNew: false,
         gameType: EGameType.Slot,
         gameCategory: EGameCategory.Slots,
@@ -108,7 +98,6 @@ const Games: IGame[] = [
     },
     {
         gameId: GAMES.HEROES_SLOT,
-        gameName: "Heroes Slot",
         isNew: false,
         gameType: EGameType.Slot,
         gameCategory: EGameCategory.Slots,
@@ -119,7 +108,6 @@ const Games: IGame[] = [
     },
     {
         gameId: GAMES.NIGHCLUB_LADY,
-        gameName: "Nightclub Lady",
         isNew: false,
         gameType: EGameType.Slot,
         gameCategory: EGameCategory.Slots,
@@ -130,7 +118,6 @@ const Games: IGame[] = [
     },
     {
         gameId: GAMES.TREASURE_ISLAND,
-        gameName: "Treasure Island",
         isNew: false,
         gameType: EGameType.Slot,
         gameCategory: EGameCategory.Slots,
@@ -141,7 +128,6 @@ const Games: IGame[] = [
     },
     {
         gameId: GAMES.KENO_PRO_MAX,
-        gameName: "Keno Pro Max",
         isNew: false,
         gameType: EGameType.Lottery,
         gameCategory: EGameCategory.Others,
@@ -151,7 +137,6 @@ const Games: IGame[] = [
     },
     {
         gameId: GAMES.MEGA_KENO,
-        gameName: "Mega Keno",
         isNew: false,
         gameType: EGameType.Lottery,
         gameCategory: EGameCategory.Others,
@@ -161,7 +146,6 @@ const Games: IGame[] = [
     },
     {
         gameId: GAMES.BLOCKCHAIN_BACCARAT,
-        gameName: "Blockchain Baccarat",
         isNew: false,
         gameType: EGameType.CardGame,
         gameCategory: EGameCategory.Casino,
@@ -171,7 +155,6 @@ const Games: IGame[] = [
     },
     {
         gameId: GAMES.BACCARAT,
-        gameName: "Baccarat",
         isNew: false,
         gameType: EGameType.CardGame,
         gameCategory: EGameCategory.Casino,
@@ -181,7 +164,6 @@ const Games: IGame[] = [
     },
     {
         gameId: GAMES.FISH_PRAWN_CRAB,
-        gameName: "Fish Prawn Crab",
         isNew: false,
         gameType: EGameType.DiceGame,
         gameCategory: EGameCategory.Dices,
@@ -191,7 +173,6 @@ const Games: IGame[] = [
     },
     {
         gameId: GAMES.VIP_FISH_PRAWN_CRAB,
-        gameName: "Vip FishPrawn Crab",
         isNew: false,
         gameType: EGameType.DiceGame,
         gameCategory: EGameCategory.Dices,
@@ -201,7 +182,6 @@ const Games: IGame[] = [
     },
     {
         gameId: GAMES.DRAGON_TIGER,
-        gameName: "Dragon Tiger",
         isNew: false,
         gameType: EGameType.CardGame,
         gameCategory: EGameCategory.Casino,
@@ -211,7 +191,6 @@ const Games: IGame[] = [
     },
     {
         gameId: GAMES.ROULETTE,
-        gameName: "Roulette",
         isNew: false,
         gameType: EGameType.Roulette,
         gameCategory: EGameCategory.Casino,
@@ -221,7 +200,6 @@ const Games: IGame[] = [
     },
     {
         gameId: GAMES.LOTTERY,
-        gameName: "RNG Lottery",
         isNew: false,
         gameType: EGameType.Lottery,
         gameCategory: EGameCategory.Others,
@@ -231,7 +209,6 @@ const Games: IGame[] = [
     },
     {
         gameId: GAMES.BLACK_JACK,
-        gameName: "Blackjack",
         isNew: false,
         gameType: EGameType.CardGame,
         gameCategory: EGameCategory.Casino,
@@ -241,7 +218,6 @@ const Games: IGame[] = [
     },
     {
         gameId: GAMES.THREE_CARDS,
-        gameName: "Three Cards",
         isNew: false,
         gameType: EGameType.CardGame,
         gameCategory: EGameCategory.Casino,
@@ -251,7 +227,6 @@ const Games: IGame[] = [
     },
     {
         gameId: GAMES.BITCOIN_MASTER,
-        gameName: "BitCoin Master",
         isNew: false,
         gameType: EGameType.BitcoinMaster,
         gameCategory: EGameCategory.Others,
@@ -261,7 +236,6 @@ const Games: IGame[] = [
     },
     {
         gameId: GAMES.CASINO_HOLDEM_POKER,
-        gameName: "Casino",
         isNew: false,
         gameType: EGameType.CardGame,
         gameCategory: EGameCategory.Casino,
@@ -271,7 +245,6 @@ const Games: IGame[] = [
     },
     {
         gameId: GAMES.TEXAS_HOLDEM_POKER,
-        gameName: "Texas",
         isNew: false,
         gameType: EGameType.CardGame,
         gameCategory: EGameCategory.Casino,
@@ -281,7 +254,6 @@ const Games: IGame[] = [
     },
     {
         gameId: GAMES.HILO,
-        gameName: "HiLo",
         isNew: false,
         gameType: EGameType.CardGame,
         gameCategory: EGameCategory.Casino,
@@ -291,7 +263,6 @@ const Games: IGame[] = [
     },
     {
         gameId: GAMES.FRUIT_SLOT,
-        gameName: "Fruit Slot",
         isNew: false,
         gameType: EGameType.Slot,
         gameCategory: EGameCategory.Slots,

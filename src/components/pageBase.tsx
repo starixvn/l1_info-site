@@ -21,7 +21,7 @@ export interface IStateBase {
 export type TPropsBase = {
     category: number;
     game: IGame[];
-    gameIdsSimilar?: number[];
+    gamesSimilar?: IGame[];
 } & WithTranslation &
     WithRouterProps;
 

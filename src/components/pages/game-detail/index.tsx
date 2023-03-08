@@ -1,7 +1,6 @@
 import React from "react";
 import { useTranslation } from "next-i18next";
-
-import { GameCategoryName, GameTypeName, TagsName } from "../../../common/constants";
+import { GameTypeName, TagsName } from "../../../common/constants";
 import { IGame } from "../../data";
 import GameIcon from "../../game-icon";
 import { LanguageIcons } from "../../icon";
@@ -11,7 +10,7 @@ import { useRouter } from "next/router";
 
 type TGameDetails = {
     game: IGame;
-    gameIdsSimilar: number[] | undefined;
+    gamesSimilar: IGame[] | undefined;
 };
 
 const detailIconClass = "detail-item-icon";
@@ -29,14 +28,11 @@ const DetailIcon: React.FC<{ icon: string; text: string; subpath?: string; forma
     );
 };
 
-const GameDetails: React.FC<TGameDetails> = ({ game, gameIdsSimilar }) => {
+const GameDetails: React.FC<TGameDetails> = ({ game, gamesSimilar }) => {
     const router = useRouter();
     const { t } = useTranslation(["common", "detail"]);
-    const openDetail = (game: IGame) => {
-        router.push(`/category/${GameCategoryName[game.gameCategory]}/${game.gameId}`);
-    };
     const currentLang = router.locale !== "vi" ? `_${router.locale}` : "";
-    console.log(currentLang);
+
     return (
         <>
             <section className="container list-container">
@@ -108,7 +104,7 @@ const GameDetails: React.FC<TGameDetails> = ({ game, gameIdsSimilar }) => {
                         </div>
                     )}
                 </div>
-                <SimilarGames gameIds={gameIdsSimilar ?? []} t={t} openDetail={openDetail} />
+                <SimilarGames games={gamesSimilar ?? []} t={t} />
             </section>
         </>
     );
