@@ -21,10 +21,10 @@ const DownloadSection = () => {
             image: `${imagesPath}button-dl-ios.png`,
             url: "https://hackernoon.com/how-to-build-a-qr-code-generator-in-react"
         },
-        {
-            image: `${imagesPath}button-dl-android.png`,
-            url: "https://css-tricks.com/snippets/css/media-queries-for-standard-devices/"
-        },
+        // {
+        //     image: `${imagesPath}button-dl-android.png`,
+        //     url: "https://css-tricks.com/snippets/css/media-queries-for-standard-devices/"
+        // },
 
     ];
 
@@ -39,8 +39,9 @@ const DownloadSection = () => {
                         <div><img src={item.image} alt="" /></div>
                         <div><QRCodeCanvas
                             value={item.url}
-                            size={isMobileOnly ? 80 : 90}
+                            size={90}
                             level={"L"}
+                            includeMargin={true}
                         /></div>
                     </div>);
                 })
@@ -79,7 +80,7 @@ const AppLandingPageComponent: React.FunctionComponent<{ locale: string }> = ({ 
                     {resources.appDownload}
                 </div>
             </div>
-            <div className="row">
+            <div className={`row ${Styles["margin-top-40"]}`}>
                 <div className="col-md-1"> </div>
                 <div className={`col-md-5 col-xs-12  ${Styles["description"]}`}>
                     <ul>
@@ -93,7 +94,7 @@ const AppLandingPageComponent: React.FunctionComponent<{ locale: string }> = ({ 
                         }
                     </ul>
                 </div>
-                <div className={`col-md-6 order-first order-md-2 ${Styles["app-download"]}  ${isMobile ? "text-center" : ""}`}>
+                <div className={`col-md-6 order-first order-md-2 ${Styles["app-download"]}`}>
                     <DownloadSection />
                 </div>
             </div>
