@@ -3,6 +3,9 @@ const configs = require("./configs.json");
 const { i18n } = require("./next-i18next.config");
 const { v4: uuidv4 } = require("uuid");
 
+/**
+ * @type {import('next').NextConfig}
+ */
 const nextConfig = {
     reactStrictMode: true,
     publicRuntimeConfig: configs,
@@ -10,10 +13,15 @@ const nextConfig = {
     generateBuildId: async () => {
         return uuidv4();
     },
-    excludeFile: (str) => /node_modules/.test(str) || /\*.{spec,test}.js/.test(str),
     i18n,
     experimental: {
         forceSwcTransforms: true,
+        swcMinify: true,
+        optimizeCss: true,
+        gzipSize: true,
+    },
+    eslint: {
+        ignoreDuringBuilds: true,
     },
     basePath,
     env: {
