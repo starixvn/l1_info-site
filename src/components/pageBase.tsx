@@ -2,7 +2,7 @@ import React from "react";
 import { WithTranslation } from "next-i18next";
 import { WithRouterProps } from "next/dist/client/with-router";
 
-import { IGameData } from "./data";
+import { IGame } from "./data";
 import Footer from "./footer";
 import GameBanner from "./game-banner";
 import Header from "./header";
@@ -20,7 +20,7 @@ export interface IStateBase {
 
 export type TPropsBase = {
     category: number;
-    gameData: IGameData[];
+    game: IGame[];
     gameIdsSimilar?: number[];
 } & WithTranslation &
     WithRouterProps;

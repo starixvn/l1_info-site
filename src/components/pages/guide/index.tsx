@@ -13,7 +13,7 @@ import Loader from "../../loader";
 import Header from "../../header";
 import Footer from "../../footer";
 import { Container } from "../../pageBase";
-import { DataSort } from "../../data";
+import { GAMES_SORT } from "../../data";
 
 type Props = {
     gameId: number;
@@ -73,7 +73,7 @@ const GuideComponent: React.FC<Props> = ({ gameId, userStakeLevel, gameConfigs }
     }, [wrapperRef]);
 
     useEffect(() => {
-        const formatData: TOption[] = DataSort.map((data) => ({
+        const formatData: TOption[] = GAMES_SORT.map((data) => ({
             value: data.gameId.toString(),
             label: t<string>(`${data.gameName.replace(/\s/g, "").toLowerCase()}.displayedName`),
         }));

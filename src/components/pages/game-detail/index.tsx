@@ -2,14 +2,14 @@ import React from "react";
 import { useTranslation } from "next-i18next";
 
 import { GameTypeName } from "../../../common/constants";
-import { IGameData } from "../../data";
+import { IGame } from "../../data";
 import GameIcon from "../../game-icon";
 import { LanguageIcons } from "../../icon";
 import SimilarGames from "../../similar-games";
 import Styles from "./game-detail.module.scss";
 
 type TGameDetails = {
-    gameData: IGameData;
+    game: IGame;
     gameIdsSimilar: number[] | undefined;
 };
 
@@ -28,16 +28,16 @@ const DetailIcon: React.FC<{ icon: string; text: string; subpath?: string; forma
     );
 };
 
-const GameDetails: React.FC<TGameDetails> = ({ gameData, gameIdsSimilar }) => {
+const GameDetails: React.FC<TGameDetails> = ({ game, gameIdsSimilar }) => {
     const { t } = useTranslation(["common", "detail"]);
-    const gameName = gameData.gameName.replace(/\s/g, "").toLowerCase();
+    const gameName = game.gameName.replace(/\s/g, "").toLowerCase();
     return (
         <>
             <section className="container list-container">
                 <div className={Styles["game-detail-top"]}>
                     <div className={Styles["game-name"]}> {t<string>(`detail:${gameName}.displayedName`)}</div>
                     <div className={Styles["game-i, con-container"]}>
-                        <GameIcon gameId={gameData.gameId} isSmallSize={false} isNew={gameData.isNew} />
+                        <GameIcon gameId={game.gameId} isSmallSize={false} isNew={game.isNew} />
                     </div>
 
                     <button type="button" className="btn btn-primary">
@@ -53,19 +53,19 @@ const GameDetails: React.FC<TGameDetails> = ({ gameData, gameIdsSimilar }) => {
                             <div className={Styles["detail-item-text"]}>
                                 <span>
                                     {t<string>("common:game-type")}:{" "}
-                                    <span className="color-primary">{t<string>(`common:gameType-${GameTypeName[gameData.gameType]}`)}</span>
+                                    <span className="color-primary">{t<string>(`common:gameType-${GameTypeName[game.gameType]}`)}</span>
                                 </span>
                             </div>
                             <div className={Styles["detail-item"]}>
                                 <span>
-                                    {t<string>("common:rtp")}: <span className="color-primary">{gameData.rtp}%</span>
+                                    {t<string>("common:rtp")}: <span className="color-primary">{game.rtp}%</span>
                                 </span>
                             </div>
                         </div>
                         <div className={Styles["detail-item"]}>
                             <span>
                                 {t<string>("common:tag")}:{" "}
-                                <span className="color-primary">{t<string>(`common:tag-${GameTypeName[gameData.tag]}`)}</span>
+                                <span className="color-primary">{t<string>(`common:tag-${GameTypeName[game.tag]}`)}</span>
                             </span>
                         </div>
 
@@ -92,7 +92,7 @@ const GameDetails: React.FC<TGameDetails> = ({ gameData, gameIdsSimilar }) => {
                     <div className={Styles["play-for-fun"]}>
                         <img
                             className={Styles["banner-game"]}
-                            src={`/static/images/game-banner/banner_${gameData.gameId}.png?v=1`}
+                            src={`/static/images/game-banner/banner_${game.gameId}.png?v=1`}
                             alt="game-icon"
                         ></img>
                         <button type="button" className="btn btn-primary">

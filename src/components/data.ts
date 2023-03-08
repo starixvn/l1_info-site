@@ -1,7 +1,7 @@
-import { GAMES } from "../common/constants";
+import { GAMES, GameCategoryName } from "../common/constants";
 import { EGameCategory, EGameType, ETags, EVolatility } from "./type";
 
-export interface IGameData {
+export interface IGame {
     gameId: number;
     gameName: string;
     isNew: boolean;
@@ -10,9 +10,10 @@ export interface IGameData {
     rtp: number;
     tag: ETags;
     volatility?: EVolatility;
+    isBanner: boolean;
 }
 
-const Data: IGameData[] = [
+const Games: IGame[] = [
     {
         gameId: GAMES.SE_DIE,
         gameName: "Se Die",
@@ -21,6 +22,7 @@ const Data: IGameData[] = [
         gameCategory: EGameCategory.Dices,
         rtp: 98,
         tag: ETags.RoundBased,
+        isBanner: true,
     },
     {
         gameId: GAMES.SE_DIE_WAR,
@@ -30,6 +32,7 @@ const Data: IGameData[] = [
         gameCategory: EGameCategory.Dices,
         rtp: 97,
         tag: ETags.RoundBased,
+        isBanner: true,
     },
     {
         gameId: GAMES.MINI_SE_DIE,
@@ -39,6 +42,7 @@ const Data: IGameData[] = [
         gameCategory: EGameCategory.Dices,
         rtp: 98,
         tag: ETags.RoundBased,
+        isBanner: true,
     },
     {
         gameId: GAMES.SIC_BO,
@@ -48,6 +52,7 @@ const Data: IGameData[] = [
         gameCategory: EGameCategory.Dices,
         rtp: 97,
         tag: ETags.RoundBased,
+        isBanner: true,
     },
     {
         gameId: GAMES.BIG_SMALL,
@@ -57,6 +62,7 @@ const Data: IGameData[] = [
         gameCategory: EGameCategory.Dices,
         rtp: 98,
         tag: ETags.RoundBased,
+        isBanner: true,
     },
     {
         gameId: GAMES.TURBO_ODD_EVEN,
@@ -66,6 +72,7 @@ const Data: IGameData[] = [
         gameCategory: EGameCategory.Dices,
         rtp: 98,
         tag: ETags.RoundBased,
+        isBanner: true,
     },
     {
         gameId: GAMES.UNBALANCEDBIGSMALL1,
@@ -75,6 +82,7 @@ const Data: IGameData[] = [
         gameCategory: EGameCategory.Dices,
         rtp: 98,
         tag: ETags.RoundBased,
+        isBanner: true,
     },
     {
         gameId: GAMES.WAY_TO_GOAL,
@@ -85,6 +93,7 @@ const Data: IGameData[] = [
         rtp: 97,
         tag: ETags.Classic25PayLines,
         volatility: EVolatility.Medium,
+        isBanner: true,
     },
     {
         gameId: GAMES.FOUR_GUARDIANS,
@@ -95,6 +104,7 @@ const Data: IGameData[] = [
         rtp: 97,
         tag: ETags.Classic25PayLines,
         volatility: EVolatility.Medium,
+        isBanner: true,
     },
     {
         gameId: GAMES.HEROES_SLOT,
@@ -105,6 +115,7 @@ const Data: IGameData[] = [
         rtp: 97,
         tag: ETags.Classic25PayLines,
         volatility: EVolatility.Medium,
+        isBanner: true,
     },
     {
         gameId: GAMES.NIGHCLUB_LADY,
@@ -115,6 +126,7 @@ const Data: IGameData[] = [
         rtp: 97,
         tag: ETags.Classic25PayLines,
         volatility: EVolatility.Medium,
+        isBanner: true,
     },
     {
         gameId: GAMES.TREASURE_ISLAND,
@@ -125,6 +137,7 @@ const Data: IGameData[] = [
         rtp: 97,
         tag: ETags.Cascading5x6,
         volatility: EVolatility.MediumHigh,
+        isBanner: true,
     },
     {
         gameId: GAMES.KENO_PRO_MAX,
@@ -134,6 +147,7 @@ const Data: IGameData[] = [
         gameCategory: EGameCategory.Others,
         rtp: 96,
         tag: ETags.RoundBased,
+        isBanner: true,
     },
     {
         gameId: GAMES.MEGA_KENO,
@@ -143,6 +157,7 @@ const Data: IGameData[] = [
         gameCategory: EGameCategory.Others,
         rtp: 96,
         tag: ETags.RoundBased,
+        isBanner: true,
     },
     {
         gameId: GAMES.BLOCKCHAIN_BACCARAT,
@@ -152,6 +167,7 @@ const Data: IGameData[] = [
         gameCategory: EGameCategory.Casino,
         rtp: 98,
         tag: ETags.RoundBased,
+        isBanner: true,
     },
     {
         gameId: GAMES.BACCARAT,
@@ -161,6 +177,7 @@ const Data: IGameData[] = [
         gameCategory: EGameCategory.Casino,
         rtp: 98,
         tag: ETags.RoundBased,
+        isBanner: true,
     },
     {
         gameId: GAMES.FISH_PRAWN_CRAB,
@@ -170,6 +187,7 @@ const Data: IGameData[] = [
         gameCategory: EGameCategory.Dices,
         rtp: 96,
         tag: ETags.RoundBased,
+        isBanner: true,
     },
     {
         gameId: GAMES.VIP_FISH_PRAWN_CRAB,
@@ -179,6 +197,7 @@ const Data: IGameData[] = [
         gameCategory: EGameCategory.Dices,
         rtp: 96,
         tag: ETags.RoundBased,
+        isBanner: true,
     },
     {
         gameId: GAMES.DRAGON_TIGER,
@@ -188,6 +207,7 @@ const Data: IGameData[] = [
         gameCategory: EGameCategory.Casino,
         rtp: 96,
         tag: ETags.RoundBased,
+        isBanner: true,
     },
     {
         gameId: GAMES.ROULETTE,
@@ -197,6 +217,7 @@ const Data: IGameData[] = [
         gameCategory: EGameCategory.Casino,
         rtp: 97,
         tag: ETags.RoundBased,
+        isBanner: true,
     },
     {
         gameId: GAMES.LOTTERY,
@@ -206,6 +227,7 @@ const Data: IGameData[] = [
         gameCategory: EGameCategory.Others,
         rtp: 98,
         tag: ETags.RoundBased,
+        isBanner: true,
     },
     {
         gameId: GAMES.BLACK_JACK,
@@ -215,6 +237,7 @@ const Data: IGameData[] = [
         gameCategory: EGameCategory.Casino,
         rtp: 98,
         tag: ETags.TurnBased,
+        isBanner: true,
     },
     {
         gameId: GAMES.THREE_CARDS,
@@ -224,6 +247,7 @@ const Data: IGameData[] = [
         gameCategory: EGameCategory.Casino,
         rtp: 98,
         tag: ETags.RoundBased,
+        isBanner: true,
     },
     {
         gameId: GAMES.BITCOIN_MASTER,
@@ -233,6 +257,7 @@ const Data: IGameData[] = [
         gameCategory: EGameCategory.Others,
         rtp: 96,
         tag: ETags.RoundBased,
+        isBanner: true,
     },
     {
         gameId: GAMES.CASINO_HOLDEM_POKER,
@@ -242,6 +267,7 @@ const Data: IGameData[] = [
         gameCategory: EGameCategory.Casino,
         rtp: 98,
         tag: ETags.TurnBased,
+        isBanner: true,
     },
     {
         gameId: GAMES.TEXAS_HOLDEM_POKER,
@@ -251,6 +277,7 @@ const Data: IGameData[] = [
         gameCategory: EGameCategory.Casino,
         rtp: 98,
         tag: ETags.TurnBased,
+        isBanner: true,
     },
     {
         gameId: GAMES.HILO,
@@ -260,6 +287,7 @@ const Data: IGameData[] = [
         gameCategory: EGameCategory.Casino,
         rtp: 94,
         tag: ETags.RoundBased,
+        isBanner: true,
     },
     {
         gameId: GAMES.FRUIT_SLOT,
@@ -269,9 +297,15 @@ const Data: IGameData[] = [
         gameCategory: EGameCategory.Slots,
         rtp: 97,
         tag: ETags.RoundBased,
+        isBanner: true,
     },
 ];
 
-const DataSort = Data.sort((a, b) => b.gameId - a.gameId);
+const GAMES_SORT = Games.sort((a, b) => b.gameId - a.gameId);
 
-export { Data, DataSort };
+const GAMES_CATEGORY = GAMES_SORT.map(({ gameCategory, gameId }) => {
+    const categoryName = GameCategoryName[gameCategory].toString();
+    return { [categoryName]: gameId };
+});
+
+export { Games, GAMES_SORT, GAMES_CATEGORY };

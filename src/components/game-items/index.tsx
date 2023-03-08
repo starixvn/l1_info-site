@@ -3,8 +3,8 @@ import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 import Axios from "axios";
 
-import { GameCategoryName, GameTypeName, TagsName, GAME_ID_MAPPING_ROUTER } from "../../common/constants";
-import { IGameData } from "../data";
+import { GameCategoryName, GameTypeName, TagsName } from "../../common/constants";
+import { IGame } from "../data";
 import { LanguageIcons } from "../icon";
 import GameIcon from "../game-icon";
 import Styles from "./game-item.module.scss";
@@ -20,11 +20,11 @@ export function randomString(length: number) {
 }
 
 type TGameItems = {
-    gameData: IGameData[];
+    game: IGame[];
     updateGameData?: () => void;
 };
 
-export const GameItems: React.FC<TGameItems> = ({ gameData }) => {
+export const GameItems: React.FC<TGameItems> = ({ game }) => {
     const router = useRouter();
     const [domain, setDomain] = useState("https://l1-glbs2.lumigame.com");
     const [token, settoken] = useState("");
@@ -87,37 +87,31 @@ export const GameItems: React.FC<TGameItems> = ({ gameData }) => {
         event && event.preventDefault();
     };
 
-    const openDetail = (game: IGameData) => {
-        router.push(`/category/${GameCategoryName[game.gameCategory]}/${GAME_ID_MAPPING_ROUTER[game.gameId]}`);
+    const openDetail = (game: IGame) => {
+        router.push(`/category/${GameCategoryName[game.gameCategory]}/${game.gameId}`);
     };
 
     return (
         <section className="container">
-            {gameData.map((gameData: IGameData) => {
-                const gameName = gameData.gameName.replace(/\s/g, "").toLowerCase();
+            {game.map((game: IGame) => {
+                const gameName = game.gameName.replace(/\s/g, "").toLowerCase();
                 return (
-                    <div className={Styles["game-container"]} key={gameData.gameId}>
-                        <div className={Styles["game-name"]} onClick={() => openDetail(gameData)}>
+                    <div className={Styles["game-container"]} key={game.gameId}>
+                        <div className={Styles["game-name"]} onClick={() => openDetail(game)}>
                             {t<string>(`detail:${gameName}.displayedName`)}
                         </div>
                         <div className={Styles["game-play"]}>
-                            <GameIcon
-                                gameId={gameData.gameId}
-                                gameData={gameData}
-                                isSmallSize={false}
-                                isNew={gameData.isNew}
-                                openDetail={openDetail}
-                            />
-                            <button type="button" className="btn btn-primary" onClick={(event) => playForFunAction(event, gameData.gameId)}>
+                            <GameIcon gameId={game.gameId} game={game} isSmallSize={false} isNew={game.isNew} openDetail={openDetail} />
+                            <button type="button" className="btn btn-primary" onClick={(event) => playForFunAction(event, game.gameId)}>
                                 {t<string>("common:playForFun")}
                             </button>
                         </div>
                         <div className={Styles["game-detail"]}>
-                            <div className={Styles["game-intro"]} onClick={() => openDetail(gameData)}>
+                            <div className={Styles["game-intro"]} onClick={() => openDetail(game)}>
                                 {t<string>(`detail:${gameName}.detail`)}
                             </div>
                             <a
-                                href={`/${i18n.language}/guide?gameId=${gameData.gameId}`}
+                                href={`/${i18n.language}/guide?gameId=${game.gameId}`}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className={`${Styles["detail-item"]} ${Styles["guide"]}`}
@@ -130,19 +124,19 @@ export const GameItems: React.FC<TGameItems> = ({ gameData }) => {
                                     <span className={`${Styles["detail-icon"]} icon-type`}></span>
                                     <span>
                                         {t<string>("common:game-type")}:{" "}
-                                        <strong>{t<string>(`common:gameType-${GameTypeName[gameData.gameType]}`)}</strong>
+                                        <strong>{t<string>(`common:gameType-${GameTypeName[game.gameType]}`)}</strong>
                                     </span>
                                 </div>
                                 <div className={Styles["detail-item"]}>
                                     <span className={`${Styles["detail-icon"]} icon-rtp`}></span>
                                     <span>
-                                        {t<string>("common:rtp")}: <strong>{gameData.rtp}%</strong>
+                                        {t<string>("common:rtp")}: <strong>{game.rtp}%</strong>
                                     </span>
                                 </div>
                                 <div className={Styles["detail-item"]}>
                                     <span className={`${Styles["detail-icon"]} icon-tag`}></span>
                                     <span>
-                                        {t<string>("common:tag")}: <strong>{t<string>(`common:tag-${TagsName[gameData.tag]}`)}</strong>
+                                        {t<string>("common:tag")}: <strong>{t<string>(`common:tag-${TagsName[game.tag]}`)}</strong>
                                     </span>
                                 </div>
                             </div>

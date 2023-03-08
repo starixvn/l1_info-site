@@ -2,15 +2,15 @@ import React from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { GetStaticPaths } from "next";
 
-import { GAMES_CATEGORY, GAME_ID_MAPPING_ROUTER, locales } from "../../../common/constants";
-import { DataSort } from "../../../components/data";
+import { locales } from "../../../common/constants";
+import { GAMES_CATEGORY, GAMES_SORT } from "../../../components/data";
 import PageBase, { IStateBase, TPropsBase } from "../../../components/pageBase";
 import GameDetails from "../../../components/pages/game-detail";
 import { IStaticProps } from "../../../components/type";
 
 interface IParamsData {
     category: string;
-    gameName: string;
+    gameId: string;
 }
 
 class DetailGame extends PageBase<TPropsBase, IStateBase> {
@@ -19,16 +19,16 @@ class DetailGame extends PageBase<TPropsBase, IStateBase> {
     }
 
     renderContent() {
-        const { gameData, gameIdsSimilar } = this.props;
-        return <GameDetails gameData={gameData[0]} gameIdsSimilar={gameIdsSimilar} />;
+        const { game, gameIdsSimilar } = this.props;
+        return <GameDetails game={game[0]} gameIdsSimilar={gameIdsSimilar} />;
     }
 }
 
 const getStaticPaths: GetStaticPaths = async () => {
     const games = GAMES_CATEGORY.map((game) => Object.entries(game)[0]);
     const paths = Object.values(locales).flatMap((locale) =>
-        games.map(([category, gameName]) => ({
-            params: { category, gameName },
+        games.map(([category, gameId]) => ({
+            params: { category, gameId: gameId.toString() },
             locale,
         }))
     );
@@ -37,25 +37,23 @@ const getStaticPaths: GetStaticPaths = async () => {
 };
 
 const getStaticProps = async ({ params, locale = "en" }: IStaticProps<IParamsData>) => {
-    const { gameName: game } = params;
-
-    const gameData = DataSort.find((data) => GAME_ID_MAPPING_ROUTER[data.gameId] === game);
-
-    if (!gameData) {
+    const { gameId } = params;
+    const game = GAMES_SORT.find((data) => data.gameId === +gameId);
+    if (!game) {
         return {
             notFound: true,
         };
     }
 
-    const gameIdsSimilar = DataSort.filter((data) => data.gameCategory === gameData.gameCategory && data.gameId !== gameData.gameId).map(
+    const gameIdsSimilar = GAMES_SORT.filter((data) => data.gameCategory === game.gameCategory && data.gameId !== game.gameId).map(
         (game) => game.gameId
     );
 
     return {
         props: {
-            gameData: [gameData],
+            game: [game],
             gameIdsSimilar,
-            category: gameData.gameCategory,
+            category: game.gameCategory,
             ...(await serverSideTranslations(locale, ["common", "detail"])),
         },
     };
