@@ -6,18 +6,5 @@
     },
     "system": "L1",
     "enableSourceMap": false,
-    "guideUrl": "https://l1guidessit.sgamesuat.com",
-    "googleAnalyticId": "G-PE5XDH9EVL",
-    "simulatorUrl": "http://l1_game_lobby_simulator_sit:5000",
-    "owApiUrl": "http://l1_ow_api_simulator_sit:5000/SabaClub",
-    "operatorPFF": {
-        "id": "PFF",
-        "secret": "PFF123"
-    },
-    "googleForm": {
-        "id": "1FAIpQLSfbuP1rEABaUGoUdfR_kdpF-wNjv2NoPpQ1wbDeBt1qxpSR4A",
-        "fieldBrandId": "1381540194",
-        "fieldRemarksId": "1429060638",
-        "fieldEmailId": "1967901460"
-    }
+    "isInforSite": true
 }

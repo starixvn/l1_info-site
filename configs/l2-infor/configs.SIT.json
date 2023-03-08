@@ -8,6 +8,7 @@
     "enableSourceMap": false,
     "guideUrl": "https://l2guidessit.sgamesuat.com",
     "googleAnalyticId": "G-PE5XDH9EVL",
+    "isInforSite": true,
     "simulatorUrl": "http://l1_game_lobby_simulator_LOCAL_2:5000",
     "owApiUrl": "http://l1_ow_api_simulator_LOCAL_2:5000/SabaClub",
     "operatorPFF": {

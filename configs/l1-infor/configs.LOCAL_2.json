@@ -7,6 +7,7 @@
     "system": "L1",
     "enableSourceMap": true,
     "guideUrl": "https://l1-guide-2.lumigame.com",
+    "isInforSite": true,
     "simulatorUrl": "http://l1_game_lobby_simulator_LOCAL_2:5000",
     "owApiUrl": "http://l1_ow_api_simulator_LOCAL_2:5000/SabaClub",
     "operatorPFF": {

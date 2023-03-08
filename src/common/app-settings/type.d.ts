@@ -33,6 +33,7 @@ export default interface AppSettings {
     sentry: SentryOptions;
     gameSettings: { [id: string]: GameSettingProps };
     system: string;
+    isInforSite: boolean;
     guideUrl: string;
     googleAnalyticId: string;
     simulatorUrl: string;
