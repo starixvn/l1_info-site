@@ -1,47 +1,34 @@
-import React, { useState } from "react";
+import React from "react";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 import Axios from "axios";
+import * as _ from "lodash";
 
 import { GameCategoryName, GameTypeName, TagsName } from "../../common/constants";
 import { IGame } from "../data";
 import { LanguageIcons } from "../icon";
 import GameIcon from "../game-icon";
 import Styles from "./game-item.module.scss";
-
-export function randomString(length: number) {
-    let result = "";
-    const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    const charactersLength = characters.length;
-    for (var i = 0; i < length; i++) {
-        result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    }
-    return result;
-}
+import { randomString } from "../../helpers/function-helper";
 
 type TGameItems = {
     game: IGame[];
     updateGameData?: () => void;
 };
 
+const classDetailIcon = "detail-icon";
+const classDetailItem = "detail-item";
 export const GameItems: React.FC<TGameItems> = ({ game }) => {
     const router = useRouter();
-    const [domain, setDomain] = useState("https://l1-glbs2.lumigame.com");
-    const [token, settoken] = useState("");
+    const domain = "https://l1-glbs2.lumigame.com";
     const { t, i18n } = useTranslation(["common", "detail"]);
 
     const playForFunAction = (event: any, gameId: number) => {
         event && event.preventDefault();
-
-        // const { username, setting, ip } = this.state;
-        // if (!username) {
-        //     alert("Username are required")
-        //     return;
-        // }
-
-        let request = {
-            playerId: (Math.random() * 10000000) >> 0,
-            playerName: randomString(8),
+        const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        const request = {
+            playerId: _.random(0, 10000000),
+            playerName: randomString(characters, 8),
             language: "vi-VN",
             currency: "$US",
             seq: "d,y,lumi",
@@ -78,9 +65,7 @@ export const GameItems: React.FC<TGameItems> = ({ game }) => {
             .then((data) => data.data)
             .then((data) => (data.error ? Promise.reject(data.error) : data))
             .then((data) => {
-                window.open(data.redirectUrl + "&gameId=${gameId}`");
-                // settoken(token);
-                // window.open(`${domain}?token=${data.token}&lang=vi-VN&gameId=${gameId}`);
+                window.open(`${data.redirectUrl}&gameId=${gameId}`);
             })
             .catch();
 
@@ -113,34 +98,34 @@ export const GameItems: React.FC<TGameItems> = ({ game }) => {
                                 href={`/${i18n.language}/guide?gameId=${game.gameId}`}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className={`${Styles["detail-item"]} ${Styles["guide"]}`}
+                                className={`${Styles[classDetailItem]} ${Styles["guide"]}`}
                             >
-                                <span className={`${Styles["detail-icon"]} icon-info`}></span>
+                                <span className={`${Styles[classDetailIcon]} icon-info`}></span>
                                 <span>{t<string>("common:game-rules")}</span>
                             </a>
                             <div className={Styles["detail-group"]}>
-                                <div className={Styles["detail-item"]}>
-                                    <span className={`${Styles["detail-icon"]} icon-type`}></span>
+                                <div className={Styles[classDetailItem]}>
+                                    <span className={`${Styles[classDetailIcon]} icon-type`}></span>
                                     <span>
                                         {t<string>("common:game-type")}:{" "}
                                         <strong>{t<string>(`common:gameType-${GameTypeName[game.gameType]}`)}</strong>
                                     </span>
                                 </div>
-                                <div className={Styles["detail-item"]}>
-                                    <span className={`${Styles["detail-icon"]} icon-rtp`}></span>
+                                <div className={Styles[classDetailItem]}>
+                                    <span className={`${Styles[classDetailIcon]} icon-rtp`}></span>
                                     <span>
                                         {t<string>("common:rtp")}: <strong>{game.rtp}%</strong>
                                     </span>
                                 </div>
-                                <div className={Styles["detail-item"]}>
-                                    <span className={`${Styles["detail-icon"]} icon-tag`}></span>
+                                <div className={Styles[classDetailItem]}>
+                                    <span className={`${Styles[classDetailIcon]} icon-tag`}></span>
                                     <span>
                                         {t<string>("common:tag")}: <strong>{t<string>(`common:tag-${TagsName[game.tag]}`)}</strong>
                                     </span>
                                 </div>
                             </div>
-                            <div className={Styles["detail-item"]}>
-                                <span className={`${Styles["detail-icon"]} icon-language`}></span>
+                            <div className={Styles[classDetailItem]}>
+                                <span className={`${Styles[classDetailIcon]} icon-language`}></span>
                                 <span>{t<string>("common:language")}: </span>
                                 <LanguageIcons />
                             </div>

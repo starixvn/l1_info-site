@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useTheme } from "next-themes";
 import { useRouter } from "next/router";
 import { TObjectKeyValue } from "../components/type";
 
@@ -12,7 +11,6 @@ const Error = () => {
     const [isLoading, setIsLoading] = useState(true);
     const router = useRouter();
     const locale = router.locale ? router.locale : "en";
-    const { theme } = useTheme();
 
     useEffect(() => {
         setIsLoading(false);
@@ -25,7 +23,7 @@ const Error = () => {
     return (
         <div>
             <div className="error-page">
-                <img className="error-background small" src={`/static/images/error-${theme}.svg`} alt="error" />
+                <img className="error-background small" src={`/static/images/error-light.svg`} alt="error" />
                 <p className="info">{errorMsg[locale]}</p>
             </div>
         </div>

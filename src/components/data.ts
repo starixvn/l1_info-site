@@ -272,11 +272,11 @@ const Games: IGame[] = [
     },
 ];
 
-const GAMES_SORT = Games.sort((a, b) => b.gameId - a.gameId);
+const GAMES_SORT = [...Games].sort((a, b) => b.gameId - a.gameId);
 
 const GAMES_CATEGORY = GAMES_SORT.map(({ gameCategory, gameId }) => {
     const categoryName = GameCategoryName[gameCategory].toString();
     return { [categoryName]: gameId };
 });
 
-export { Games, GAMES_SORT, GAMES_CATEGORY };
+export { GAMES_SORT, GAMES_CATEGORY };

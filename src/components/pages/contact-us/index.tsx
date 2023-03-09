@@ -3,6 +3,8 @@ import PageBase, { IStateBase, TPropsBase } from "../../pageBase";
 
 import Styles from "./contact.module.scss";
 
+const classFormGroup = "form-group";
+const classForControl = "form-control";
 class ContactComponent extends PageBase<TPropsBase, IStateBase> {
     constructor(props: TPropsBase) {
         super(props);
@@ -27,23 +29,23 @@ class ContactComponent extends PageBase<TPropsBase, IStateBase> {
     renderForm() {
         return (
             <form onSubmit={this.handleSubmit}>
-                <div className={Styles["form-group"]}>
+                <div className={Styles[classFormGroup]}>
                     <label className={Styles["form-label"]} htmlFor="brandName">
                         {this.props.t("common:your-brand-name")}
                     </label>
-                    <input className={Styles["form-control"]} type="text" name="brandName" />
+                    <input className={Styles[classForControl]} type="text" name="brandName" />
                 </div>
-                <div className={Styles["form-group"]}>
+                <div className={Styles[classFormGroup]}>
                     <label className={Styles["form-label"]} htmlFor="brandName">
                         {this.props.t("common:remarks")}
                     </label>
-                    <input className={Styles["form-control"]} type="text" name="remarks" />
+                    <input className={Styles[classForControl]} type="text" name="remarks" />
                 </div>
-                <div className={Styles["form-group"]}>
+                <div className={Styles[classFormGroup]}>
                     <label htmlFor="validationEmail" className={Styles["form-required"]}>
                         {this.props.t("common:contact-email")}
                     </label>
-                    <input className={Styles["form-control"]} type="email" id="validationEmail" name="email" required />
+                    <input className={Styles[classForControl]} type="email" id="validationEmail" name="email" required />
                 </div>
                 <button className={Styles["btn-primary"]} type="submit">
                     {this.props.t("common:complete")}
