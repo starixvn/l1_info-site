@@ -1,15 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
-import Axios from "axios";
-import * as _ from "lodash";
-
 import { GameCategoryName, GameTypeName, TagsName } from "../../common/constants";
 import { IGame } from "../data";
 import { LanguageIcons } from "../icon";
 import GameIcon from "../game-icon";
 import Styles from "./game-item.module.scss";
-import { randomString } from "../../helpers/function-helper";
+import PlayForFunButton from "../play-for-fun-button";
+import * as _ from "lodash";
 
 type TGameItems = {
     game: IGame[];
@@ -18,59 +16,11 @@ type TGameItems = {
 
 const classDetailIcon = "detail-icon";
 const classDetailItem = "detail-item";
+
 export const GameItems: React.FC<TGameItems> = ({ game }) => {
     const router = useRouter();
-    const domain = "https://l1-glbs2.lumigame.com";
     const { t, i18n } = useTranslation(["common", "detail"]);
-
-    const playForFunAction = (event: any, gameId: number) => {
-        event && event.preventDefault();
-        const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-        const request = {
-            playerId: _.random(0, 10000000),
-            playerName: randomString(characters, 8),
-            language: "vi-VN",
-            currency: "$US",
-            seq: "d,y,lumi",
-            siteId: "4100300",
-            siteName: "lumi",
-            ip: "",
-            browserUserAgent: navigator.userAgent,
-            auth: {
-                operatorId: "ONEworks1",
-                operatorSecret: "ONEworks1@20luminet&",
-            },
-            token: "",
-            redirectUrl: "#",
-            verifyResult: null,
-            gameId: 0,
-            setting: {},
-            domain: "example.com",
-            localhost: false,
-            isOpenOnIframe: false,
-            appType: 1,
-            isCash: true,
-            partner: "1W",
-            disableJackpotGames: false,
-            expandAdvanceSetting: false,
-            instantMode: 1,
-            devIp: "",
-            operatorToken: "ONEworks1Token",
-            setDefaultBalance: false,
-        };
-
-        Axios.get(domain + "/setting/data").then((data) => (request.setting = data.data));
-        Axios.get(domain + "/signin/ip", { timeout: 10000 }).then((data) => (request.ip = data.data));
-        Axios.post(domain + "/signin/sso", request)
-            .then((data) => data.data)
-            .then((data) => (data.error ? Promise.reject(data.error) : data))
-            .then((data) => {
-                window.open(`${data.redirectUrl}&gameId=${gameId}`);
-            })
-            .catch();
-
-        event && event.preventDefault();
-    };
+    const [playerId] = useState(_.random(1, 10000000));
 
     const openDetail = (game: IGame) => {
         router.push(`/category/${GameCategoryName[game.gameCategory]}/${game.gameId}`);
@@ -86,9 +36,7 @@ export const GameItems: React.FC<TGameItems> = ({ game }) => {
                         </div>
                         <div className={Styles["game-play"]}>
                             <GameIcon gameId={game.gameId} game={game} isSmallSize={false} isNew={game.isNew} openDetail={openDetail} />
-                            <button type="button" className="btn btn-primary" onClick={(event) => playForFunAction(event, game.gameId)}>
-                                {t<string>("common:playForFun")}
-                            </button>
+                            <PlayForFunButton gameId={game.gameId} playerId={playerId} />
                         </div>
                         <div className={Styles["game-detail"]}>
                             <div className={Styles["game-intro"]} onClick={() => openDetail(game)}>

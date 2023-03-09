@@ -5,7 +5,7 @@ const locales = { en: "en", vi: "vi" };
 
 export const languageMapper = { "en-US": "en", "vi-VN": "vi" };
 
-export const LanguageLocaleMapper = {
+export const LanguageLocaleMapper: any = {
     en: "en-US",
     vi: "vi-VN",
 };

@@ -21,4 +21,6 @@ export default interface AppSettings {
     gameSettings: { [id: string]: GameSettingProps };
     system: string;
     guideUrl: string;
+    simulatorUrl: string;
+    owApiUrl: string;
 }

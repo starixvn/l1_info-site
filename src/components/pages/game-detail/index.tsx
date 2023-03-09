@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useTranslation } from "next-i18next";
 import { GameTypeName, TagsName } from "../../../common/constants";
 import { IGame } from "../../data";
@@ -7,6 +7,8 @@ import { LanguageIcons } from "../../icon";
 import SimilarGames from "../../similar-games";
 import Styles from "./game-detail.module.scss";
 import { useRouter } from "next/router";
+import PlayForFunButton from "../../play-for-fun-button";
+import * as _ from "lodash";
 
 type TGameDetails = {
     game: IGame;
@@ -32,6 +34,7 @@ const GameDetails: React.FC<TGameDetails> = ({ game, gamesSimilar }) => {
     const router = useRouter();
     const { t } = useTranslation(["common", "detail"]);
     const currentLang = router.locale !== "vi" ? `_${router.locale}` : "";
+    const [playerId] = useState(_.random(1, 10000000));
 
     return (
         <>
@@ -41,10 +44,7 @@ const GameDetails: React.FC<TGameDetails> = ({ game, gamesSimilar }) => {
                     <div className={Styles["game-icon-container"]}>
                         <GameIcon gameId={game.gameId} isSmallSize={false} isNew={game.isNew} />
                     </div>
-
-                    <button type="button" className="btn btn-primary">
-                        {t<string>("common:playForFun")}
-                    </button>
+                    <PlayForFunButton gameId={game.gameId} playerId={playerId} />
                     <div className={Styles["game-intro"]}>
                         <div className={Styles["intro"]}>{t<string>(`detail:${game.gameId}.detail`)}</div>
                     </div>
@@ -98,9 +98,7 @@ const GameDetails: React.FC<TGameDetails> = ({ game, gamesSimilar }) => {
                                 src={`/static/images/game-banner/banner_${game.gameId}${currentLang}.png`}
                                 alt="game-icon"
                             ></img>
-                            <button type="button" className="btn btn-primary">
-                                {t<string>("common:playForFun")}
-                            </button>
+                            <PlayForFunButton gameId={game.gameId} playerId={playerId} />
                         </div>
                     )}
                 </div>

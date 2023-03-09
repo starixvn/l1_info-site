@@ -5,5 +5,7 @@
     },
     "system": "L1",
     "enableSourceMap": true,
-    "guideUrl": "https://l1-guide-1.lumigame.com"
+    "guideUrl": "https://l1-guide-1.lumigame.com",
+    "simulatorUrl": "https://l1_game_lobby_simulator_LOCAL_1:5000",
+    "owApiUrl": "https://l1_ow_api_simulator_LOCAL_1:5000/SabaClub"
 }
