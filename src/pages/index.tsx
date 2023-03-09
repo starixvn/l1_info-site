@@ -1,10 +1,13 @@
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-
-import Dashboard from "../components/pages/dashboard";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
-const Home = () => {
+import Dashboard from "../components/pages/dashboard";
+import { GAMES_SORT } from "../components/data";
+import { EGameCategory } from "../components/type";
+import { TPropsBase } from "../components/pageBase";
+
+const Home = (props: TPropsBase) => {
     const [isLoading, setIsLoading] = useState(true);
     const router = useRouter();
 
@@ -18,13 +21,12 @@ const Home = () => {
         return <></>;
     }
 
-    return <Dashboard />;
+    return <Dashboard {...props} />;
 };
 
-export const getStaticProps = async ({ locale = "en" }) => ({
-    props: {
-        ...(await serverSideTranslations(locale, ["common", "detail"])),
-    },
-});
+const getStaticProps = async ({ locale = "en" }) => {
+    const translations = await serverSideTranslations(locale, ["common", "detail"]);
+    return { props: { game: GAMES_SORT, category: EGameCategory.AllGames, ...translations } };
+};
 
-export default Home;
+export { Home as default, getStaticProps };

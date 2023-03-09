@@ -49,6 +49,14 @@ const nextConfig = {
 
         return config;
     },
+    async rewrites() {
+        return [
+            {
+                source: "/category",
+                destination: "/category/allGames",
+            },
+        ];
+    },
 };
 
 module.exports = nextConfig;
