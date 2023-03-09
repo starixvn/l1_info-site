@@ -49,7 +49,7 @@ export const GameItems: React.FC<TGameItems> = ({ game }) => {
                                 className={`${Styles[classDetailItem]} ${Styles["guide"]}`}
                             >
                                 <span className={`${Styles[classDetailIcon]} icon-info`}></span>
-                                <span>{t<string>("common:game-rules")}</span>
+                                <span className={Styles["text-guide"]}>{t<string>("common:game-rules")}</span>
                             </a>
                             <div className={Styles["detail-group"]}>
                                 <div className={Styles[classDetailItem]}>

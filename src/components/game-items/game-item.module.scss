@@ -75,7 +75,11 @@
         cursor: pointer;
 
         &:hover {
-            color: var(--master-solid-color);
+            color: #2f80ed;
+
+            .text-guide {
+                text-decoration: underline;
+            }
         }
     }
 
