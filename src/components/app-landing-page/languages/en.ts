@@ -23,12 +23,12 @@ export const en: IAppLandingPageResource = {
         {
             title: "Step 3",
             content:
-                "You will redirect to <span class='{0}'>App Name</span> on App Store instead of 'Saba Game'. Tap on <span class='{0}'>Get</span> to install 'App Name' app",
+                "You will redirect to <span class='{0}'>VivaDzo</span> on App Store instead of 'Saba Game'. Tap on <span class='{0}'>Get</span> to install 'VivaDzo' app",
             image: "example-step3",
         },
         {
             title: "Step 4",
-            content: "Open <span class='{0}'>App Name</span> to launch the 'Saba Game' app",
+            content: "Open <span class='{0}'>VivaDzo</span> to launch the 'Saba Game' app",
             image: "example-step4",
         },
         {

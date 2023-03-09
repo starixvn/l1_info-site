@@ -1,218 +1,310 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
 .container {
-	font-family: 'Roboto';
-	font-weight: 300;
-	background-image: url("/static/images/app-download/bg-desktop.jpg");
-	background-attachment: fixed;
-	background-size: cover;
-	color: white !important;
-	padding: 10px;
+    font-family: 'Roboto';
+    font-weight: 300;
+    background-image: url("/static/images/app-download/bg-desktop.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    color: white !important;
+    padding: 10px;
 
-	.logo {
-		margin: 20px !important;
-		transform: scale(0.7);
-		content: url("/static/images/app-download/logo-saba.png");
-	}
+    .logo {
+        margin: 20px !important;
+        transform: scale(0.7);
+        content: url("/static/images/app-download/logo-saba.png");
+    }
 
-	.offer {
-		font-size: 24px;
-		font-weight: 400;
-	}
+    .offer {
+        font-size: 24px;
+        font-weight: 400;
+    }
 
-	.highlight-text {
-		color: #f19706;
-	}
+    .highlight-text {
+        color: #f19706;
+    }
 
-	.download-title {
-		font-size: 36px;
-		color: #f19706;
-		margin-top: 50px;
-	}
+    .download-title {
+        font-size: 36px;
+        color: #f19706;
+        margin-top: 50px;
+    }
 
-	.margin-top-40 {
-		margin-top: 40px;
-	}
+    .margin-top-40 {
+        margin-top: 40px;
+    }
 
-	.description {
-		font-size: 24px;
-		display: flex;
-		align-items: center;
-		justify-content: center;
+    .description {
+        font-size: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-left: 50px;
 
-		ul {
-			li {
-				.arrow {
-					height: 20px;
-					margin-right: 10px;
-					margin-bottom: 5px;
-					content: url("/static/images/app-download/arrow.png");
-				}
+        ul {
+            li {
+                .arrow {
+                    height: 20px;
+                    margin-right: 10px;
+                    margin-bottom: 5px;
+                    content: url("/static/images/app-download/arrow.png");
+                }
 
-				line-height: 50px;
-			}
-		}
-	}
+                line-height: 50px;
+            }
+        }
+    }
 
-	.app-download {
-		color: #f19706;
-		display: flex;
-		align-items: center;
+    .app-download {
+        color: #f19706;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
-		.qr-code {
-			padding: 10px;
+        .qr-code {
+            padding: 10px;
 
-			div {
-				display: inline-block;
-				vertical-align: middle;
+            div {
+                display: inline-block;
+                vertical-align: middle;
 
-				img {
-					height: 70px;
-					width: 250px;
-					margin-left: 20px;
-					margin-right: 30px;
-					display: inline-block;
-				}
-			}
+                img {
+                    height: 70px;
+                    width: 250px;
+                    margin-left: 20px;
+                    margin-right: 30px;
+                    display: inline-block;
+                }
+            }
+        }
+    }
 
-		}
-	}
+    .installation-guide {
+        margin-top: 50px;
 
-	.installation-guide {
-		margin-top: 50px;
+        .title {
+            color: #f19706;
+            cursor: pointer;
+            display: block;
+            font-size: 32px;
+        }
 
-		.title {
-			color: #f19706;
-			cursor: pointer;
-			display: block;
-			font-size: 32px;
-		}
+        .apple-logo {
+            content: url("/static/images/app-download/ios-label.png");
+            margin: 20px;
+            height: 50px;
+            width: 200px;
+        }
+    }
 
-		.apple-logo {
-			content: url("/static/images/app-download/ios-label.png");
-			margin: 20px;
-			height: 50px;
-			width: 200px;
-		}
-	}
+    .steps {
+        .step {
+            margin-bottom: 20px;
+            padding: 20px;
 
-	.steps {
-		.step {
-			margin-bottom: 20px;
+            .content {
+                min-height: 150px;
+                margin-bottom: 10px;
 
-			.content {
-				min-height: 150px;
-				margin-bottom: 10px;
+                .title {
+                    background-image: url("/static/images/app-download/label-step.png");
+                    background-size: cover;
+                    color: white;
+                    margin-top: 30px;
+                    margin-bottom: 10px;
+                    width: 100px;
+                    pointer-events: none;
+                    border-radius: 20px;
+                    display: inline-block;
+                    font-size: 20px;
+                }
 
-				.title {
-					background-image: url("/static/images/app-download/label-step.png");
-					background-size: cover;
-					color: white;
-					margin-top: 30px;
-					margin-bottom: 10px;
-					width: 100px;
-					pointer-events: none;
-					border-radius: 20px;
-					display: inline-block;
-					font-size: 20px;
-				}
+                .detail {
+                    font-size: 14px;
+                }
+            }
+        }
+    }
 
-				.detail {
-					font-size: 14px;
-				}
-			}
-		}
-	}
+    .sroll-to-top {
+        right: 10px;
+        background: url("/static/images/app-download/back-to-top.png") no-repeat;
+        background-color: white;
+        background-size: cover;
+    }
 }
 
-@media only screen and (max-width: 1370px) {
-	.container {
-		.steps {
-			.step {
-				.content {
-					min-height: 170px;
-				}
-			}
-		}
-	}
+@media (max-width: 480px) {
+    .container {
+        background-image: url("/static/images/app-download/bg-mobile.jpg");
+
+        .offer {
+            font-size: 18px;
+        }
+
+        .download-title {
+            font-size: 28px;
+            margin-top: 30px;
+        }
+
+        .app-download {
+            display: block;
+
+            .qr-code {
+                text-align: center;
+
+                div {
+                    &:first-of-type {
+                        width: 60% !important;
+                    }
+
+                    &:nth-child(2) {
+                        width: 30% !important;
+                    }
+
+                    img {
+                        transform: scale(1);
+                        object-fit: scale-down;
+                        max-width: 90%;
+                    }
+                }
+            }
+        }
+
+        .description {
+            font-size: 16px;
+
+            ul {
+                margin-left: 20px;
+                margin-top: 40px;
+
+                li {
+                    line-height: 40px;
+                }
+            }
+        }
+
+        .steps {
+            .step {
+                margin-bottom: 30px;
+
+                .content {
+                    min-height: 150px;
+                    margin-bottom: 20px;
+
+                    .title {
+                        font-size: 22px;
+                    }
+
+                    .detail {
+                        font-size: 20px;
+                    }
+                }
+
+                img {
+                    max-width: 80%;
+                }
+            }
+        }
+    }
 }
 
-@media only screen and (max-width: 1024px) {
-	.container {
-		.steps {
-			.step {
-				.content {
-					min-height: 230px;
-				}
-			}
-		}
-	}
+@media (min-width: 481px) and (max-width: 767px) {
+    .container {
+        .offer {
+            font-size: 18px;
+        }
+
+        .download-title {
+            font-size: 28px;
+            margin-top: 30px;
+        }
+
+        .app-download {
+            .qr-code {
+                div {
+                    img {
+                        transform: scale(1);
+                    }
+                }
+            }
+        }
+
+        .description {
+            font-size: 16px;
+
+            ul {
+                margin-left: 20px;
+                margin-top: 40px;
+
+                li {
+                    line-height: 40px;
+                }
+            }
+        }
+
+        .steps {
+            .step {
+                margin-bottom: 30px;
+
+                .content {
+                    min-height: 150px;
+                    margin-bottom: 20px;
+
+                    .title {
+                        font-size: 22px;
+                    }
+
+                    .detail {
+                        font-size: 20px;
+                    }
+                }
+
+                img {
+                    max-width: 80%;
+                }
+            }
+        }
+    }
 }
 
-@media only screen and (max-width: 768px) {
-	.container {
-		background-image: url("/static/images/app-download/bg-mobile.jpg");
+@media (min-width: 768px) and (max-width: 1024px) {
+    .container {
+        .app-download {
+            .qr-code {
+                text-align: center;
 
-		.offer {
-			font-size: 18px;
-		}
+                div {
+                    display: inline-block;
+                    vertical-align: middle;
 
-		.download-title {
-			font-size: 28px;
-			margin-top: 30px;
-		}
+                    img {
+                        transform: scale(1);
+                        margin-left: 10px;
+                        margin-right: 10px;
+                    }
+                }
+            }
+        }
 
-		.app-download {
-			display: block;
+        .steps {
+            .step {
+                .content {
+                    min-height: 150px;
+                }
+            }
+        }
+    }
+}
 
-			.qr-code {
-				text-align: center;
-
-				div {
-					display: inline-block;
-					vertical-align: middle;
-
-					img {
-						transform: scale(1);
-						margin-left: 10px;
-						margin-right: 10px;
-					}
-				}
-			}
-		}
-
-		.description {
-			font-size: 16px;
-
-			ul {
-				margin-left: 20px;
-				margin-top: 40px;
-
-				li {
-					line-height: 40px;
-				}
-			}
-		}
-
-		.steps {
-			.step {
-				margin-bottom: 30px;
-
-				.content {
-					min-height: 150px;
-					margin-bottom: 20px;
-
-					.title {
-						font-size: 22px;
-					}
-
-					.detail {
-						font-size: 20px;
-					}
-				}
-
-				img {
-					max-width: 80%;
-				}
-			}
-		}
-	}
+@media (min-width: 1025px) and (max-width: 1280px) {
+    .container {
+        .steps {
+            .step {
+                .content {
+                    min-height: 170px;
+                }
+            }
+        }
+    }
 }

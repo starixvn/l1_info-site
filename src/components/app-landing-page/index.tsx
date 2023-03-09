@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import InstallationGuide from "./installationguide";
-import { isMobileOnly } from "react-device-detect";
+import { isMobile, isMobileOnly } from "react-device-detect";
 import Styles from "./app-landing-page.module.scss";
 import ScrollToTop from "react-scroll-to-top";
 import { QRCodeCanvas } from "qrcode.react";
@@ -12,20 +12,22 @@ import { IAppLandingPageResource } from "./languages/types";
 interface QrCodeDeeplink {
     image: string;
     url: string;
+    isShow: boolean;
 }
 
 const DownloadSection = () => {
     const imagesPath = "/static/images/app-download/";
     const deepLinks: Array<QrCodeDeeplink> = [
         {
-            image: `${imagesPath}button-dl-ios.png`,
-            url: "https://hackernoon.com/how-to-build-a-qr-code-generator-in-react"
+            image: `button-dl-ios.png`,
+            url: "https://hackernoon.com/how-to-build-a-qr-code-generator-in-react",
+            isShow: true
         },
-        // {
-        //     image: `${imagesPath}button-dl-android.png`,
-        //     url: "https://css-tricks.com/snippets/css/media-queries-for-standard-devices/"
-        // },
-
+        {
+            image: `button-dl-android.png`,
+            url: "https://css-tricks.com/snippets/css/media-queries-for-standard-devices/",
+            isShow: false
+        },
     ];
 
     const [qrData, setQrData] = useState<Array<QrCodeDeeplink>>();
@@ -35,15 +37,15 @@ const DownloadSection = () => {
         <div >
             {
                 qrData && qrData.map((item: QrCodeDeeplink, index: number) => {
-                    return (<div className={Styles["qr-code"]} key={index}>
-                        <div><img src={item.image} alt="" /></div>
+                    return item.isShow ? (<div className={Styles["qr-code"]} key={index}>
+                        <div><a href={item.url}><img src={`${imagesPath}${item.image}`} alt="" /></a></div>
                         <div><QRCodeCanvas
                             value={item.url}
-                            size={90}
+                            size={isMobile ? 70 : 90}
                             level={"L"}
                             includeMargin={true}
                         /></div>
-                    </div>);
+                    </div>) : <div key={index}></div>;
                 })
             }
         </div >
@@ -81,8 +83,7 @@ const AppLandingPageComponent: React.FunctionComponent<{ locale: string }> = ({ 
                 </div>
             </div>
             <div className={`row ${Styles["margin-top-40"]}`}>
-                <div className="col-md-1"> </div>
-                <div className={`col-md-5 col-xs-12  ${Styles["description"]}`}>
+                <div className={`col-md-6 col-xs-12  ${Styles["description"]}`}>
                     <ul>
                         {
                             resources.descriptions.map((description, index) => {
@@ -94,7 +95,7 @@ const AppLandingPageComponent: React.FunctionComponent<{ locale: string }> = ({ 
                         }
                     </ul>
                 </div>
-                <div className={`col-md-6 order-first order-md-2 ${Styles["app-download"]}`}>
+                <div className={`col-md-6 col-xs-12 order-first order-md-2 ${Styles["app-download"]}`}>
                     <DownloadSection />
                 </div>
             </div>
@@ -113,7 +114,8 @@ const AppLandingPageComponent: React.FunctionComponent<{ locale: string }> = ({ 
                     <DownloadSection />
                 </div>)
             }
-            <ScrollToTop smooth />
+            <ScrollToTop smooth component={<></>} className={Styles["sroll-to-top"]} />
+
         </div>
     ) : <></>;
 };
