@@ -62,15 +62,15 @@ export const Header: React.FC<THeaderProps> = ({ menuItems, category = 0, isOpen
                     <div className="d-flex align-items-center">
                         {!isOpenGameGuide && (
                             <div
-                                className={`${Styles["menu-item"]} ${
+                                className={`${Styles["menu-item"]} ${Styles["menu-contact"]} ${
                                     selectCategory === ECategoryOther.contactUS ? Styles["menu-selected"] : ""
                                 }`}
                                 onClick={() => onSelectCategory(ECategoryOther.contactUS)}
                             >
-                                <span className={Styles["menu-text"]}>
+                                <span className={`${Styles["menu-text"]}`}>
                                     <Link className={Styles["menu-link"]} href="/contact">
                                         <span className={Styles["icon-contact"]} />
-                                        <span className="d-none d-sm-none d-md-inline-block">{t<string>("contact")}</span>
+                                        <span className={Styles["text-contact"]}>{t<string>("contact")}</span>
                                     </Link>
                                 </span>
                             </div>

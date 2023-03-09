@@ -95,7 +95,7 @@ const GameDetails: React.FC<TGameDetails> = ({ game, gamesSimilar }) => {
                         <div className={Styles["play-for-fun"]}>
                             <img
                                 className={Styles["banner-game"]}
-                                src={`/static/images/game-banner/banner_${game.gameId}${currentLang}.png?v=1`}
+                                src={`/static/images/game-banner/banner_${game.gameId}${currentLang}.png`}
                                 alt="game-icon"
                             ></img>
                             <button type="button" className="btn btn-primary">

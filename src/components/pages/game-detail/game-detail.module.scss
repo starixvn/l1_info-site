@@ -41,7 +41,9 @@
     margin-bottom: 2rem;
 
     .group-icon {
-        display: block;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
         margin-right: 3rem;
         font-size: 1.6rem;
 
@@ -110,8 +112,7 @@
     .game-detail-bottom {
         .group-icon {
             display: inline-flex;
-            align-items: center;
-            gap: 1rem;
+
             &:not(:last-child) {
                 margin-bottom: 0;
             }
