@@ -18,15 +18,13 @@ import { GAMES_SORT } from "../../data";
 type Props = {
     gameId: number;
     userStakeLevel: TUserStakeLevel;
-    gameConfigs: IGameConfigs;
 };
 
 type TOption = {
     value: string;
-    label: string;
 };
 
-const GuideComponent: React.FC<Props> = ({ gameId, userStakeLevel, gameConfigs }) => {
+const GuideComponent: React.FC<Props> = ({ gameId, userStakeLevel }) => {
     const { i18n, t } = useTranslation("detail");
     const { theme } = useTheme();
     const { guideUrl } = appSettings;
@@ -36,34 +34,51 @@ const GuideComponent: React.FC<Props> = ({ gameId, userStakeLevel, gameConfigs }
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [heightGuide, setHeightGuide] = useState<number>(0);
     const [widthGuide, setWidthGuide] = useState<number>(0);
+    const [gameConfigs, setGameConfigs] = useState<IGameConfigs>();
     const [selectedOption, setSelectedOption] = useState<TOption | null>();
     const [options, setOptions] = useState<TOption[]>();
     const minMaxBetParams = `&minBet=${userStakeLevel?.minBet}&maxBet=${userStakeLevel?.maxBet}`;
     const srcPath = `${guideUrl}/${i18n.language}/?gId=${selectedOption?.value}&t=${theme}${minMaxBetParams}&f=sc&v=${Date.now()}`;
 
+    const getGameConfig = (id: string, config: Function): any => {
+        return import(`./game-configs/game-configs-${id}`).then((mod: any) => {
+            config(mod.default);
+        });
+    };
+
     const handleResize = () => {
-        if (wrapperRef?.current) {
-            setHeightGuide(wrapperRef.current.clientHeight);
-            setWidthGuide(wrapperRef.current.clientWidth);
-        }
+        const clientHeight = wrapperRef?.current?.clientHeight ?? 0;
+        const clientWidth = wrapperRef?.current?.clientWidth ?? 0;
+        setHeightGuide(clientHeight);
+        setWidthGuide(clientWidth);
     };
 
     const hideSpinner = () => {
         setIsLoading(false);
-        if (wrapperIframeRef.current && wrapperIframeRef.current.contentWindow) {
-            wrapperIframeRef.current.contentWindow.postMessage(JSON.stringify(gameConfigs), guideUrl);
-        }
+        wrapperIframeRef.current?.contentWindow?.postMessage(JSON.stringify(gameConfigs), guideUrl);
     };
 
     const onChangeOption = (option: TOption | null) => {
         setSelectedOption(option);
-        const asPath = `/guide?gameId=${option?.value ? +option?.value : 1}`;
-        router.push(router.pathname, asPath, { shallow: true });
+        const asPath = `/guide?gameId=${option?.value}`;
+        router.push(router.pathname, asPath);
+    };
+
+    const createOptions = (gameId: string) => {
+        const formatData: TOption[] = GAMES_SORT.map((game) => ({
+            value: game.gameId.toString(),
+        }));
+
+        const currentValue = formatData.find((game) => game.value === gameId) ?? null;
+
+        return { formatData, currentValue };
     };
 
     useEffect(() => {
         const isIOSBrowserVersion15 = isMobileOnly && isIOS && browserVersion === "15";
-        !isIOSBrowserVersion15 && window.addEventListener("resize", handleResize);
+        if (!isIOSBrowserVersion15) {
+            window.addEventListener("resize", handleResize);
+        }
 
         handleResize();
 
@@ -73,15 +88,23 @@ const GuideComponent: React.FC<Props> = ({ gameId, userStakeLevel, gameConfigs }
     }, [wrapperRef]);
 
     useEffect(() => {
-        const formatData: TOption[] = GAMES_SORT.map((data) => ({
-            value: data.gameId.toString(),
-            label: t<string>(`${data.gameId}.displayedName`),
-        }));
-        const currentValue = formatData.find((data) => +data.value === +gameId) ?? null;
+        if (selectedOption) {
+            const { formatData, currentValue } = createOptions(selectedOption.value.toString());
+            setOptions(formatData);
+            onChangeOption(currentValue);
+        }
+    }, [i18n.language]);
 
+    useEffect(() => {
+        selectedOption && getGameConfig(selectedOption?.value, setGameConfigs);
+    }, [selectedOption]);
+
+    useEffect(() => {
+        const { formatData, currentValue } = createOptions(gameId.toString());
+        getGameConfig(gameId.toString(), setGameConfigs);
         setOptions(formatData);
         onChangeOption(currentValue);
-    }, [i18n.language]);
+    }, []);
 
     return (
         <Container>
@@ -90,11 +113,14 @@ const GuideComponent: React.FC<Props> = ({ gameId, userStakeLevel, gameConfigs }
                 <div className={`d-flex align-items-center ${Styles["select-game"]}`}>
                     <span>Game</span>
                     <Select
+                        key={uuidv4()}
                         value={selectedOption}
                         defaultValue={selectedOption}
-                        onChange={(value) => onChangeOption(value)}
+                        onChange={onChangeOption}
                         options={options}
                         className={Styles["dropdown"]}
+                        getOptionLabel={(option) => t(`${option.value}.displayedName`)}
+                        getOptionValue={(option) => `${option.value}`}
                     />
                 </div>
 
@@ -103,17 +129,18 @@ const GuideComponent: React.FC<Props> = ({ gameId, userStakeLevel, gameConfigs }
                         <Loader></Loader>
                     </div>
                 )}
-
-                <iframe
-                    ref={wrapperIframeRef}
-                    key={uuidv4()}
-                    className={Styles["guide-iframe"]}
-                    src={srcPath}
-                    referrerPolicy="strict-origin-when-cross-origin"
-                    height={heightGuide}
-                    width={widthGuide}
-                    onLoad={hideSpinner}
-                />
+                {gameConfigs && (
+                    <iframe
+                        ref={wrapperIframeRef}
+                        key={uuidv4()}
+                        className={Styles["guide-iframe"]}
+                        src={srcPath}
+                        referrerPolicy="strict-origin-when-cross-origin"
+                        height={heightGuide}
+                        width={widthGuide}
+                        onLoad={hideSpinner}
+                    />
+                )}
             </div>
             <Footer />
         </Container>

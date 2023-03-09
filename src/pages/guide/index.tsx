@@ -9,13 +9,6 @@ export const GameGuide: React.FC = () => {
     const router = useRouter();
     const [isLoading, setIsLoading] = useState(true);
     const [gameId, setGameId] = useState<number>(0);
-    const [gameConfigs, setGameConfigs] = useState<any>({});
-
-    const getGameConfig = (config: Function): any => {
-        return import(`../../components/pages/guide/game-configs/game-configs-${gameId}`).then((mod: any) => {
-            config(mod.default);
-        });
-    };
 
     useEffect(() => {
         if (router.isReady) {
@@ -25,17 +18,11 @@ export const GameGuide: React.FC = () => {
         }
     }, [router.isReady]);
 
-    useEffect(() => {
-        gameId > 0 && getGameConfig(setGameConfigs);
-    }, [gameId]);
-
-    if (isLoading || !gameConfigs) {
+    if (isLoading) {
         return <></>;
     }
 
-    return (
-        <>{gameConfigs && <GuideComponent gameId={gameId} userStakeLevel={UserStakeLevel} gameConfigs={gameConfigs}></GuideComponent>}</>
-    );
+    return <>{<GuideComponent gameId={gameId} userStakeLevel={UserStakeLevel}></GuideComponent>}</>;
 };
 
 export const getStaticProps = async ({ locale = "en" }) => ({

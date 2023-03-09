@@ -1,16 +1,17 @@
 import React from "react";
 import { useRouter } from "next/router";
 import { DropdownButton, Dropdown } from "react-bootstrap";
-import { i18n } from "next-i18next";
+import { useTranslation } from "next-i18next";
 
 import Styles from "./languages.module.scss";
 
 const Languages = () => {
     const router = useRouter();
+    const { i18n } = useTranslation();
     const flagIcon = `/static/images/icon-languages/${router.locale}.svg`;
 
     const handleLanguageChange = (lang: string) => {
-        i18n && i18n.changeLanguage(lang);
+        i18n.changeLanguage(lang);
         router.push(router.pathname, router.asPath, { locale: lang });
     };
 

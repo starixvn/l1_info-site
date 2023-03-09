@@ -44,18 +44,17 @@ export interface IStaticProps<IParams> {
 }
 
 export interface IGameConfigs {
-    minBet: number;
-    maxBet: number;
+    minBet?: number;
+    maxBet?: number;
     odds: Record<string, number> | any;
-    maxBetPerChoices: Record<string, number>;
+    maxBetPerChoices?: Record<string, number>;
     betLevels?: number[];
     betMultiplier?: number;
     coinValues?: number[];
     maxWinPerRound?: number;
-    coin?: number;
-    level?: number;
     jackpot?: { winningRatio: number };
     stakeLevels?: number[];
+    baseStakeLevels?: number[];
 }
 
 export type TUserStakeLevel = {
