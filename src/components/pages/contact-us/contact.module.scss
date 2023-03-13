@@ -108,6 +108,7 @@
 @media (min-width: 768px) {
     .form-container {
         flex-direction: row;
+        
     }
     .form-control {
         width: 47rem;
@@ -135,5 +136,12 @@
 
     .btn-icon {
         width: 20rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .form-container {
+        padding:0
+        
     }
 }

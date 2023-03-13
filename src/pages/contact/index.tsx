@@ -1,15 +1,26 @@
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import React from "react";
-import { useTranslation } from "next-i18next";
+import React, { useEffect, useState } from "react";
 
 import { TPropsBase } from "../../components/pageBase";
-import ContactComponent from "../../components/pages/contact-us";
+import ContactInfo from "../../components/pages/contact-us";
 import { ECategoryOther } from "../../components/type";
+import { useRouter } from "next/router";
 
 const Contact = (props: TPropsBase) => {
-    const data = { ...props, ...useTranslation("common") };
+    const router = useRouter();
+    const [isLoading, setIsLoading] = useState(true);
 
-    return <ContactComponent {...data} />;
+    useEffect(() => {
+        if (router.isReady) {
+            setIsLoading(false);
+        }
+    }, [router.isReady]);
+
+    if (isLoading) {
+        return <></>;
+    }
+
+    return <ContactInfo {...props} />;
 };
 
 const getStaticProps = async ({ locale = "en" }) => {
