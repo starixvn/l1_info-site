@@ -5,6 +5,7 @@ import { browserVersion, isIOS, isMobile, isMobileOnly, isDesktop } from "react-
 import appSettings from "../../../common/app-settings";
 import { locales } from "../../../common/constants";
 import Styles from "./contact.module.scss";
+import Loader from "../../loader";
 
 const PADDING_FORM = 40;
 const WIDTH_FORM = {
@@ -20,9 +21,11 @@ const Form: React.FC = () => {
     const { i18n, t } = useTranslation("common");
     const wrapperRef = useRef<HTMLIFrameElement>(null);
     const { googleFormIdEn, googleFormIdVi } = appSettings;
+    const [isLoading, setIsLoading] = useState<boolean>(true);
     const [width, setWidth] = useState<number>(0);
     const [height, setHeight] = useState<number>(0);
     const [id, setId] = useState<string>();
+
     const handleResize = () => {
         setWidth(+(window.innerWidth - (isDesktop ? PADDING_FORM : 0)));
     };
@@ -53,11 +56,13 @@ const Form: React.FC = () => {
     return (
         <div className={Styles["contact-container"]} ref={wrapperRef}>
             <p className={Styles["small-intro"]}></p>
+            {isLoading && <Loader></Loader>}
             <div className={Styles["form-container"]}>
                 <iframe
                     src={`https://docs.google.com/forms/d/e/${id}/viewform?embedded=true&hl=${i18n.language}`}
                     width={width}
                     height={height}
+                    onLoad={() => setIsLoading(false)}
                 >
                     {t("loading")}
                 </iframe>
