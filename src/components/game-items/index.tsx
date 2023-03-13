@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 import { GameCategoryName, GameTypeName, TagsName } from "../../common/constants";
@@ -7,7 +7,6 @@ import { LanguageIcons } from "../icon";
 import GameIcon from "../game-icon";
 import Styles from "./game-item.module.scss";
 import PlayForFunButton from "../play-for-fun-button";
-import * as _ from "lodash";
 
 type TGameItems = {
     game: IGame[];
@@ -20,7 +19,6 @@ const classDetailItem = "detail-item";
 export const GameItems: React.FC<TGameItems> = ({ game }) => {
     const router = useRouter();
     const { t, i18n } = useTranslation(["common", "detail"]);
-    const [playerId] = useState(_.random(1, 10000000));
 
     const openDetail = (game: IGame) => {
         router.push(`/category/${GameCategoryName[game.gameCategory]}/${game.gameId}`);
@@ -36,7 +34,7 @@ export const GameItems: React.FC<TGameItems> = ({ game }) => {
                         </div>
                         <div className={Styles["game-play"]}>
                             <GameIcon gameId={game.gameId} game={game} isSmallSize={false} isNew={game.isNew} openDetail={openDetail} />
-                            <PlayForFunButton gameId={game.gameId} playerId={playerId} />
+                            <PlayForFunButton gameId={game.gameId} />
                         </div>
                         <div className={Styles["game-detail"]}>
                             <div className={Styles["game-intro"]} onClick={() => openDetail(game)}>

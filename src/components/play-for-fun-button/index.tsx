@@ -3,17 +3,19 @@ import { useTranslation } from "next-i18next";
 import Axios from "axios";
 import { LanguageLocaleMapper } from "../../common/constants";
 import appSettings from "../../common/app-settings";
+import { usePlayerIdContext } from "../../contexts/player";
 
 type Props = {
     gameId: number;
-    playerId: number;
 };
 
-const PlayForFunButton: React.FC<Props> = ({ gameId, playerId }) => {
+const PlayForFunButton: React.FC<Props> = ({ gameId }) => {
     const { t, i18n } = useTranslation(["common", "detail"]);
+    const playerId = usePlayerIdContext();
 
     const playForFunAction = (event: any, gameId: number) => {
         event && event.preventDefault();
+
         const request = {
             playerId,
             playerName: `username_${playerId}`,
@@ -54,8 +56,6 @@ const PlayForFunButton: React.FC<Props> = ({ gameId, playerId }) => {
                 data?.redirectUrl && window.open(data.redirectUrl);
             })
             .catch(showAlert);
-
-        event && event.preventDefault();
     };
 
     const showAlert = (obj: object) => {
