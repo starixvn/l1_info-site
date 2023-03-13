@@ -3,6 +3,7 @@ import { Markup } from "interweave";
 import Styles from "./app-landing-page.module.scss";
 import { StringFormat } from "../../helpers/string-helper";
 import { IAppLandingPageResource } from "./languages/types";
+import { buildVersion } from "../../common/constants";
 
 const InstallationGuide: React.FunctionComponent<{ resources: IAppLandingPageResource, }> = ({ resources }) => {
     return (
@@ -15,7 +16,7 @@ const InstallationGuide: React.FunctionComponent<{ resources: IAppLandingPageRes
                             <div ><span className={Styles["title"]}> {guide.title}</span></div>
                             <div ><span className={Styles["detail"]}>{<Markup content={StringFormat(guide.content, Styles["highlight-text"])} />} </span></div>
                         </div>
-                        <img src={`/static/images/app-download/${guide.image}.png`} className="img-fluid" alt="" />
+                        <img src={`/static/images/app-download/${guide.image}.png?v=${buildVersion}`} className="img-fluid" alt="" />
                     </div>
                 })
             }
