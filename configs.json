@@ -7,5 +7,7 @@
     "enableSourceMap": true,
     "guideUrl": "https://l1-guide.lumigame.com",
     "simulatorUrl": "https://l1-glbs2.lumigame.com",
-    "owApiUrl": "https://l1-ows2.lumigame.com/SabaClub"
+    "owApiUrl": "https://l1-ows2.lumigame.com/SabaClub",
+    "googleFormIdEn": "1FAIpQLSfbuP1rEABaUGoUdfR_kdpF-wNjv2NoPpQ1wbDeBt1qxpSR4A",
+    "googleFormIdVi": "1FAIpQLSfdX_jii1gogh_OnMY8Tcvi_OmtKPo9Q0XypK6lZrpdYKAWwQ"
 }

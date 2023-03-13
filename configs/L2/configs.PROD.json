@@ -7,5 +7,7 @@
     "enableSourceMap": false,
     "guideUrl": "https://guides.vgaming.win",
     "simulatorUrl": "https://l1_game_lobby_simulator_LOCAL_2:5000",
-    "owApiUrl": "https://l1_ow_api_simulator_LOCAL_2:5000/SabaClub"
+    "owApiUrl": "https://l1_ow_api_simulator_LOCAL_2:5000/SabaClub",
+    "googleFormIdEn": "1FAIpQLSfbuP1rEABaUGoUdfR_kdpF-wNjv2NoPpQ1wbDeBt1qxpSR4A",
+    "googleFormIdVi": "1FAIpQLSfdX_jii1gogh_OnMY8Tcvi_OmtKPo9Q0XypK6lZrpdYKAWwQ"
 }

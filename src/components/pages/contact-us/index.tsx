@@ -1,13 +1,32 @@
 import React from "react";
+import { isMobile } from "react-device-detect";
+
+import appSettings from "../../../common/app-settings";
+import { locales } from "../../../common/constants";
 import PageBase, { IStateBase, TPropsBase } from "../../pageBase";
-
 import Styles from "./contact.module.scss";
+interface IStateContact extends IStateBase {
+    widthContact: number;
+    heightContact: number;
+}
 
-const classFormGroup = "form-group";
-const classForControl = "form-control";
-class ContactComponent extends PageBase<TPropsBase, IStateBase> {
+const PADDING_FORM = 40;
+const WIDTH_FORM = {
+    desktop: 800,
+};
+
+const HEIGHT_FORM = {
+    mobile: 600,
+    desktop: 900,
+};
+
+class ContactComponent extends PageBase<TPropsBase, IStateContact> {
     constructor(props: TPropsBase) {
         super(props);
+        this.state = {
+            widthContact: isMobile ? window.innerWidth - PADDING_FORM : WIDTH_FORM.desktop,
+            heightContact: isMobile ? HEIGHT_FORM.mobile : HEIGHT_FORM.desktop,
+        } as IStateContact;
 
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -18,75 +37,37 @@ class ContactComponent extends PageBase<TPropsBase, IStateBase> {
     };
 
     renderIntro() {
-        return (
-            <div className={Styles["intro-container"]}>
-                <div className={Styles["title"]}> {this.props.t("common:contact")}</div>
-                <div className={Styles["contact-intro"]}>{this.props.t("common:expertise")}</div>
-            </div>
-        );
+        return <></>;
     }
 
     renderForm() {
+        const { i18n } = this.props;
+        const { widthContact, heightContact } = this.state;
+        const { googleFormIdEn, googleFormIdVi } = appSettings;
+
+        const id = i18n.language === locales.en ? googleFormIdEn : googleFormIdVi;
         return (
-            <form onSubmit={this.handleSubmit}>
-                <div className={Styles[classFormGroup]}>
-                    <label className={Styles["form-label"]} htmlFor="brandName">
-                        {this.props.t("common:your-brand-name")}
-                    </label>
-                    <input className={Styles[classForControl]} type="text" name="brandName" />
-                </div>
-                <div className={Styles[classFormGroup]}>
-                    <label className={Styles["form-label"]} htmlFor="brandName">
-                        {this.props.t("common:remarks")}
-                    </label>
-                    <input className={Styles[classForControl]} type="text" name="remarks" />
-                </div>
-                <div className={Styles[classFormGroup]}>
-                    <label htmlFor="validationEmail" className={Styles["form-required"]}>
-                        {this.props.t("common:contact-email")}
-                    </label>
-                    <input className={Styles[classForControl]} type="email" id="validationEmail" name="email" required />
-                </div>
-                <button className={Styles["btn-primary"]} type="submit">
-                    {this.props.t("common:complete")}
-                </button>
-            </form>
+            <div>
+                <iframe
+                    src={`https://docs.google.com/forms/d/e/${id}/viewform?embedded=true&hl=${i18n.language}`}
+                    width={widthContact}
+                    height={heightContact}
+                >
+                    {this.props.t("common:loading")}
+                </iframe>
+            </div>
         );
     }
 
     renderContactButtons() {
-        return (
-            <div className={Styles["contact-button"]}>
-                <div className={Styles["btn-group"]}>
-                    <label className={Styles["btn-name"]}>Telegram</label>
-                    <button className={Styles["btn-telegram"]}>
-                        <span className="icon-telegram" />
-                        <label className={Styles["text"]}>@SABASports_CS</label>
-                    </button>
-                </div>
-                <div className={Styles["btn-group"]}>
-                    <label className={Styles["btn-name"]}>Email</label>
-                    <button className={Styles["btn-email"]}>
-                        <span className="icon-email" />
-                        <label className={Styles["text"]}>@SABASports_CS</label>
-                    </button>
-                </div>
-                <div className={Styles["btn-group"]}>
-                    <label className={Styles["btn-name"]}>Letstalk</label>
-                    <button className={Styles["btn-letstalk"]}>
-                        <span className="icon-letstalk" />
-                        <label className={Styles["text"]}>t258111754</label>
-                    </button>
-                </div>
-            </div>
-        );
+        return <></>;
     }
 
     renderContent() {
         return (
             <div className={Styles["contact-container"]}>
                 {this.renderIntro()}
-                <p className={Styles["small-intro"]}>{this.props.t("common:fillin")}</p>
+                <p className={Styles["small-intro"]}></p>
                 <div className={Styles["form-container"]}>
                     {this.renderForm()}
                     {this.renderContactButtons()}
