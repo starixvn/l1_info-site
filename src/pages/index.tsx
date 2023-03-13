@@ -7,6 +7,7 @@ import { GAMES_SORT } from "../components/data";
 import { EGameCategory } from "../components/type";
 import { TPropsBase } from "../components/pageBase";
 import appSettings from "../common/app-settings";
+import AppLandingPageComponent from "../components/app-landing-page";
 
 const Dashboard = dynamic(() => import("../components/pages/dashboard"));
 
@@ -24,7 +25,7 @@ const Home = (props: TPropsBase) => {
         return <></>;
     }
 
-    return appSettings.isInforSite ? <Dashboard /> : <AppLandingPageComponent locale={'en'} />;
+    return appSettings.isInforSite ? <Dashboard {...props} /> : <AppLandingPageComponent locale={'en'} />;
 };
 
 const getStaticProps = async ({ locale = "en" }) => {
