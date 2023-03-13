@@ -25,8 +25,8 @@ const PlayForFunButton: React.FC<Props> = ({ gameId, playerId }) => {
             ip: "",
             browserUserAgent: navigator.userAgent,
             auth: {
-                operatorId: "ONEworks1",
-                operatorSecret: "ONEworks1@20luminet&",
+                operatorId: appSettings.operatorPFF.id,
+                operatorSecret: appSettings.operatorPFF.secret,
             },
             token: "",
             redirectUrl: "#",
@@ -37,7 +37,7 @@ const PlayForFunButton: React.FC<Props> = ({ gameId, playerId }) => {
             isCash: true,
             disableJackpotGames: false,
             devIp: "",
-            operatorToken: "InfoSiteToken",
+            operatorToken: "PFFToken",
             setDefaultBalance: false,
         };
 
@@ -45,7 +45,7 @@ const PlayForFunButton: React.FC<Props> = ({ gameId, playerId }) => {
             .then((data) => (request.ip = data.data))
             .catch(showAlert);
 
-        Axios.post(`${appSettings.owApiUrl}/SetDefaultBalance?playerId=${playerId}&operator=ow&balance=20000`).catch(showAlert);
+        Axios.post(`${appSettings.owApiUrl}/SetDefaultBalance?playerId=${playerId}&operator=pff&balance=20000`).catch(showAlert);
 
         Axios.post(`${appSettings.simulatorUrl}/signin/sso`, request)
             .then((data) => data.data)

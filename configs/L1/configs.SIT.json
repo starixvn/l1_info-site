@@ -6,8 +6,12 @@
     "system": "L1",
     "enableSourceMap": false,
     "guideUrl": "https://l1guidessit.sgamesuat.com",
-    "simulatorUrl": "https://l1_game_lobby_simulator_LOCAL_2:5000",
-    "owApiUrl": "https://l1_ow_api_simulator_LOCAL_2:5000/SabaClub",
+    "simulatorUrl": "https://l1_game_lobby_simulator_sit:5000",
+    "owApiUrl": "https://l1_ow_api_simulator_sit:5000/SabaClub",
+    "operatorPFF": {
+        "id": "PFF",
+        "secret": "PFF123"
+    },
     "googleFormIdEn": "1FAIpQLSfbuP1rEABaUGoUdfR_kdpF-wNjv2NoPpQ1wbDeBt1qxpSR4A",
     "googleFormIdVi": "1FAIpQLSfdX_jii1gogh_OnMY8Tcvi_OmtKPo9Q0XypK6lZrpdYKAWwQ"
 }

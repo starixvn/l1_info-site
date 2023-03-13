@@ -15,6 +15,11 @@ interface SentryOptions {
     dsn: string;
     environment: string;
 }
+
+interface Operator {
+    id: string;
+    secret: string;
+}
 export default interface AppSettings {
     proxy: ProxySetting;
     sentry: SentryOptions;
@@ -23,6 +28,7 @@ export default interface AppSettings {
     guideUrl: string;
     simulatorUrl: string;
     owApiUrl: string;
+    operatorPFF: Operator;
     googleFormIdEn: string;
     googleFormIdVi: string;
 }
