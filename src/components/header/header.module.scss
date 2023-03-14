@@ -8,7 +8,7 @@
     background: #0e1827;
     transition: none;
     height: 5.6rem;
-    padding: 0.5rem 2.4rem;
+    padding: 0.5rem 0.5rem 0.5rem 1rem;
     z-index: 1030;
     display: flex;
     justify-content: space-between;
@@ -261,5 +261,9 @@
 @media (min-width: 768px) {
     .navbar-toggler {
         display: none;
+    }
+
+    .navbar {
+        padding: 0.5rem 2.4rem;
     }
 }

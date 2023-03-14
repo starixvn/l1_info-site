@@ -9,7 +9,7 @@
 #__next,
 body,
 html {
-    --page-background: #fff;
+    --page-background: #f6f6f6;
     --primary-color: #f89820;
     --text-color: #262626;
     --master-solid-color: #cf200b;
@@ -33,11 +33,12 @@ html {
 body {
     padding: 0;
     margin: 0;
-    background-color: transparent;
+    background: var(--page-background) url(/static/images/home_bg.jpg) repeat-y;
     color: var(--text-color);
     font: 500 1.6rem/1.5 var(--font-family);
     overscroll-behavior: contain;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
+    background-size: cover;
 }
 
 .game-container {
@@ -104,6 +105,7 @@ label {
     background-color: #000;
     width: 14rem;
     z-index: 10;
+    border-radius: 1rem;
 }
 
 .navbar-brand {

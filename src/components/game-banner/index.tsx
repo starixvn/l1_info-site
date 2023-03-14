@@ -1,27 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Slider, { CustomArrowProps } from "react-slick";
-import { isMobile, isMobileOnly } from "react-device-detect";
-
-import { buildVersion } from "../../common/constants";
-import Styles from "./game-banner.module.scss";
-
-const NextArrow = (props: CustomArrowProps) => {
-    const { className, onClick } = props;
-    return (
-        <div className={`${className} ${Styles["customize-slick-next"]}`} onClick={onClick}>
-            <img className="img" src={`/static/images/banners/next.png?v=${buildVersion}`} alt="next"></img>
-        </div>
-    );
-};
-
-const PrevArrow = (props: CustomArrowProps) => {
-    const { className, onClick } = props;
-    return (
-        <div className={`${className} ${Styles["customize-slick-prev"]}`} onClick={onClick}>
-            <img className="img" src={`/static/images/banners/prev.png?v=${buildVersion}`} alt="prev"></img>
-        </div>
-    );
-};
+import Slider from "react-slick";
+import { isMobileOnly } from "react-device-detect";
 
 const BannerItem: React.FC<{ name: string }> = ({ name }) => {
     return (
@@ -41,6 +20,7 @@ const GameBanner = () => {
     }, []);
 
     const settings = {
+        arrows: false,
         dots: true,
         infinite: true,
         speed: 500,
@@ -52,8 +32,6 @@ const GameBanner = () => {
         initialSlide: 1,
         autoplay: true,
         pauseOnHover: true,
-        nextArrow: <NextArrow />,
-        prevArrow: <PrevArrow />,
     };
 
     return (
