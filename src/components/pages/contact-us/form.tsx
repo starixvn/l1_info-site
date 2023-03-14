@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import appSettings from "../../../common/app-settings";
+import { isEmail } from "../../../helpers/function-helper";
 import Styles from "./contact.module.scss";
 
 const classFormGroup = "form-group";
@@ -26,9 +27,25 @@ const Form: React.FC = () => {
     const [brandName, setBrandName] = useState("");
     const [remarks, setRemarks] = useState("");
     const [email, setEmail] = useState("");
+    const [emailError, setEmailError] = useState<{ isEmpty?: boolean; isValid?: boolean }>({ isEmpty: false, isValid: true });
+    const emailRef = useRef<HTMLInputElement>(null);
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+
+        if (!email) {
+            setEmailError({ isEmpty: true });
+            emailRef.current && emailRef.current.focus();
+            return;
+        }
+
+        if (!isEmail(email)) {
+            setEmailError({ isValid: false });
+            emailRef.current && emailRef.current.focus();
+            return;
+        }
+
+        setEmailError({ isEmpty: false, isValid: true });
         const formUrl = `https://docs.google.com/forms/d/e/${googleFormId}}/formResponse`;
         const formFields = new FormData();
         formFields.append("entry.1381540194", brandName);
@@ -84,13 +101,18 @@ const Form: React.FC = () => {
                             {t("contact-email")}
                         </label>
                         <input
+                            ref={emailRef}
                             className={Styles[classForControl]}
-                            type="email"
                             id="validationEmail"
+                            type="text"
                             name="email"
-                            required
                             onChange={(e) => setEmail(e.target.value)}
                         />
+                        {emailError && (
+                            <p className={Styles["text-failed"]}>
+                                {emailError.isEmpty ? t("email-empty") : emailError.isValid ? "" : t("email-invalid")}
+                            </p>
+                        )}
                     </div>
                     <button className={Styles["btn-primary"]} type="submit">
                         {t("complete")}
