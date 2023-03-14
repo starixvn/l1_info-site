@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Slider, { CustomArrowProps } from "react-slick";
-import { isMobile } from "react-device-detect";
+import { isMobile, isMobileOnly } from "react-device-detect";
 
 import { buildVersion } from "../../common/constants";
 import Styles from "./game-banner.module.scss";
@@ -37,7 +37,7 @@ const GameBanner = () => {
     useEffect(() => {
         const nameMobile = ["banner-1_mobile.jpg", "banner-2_mobile.jpg", "banner-3_mobile.jpg"];
         const nameDesktop = ["banner-1.jpg", "banner-2.jpg", "banner-3.jpg"];
-        setBanners(isMobile ? nameMobile : nameDesktop);
+        setBanners(isMobileOnly ? nameMobile : nameDesktop);
     }, []);
 
     const settings = {
