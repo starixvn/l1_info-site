@@ -109,7 +109,6 @@
 @media (min-width: 768px) {
     .form-container {
         flex-direction: row;
-        
     }
     .form-control {
         width: 47rem;
@@ -140,9 +139,17 @@
     }
 }
 
-@media (max-width: 768px) {
-    .form-container {
-        padding:0
-        
-    }
+.text-status{
+    font-size: 1.8rem;
+    margin-top: 1.2rem;
+}
+
+.text-success {
+    @extend .text-status;
+    color: #159300;
+}
+
+.text-failed {
+    @extend .text-status;
+    color: #CF200B;
 }

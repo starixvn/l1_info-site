@@ -29,6 +29,5 @@ export default interface AppSettings {
     simulatorUrl: string;
     owApiUrl: string;
     operatorPFF: Operator;
-    googleFormIdEn: string;
-    googleFormIdVi: string;
+    googleFormId: string;
 }

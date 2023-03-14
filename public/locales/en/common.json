@@ -38,5 +38,5 @@
     "fillin": "Please fill in the information and we will contact you as soon as possible.",
     "option": "Option",
     "thankyou": "Thank you for your message. It has been sent.",
-    "loading": "Loading..."
+    "submit-failed": "There was an error trying to send your message. Please check and try again"
 }

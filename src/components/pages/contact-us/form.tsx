@@ -1,71 +1,103 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { browserVersion, isIOS, isMobile, isMobileOnly, isDesktop } from "react-device-detect";
 
 import appSettings from "../../../common/app-settings";
-import { locales } from "../../../common/constants";
 import Styles from "./contact.module.scss";
-import Loader from "../../loader";
 
-const PADDING_FORM = 40;
-const WIDTH_FORM = {
-    desktop: 800,
-};
+const classFormGroup = "form-group";
+const classForControl = "form-control";
 
-const HEIGHT_FORM = {
-    mobile: 1000,
-    desktop: 900,
+const Intro = () => {
+    const { t } = useTranslation("common");
+    return (
+        <div className={Styles["intro-container"]}>
+            <div className={Styles["title"]}> {t("contact")}</div>
+            <div className={Styles["contact-intro"]}>{t("expertise")}</div>
+        </div>
+    );
 };
 
 const Form: React.FC = () => {
-    const { i18n, t } = useTranslation("common");
+    const { t } = useTranslation("common");
     const wrapperRef = useRef<HTMLIFrameElement>(null);
-    const { googleFormIdEn, googleFormIdVi } = appSettings;
-    const [isLoading, setIsLoading] = useState<boolean>(true);
-    const [width, setWidth] = useState<number>(0);
-    const [height, setHeight] = useState<number>(0);
-    const [id, setId] = useState<string>();
+    const { googleFormId } = appSettings;
+    const [isSubmitSuccess, setIsSubmitSuccess] = useState<boolean>(false);
+    const [isSubmitFailed, setIsSubmitFailed] = useState<boolean>(false);
+    const [brandName, setBrandName] = useState("");
+    const [remarks, setRemarks] = useState("");
+    const [email, setEmail] = useState("");
 
-    const handleResize = () => {
-        setWidth(+(window.innerWidth - (isDesktop ? PADDING_FORM : 0)));
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        const formUrl = `https://docs.google.com/forms/d/e/${googleFormId}}/formResponse`;
+        const formFields = new FormData();
+        formFields.append("entry.1381540194", brandName);
+        formFields.append("entry.1429060638", remarks);
+        formFields.append("entry.1967901460", email);
+        fetch(formUrl, {
+            mode: "no-cors",
+            method: "POST",
+            body: formFields,
+        })
+            .then((response) => {
+                // handle response from Google Forms
+                setIsSubmitSuccess(true);
+            })
+            .catch((error) => {
+                // handle error submitting form
+                setIsSubmitFailed(true);
+                console.error(error);
+            });
     };
-
-    useEffect(() => {
-        setWidth(isMobile ? window.innerWidth : WIDTH_FORM.desktop);
-        setHeight(isMobile ? HEIGHT_FORM.mobile : HEIGHT_FORM.desktop);
-        setId(i18n.language === locales.en ? googleFormIdEn : googleFormIdVi);
-    }, []);
-
-    useEffect(() => {
-        setId(i18n.language === locales.en ? googleFormIdEn : googleFormIdVi);
-    }, [i18n.language]);
-
-    useEffect(() => {
-        const isIOSBrowserVersion15 = isMobileOnly && isIOS && browserVersion === "15";
-        if (!isIOSBrowserVersion15) {
-            window.addEventListener("resize", handleResize);
-        }
-
-        handleResize();
-
-        return () => {
-            window.removeEventListener("resize", handleResize);
-        };
-    }, [wrapperRef]);
 
     return (
         <div className={Styles["contact-container"]} ref={wrapperRef}>
-            <p className={Styles["small-intro"]}></p>
-            {isLoading && <Loader></Loader>}
+            <Intro />
+            <p className={Styles["small-intro"]}>{t("common:fillin")}</p>
+
             <div className={Styles["form-container"]}>
-                <iframe
-                    src={`https://docs.google.com/forms/d/e/${id}/viewform?embedded=true&hl=${i18n.language}`}
-                    width={width}
-                    height={height}
-                    onLoad={() => setIsLoading(false)}
-                >
-                    {t("loading")}
-                </iframe>
+                <form onSubmit={handleSubmit}>
+                    <div className={Styles[classFormGroup]}>
+                        <label className={Styles["form-label"]} htmlFor="brandName">
+                            {t("your-brand-name")}
+                        </label>
+                        <input
+                            className={Styles[classForControl]}
+                            type="text"
+                            name="brandName"
+                            onChange={(e) => setBrandName(e.target.value)}
+                        />
+                    </div>
+                    <div className={Styles[classFormGroup]}>
+                        <label className={Styles["form-label"]} htmlFor="brandName">
+                            {t("remarks")}
+                        </label>
+                        <input
+                            className={Styles[classForControl]}
+                            type="text"
+                            name="remarks"
+                            onChange={(e) => setRemarks(e.target.value)}
+                        />
+                    </div>
+                    <div className={Styles[classFormGroup]}>
+                        <label htmlFor="validationEmail" className={Styles["form-required"]}>
+                            {t("contact-email")}
+                        </label>
+                        <input
+                            className={Styles[classForControl]}
+                            type="email"
+                            id="validationEmail"
+                            name="email"
+                            required
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
+                    </div>
+                    <button className={Styles["btn-primary"]} type="submit">
+                        {t("complete")}
+                    </button>
+                    {isSubmitSuccess && <p className={Styles["text-success"]}>{t("thankyou")}</p>}
+                    {isSubmitFailed && <p className={Styles["text-failed"]}>{t("submit-failed")}</p>}
+                </form>
             </div>
         </div>
     );
