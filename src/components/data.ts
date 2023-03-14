@@ -8,7 +8,7 @@ export interface IGame {
     gameCategory: EGameCategory;
     rtp: number;
     tag: ETags;
-    volatility?: EVolatility;
+    volatility: EVolatility | null;
     isBanner: boolean;
 }
 
@@ -20,6 +20,7 @@ const Games: IGame[] = [
         gameCategory: EGameCategory.Dices,
         rtp: 98,
         tag: ETags.RoundBased,
+        volatility: null,
         isBanner: true,
     },
     {
@@ -29,6 +30,7 @@ const Games: IGame[] = [
         gameCategory: EGameCategory.Dices,
         rtp: 97,
         tag: ETags.RoundBased,
+        volatility: null,
         isBanner: false,
     },
     {
@@ -38,6 +40,7 @@ const Games: IGame[] = [
         gameCategory: EGameCategory.Dices,
         rtp: 98,
         tag: ETags.RoundBased,
+        volatility: null,
         isBanner: true,
     },
     {
@@ -47,6 +50,7 @@ const Games: IGame[] = [
         gameCategory: EGameCategory.Dices,
         rtp: 97,
         tag: ETags.RoundBased,
+        volatility: null,
         isBanner: false,
     },
     {
@@ -56,6 +60,7 @@ const Games: IGame[] = [
         gameCategory: EGameCategory.Dices,
         rtp: 98,
         tag: ETags.RoundBased,
+        volatility: null,
         isBanner: true,
     },
     {
@@ -65,6 +70,7 @@ const Games: IGame[] = [
         gameCategory: EGameCategory.Dices,
         rtp: 98,
         tag: ETags.RoundBased,
+        volatility: null,
         isBanner: false,
     },
     {
@@ -74,6 +80,7 @@ const Games: IGame[] = [
         gameCategory: EGameCategory.Dices,
         rtp: 98,
         tag: ETags.RoundBased,
+        volatility: null,
         isBanner: true,
     },
     {
@@ -133,6 +140,7 @@ const Games: IGame[] = [
         gameCategory: EGameCategory.Others,
         rtp: 96,
         tag: ETags.RoundBased,
+        volatility: null,
         isBanner: false,
     },
     {
@@ -142,6 +150,7 @@ const Games: IGame[] = [
         gameCategory: EGameCategory.Others,
         rtp: 96,
         tag: ETags.RoundBased,
+        volatility: null,
         isBanner: false,
     },
     {
@@ -151,6 +160,7 @@ const Games: IGame[] = [
         gameCategory: EGameCategory.Casino,
         rtp: 98,
         tag: ETags.RoundBased,
+        volatility: null,
         isBanner: true,
     },
     {
@@ -160,6 +170,7 @@ const Games: IGame[] = [
         gameCategory: EGameCategory.Casino,
         rtp: 98,
         tag: ETags.RoundBased,
+        volatility: null,
         isBanner: false,
     },
     {
@@ -169,6 +180,7 @@ const Games: IGame[] = [
         gameCategory: EGameCategory.Dices,
         rtp: 96,
         tag: ETags.RoundBased,
+        volatility: null,
         isBanner: false,
     },
     {
@@ -178,6 +190,7 @@ const Games: IGame[] = [
         gameCategory: EGameCategory.Dices,
         rtp: 96,
         tag: ETags.RoundBased,
+        volatility: null,
         isBanner: false,
     },
     {
@@ -187,6 +200,7 @@ const Games: IGame[] = [
         gameCategory: EGameCategory.Casino,
         rtp: 96,
         tag: ETags.RoundBased,
+        volatility: null,
         isBanner: false,
     },
     {
@@ -196,6 +210,7 @@ const Games: IGame[] = [
         gameCategory: EGameCategory.Casino,
         rtp: 97,
         tag: ETags.RoundBased,
+        volatility: null,
         isBanner: false,
     },
     {
@@ -205,6 +220,7 @@ const Games: IGame[] = [
         gameCategory: EGameCategory.Others,
         rtp: 98,
         tag: ETags.RoundBased,
+        volatility: null,
         isBanner: false,
     },
     {
@@ -214,6 +230,7 @@ const Games: IGame[] = [
         gameCategory: EGameCategory.Casino,
         rtp: 98,
         tag: ETags.TurnBased,
+        volatility: null,
         isBanner: false,
     },
     {
@@ -223,15 +240,17 @@ const Games: IGame[] = [
         gameCategory: EGameCategory.Casino,
         rtp: 98,
         tag: ETags.RoundBased,
+        volatility: null,
         isBanner: false,
     },
     {
         gameId: GAMES.BITCOIN_MASTER,
         isNew: false,
-        gameType: EGameType.BitcoinMaster,
+        gameType: EGameType.Others,
         gameCategory: EGameCategory.Others,
         rtp: 96,
         tag: ETags.RoundBased,
+        volatility: null,
         isBanner: false,
     },
     {
@@ -241,6 +260,7 @@ const Games: IGame[] = [
         gameCategory: EGameCategory.Casino,
         rtp: 98,
         tag: ETags.TurnBased,
+        volatility: null,
         isBanner: true,
     },
     {
@@ -250,6 +270,7 @@ const Games: IGame[] = [
         gameCategory: EGameCategory.Casino,
         rtp: 98,
         tag: ETags.TurnBased,
+        volatility: null,
         isBanner: true,
     },
     {
@@ -259,6 +280,7 @@ const Games: IGame[] = [
         gameCategory: EGameCategory.Casino,
         rtp: 94,
         tag: ETags.RoundBased,
+        volatility: null,
         isBanner: true,
     },
     {
@@ -268,6 +290,7 @@ const Games: IGame[] = [
         gameCategory: EGameCategory.Slots,
         rtp: 97,
         tag: ETags.RoundBased,
+        volatility: null,
         isBanner: false,
     },
 ];

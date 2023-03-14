@@ -53,8 +53,8 @@
     }
 
     .detail-group {
-        display: flex;
-        column-gap: 5rem;
+        display: grid;
+        grid-template-columns: 1fr;
         row-gap: 3rem;
         flex-direction: column;
     }
@@ -98,12 +98,12 @@
     }
 
     .flex-detail {
-        grid-template-columns: 1fr 45rem;
+        grid-template-columns: 1fr 35rem;
     }
 
     .game-detail-bottom {
         .detail-group {
-            flex-direction: row;
+            grid-template-columns: 1fr 1fr;
         }
     }
 }

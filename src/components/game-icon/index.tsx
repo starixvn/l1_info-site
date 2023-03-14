@@ -11,14 +11,15 @@ type TGameIconProps = {
     game?: IGame;
     openDetail?: (game: IGame) => void;
     customClassName?: string;
+    isLink?: boolean;
 };
 
-export const GameIcon: React.FC<TGameIconProps> = ({ gameId, isSmallSize, isNew, game, openDetail, customClassName }) => {
+export const GameIcon: React.FC<TGameIconProps> = ({ gameId, isSmallSize, isNew, game, openDetail, customClassName, isLink }) => {
     const router = useRouter();
-
+    const clickable = isLink ? "clickable" : "";
     return (
         <div
-            className={`${Styles["game-icon"]} ${customClassName} ${isSmallSize ? Styles["icon-small"] : ""}`}
+            className={`${Styles["game-icon"]} ${customClassName} ${isSmallSize ? Styles["icon-small"] : ""} ${clickable}`}
             onClick={() => game && openDetail && openDetail(game)}
         >
             <img className="icon-bg" src={`/static/images/game-icon/icon-bg-${gameId}.png?v=1`} alt="game-icon"></img>

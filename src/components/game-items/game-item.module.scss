@@ -58,6 +58,10 @@
 .game-play {
     width: 21.8rem;
     margin: 0 auto;
+
+    .game-icon {
+        cursor: pointer;
+    }
 }
 
 .game-detail {

@@ -21,7 +21,7 @@ export enum EGameType {
     Roulette,
     Slot,
     Lottery,
-    BitcoinMaster,
+    Others,
 }
 
 export enum ETags {
@@ -32,6 +32,7 @@ export enum ETags {
 }
 
 export enum EVolatility {
+    null,
     Medium,
     MediumHigh,
 }

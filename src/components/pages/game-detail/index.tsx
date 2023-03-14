@@ -1,6 +1,6 @@
 import React from "react";
 import { useTranslation } from "next-i18next";
-import { GameTypeName, TagsName } from "../../../common/constants";
+import { GameTypeName, GameVolatility, TagsName } from "../../../common/constants";
 import { IGame } from "../../data";
 import GameIcon from "../../game-icon";
 import { LanguageIcons } from "../../icon";
@@ -33,6 +33,8 @@ const GameDetails: React.FC<TGameDetails> = ({ game, gamesSimilar }) => {
     const router = useRouter();
     const { t } = useTranslation(["common", "detail"]);
     const currentLang = router.locale !== "vi" ? `_${router.locale}` : "";
+    const volatility = game.volatility;
+    console.log("votability", volatility);
 
     return (
         <>
@@ -61,12 +63,19 @@ const GameDetails: React.FC<TGameDetails> = ({ game, gamesSimilar }) => {
                                     {t<string>("common:rtp")}: <span className="color-primary">{game.rtp}%</span>
                                 </span>
                             </div>
-                        </div>
-                        <div className={Styles["detail-item"]}>
-                            <span>
-                                {t<string>("common:tag")}:{" "}
-                                <span className="color-primary">{t<string>(`common:tag-${TagsName[game.tag]}`)}</span>
-                            </span>
+                            <div className={Styles["detail-item-text"]}>
+                                <span>
+                                    {t<string>("common:tag")}:{" "}
+                                    <span className="color-primary">{t<string>(`common:tag-${TagsName[game.tag]}`)}</span>
+                                </span>
+                            </div>
+
+                            {game.volatility !== null && (
+                                <div className={Styles["detail-item"]}>
+                                    {t<string>("common:volatility")}:{" "}
+                                    <span className="color-primary">{t<string>(`common:tag-${GameVolatility[game.volatility]}`)}</span>
+                                </div>
+                            )}
                         </div>
 
                         <div className={Styles[detailIconClass]}>

@@ -1,4 +1,4 @@
-import { EGameCategory, EGameType, TObjectKeyValue } from "./../../components/type";
+import { EGameCategory, EGameType, EVolatility, TObjectKeyValue } from "./../../components/type";
 import { ETags } from "../../components/type";
 
 const locales = { en: "en", vi: "vi" };
@@ -82,7 +82,12 @@ const GameTypeName: TObjectKeyValue = {
     [EGameType.CardGame]: "cardGame",
     [EGameType.Slot]: "slot",
     [EGameType.Lottery]: "lottery",
-    [EGameType.BitcoinMaster]: "bitcoinMaster",
+    [EGameType.Others]: "others",
+};
+
+const GameVolatility: TObjectKeyValue = {
+    [EVolatility.Medium]: "medium",
+    [EVolatility.MediumHigh]: "medium-high",
 };
 
 const GameCategoryName: TObjectKeyValue = {
@@ -93,4 +98,4 @@ const GameCategoryName: TObjectKeyValue = {
     [EGameCategory.Others]: "others",
 };
 
-export { locales, Themes, GAMES, buildVersion, TagsName, GameTypeName, GameCategoryName };
+export { locales, Themes, GAMES, buildVersion, TagsName, GameTypeName, GameCategoryName, GameVolatility };

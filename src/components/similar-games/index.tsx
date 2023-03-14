@@ -98,6 +98,7 @@ export const SimilarGames: React.FC<{ games: IGame[]; t: TFunction }> = ({ games
                                 isSmallSize={true}
                                 openDetail={openDetail}
                                 customClassName={"similar-game-icon"}
+                                isLink={true}
                             />
                         );
                     })}
