@@ -26,6 +26,8 @@ type TOption = {
     value: string;
 };
 
+const MARGIN_BOTTOM = 10;
+
 const GuideComponent: React.FC<Props> = ({ gameId, userStakeLevel }) => {
     const { i18n, t } = useTranslation("detail");
     const { theme } = useTheme();
@@ -48,10 +50,10 @@ const GuideComponent: React.FC<Props> = ({ gameId, userStakeLevel }) => {
         });
     };
 
-    const handleResize = () => {
+    const updateDimension = () => {
         const clientHeight = wrapperRef?.current?.clientHeight ?? 0;
         const clientWidth = wrapperRef?.current?.clientWidth ?? 0;
-        setHeightGuide(clientHeight);
+        setHeightGuide(clientHeight - MARGIN_BOTTOM);
         setWidthGuide(clientWidth);
     };
 
@@ -79,13 +81,13 @@ const GuideComponent: React.FC<Props> = ({ gameId, userStakeLevel }) => {
     useEffect(() => {
         const isIOSBrowserVersion15 = isMobileOnly && isIOS && browserVersion === "15";
         if (!isIOSBrowserVersion15) {
-            window.addEventListener("resize", handleResize);
+            window.addEventListener("resize", updateDimension);
         }
 
-        handleResize();
+        updateDimension();
 
         return () => {
-            window.removeEventListener("resize", handleResize);
+            window.removeEventListener("resize", updateDimension);
         };
     }, [wrapperRef]);
 
@@ -106,6 +108,11 @@ const GuideComponent: React.FC<Props> = ({ gameId, userStakeLevel }) => {
         getGameConfig(gameId.toString(), setGameConfigs);
         setOptions(formatData);
         onChangeOption(currentValue);
+        document.addEventListener("visibilitychange", updateDimension);
+
+        return () => {
+            document.removeEventListener("visibilitychange", updateDimension);
+        };
     }, []);
 
     return (
