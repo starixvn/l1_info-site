@@ -1,7 +1,9 @@
 import React from "react";
+import dynamic from "next/dynamic";
 
 import { TPropsBase } from "../../pageBase";
-import Category from "../../../pages/category/[category]";
+
+const Category = dynamic(() => import("../../../pages/category/[category]"));
 
 const Dashboard = (props: TPropsBase) => {
     return <Category {...props} />;

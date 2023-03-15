@@ -10,4 +10,4 @@ const LanguageIcons: React.FC = () => {
     );
 };
 
-export { LanguageIcons };
+export default LanguageIcons;

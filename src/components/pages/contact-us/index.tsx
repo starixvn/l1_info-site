@@ -1,7 +1,9 @@
+import dynamic from "next/dynamic";
 import React from "react";
 
 import PageBase, { IStateBase, TPropsBase } from "../../pageBase";
-import Form from "./form";
+
+const Form = dynamic(() => import("./form"));
 
 class ContactInfo extends PageBase<TPropsBase, IStateBase> {
     renderContent() {

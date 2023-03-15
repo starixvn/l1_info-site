@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
+import dynamic from "next/dynamic";
+import { v4 as uuidv4 } from "uuid";
+
 import { GameCategoryName, GameTypeName, TagsName } from "../../common/constants";
 import { IGame } from "../data";
-import { LanguageIcons } from "../icon";
-import Loader from "../loader";
 import Styles from "./game-item.module.scss";
-import PlayForFunButton from "../play-for-fun-button";
 import { useGameContext } from "../../contexts/game-context";
-import { v4 as uuidv4 } from "uuid";
-import dynamic from "next/dynamic";
+
+const GameIcon = dynamic(() => import("../game-icon"));
+const LanguageIcons = dynamic(() => import("../icon"));
+const PlayForFunButton = dynamic(() => import("../play-for-fun-button"));
 
 type TGameItems = {
     game: IGame[];
@@ -20,10 +22,6 @@ const classDetailIcon = "detail-icon";
 const classDetailItem = "detail-item";
 const NUMBER_ROWS_DISPLAY = 5;
 let totalBatch = 0;
-
-const GameIcon = dynamic(() => import("../game-icon"), {
-    loading: () => <Loader />,
-});
 
 const getGame = (games: IGame[], pageSize: number, pageNumber: number) => {
     return games.slice((pageNumber - 1) * pageSize, pageNumber * pageSize);

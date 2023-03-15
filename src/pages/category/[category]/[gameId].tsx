@@ -1,12 +1,14 @@
 import React from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { GetStaticPaths } from "next";
+import dynamic from "next/dynamic";
 
 import { locales } from "../../../common/constants";
 import { GAMES_CATEGORY, GAMES_SORT } from "../../../components/data";
 import PageBase, { IStateBase, TPropsBase } from "../../../components/pageBase";
-import GameDetails from "../../../components/pages/game-detail";
 import { IStaticProps } from "../../../components/type";
+
+const GameDetails = dynamic(() => import("../../../components/pages/game-detail"));
 
 interface IParamsData {
     category: string;

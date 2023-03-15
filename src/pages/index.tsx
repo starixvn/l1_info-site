@@ -1,11 +1,13 @@
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import dynamic from "next/dynamic";
 
-import Dashboard from "../components/pages/dashboard";
 import { GAMES_SORT } from "../components/data";
 import { EGameCategory } from "../components/type";
 import { TPropsBase } from "../components/pageBase";
+
+const Dashboard = dynamic(() => import("../components/pages/dashboard"));
 
 const Home = (props: TPropsBase) => {
     const [isLoading, setIsLoading] = useState(true);

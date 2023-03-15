@@ -1,10 +1,12 @@
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React, { useEffect, useState } from "react";
+import dynamic from "next/dynamic";
+import { useRouter } from "next/router";
 
 import { TPropsBase } from "../../components/pageBase";
-import ContactInfo from "../../components/pages/contact-us";
 import { ECategoryOther } from "../../components/type";
-import { useRouter } from "next/router";
+
+const ContactInfo = dynamic(() => import("../../components/pages/contact-us"));
 
 const Contact = (props: TPropsBase) => {
     const router = useRouter();

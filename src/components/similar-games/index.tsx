@@ -1,11 +1,14 @@
 import { TFunction } from "i18next";
+import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import React from "react";
 import Slider, { CustomArrowProps } from "react-slick";
+
 import { GameCategoryName } from "../../common/constants";
 import { IGame } from "../data";
-import GameIcon from "../game-icon";
 import Styles from "./similar-games.module.scss";
+
+const GameIcon = dynamic(() => import("../game-icon"));
 
 const NextArrow = (props: CustomArrowProps) => {
     const { className, onClick } = props;

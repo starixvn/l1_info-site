@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import dynamic from "next/dynamic";
 
 import { UserStakeLevel } from "../../components/pages/guide/constants";
-import GuideComponent from "../../components/pages/guide";
+
+const GuideComponent = dynamic(() => import("../../components/pages/guide"));
 
 export const GameGuide: React.FC = () => {
     const router = useRouter();

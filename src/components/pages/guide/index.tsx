@@ -5,15 +5,17 @@ import { useTranslation } from "next-i18next";
 import { isMobileOnly, isIOS, browserVersion } from "react-device-detect";
 import Select from "react-select";
 import { useRouter } from "next/router";
+import dynamic from "next/dynamic";
 
 import Styles from "./guide.module.scss";
 import { IGameConfigs, TUserStakeLevel } from "../../type";
 import appSettings from "../../../common/app-settings";
-import Loader from "../../loader";
-import Header from "../../header";
-import Footer from "../../footer";
 import { Container } from "../../pageBase";
 import { GAMES_SORT } from "../../data";
+
+const Header = dynamic(() => import("../../header"));
+const Footer = dynamic(() => import("../../footer"));
+const Loader = dynamic(() => import("../../loader"));
 
 type Props = {
     gameId: number;

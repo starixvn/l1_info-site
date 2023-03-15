@@ -1,10 +1,12 @@
+import dynamic from "next/dynamic";
 import React, { useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import appSettings from "../../../common/app-settings";
 import { isEmail } from "../../../helpers/function-helper";
-import Loader from "../../loader";
 import Styles from "./contact.module.scss";
+
+const Loader = dynamic(() => import("../../loader"));
 
 type TStatusEmail = {
     isEmpty?: boolean;

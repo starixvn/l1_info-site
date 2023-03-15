@@ -1,13 +1,16 @@
 import React from "react";
 import { useTranslation } from "next-i18next";
+import dynamic from "next/dynamic";
+import { useRouter } from "next/router";
+
 import { GameTypeName, GameVolatility, TagsName } from "../../../common/constants";
 import { IGame } from "../../data";
-import GameIcon from "../../game-icon";
-import { LanguageIcons } from "../../icon";
-import SimilarGames from "../../similar-games";
 import Styles from "./game-detail.module.scss";
-import { useRouter } from "next/router";
-import PlayForFunButton from "../../play-for-fun-button";
+
+const GameIcon = dynamic(() => import("../../game-icon"));
+const SimilarGames = dynamic(() => import("../../similar-games"));
+const PlayForFunButton = dynamic(() => import("../../play-for-fun-button"));
+const LanguageIcons = dynamic(() => import("../../icon"));
 
 type TGameDetails = {
     game: IGame;
