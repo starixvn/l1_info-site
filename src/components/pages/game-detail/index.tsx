@@ -2,6 +2,7 @@ import React from "react";
 import { useTranslation } from "next-i18next";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 import { GameTypeName, GameVolatility, TagsName } from "../../../common/constants";
 import { IGame } from "../../data";
@@ -26,7 +27,9 @@ const DetailIcon: React.FC<{ icon: string; text: string; subpath?: string; forma
 }) => {
     return (
         <span className={Styles["group-icon"]}>
-            <img className="icon-bg" src={`/static/images/${subpath}/${icon}.${format}?v=1`} alt={icon}></img>
+            <div style={{ height: 32, width: 32, position: "relative" }}>
+                <Image className="icon-bg" src={`/static/images/${subpath}/${icon}.${format}`} alt={icon} loading="lazy" fill />
+            </div>
             {text}
         </span>
     );
@@ -37,7 +40,6 @@ const GameDetails: React.FC<TGameDetails> = ({ game, gamesSimilar }) => {
     const { t } = useTranslation(["common", "detail"]);
     const currentLang = router.locale !== "vi" ? `_${router.locale}` : "";
     const volatility = game.volatility;
-    console.log("votability", volatility);
 
     return (
         <>
@@ -103,11 +105,14 @@ const GameDetails: React.FC<TGameDetails> = ({ game, gamesSimilar }) => {
                     </div>
                     {game.isBanner && (
                         <div className={Styles["play-for-fun"]}>
-                            <img
+                            <Image
                                 className={Styles["banner-game"]}
                                 src={`/static/images/game-banner/banner_${game.gameId}${currentLang}.png`}
                                 alt="game-icon"
-                            ></img>
+                                loading="lazy"
+                                height={414}
+                                width={214}
+                            />
                             <PlayForFunButton gameId={game.gameId} />
                         </div>
                     )}

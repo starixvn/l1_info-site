@@ -1,11 +1,20 @@
 import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import { isMobileOnly } from "react-device-detect";
+import Image from "next/image";
 
 const BannerItem: React.FC<{ name: string }> = ({ name }) => {
     return (
         <div>
-            <img className="img" src={`/static/images/banners/${name}`} alt="bg"></img>
+            <Image
+                className="img"
+                src={`/static/images/banners/${name}`}
+                alt="bg"
+                loading="lazy"
+                layout="responsive"
+                width={isMobileOnly ? 750 : 1920}
+                height={isMobileOnly ? 420 : 400}
+            />
         </div>
     );
 };

@@ -24,6 +24,9 @@
             width: 11.8rem;
         }
     }
+    .img{
+        height: inherit!important;
+    }
 }
 
 .game-tag {
@@ -39,4 +42,8 @@
     background: #f8990b;
     border-top-left-radius: 1.5rem;
     border-bottom-right-radius: 1.5rem;
+}
+
+.container-icon{
+    position: "relative";
 }

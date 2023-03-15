@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useRouter } from "next/router";
 
 import Styles from "./header.module.scss";
 import { useTranslation } from "next-i18next";
@@ -7,6 +6,7 @@ import Languages from "../language-switcher";
 import Link from "next/link";
 import { GameCategoryName } from "../../common/constants";
 import { ECategoryOther } from "../type";
+import Image from "next/image";
 
 type THeaderProps = {
     isOpenGameGuide: boolean;
@@ -16,7 +16,6 @@ type THeaderProps = {
 export const Header: React.FC<THeaderProps> = ({ menuItems, category = 0, isOpenGameGuide }) => {
     const [selectCategory, setSelectCategory] = useState<number>(category);
     const { t } = useTranslation("common");
-    const router = useRouter();
 
     const onSelectCategory = (gameCategory: number) => {
         setSelectCategory(gameCategory);
@@ -26,7 +25,17 @@ export const Header: React.FC<THeaderProps> = ({ menuItems, category = 0, isOpen
         <div id="header" className={Styles["header"]}>
             <nav className={`${Styles["navbar"]} ${Styles["navbar-expand"]}`}>
                 <Link className="navbar-brand" href={"/"}>
-                    <img className={Styles.logo} src={`/static/images/logo.svg?v=1`} alt="logo"></img>
+                    <div className={Styles["logo-container"]}>
+                        <Image
+                            className={Styles.logo}
+                            src={`/static/images/logo.svg`}
+                            alt="logo"
+                            layout="responsive"
+                            width={19.4}
+                            height={80}
+                            loading="eager"
+                        />
+                    </div>
                 </Link>
                 <div className={`${Styles["navbar-collapse"]} ${Styles["collapse"]}`} id="navbarNavDropdown">
                     {!isOpenGameGuide && (
