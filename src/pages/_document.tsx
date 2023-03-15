@@ -17,6 +17,7 @@ export default class extends Document {
                     <meta httpEquiv="Pragma" content="no-cache" />
                     <meta httpEquiv="Expires" content="-1" />
                     <meta name="theme-color" content="transparent" />
+                    <meta name="description" content="Info site"></meta>
                 </Head>
                 <body>
                     <Main />

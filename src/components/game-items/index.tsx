@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 import dynamic from "next/dynamic";
 import { v4 as uuidv4 } from "uuid";
+import Link from "next/link";
 
 import { GameCategoryName, GameTypeName, TagsName } from "../../common/constants";
 import { IGame } from "../data";
@@ -89,7 +90,7 @@ export const GameItems: React.FC<TGameItems> = ({ game, category }) => {
                                 <div className={Styles["game-intro"]} onClick={() => openDetail(game)}>
                                     {t<string>(`detail:${game.gameId}.detail`)}
                                 </div>
-                                <a
+                                <Link
                                     href={`/${i18n.language}/guide?gameId=${game.gameId}`}
                                     target="_blank"
                                     rel="noopener noreferrer"
@@ -97,7 +98,7 @@ export const GameItems: React.FC<TGameItems> = ({ game, category }) => {
                                 >
                                     <span className={`${Styles[classDetailIcon]} icon-info`}></span>
                                     <span className={Styles["text-guide"]}>{t<string>("common:game-rules")}</span>
-                                </a>
+                                </Link>
                                 <div className={Styles["detail-group"]}>
                                     <div className={Styles[classDetailItem]}>
                                         <span className={`${Styles[classDetailIcon]} icon-type`}></span>

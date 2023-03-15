@@ -25,14 +25,9 @@ export const Header: React.FC<THeaderProps> = ({ menuItems, category = 0, isOpen
     return (
         <div id="header" className={Styles["header"]}>
             <nav className={`${Styles["navbar"]} ${Styles["navbar-expand"]}`}>
-                <a
-                    className="navbar-brand"
-                    onClick={() => {
-                        router.push("/");
-                    }}
-                >
+                <Link className="navbar-brand" href={"/"}>
                     <img className={Styles.logo} src={`/static/images/logo.svg?v=1`} alt="logo"></img>
-                </a>
+                </Link>
                 <div className={`${Styles["navbar-collapse"]} ${Styles["collapse"]}`} id="navbarNavDropdown">
                     {!isOpenGameGuide && (
                         <div className={Styles["category-container"]}>
