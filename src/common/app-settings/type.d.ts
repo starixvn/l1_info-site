@@ -23,7 +23,7 @@ interface Operator {
 
 interface IGoogleForm {
     id: string;
-    fieldRandId: string;
+    fieldBrandId: string;
     fieldRemarksId: string;
     fieldEmailId: string;
 }

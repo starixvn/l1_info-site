@@ -49,10 +49,14 @@ export const Header: React.FC<THeaderProps> = ({ menuItems, category = 0, isOpen
                                                 className={`${Styles["menu-item"]} ${
                                                     index === selectCategory ? Styles["menu-selected"] : ""
                                                 }`}
-                                                onClick={() => onSelectCategory(gameCategory)}
                                                 key={gameCategory}
                                             >
-                                                <Link className={Styles["menu-text"]} href="/category/[category]" as={`/category/${name}`}>
+                                                <Link
+                                                    className={Styles["menu-text"]}
+                                                    href="/category/[category]"
+                                                    as={`/category/${name}`}
+                                                    onClick={() => onSelectCategory(gameCategory)}
+                                                >
                                                     {t<string>(`common:category-${name}`)}
                                                 </Link>
                                             </li>

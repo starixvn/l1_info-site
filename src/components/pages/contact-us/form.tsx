@@ -68,7 +68,7 @@ const Form: React.FC = () => {
     const submitForm = () => {
         const formUrl = `https://docs.google.com/forms/d/e/${googleForm.id}}/formResponse`;
         const formFields = new FormData();
-        formFields.append(`entry.${googleForm.fieldRandId}`, brandName);
+        formFields.append(`entry.${googleForm.fieldBrandId}`, brandName);
         formFields.append(`entry.${googleForm.fieldRemarksId}`, remarks);
         formFields.append(`entry.${googleForm.fieldEmailId}`, email);
         setStatusEmail({ isEmpty: false, isInvalid: false, isSubmitting: true });
