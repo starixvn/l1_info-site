@@ -77,14 +77,14 @@ export const GameItems: React.FC<TGameItems> = ({ game, category }) => {
                                 {t<string>(`detail:${game.gameId}.displayedName`)}
                             </div>
                             <div className={Styles["game-play"]}>
-                            <GameIcon
-                                gameId={game.gameId}
-                                game={game}
-                                isSmallSize={false}
-                                isNew={game.isNew}
-                                openDetail={openDetail}
-                                isLink={true}
-                            />
+                                <GameIcon
+                                    gameId={game.gameId}
+                                    game={game}
+                                    isSmallSize={false}
+                                    isNew={game.isNew}
+                                    openDetail={openDetail}
+                                    isLink={true}
+                                />
                                 <PlayForFunButton gameId={game.gameId} />
                             </div>
                             <div className={Styles["game-detail"]}>

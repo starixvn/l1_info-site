@@ -3,10 +3,16 @@ import { useTranslation } from "react-i18next";
 
 import appSettings from "../../../common/app-settings";
 import { isEmail } from "../../../helpers/function-helper";
+import Loader from "../../loader";
 import Styles from "./contact.module.scss";
 
-const classFormGroup = "form-group";
-const classForControl = "form-control";
+type TStatusEmail = {
+    isEmpty?: boolean;
+    isInvalid?: boolean;
+    isSubmitSuccess?: boolean;
+    isSubmitFailed?: boolean;
+    isSubmitting?: boolean;
+};
 
 const Intro = () => {
     const { t } = useTranslation("common");
@@ -20,37 +26,50 @@ const Intro = () => {
 
 const Form: React.FC = () => {
     const { t } = useTranslation("common");
-    const wrapperRef = useRef<HTMLIFrameElement>(null);
-    const { googleFormId } = appSettings;
-    const [isSubmitSuccess, setIsSubmitSuccess] = useState<boolean>(false);
-    const [isSubmitFailed, setIsSubmitFailed] = useState<boolean>(false);
+    const { googleForm } = appSettings;
     const [brandName, setBrandName] = useState("");
     const [remarks, setRemarks] = useState("");
     const [email, setEmail] = useState("");
-    const [emailError, setEmailError] = useState<{ isEmpty?: boolean; isValid?: boolean }>({ isEmpty: false, isValid: true });
+    const [statusEmail, setStatusEmail] = useState<TStatusEmail>({
+        isSubmitSuccess: false,
+        isSubmitFailed: false,
+        isEmpty: false,
+        isInvalid: false,
+        isSubmitting: false,
+    });
     const emailRef = useRef<HTMLInputElement>(null);
+    const resetStatusEmail = () => {
+        if (statusEmail.isSubmitSuccess) {
+            setStatusEmail({ isSubmitSuccess: false, isSubmitFailed: false, isEmpty: false, isInvalid: false, isSubmitting: false });
+            setBrandName("");
+            setRemarks("");
+            setEmail("");
+        }
+    };
 
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-
+    const validateEmail = () => {
         if (!email) {
-            setEmailError({ isEmpty: true });
+            setStatusEmail({ isEmpty: true });
             emailRef.current && emailRef.current.focus();
-            return;
+            return false;
         }
 
         if (!isEmail(email)) {
-            setEmailError({ isValid: false });
+            setStatusEmail({ isInvalid: true });
             emailRef.current && emailRef.current.focus();
-            return;
+            return false;
         }
 
-        setEmailError({ isEmpty: false, isValid: true });
-        const formUrl = `https://docs.google.com/forms/d/e/${googleFormId}}/formResponse`;
+        return true;
+    };
+
+    const submitForm = () => {
+        const formUrl = `https://docs.google.com/forms/d/e/${googleForm.id}}/formResponse`;
         const formFields = new FormData();
-        formFields.append("entry.1381540194", brandName);
-        formFields.append("entry.1429060638", remarks);
-        formFields.append("entry.1967901460", email);
+        formFields.append(`entry.${googleForm.fieldRandId}`, brandName);
+        formFields.append(`entry.${googleForm.fieldRemarksId}`, remarks);
+        formFields.append(`entry.${googleForm.fieldEmailId}`, email);
+        setStatusEmail({ isEmpty: false, isInvalid: false, isSubmitting: true });
         fetch(formUrl, {
             mode: "no-cors",
             method: "POST",
@@ -58,20 +77,37 @@ const Form: React.FC = () => {
         })
             .then((response) => {
                 // handle response from Google Forms
-                setIsSubmitSuccess(true);
+                setStatusEmail({ isSubmitSuccess: true, isSubmitting: false });
             })
             .catch((error) => {
-                // handle error submitting form
-                setIsSubmitFailed(true);
+                // setStatusEmailhandle error submitting form
+                setStatusEmail({ isSubmitFailed: true, isSubmitting: false });
                 console.error(error);
             });
     };
 
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+
+        if (!validateEmail()) {
+            return;
+        }
+
+        submitForm();
+    };
+
+    const classFormGroup = "form-group";
+    const classForControl = "form-control";
     return (
-        <div className={Styles["contact-container"]} ref={wrapperRef}>
+        <div className={Styles["contact-container"]}>
+            {statusEmail.isSubmitting && (
+                <div className={Styles["loading"]}>
+                    <Loader />
+                </div>
+            )}
+
             <Intro />
             <p className={Styles["small-intro"]}>{t("common:fillin")}</p>
-
             <div className={Styles["form-container"]}>
                 <form onSubmit={handleSubmit}>
                     <div className={Styles[classFormGroup]}>
@@ -83,6 +119,7 @@ const Form: React.FC = () => {
                             type="text"
                             name="brandName"
                             onChange={(e) => setBrandName(e.target.value)}
+                            onFocus={() => resetStatusEmail()}
                         />
                     </div>
                     <div className={Styles[classFormGroup]}>
@@ -94,6 +131,7 @@ const Form: React.FC = () => {
                             type="text"
                             name="remarks"
                             onChange={(e) => setRemarks(e.target.value)}
+                            onFocus={() => resetStatusEmail()}
                         />
                     </div>
                     <div className={Styles[classFormGroup]}>
@@ -108,17 +146,18 @@ const Form: React.FC = () => {
                             name="email"
                             onChange={(e) => setEmail(e.target.value)}
                         />
-                        {emailError && (
-                            <p className={Styles["text-failed"]}>
-                                {emailError.isEmpty ? t("email-empty") : emailError.isValid ? "" : t("email-invalid")}
-                            </p>
-                        )}
+                        {statusEmail.isEmpty ||
+                            (statusEmail.isInvalid && (
+                                <p className={Styles["text-failed"]}>
+                                    {statusEmail.isEmpty ? t("email-empty") : statusEmail.isInvalid ? t("email-invalid") : ""}
+                                </p>
+                            ))}
                     </div>
                     <button className={Styles["btn-primary"]} type="submit">
                         {t("complete")}
                     </button>
-                    {isSubmitSuccess && <p className={Styles["text-success"]}>{t("thankyou")}</p>}
-                    {isSubmitFailed && <p className={Styles["text-failed"]}>{t("submit-failed")}</p>}
+                    {statusEmail.isSubmitSuccess && <p className={Styles["text-success"]}>{t("thankyou")}</p>}
+                    {statusEmail.isSubmitFailed && <p className={Styles["text-failed"]}>{t("submit-failed")}</p>}
                 </form>
             </div>
         </div>

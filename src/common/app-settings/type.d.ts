@@ -20,6 +20,13 @@ interface Operator {
     id: string;
     secret: string;
 }
+
+interface IGoogleForm {
+    id: string;
+    fieldRandId: string;
+    fieldRemarksId: string;
+    fieldEmailId: string;
+}
 export default interface AppSettings {
     proxy: ProxySetting;
     sentry: SentryOptions;
@@ -29,5 +36,5 @@ export default interface AppSettings {
     simulatorUrl: string;
     owApiUrl: string;
     operatorPFF: Operator;
-    googleFormId: string;
+    googleForm: IGoogleForm;
 }

@@ -12,5 +12,10 @@
         "id": "PFF",
         "secret": "PFF123"
     },
-    "googleFormId": "1FAIpQLSfbuP1rEABaUGoUdfR_kdpF-wNjv2NoPpQ1wbDeBt1qxpSR4A"
+    "googleForm": {
+        "id": "1FAIpQLSfbuP1rEABaUGoUdfR_kdpF-wNjv2NoPpQ1wbDeBt1qxpSR4A",
+        "fieldRandId": "1381540194",
+        "fieldRemarksId": "1381540194",
+        "fieldEmailId": "1381540194"
+    }
 }
