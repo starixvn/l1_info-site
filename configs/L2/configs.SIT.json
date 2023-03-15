@@ -6,8 +6,8 @@
     "system": "L2",
     "enableSourceMap": false,
     "guideUrl": "https://l2guidessit.sgamesuat.com",
-    "simulatorUrl": "https://l1_game_lobby_simulator_LOCAL_2:5000",
-    "owApiUrl": "https://l1_ow_api_simulator_LOCAL_2:5000/SabaClub",
+    "simulatorUrl": "http://l1_game_lobby_simulator_LOCAL_2:5000",
+    "owApiUrl": "http://l1_ow_api_simulator_LOCAL_2:5000/SabaClub",
     "operatorPFF": {
         "id": "PFF",
         "secret": "PFF123"

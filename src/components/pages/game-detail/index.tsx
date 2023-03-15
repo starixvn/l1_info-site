@@ -39,7 +39,6 @@ const GameDetails: React.FC<TGameDetails> = ({ game, gamesSimilar }) => {
     const router = useRouter();
     const { t } = useTranslation(["common", "detail"]);
     const currentLang = router.locale !== "vi" ? `_${router.locale}` : "";
-    const volatility = game.volatility;
 
     return (
         <>

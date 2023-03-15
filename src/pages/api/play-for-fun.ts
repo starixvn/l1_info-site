@@ -2,7 +2,7 @@ import Axios from "axios";
 import { NextApiRequest, NextApiResponse } from "next";
 import appSettings from "../../common/app-settings";
 
-const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+const playForFun = async (req: NextApiRequest, res: NextApiResponse) => {
     const { playerId, gameId, language, browserUserAgent } = req.body;
     const request = {
         playerId,
@@ -31,17 +31,13 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         setDefaultBalance: false,
     };
 
-    Axios.post(`${appSettings.owApiUrl}/SetDefaultBalance?playerId=${playerId}&operator=pff&balance=20000`).catch((error) =>
-        res.send({ error, from: "balance" })
-    );
-
-    Axios.post(`${appSettings.simulatorUrl}/signin/sso`, request)
-        .then((data) => data.data)
-        .then((data) => (data.error ? Promise.reject(data.error) : data))
-        .then((data) => {
-            data?.redirectUrl && res.send({ redirectUrl: data.redirectUrl });
-        })
-        .catch((error) => res.send({ error, from: "sso" }));
+    const responseBalance = await Axios.post(`${appSettings.owApiUrl}/SetDefaultBalance?playerId=${playerId}&operator=pff&balance=20000`);
+    if (responseBalance.status !== 200) {
+        console.log({ responseBalance });
+        return;
+    }
+    const responseSSO = await Axios.post(`${appSettings.simulatorUrl}/signin/sso`, request);
+    res.send(responseSSO.data);
 };
 
-export default handler;
+export default playForFun;
