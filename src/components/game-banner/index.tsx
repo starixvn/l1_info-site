@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import { isMobileOnly } from "react-device-detect";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { useRouter } from "next/router";
 
 const BannerItem: React.FC<{ name: string }> = ({ name }) => {
@@ -11,7 +11,7 @@ const BannerItem: React.FC<{ name: string }> = ({ name }) => {
                 className="img"
                 src={`/static/images/banners/${name}`}
                 alt="bg"
-                loading="lazy"
+                priority
                 layout="responsive"
                 width={isMobileOnly ? 750 : 1920}
                 height={isMobileOnly ? 420 : 400}

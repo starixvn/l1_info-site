@@ -42,11 +42,14 @@ const Form: React.FC = () => {
     const emailRef = useRef<HTMLInputElement>(null);
     const resetStatusEmail = () => {
         if (statusEmail.isSubmitSuccess) {
-            setStatusEmail({ isSubmitSuccess: false, isSubmitFailed: false, isEmpty: false, isInvalid: false, isSubmitting: false });
-            setBrandName("");
-            setRemarks("");
-            setEmail("");
+            setStatusEmail({ isSubmitFailed: false, isEmpty: false, isInvalid: false, isSubmitting: false, isSubmitSuccess: false });
         }
+    };
+
+    const resetDefaultValue = () => {
+        setBrandName("");
+        setRemarks("");
+        setEmail("");
     };
 
     const validateEmail = () => {
@@ -66,7 +69,7 @@ const Form: React.FC = () => {
     };
 
     const submitForm = () => {
-        const formUrl = `https://docs.google.com/forms/d/e/${googleForm.id}}/formResponse`;
+        const formUrl = `https://docs.google.com/forms/d/e/${googleForm.id}/formResponse`;
         const formFields = new FormData();
         formFields.append(`entry.${googleForm.fieldBrandId}`, brandName);
         formFields.append(`entry.${googleForm.fieldRemarksId}`, remarks);
@@ -80,6 +83,7 @@ const Form: React.FC = () => {
             .then((response) => {
                 // handle response from Google Forms
                 setStatusEmail({ isSubmitSuccess: true, isSubmitting: false });
+                resetDefaultValue();
             })
             .catch((error) => {
                 // setStatusEmailhandle error submitting form
@@ -120,18 +124,20 @@ const Form: React.FC = () => {
                             className={Styles[classForControl]}
                             type="text"
                             name="brandName"
+                            value={brandName}
                             onChange={(e) => setBrandName(e.target.value)}
                             onFocus={() => resetStatusEmail()}
                         />
                     </div>
                     <div className={Styles[classFormGroup]}>
-                        <label className={Styles["form-label"]} htmlFor="brandName">
+                        <label className={Styles["form-label"]} htmlFor="remarks">
                             {t("remarks")}
                         </label>
                         <input
                             className={Styles[classForControl]}
                             type="text"
                             name="remarks"
+                            value={remarks}
                             onChange={(e) => setRemarks(e.target.value)}
                             onFocus={() => resetStatusEmail()}
                         />
@@ -146,14 +152,12 @@ const Form: React.FC = () => {
                             id="validationEmail"
                             type="text"
                             name="email"
+                            value={email}
                             onChange={(e) => setEmail(e.target.value)}
                         />
-                        {statusEmail.isEmpty ||
-                            (statusEmail.isInvalid && (
-                                <p className={Styles["text-failed"]}>
-                                    {statusEmail.isEmpty ? t("email-empty") : statusEmail.isInvalid ? t("email-invalid") : ""}
-                                </p>
-                            ))}
+                        <p className={Styles["text-failed"]}>
+                            {statusEmail.isEmpty ? t("email-empty") : statusEmail.isInvalid ? t("email-invalid") : ""}
+                        </p>
                     </div>
                     <button className={Styles["btn-primary"]} type="submit">
                         {t("complete")}
