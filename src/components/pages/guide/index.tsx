@@ -29,7 +29,7 @@ type TOption = {
 const MARGIN_BOTTOM = 10;
 
 const GuideComponent: React.FC<Props> = ({ gameId, userStakeLevel }) => {
-    const { i18n, t } = useTranslation("detail");
+    const { i18n, t } = useTranslation(["detail", "common"]);
     const { theme } = useTheme();
     const { guideUrl } = appSettings;
     const router = useRouter();
@@ -128,8 +128,9 @@ const GuideComponent: React.FC<Props> = ({ gameId, userStakeLevel }) => {
                         onChange={onChangeOption}
                         options={options}
                         className={Styles["dropdown"]}
-                        getOptionLabel={(option) => t(`${option.value}.displayedName`)}
-                        getOptionValue={(option) => `${option.value}`}
+                        getOptionLabel={(option) => t(`detail:${option.value}.displayedName`)}
+                        getOptionValue={(option) => option.value}
+                        noOptionsMessage={(value) => t("common:no-result")}
                     />
                 </div>
 

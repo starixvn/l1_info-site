@@ -40,5 +40,6 @@
     "thankyou": "Thank you for your message. It has been sent.",
     "submit-failed": "There was an error trying to send your message. Please check and try again",
     "email-invalid": "Please enter a valid email address.",
-    "email-empty": "Email cannot be null or empty."
+    "email-empty": "Email cannot be null or empty.",
+    "no-result": "No results found"
 }

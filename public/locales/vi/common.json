@@ -40,5 +40,6 @@
     "thankyou": "Tin nhắn đã được gửi. Cảm ơn bạn đã giữ liên hệ. ",
     "submit-failed": "Có lỗi khi gửi tin nhắn của bạn. Vui lòng kiểm tra và thử lại.",
     "email-invalid": "Địa chỉ Email không hơp lệ.",
-    "email-empty": "Chưa nhập địa chỉ Email"
+    "email-empty": "Chưa nhập địa chỉ Email",
+    "no-result": "Không tìm thấy kết quả"
 }
