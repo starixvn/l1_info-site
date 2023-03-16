@@ -3,7 +3,7 @@ import React from "react";
 
 const LanguageIcons: React.FC = () => {
     return (
-        <span className="icon-cn">
+        <span className="group-icon-languages">
             {["en", "vi", "cn", "th", "id"].map((name) => {
                 return (
                     <Image

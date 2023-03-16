@@ -64,7 +64,7 @@
     },
     "35": {
         "displayedName": "3 Lá Đỏ Đen",
-        "detail": "3 Lá Đỏ Đen hấp dẫn người chơi với lối chơi khá đơn giản. Trò chơi sử dụng bộ bài tây 52 lá (không bao gồm lá Joker) và sẽ có 6 lựa chọn (cửa) trên bàn chơi bao gồm 2 cửa chính Đỏ, Đen và 4 cửa phụ Rô (♦), Cơ (♥), Bích (♠) , Chuồn (♣). Mỗi phiên sẽ có 3 lá bài được rút, người chơi đặt cược vào các lựa chọn mong muốn. Kết quả thắng thua sẽ được tính dựa trên chất của các lá bài."
+        "detail": "3 Lá Đỏ Đen hấp dẫn người chơi với lối chơi khá đơn giản. Trò chơi sử dụng bộ bài tây 52 lá (không bao gồm lá Joker) và sẽ có 6 lựa chọn (cửa) trên bàn chơi bao gồm 2 cửa chính Đỏ, Đen và 4 cửa phụ Rô (<span class='text-red'>♦</span>), Cơ (<span class='text-red'>♥</span>), Bích (♠), Chuồn (♣). Mỗi phiên sẽ có 3 lá bài được rút, người chơi đặt cược vào các lựa chọn mong muốn. Kết quả thắng thua sẽ được tính dựa trên chất của các lá bài."
     },
     "38": {
         "displayedName": "Anh Hùng Chim Lạc",

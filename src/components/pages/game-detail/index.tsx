@@ -7,6 +7,7 @@ import Image from "next/image";
 import { GameTypeName, GameVolatility, TagsName } from "../../../common/constants";
 import { IGame } from "../../data";
 import Styles from "./game-detail.module.scss";
+import { Markup } from "interweave";
 
 const GameIcon = dynamic(() => import("../../game-icon"));
 const SimilarGames = dynamic(() => import("../../similar-games"));
@@ -39,6 +40,7 @@ const GameDetails: React.FC<TGameDetails> = ({ game, gamesSimilar }) => {
     const router = useRouter();
     const { t } = useTranslation(["common", "detail"]);
     const currentLang = router.locale !== "vi" ? `_${router.locale}` : "";
+    const gameDetail = t<string>(`detail:${game.gameId}.detail`);
 
     return (
         <>
@@ -50,7 +52,9 @@ const GameDetails: React.FC<TGameDetails> = ({ game, gamesSimilar }) => {
                     </div>
                     <PlayForFunButton gameId={game.gameId} />
                     <div className={Styles["game-intro"]}>
-                        <div className={Styles["intro"]}>{t<string>(`detail:${game.gameId}.detail`)}</div>
+                        <div className={Styles["intro"]}>
+                            <Markup content={gameDetail} />
+                        </div>
                     </div>
                 </div>
                 <div className={Styles["flex-detail"]}>

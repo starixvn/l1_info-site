@@ -61,7 +61,7 @@
     },
     "35": {
         "displayedName": "Three Cards",
-        "detail": "Three Cards is another exciting card game that is played with one standard 52-card deck (excluding the Joker). There are 6 betting options including Red, Black, Diamonds (♦), Hearts (♥), Spades (♠), and Clubs (♣). The objective of this game is to predict the suit of 3 cards drawn for each round. If the outcome matches the player’s bet, the player wins. "
+        "detail": "Three Cards is another exciting card game that is played with one standard 52-card deck (excluding the Joker). There are 6 betting options including Red, Black, Diamonds (<span class='text-red'>♦</span>), Hearts (<span class='text-red'>♥</span>), Spades (♠), and Clubs (♣). The objective of this game is to predict the suit of 3 cards drawn for each round. If the outcome matches the player’s bet, the player wins. "
     },
     "38": {
         "displayedName": "The Legend of Heroes",

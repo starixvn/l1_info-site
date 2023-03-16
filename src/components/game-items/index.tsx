@@ -4,6 +4,7 @@ import { useTranslation } from "next-i18next";
 import dynamic from "next/dynamic";
 import { v4 as uuidv4 } from "uuid";
 import Link from "next/link";
+import { Markup } from "interweave";
 
 import { GameCategoryName, GameTypeName, TagsName } from "../../common/constants";
 import { IGame } from "../data";
@@ -70,6 +71,7 @@ export const GameItems: React.FC<TGameItems> = ({ game, category }) => {
         <section className="container">
             {batchGame &&
                 batchGame.map((game: IGame) => {
+                    const gameDetail = t<string>(`detail:${game.gameId}.detail`);
                     return (
                         <div className={Styles["game-container"]} key={uuidv4()}>
                             <div className={Styles["game-name"]} onClick={() => openDetail(game)}>
@@ -88,7 +90,7 @@ export const GameItems: React.FC<TGameItems> = ({ game, category }) => {
                             </div>
                             <div className={Styles["game-detail"]}>
                                 <div className={Styles["game-intro"]} onClick={() => openDetail(game)}>
-                                    {t<string>(`detail:${game.gameId}.detail`)}
+                                    <Markup content={gameDetail} />
                                 </div>
                                 <Link
                                     href={`/${i18n.language}/guide?gameId=${game.gameId}`}

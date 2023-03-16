@@ -22,6 +22,10 @@ ul {
     text-align: center;
     color: #fff;
     padding: 1.6rem;
+
+    @media (max-width: 576px) {
+        font-size: 1.4rem;
+    }
 }
 
 .img {
@@ -105,5 +109,11 @@ ul {
 @media (max-width: 768px) {
     .format-mobile {
         width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    .group-icon-languages img {
+        width: 4.5rem;
     }
 }
