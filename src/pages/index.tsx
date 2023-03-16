@@ -25,7 +25,7 @@ const Home = (props: TPropsBase) => {
         return <></>;
     }
 
-    return appSettings.isInforSite ? <Dashboard {...props} /> : <AppLandingPageComponent locale={'en'} />;
+    return appSettings.isInforSite ? <Dashboard {...props} /> : <AppLandingPageComponent locale={router.query.language as string} />;
 };
 
 const getStaticProps = async ({ locale = "en" }) => {

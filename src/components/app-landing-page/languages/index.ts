@@ -8,11 +8,11 @@ import { vi } from "./vi";
 import { getTranslationResource } from "../../../helpers/resource-helper";
 
 const supportedLanguages: { [name: string]: IAppLandingPageResource } = {
-    en: en,
-    th: th,
-    id: id,
-    zh_cn: cn,
-    zh_tw: tw,
+    en,
+    th,
+    id,
+    cn,
+    tw,
     vi,
 };
 

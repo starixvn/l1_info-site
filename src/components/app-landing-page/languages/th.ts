@@ -1,39 +1,38 @@
 import { IAppLandingPageResource } from "./types";
 
 export const th: IAppLandingPageResource = {
-    appDownload: "APP DOWNLOAD",
-    introductions: ['"Offer variety and high Entertainment Games,', `there is always something <span class='{0}'>new to play</span>"`],
+    appDownload: "ดาวน์โหลดแอป",
+    introductions: ["นำเสนอเกมที่มีความหลากหลายและความบันเทิงสูงด้วยวิธีการเล่นใหม่ ๆ อยู่เสมอ"],
     descriptions: [
-        "Excellent Online Casino Platform</li>",
-        "Player can choose to play via a <span class='{0}'>Web Browser</span> or <span class='{0}'>Mobile App</span>",
-        "More Instant! More Convenient!",
+        "สุดยอดแพลตฟอร์มคาสิโนออนไลน์",
+        "ผู้เล่นสามารถเลือกเล่นผ่าน<span class='{0}'>เว็บเบราว์เซอร์</span>หรือ<span class='{0}'>แอพมือถือ</span>",
+        "ทันใจยิ่งขึ้น! สะดวกกว่า!",
     ],
-    installationGuide: "INSTALLATION GUIDE",
+    installationGuide: "คู่มือการติดตั้ง",
     steps: [
         {
-            title: "Step 1",
-            content: "User phone to scan the QR code or Tab on App Store icon to download",
+            title: "ขั้้นตอนที่ 1",
+            content: "ใช้โทรศัพท์มือถือสแกน QR Code หรือแตะที่ไอคอน App Store เพื่อดาวน์โหลด",
             image: "example-step1",
         },
         {
-            title: "Step 2",
+            title: "ขั้้นตอนที่ 2",
             content: "Select <span class='{0}'>Get the App</span> to redirect to App Store",
             image: "example-step2",
         },
         {
-            title: "Step 3",
-            content:
-                "You will redirect to <span class='{0}'>VivaDzo</span> on App Store instead of 'Saba Game'. Tap on <span>Get</span> to install 'VivaDzo' app",
+            title: "ขั้้นตอนที่ 3",
+            content: `คุณจะถูกเปลี่ยนเส้นทางไปยัง <span class='{0}'>"VivaDzo"</span> ใน App Store แทน "SABA.games" แตะ GET เพื่อติดตั้งแอป "VivaDzo"`,
             image: "example-step3",
         },
         {
-            title: "Step 4",
-            content: "Open <span class='{0}'>VivaDzo</span> to launch the 'Saba Game' app",
+            title: "ขั้้นตอนที่ 4",
+            content: `เปิด <span class='{0}'>"VivaDzo"</span> เพื่อเปิดแอป "SABA.games"`,
             image: "example-step4",
         },
         {
-            title: "Step 5",
-            content: "Please use the betting account given by your Upline to login",
+            title: "ขั้้นตอนที่ 5",
+            content: "โปรดใช้บัญชีเดิมพันที่อัพไลน์มอบให้เพื่อเข้าสู่ระบบ",
             image: "example-step5",
         },
     ],

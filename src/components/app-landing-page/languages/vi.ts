@@ -1,39 +1,42 @@
 import { IAppLandingPageResource } from "./types";
 
 export const vi: IAppLandingPageResource = {
-    appDownload: "APP DOWNLOAD",
-    introductions: ['"Offer variety and high Entertainment Games,', `there is always something <span class='{0}'>new to play</span>"`],
-    descriptions: [
-        "Excellent Online Casino Platform</li>",
-        "Player can choose to play via a <span class='{0}'>Web Browser</span> or <span class='{0}'>Mobile App</span>",
-        "More Instant! More Convenient!",
+    appDownload: "TẢI ỨNG DỤNG",
+    introductions: [
+        '"Cung Cấp Nhiều Thể Loại Game Mang Đậm Tính Giải Trí,',
+        `Và Luôn Có Các <span class='{0}'>Game Mới</span> Chờ Đón Bạn"`,
     ],
-    installationGuide: "INSTALLATION GUIDE",
+    descriptions: [
+        "Nền Tảng Casino Trực Tuyến Được Yêu Thích Nhất",
+        "Có Thể Chơi Qua <span class='{0}'>Trình Duyệt Web</span> Hoặc <span class='{0}'> Ứng Dụng Di Động</span>",
+        "Nhanh Chóng! Thuận Tiện!",
+    ],
+    installationGuide: "HƯỚNG DẪN CÀI ĐẶT",
     steps: [
         {
-            title: "Step 1",
-            content: "User phone to scan the QR code or Tab on App Store icon to download",
+            title: "Bước 1",
+            content: "Dùng điện thoại để quét mã QR hoặc nhấn vào biểu tượng App Store để tải ứng dụng.",
             image: "example-step1",
         },
         {
-            title: "Step 2",
+            title: "Bước 2",
             content: "Select <span class='{0}'>Get the App</span> to redirect to App Store",
             image: "example-step2",
         },
         {
-            title: "Step 3",
+            title: "Bước 3",
             content:
-                "You will redirect to <span class='{0}'>VivaDzo</span> on App Store instead of 'Saba Game'. Tap on <span>Get</span> to install 'VivaDzo' app",
+                "Bạn sẽ được chuyển tiếp đến ứng dụng <span class='{0}'>VivaDzo</span> trên App Store thay vì SABA.games. Bấm <span class='{0}'>Get</span> để cài ứng dụng VivaDzo trên iphone.",
             image: "example-step3",
         },
         {
-            title: "Step 4",
-            content: "Open <span class='{0}'>VivaDzo</span> to launch the 'Saba Game' app",
+            title: "Bước 4",
+            content: "Mở ứng dụng <span class='{0}'>VivaDzo</span> để bắt đầu trải nghiệm SABA.games.",
             image: "example-step4",
         },
         {
-            title: "Step 5",
-            content: "Please use the betting account given by your Upline to login",
+            title: "Bước 5",
+            content: "Vui lòng đăng nhập bằng tài khoản được cấp bởi quản lý cấp trên của bạn.",
             image: "example-step5",
         },
     ],
