@@ -1,9 +1,26 @@
 .btn-primary {
+    outline: none;
     height: 4rem;
     width: 21.8rem;
-    background: var(--master-gradient-color);
     border-color: #fa624f;
     font-size: 1.6rem;
     text-transform: uppercase;
     border-radius: 0.7rem;
+    background-image: linear-gradient(to bottom, #ce210b 0%, #e66f61 51%, #ce210b 100%);
+    background-size: auto 200%;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    will-change: background;
+
+    &:hover,
+    &:focus,
+    &:active {
+        border-color: #fa624f;
+        // box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+        background-position: center bottom;
+    }
+}
+
+:not(.btn-check) + .btn:active {
+    border-color: #fa624f;
+    background-position: center bottom;
 }

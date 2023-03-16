@@ -5,27 +5,30 @@
     height: 21.8rem;
     padding: 0.8rem;
     margin-bottom: 1rem;
+    background-color: #fff;
     border-radius: 1.5rem;
     border: 1px solid #cecece;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
 
     .icon-name {
         position: absolute;
-        top: 0.7rem;
-        left: 0.7rem;
+        top: 0;
+        left: 0;
     }
 
     &.icon-small {
         width: 13.6rem;
         height: 13.6rem;
-        padding: 0.5rem;
-
         .icon-name {
             width: 11.8rem;
         }
+
+        .game-tag {
+            width: 8rem;
+        }
     }
-    .img{
-        height: inherit!important;
+    .img {
+        height: inherit !important;
     }
 }
 
@@ -44,6 +47,6 @@
     border-bottom-right-radius: 1.5rem;
 }
 
-.container-icon{
-    position: "relative";
+.container-icon {
+    position: relative;
 }

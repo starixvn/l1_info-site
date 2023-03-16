@@ -42,7 +42,6 @@ export const SimilarGames: React.FC<{ games: IGame[]; t: TFunction }> = ({ games
         dots: false,
         infinite: false,
         slidesToShow: 7,
-        slidesToScroll: 1,
         className: "similar-list",
         variableWidth: true,
         nextArrow: <NextArrow />,
@@ -52,7 +51,7 @@ export const SimilarGames: React.FC<{ games: IGame[]; t: TFunction }> = ({ games
                 breakpoint: 1400,
                 settings: {
                     slidesToShow: 5,
-                    slidesToScroll: 1,
+                    slidesToScroll: 2,
                     nextArrow: <NextArrow />,
                     prevArrow: <PrevArrow />,
                 },
@@ -61,7 +60,7 @@ export const SimilarGames: React.FC<{ games: IGame[]; t: TFunction }> = ({ games
                 breakpoint: 990,
                 settings: {
                     slidesToShow: 3,
-                    slidesToScroll: 1,
+                    slidesToScroll: 2,
                     nextArrow: <NextArrow />,
                     prevArrow: <PrevArrow />,
                 },
@@ -70,7 +69,7 @@ export const SimilarGames: React.FC<{ games: IGame[]; t: TFunction }> = ({ games
                 breakpoint: 765,
                 settings: {
                     slidesToShow: 2,
-                    slidesToScroll: 1,
+                    slidesToScroll: 2,
                     nextArrow: <NextArrow />,
                     prevArrow: <PrevArrow />,
                 },
@@ -79,7 +78,7 @@ export const SimilarGames: React.FC<{ games: IGame[]; t: TFunction }> = ({ games
                 breakpoint: 480,
                 settings: {
                     slidesToShow: 2,
-                    slidesToScroll: 1,
+                    slidesToScroll: 2,
                     nextArrow: <NextArrow />,
                     prevArrow: <PrevArrow />,
                 },
@@ -99,6 +98,7 @@ export const SimilarGames: React.FC<{ games: IGame[]; t: TFunction }> = ({ games
                                 gameId={game.gameId}
                                 game={game}
                                 isSmallSize={true}
+                                isNew={game.isNew}
                                 openDetail={openDetail}
                                 customClassName={"similar-game-icon"}
                                 isLink={true}

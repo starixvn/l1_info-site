@@ -285,7 +285,7 @@ const Games: IGame[] = [
     },
     {
         gameId: GAMES.FRUIT_SLOT,
-        isNew: false,
+        isNew: true,
         gameType: EGameType.Slot,
         gameCategory: EGameCategory.Slots,
         rtp: 97,

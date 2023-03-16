@@ -41,8 +41,8 @@ export const GameIcon: React.FC<TGameIconProps> = ({ gameId, isSmallSize, isNew,
                     width={isSmallSize ? 118 : 200}
                     height={isSmallSize ? 118 : 200}
                 />
-                {isNew ? <div className={Styles["game-tag"]}>New</div> : <></>}
             </div>
+            {isNew ? <div className={Styles["game-tag"]}>New!</div> : <></>}
         </div>
     );
 };
