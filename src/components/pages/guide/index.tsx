@@ -26,17 +26,17 @@ type TOption = {
     value: string;
 };
 
-const MARGIN_BOTTOM = 10;
-
 const GuideComponent: React.FC<Props> = ({ gameId, userStakeLevel }) => {
     const { i18n, t } = useTranslation(["detail", "common"]);
     const { theme } = useTheme();
     const { guideUrl } = appSettings;
     const router = useRouter();
     const wrapperRef = useRef<HTMLIFrameElement>(null);
+    const selectRef = useRef<HTMLIFrameElement>(null);
     const wrapperIframeRef = useRef<HTMLIFrameElement>(null);
+    const [footerRef, setFooterRef] = useState<React.RefObject<HTMLDivElement>>();
     const [isLoading, setIsLoading] = useState<boolean>(true);
-    const [heightGuide, setHeightGuide] = useState<number>(0);
+    const [heightGuide, setHeightGuide] = useState<number>((wrapperRef && wrapperRef?.current?.clientHeight) || 0);
     const [widthGuide, setWidthGuide] = useState<number>(0);
     const [gameConfigs, setGameConfigs] = useState<IGameConfigs>();
     const [selectedOption, setSelectedOption] = useState<TOption | null>();
@@ -51,10 +51,11 @@ const GuideComponent: React.FC<Props> = ({ gameId, userStakeLevel }) => {
     };
 
     const updateDimension = () => {
-        const clientHeight = wrapperRef?.current?.clientHeight ?? 0;
-        const clientWidth = wrapperRef?.current?.clientWidth ?? 0;
-        setHeightGuide(clientHeight - MARGIN_BOTTOM);
-        setWidthGuide(clientWidth);
+        const iframeHeight = wrapperRef?.current?.clientHeight ?? 0;
+        const iframeWidth = wrapperRef?.current?.clientWidth ?? 0;
+
+        setHeightGuide(iframeHeight);
+        setWidthGuide(iframeWidth);
     };
 
     const hideSpinner = () => {
@@ -89,7 +90,7 @@ const GuideComponent: React.FC<Props> = ({ gameId, userStakeLevel }) => {
         return () => {
             window.removeEventListener("resize", updateDimension);
         };
-    }, [wrapperRef]);
+    }, [wrapperRef, footerRef]);
 
     useEffect(() => {
         if (selectedOption) {
@@ -119,7 +120,7 @@ const GuideComponent: React.FC<Props> = ({ gameId, userStakeLevel }) => {
         <Container>
             <Header isOpenGameGuide={true} />
             <div className={`container ${Styles["container-guide"]}`} ref={wrapperRef}>
-                <div className={`d-flex align-items-center ${Styles["select-game"]}`}>
+                <div className={`d-flex align-items-center ${Styles["select-game"]}`} ref={selectRef}>
                     <span>Game</span>
                     <Select
                         key={uuidv4()}
@@ -139,20 +140,22 @@ const GuideComponent: React.FC<Props> = ({ gameId, userStakeLevel }) => {
                         <Loader></Loader>
                     </div>
                 )}
-                {gameConfigs && (
-                    <iframe
-                        ref={wrapperIframeRef}
-                        key={uuidv4()}
-                        className={Styles["guide-iframe"]}
-                        src={srcPath}
-                        referrerPolicy="strict-origin-when-cross-origin"
-                        height={heightGuide}
-                        width={widthGuide}
-                        onLoad={hideSpinner}
-                    />
-                )}
+                <div>
+                    {gameConfigs && (
+                        <iframe
+                            ref={wrapperIframeRef}
+                            key={uuidv4()}
+                            className={Styles["guide-iframe"]}
+                            src={srcPath}
+                            referrerPolicy="strict-origin-when-cross-origin"
+                            height={heightGuide}
+                            width={widthGuide}
+                            onLoad={hideSpinner}
+                        />
+                    )}
+                </div>
             </div>
-            <Footer />
+            <Footer setFooterRef={setFooterRef} />
         </Container>
     );
 };

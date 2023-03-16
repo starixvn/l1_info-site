@@ -22,6 +22,9 @@ const randomString = (str: string, length: number) => {
     return shuffled;
 };
 
-const isEmail = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+const isEmail = (email: string) => {
+    const regex = "[^\\.\\s@:](?:[^\\s@:]*[^\\s@:\\.])?@[^\\.\\s@]+(?:\\.[^\\.\\s@]+)*";
+    return new RegExp(`^${regex}$`).test(email);
+};
 
 export { getKeyByValue, randomString, isEmail };
