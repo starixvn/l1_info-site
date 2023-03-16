@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import { isMobileOnly } from "react-device-detect";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 const BannerItem: React.FC<{ name: string }> = ({ name }) => {
     return (
@@ -21,12 +22,17 @@ const BannerItem: React.FC<{ name: string }> = ({ name }) => {
 
 const GameBanner = () => {
     const [banners, setBanners] = useState<string[]>([]);
+    const router = useRouter();
 
     useEffect(() => {
-        const nameMobile = ["banner-1_mobile.jpg", "banner-2_mobile.jpg", "banner-3_mobile.jpg"];
-        const nameDesktop = ["banner-1.jpg", "banner-2.jpg", "banner-3.jpg"];
+        const nameMobile = [
+            `banner-1_mobile_${router.locale}.jpg`,
+            `banner-2_mobile_${router.locale}.jpg`,
+            `banner-3_mobile_${router.locale}.jpg`,
+        ];
+        const nameDesktop = [`banner-1_${router.locale}.jpg`, `banner-2_${router.locale}.jpg`, `banner-3_${router.locale}.jpg`];
         setBanners(isMobileOnly ? nameMobile : nameDesktop);
-    }, []);
+    }, [router.locale]);
 
     const settings = {
         arrows: false,
