@@ -7,6 +7,11 @@ const GameItems = dynamic(() => import("../../game-items"));
 
 export default class Category extends PageBase<TPropsBase, IStateBase> {
     renderContent() {
-        return <GameItems game={this.props.game} category={this.props.category} />;
+        return (
+            <>
+                <h1 className="d-none">Category</h1>
+                <GameItems game={this.props.game} category={this.props.category} />
+            </>
+        );
     }
 }

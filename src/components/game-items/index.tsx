@@ -74,9 +74,9 @@ export const GameItems: React.FC<TGameItems> = ({ game, category }) => {
                     const gameDetail = t<string>(`detail:${game.gameId}.detail`);
                     return (
                         <div className={Styles["game-container"]} key={uuidv4()}>
-                            <div className={Styles["game-name"]} onClick={() => openDetail(game)}>
+                            <h2 className={Styles["game-name"]} onClick={() => openDetail(game)}>
                                 {t<string>(`detail:${game.gameId}.displayedName`)}
-                            </div>
+                            </h2>
                             <div className={Styles["game-play"]}>
                                 <GameIcon
                                     gameId={game.gameId}
@@ -99,7 +99,7 @@ export const GameItems: React.FC<TGameItems> = ({ game, category }) => {
                                     className={`${Styles[classDetailItem]} ${Styles["guide"]}`}
                                 >
                                     <span className={`${Styles[classDetailIcon]} icon-info`}></span>
-                                    <span className={Styles["text-guide"]}>{t<string>("common:game-rules")}</span>
+                                    <h3 className={Styles["text-guide"]}>{t<string>("common:game-rules")}</h3>
                                 </Link>
                                 <div className={Styles["detail-group"]}>
                                     <div className={Styles[classDetailItem]}>

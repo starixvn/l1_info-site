@@ -20,8 +20,8 @@ const Intro = () => {
     const { t } = useTranslation("common");
     return (
         <div className={Styles["intro-container"]}>
-            <div className={Styles["title"]}> {t("contact")}</div>
-            <div className={Styles["contact-intro"]}>{t("expertise")}</div>
+            <h1 className={Styles["title"]}> {t("contact")}</h1>
+            <h2 className={Styles["contact-intro"]}>{t("expertise")}</h2>
         </div>
     );
 };
@@ -114,7 +114,7 @@ const Form: React.FC = () => {
             )}
 
             <Intro />
-            <p className={Styles["small-intro"]}>{t("common:fillin")}</p>
+            <h3 className={Styles["small-intro"]}>{t("common:fillin")}</h3>
             <div className={Styles["form-container"]}>
                 <form onSubmit={handleSubmit}>
                     <div className={Styles[classFormGroup]}>

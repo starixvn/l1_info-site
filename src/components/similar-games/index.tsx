@@ -88,7 +88,7 @@ export const SimilarGames: React.FC<{ games: IGame[]; t: TFunction }> = ({ games
 
     return (
         <div className={Styles["similar-game"]}>
-            <div className={Styles["title"]}>{t<string>("similar-games")}</div>
+            <h3 className={Styles["title"]}>{t<string>("similar-games")}</h3>
             <div className={Styles["icon-container"]}>
                 <Slider {...settings}>
                     {games.map((game: IGame) => {

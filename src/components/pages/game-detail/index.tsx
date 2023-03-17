@@ -7,7 +7,6 @@ import Image from "next/image";
 import { GameTypeName, GameVolatility, TagsName } from "../../../common/constants";
 import { IGame } from "../../data";
 import Styles from "./game-detail.module.scss";
-import { Markup } from "interweave";
 
 const GameIcon = dynamic(() => import("../../game-icon"));
 const SimilarGames = dynamic(() => import("../../similar-games"));
@@ -45,15 +44,16 @@ const GameDetails: React.FC<TGameDetails> = ({ game, gamesSimilar }) => {
     return (
         <>
             <section className="container list-container">
+                <h1 className="d-none">Game Detail</h1>
                 <div className={Styles["game-detail-top"]}>
-                    <div className={Styles["game-name"]}> {t<string>(`detail:${game.gameId}.displayedName`)}</div>
+                    <h2 className={Styles["game-name"]}>{t<string>(`detail:${game.gameId}.displayedName`)}</h2>
                     <div className={Styles["game-icon-container"]}>
                         <GameIcon gameId={game.gameId} isSmallSize={false} isNew={game.isNew} />
                     </div>
                     <PlayForFunButton gameId={game.gameId} />
                     <div className={Styles["game-intro"]}>
                         <div className={Styles["intro"]}>
-                            <Markup content={gameDetail} />
+                            <p dangerouslySetInnerHTML={{ __html: gameDetail }}></p>
                         </div>
                     </div>
                 </div>
