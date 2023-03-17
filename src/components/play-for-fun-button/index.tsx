@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "next-i18next";
 import Axios from "axios";
 import { LanguageLocaleMapper } from "../../common/constants";
@@ -10,12 +10,17 @@ type Props = {
 
 const playerIdKey = "playerId";
 const windowName = "play4fun";
+let windowPlayForFun: Window | null = null;
 
 const PlayForFunButton: React.FC<Props> = ({ gameId }) => {
     const { t, i18n } = useTranslation(["common", "detail"]);
+    const [urlSSO, setUrlSSO] = useState<string>();
 
     const playForFunAction = (event: any, gameId: number) => {
         event && event.preventDefault();
+        windowPlayForFun?.close();
+        setUrlSSO("");
+        windowPlayForFun = window.open("about:blank", windowName, "fullscreen=0");
 
         let playerId = localStorage.getItem(playerIdKey);
         if (!playerId) {
@@ -28,16 +33,17 @@ const PlayForFunButton: React.FC<Props> = ({ gameId }) => {
             browserUserAgent: navigator.userAgent,
             gameId,
         };
-        const windowReference = window.open("about:blank", windowName, "fullscreen=0");
         Axios.post(`/api/play-for-fun`, request)
             .then((data) => data.data)
             .then((data) => {
-                if (data?.redirectUrl && windowReference) {
-                    windowReference.location = `${data.redirectUrl}&ref=d_operator_opendirectly`;
-                }
+                data?.redirectUrl && setUrlSSO(`${data.redirectUrl}&ref=d_operator_opendirectly`);
             })
             .catch(showAlert);
     };
+
+    useEffect(() => {
+        urlSSO && windowPlayForFun && (windowPlayForFun.location = urlSSO);
+    }, [urlSSO]);
 
     const showAlert = (obj: any) => {
         window.alert(JSON.stringify(obj, null, 2));
