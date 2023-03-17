@@ -28,10 +28,13 @@ const PlayForFunButton: React.FC<Props> = ({ gameId }) => {
             browserUserAgent: navigator.userAgent,
             gameId,
         };
+        const windowReference = window.open("about:blank", windowName, "fullscreen=0");
         Axios.post(`/api/play-for-fun`, request)
             .then((data) => data.data)
             .then((data) => {
-                data?.redirectUrl && window.open(data.redirectUrl, windowName, "popup=1");
+                if (data?.redirectUrl && windowReference) {
+                    windowReference.location = `${data.redirectUrl}&ref=d_operator_opendirectly`;
+                }
             })
             .catch(showAlert);
     };
