@@ -28,6 +28,7 @@ interface IGoogleForm {
     fieldEmailId: string;
 }
 export default interface AppSettings {
+    externalUrl: string;
     proxy: ProxySetting;
     sentry: SentryOptions;
     gameSettings: { [id: string]: GameSettingProps };

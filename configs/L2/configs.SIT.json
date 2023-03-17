@@ -1,4 +1,5 @@
 {
+    "externalUrl": "https://www.saba.games",
     "sentry": {
         "dsn": "https://936d6f9d99064ccdab5bece39bc3bc07@sentryuat.sabagame.com/258",
         "environment": "SIT"

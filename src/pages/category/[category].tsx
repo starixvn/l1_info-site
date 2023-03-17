@@ -8,6 +8,8 @@ import { GameCategoryName, locales } from "../../common/constants";
 import { TPropsBase } from "../../components/pageBase";
 import { EGameCategory, IStaticProps } from "../../components/type";
 import { getKeyByValue } from "../../helpers/function-helper";
+import Head from "next/head";
+import appSettings from "../../common/app-settings";
 
 const Category = dynamic(() => import("../../components/pages/category"));
 
@@ -16,6 +18,16 @@ interface IParamsData {
 }
 
 const Categories = (props: TPropsBase) => {
+    if (props.category === EGameCategory.AllGames) {
+        return (
+            <>
+                <Head>
+                    <link rel="canonical" href={appSettings.externalUrl} />
+                </Head>
+                <Category {...props} />
+            </>
+        );
+    }
     return <Category {...props} />;
 };
 
