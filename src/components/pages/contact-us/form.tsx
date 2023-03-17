@@ -8,7 +8,7 @@ import Styles from "./contact.module.scss";
 
 const Loader = dynamic(() => import("../../loader"));
 
-type TStatusEmail = {
+type TStatus = {
     isEmpty?: boolean;
     isInvalid?: boolean;
     isSubmitSuccess?: boolean;
@@ -32,7 +32,7 @@ const Form: React.FC = () => {
     const [brandName, setBrandName] = useState("");
     const [remarks, setRemarks] = useState("");
     const [email, setEmail] = useState("");
-    const [statusEmail, setStatusEmail] = useState<TStatusEmail>({
+    const [status, setStatus] = useState<TStatus>({
         isSubmitSuccess: false,
         isSubmitFailed: false,
         isEmpty: false,
@@ -41,8 +41,8 @@ const Form: React.FC = () => {
     });
     const emailRef = useRef<HTMLInputElement>(null);
     const resetStatusEmail = () => {
-        if (statusEmail.isSubmitSuccess) {
-            setStatusEmail({ isSubmitFailed: false, isEmpty: false, isInvalid: false, isSubmitting: false, isSubmitSuccess: false });
+        if (status.isSubmitSuccess) {
+            setStatus({ isSubmitFailed: false, isEmpty: false, isInvalid: false, isSubmitting: false, isSubmitSuccess: false });
         }
     };
 
@@ -54,13 +54,13 @@ const Form: React.FC = () => {
 
     const validateEmail = () => {
         if (!email) {
-            setStatusEmail({ isEmpty: true });
+            setStatus({ isEmpty: true });
             emailRef.current && emailRef.current.focus();
             return false;
         }
 
         if (!isEmail(email)) {
-            setStatusEmail({ isInvalid: true });
+            setStatus({ isInvalid: true });
             emailRef.current && emailRef.current.focus();
             return false;
         }
@@ -69,12 +69,13 @@ const Form: React.FC = () => {
     };
 
     const submitForm = () => {
+        setStatus({ isEmpty: false, isInvalid: false, isSubmitting: true });
         const formUrl = `https://docs.google.com/forms/d/e/${googleForm.id}/formResponse`;
         const formFields = new FormData();
         formFields.append(`entry.${googleForm.fieldBrandId}`, brandName);
         formFields.append(`entry.${googleForm.fieldRemarksId}`, remarks);
         formFields.append(`entry.${googleForm.fieldEmailId}`, email);
-        setStatusEmail({ isEmpty: false, isInvalid: false, isSubmitting: true });
+
         fetch(formUrl, {
             mode: "no-cors",
             method: "POST",
@@ -82,12 +83,12 @@ const Form: React.FC = () => {
         })
             .then((response) => {
                 // handle response from Google Forms
-                setStatusEmail({ isSubmitSuccess: true, isSubmitting: false });
+                setStatus({ isSubmitSuccess: true, isSubmitting: false });
                 resetDefaultValue();
             })
             .catch((error) => {
                 // setStatusEmailhandle error submitting form
-                setStatusEmail({ isSubmitFailed: true, isSubmitting: false });
+                setStatus({ isSubmitFailed: true, isSubmitting: false });
                 console.error(error);
             });
     };
@@ -106,7 +107,7 @@ const Form: React.FC = () => {
     const classForControl = "form-control";
     return (
         <div className={Styles["contact-container"]}>
-            {statusEmail.isSubmitting && (
+            {status.isSubmitting && (
                 <div className={Styles["loading"]}>
                     <Loader />
                 </div>
@@ -156,14 +157,14 @@ const Form: React.FC = () => {
                             onChange={(e) => setEmail(e.target.value)}
                         />
                         <p className={Styles["text-failed"]}>
-                            {statusEmail.isEmpty ? t("email-empty") : statusEmail.isInvalid ? t("email-invalid") : ""}
+                            {status.isEmpty ? t("email-empty") : status.isInvalid ? t("email-invalid") : ""}
                         </p>
                     </div>
                     <button className={Styles["btn-primary"]} type="submit">
                         {t("complete")}
                     </button>
-                    {statusEmail.isSubmitSuccess && <p className={Styles["text-success"]}>{t("thankyou")}</p>}
-                    {statusEmail.isSubmitFailed && <p className={Styles["text-failed"]}>{t("submit-failed")}</p>}
+                    {status.isSubmitSuccess && <p className={Styles["text-success"]}>{t("thankyou")}</p>}
+                    {status.isSubmitFailed && <p className={Styles["text-failed"]}>{t("submit-failed")}</p>}
                 </form>
             </div>
         </div>
