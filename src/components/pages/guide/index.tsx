@@ -1,8 +1,8 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useMemo } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { useTheme } from "next-themes";
 import { useTranslation } from "next-i18next";
-import { isMobileOnly, isIOS, browserVersion } from "react-device-detect";
+import { isMobileOnly, isIOS, browserVersion, useMobileOrientation } from "react-device-detect";
 import Select from "react-select";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
@@ -32,7 +32,7 @@ const GuideComponent: React.FC<Props> = ({ gameId, userStakeLevel }) => {
     const { guideUrl } = appSettings;
     const router = useRouter();
     const wrapperRef = useRef<HTMLIFrameElement>(null);
-    const selectRef = useRef<HTMLIFrameElement>(null);
+    const selectRef = useRef<any>(null);
     const wrapperIframeRef = useRef<HTMLIFrameElement>(null);
     const [footerRef, setFooterRef] = useState<React.RefObject<HTMLDivElement>>();
     const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -41,8 +41,17 @@ const GuideComponent: React.FC<Props> = ({ gameId, userStakeLevel }) => {
     const [gameConfigs, setGameConfigs] = useState<IGameConfigs>();
     const [selectedOption, setSelectedOption] = useState<TOption | null>();
     const [options, setOptions] = useState<TOption[]>();
-    const minMaxBetParams = `&minBet=${userStakeLevel?.minBet}&maxBet=${userStakeLevel?.maxBet}`;
-    const srcPath = `${guideUrl}/${i18n.language}/?gId=${selectedOption?.value}&t=${theme}${minMaxBetParams}&f=sc&v=${Date.now()}`;
+    const [isOpenMenu, setIsOpenMenu] = useState<boolean>(false);
+
+    const orientation = useMobileOrientation();
+
+    const handleMenuOpen = () => {
+        setIsOpenMenu(true);
+    };
+
+    const handleMenuClose = () => {
+        setIsOpenMenu(false);
+    };
 
     const getGameConfig = (id: string, config: Function): any => {
         return import(`./game-configs/game-configs-${id}`).then((mod: any) => {
@@ -90,7 +99,7 @@ const GuideComponent: React.FC<Props> = ({ gameId, userStakeLevel }) => {
         return () => {
             window.removeEventListener("resize", updateDimension);
         };
-    }, [wrapperRef, footerRef]);
+    }, [wrapperRef, footerRef, orientation]);
 
     useEffect(() => {
         if (selectedOption) {
@@ -99,6 +108,18 @@ const GuideComponent: React.FC<Props> = ({ gameId, userStakeLevel }) => {
             onChangeOption(currentValue);
         }
     }, [i18n.language]);
+
+    useEffect(() => {
+        if (!isMobileOnly) {
+            return;
+        }
+
+        if (isOpenMenu) {
+            document.documentElement.classList.add("overflow-hidden");
+        } else {
+            document.documentElement.classList.remove("overflow-hidden");
+        }
+    }, [isOpenMenu]);
 
     useEffect(() => {
         selectedOption && getGameConfig(selectedOption?.value, setGameConfigs);
@@ -116,47 +137,78 @@ const GuideComponent: React.FC<Props> = ({ gameId, userStakeLevel }) => {
         };
     }, []);
 
-    return (
-        <Container>
-            <Header isOpenGameGuide={true} />
-            <div className={`container ${Styles["container-guide"]}`} ref={wrapperRef}>
-                <div className={`d-flex align-items-center ${Styles["select-game"]}`} ref={selectRef}>
-                    <span>Game</span>
-                    <Select
-                        key={uuidv4()}
-                        value={selectedOption}
-                        defaultValue={selectedOption}
-                        onChange={onChangeOption}
-                        options={options}
-                        className={Styles["dropdown"]}
-                        getOptionLabel={(option) => t(`detail:${option.value}.displayedName`)}
-                        getOptionValue={(option) => option.value}
-                        noOptionsMessage={(value) => t("common:no-result")}
-                    />
-                </div>
+    const renderIframe = useMemo(() => {
+        const minMaxBetParams = `&minBet=${userStakeLevel?.minBet}&maxBet=${userStakeLevel?.maxBet}`;
+        const srcPath = `${guideUrl}/${i18n.language}/?gId=${selectedOption?.value}&t=${theme}${minMaxBetParams}&f=sc&v=${Date.now()}`;
 
-                {isLoading && (
-                    <div className={Styles["guide-loading"]}>
-                        <Loader></Loader>
+        return (
+            <iframe
+                id="iframe-guide"
+                ref={wrapperIframeRef}
+                key={uuidv4()}
+                className={Styles["guide-iframe"]}
+                src={srcPath}
+                referrerPolicy="strict-origin-when-cross-origin"
+                height={heightGuide}
+                width={widthGuide}
+                onLoad={hideSpinner}
+            />
+        );
+    }, [gameId, isLoading, selectedOption?.value, gameConfigs, heightGuide, widthGuide, i18n.language]);
+
+    const renderBlockHidden = () => {
+        return (
+            <div
+                className={Styles["block-hidden"]}
+                style={{
+                    height: heightGuide,
+                    width: widthGuide,
+                }}
+            ></div>
+        );
+    };
+
+    const renderSelect = useMemo(() => {
+        return (
+            <Select
+                ref={selectRef}
+                key={uuidv4()}
+                value={selectedOption}
+                defaultValue={selectedOption}
+                onChange={onChangeOption}
+                options={options}
+                className={Styles["dropdown"]}
+                getOptionLabel={(option) => t(`detail:${option.value}.displayedName`)}
+                getOptionValue={(option) => option.value}
+                noOptionsMessage={() => t("common:no-result")}
+                captureMenuScroll={true}
+                onMenuOpen={handleMenuOpen}
+                onMenuClose={handleMenuClose}
+            />
+        );
+    }, [selectedOption, options, i18n.language]);
+
+    return (
+        <>
+            <Container>
+                <Header isOpenGameGuide={true} />
+                <div className={`container ${Styles["container-guide"]}`} ref={wrapperRef}>
+                    <div className={`d-flex align-items-center ${Styles["select-game"]}`}>
+                        <span>Game</span>
+                        {renderSelect}
                     </div>
-                )}
-                <div>
-                    {gameConfigs && (
-                        <iframe
-                            ref={wrapperIframeRef}
-                            key={uuidv4()}
-                            className={Styles["guide-iframe"]}
-                            src={srcPath}
-                            referrerPolicy="strict-origin-when-cross-origin"
-                            height={heightGuide}
-                            width={widthGuide}
-                            onLoad={hideSpinner}
-                        />
+
+                    {isLoading && (
+                        <div className={Styles["guide-loading"]}>
+                            <Loader></Loader>
+                        </div>
                     )}
+                    {gameConfigs && renderIframe}
+                    {isMobileOnly && isOpenMenu && renderBlockHidden()}
                 </div>
-            </div>
-            <Footer setFooterRef={setFooterRef} />
-        </Container>
+                <Footer setFooterRef={setFooterRef} />
+            </Container>
+        </>
     );
 };
 
