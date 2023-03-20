@@ -25,6 +25,7 @@ type Props = {
 type TOption = {
     value: string;
 };
+const MAX_MENU_HEIGHT = 300;
 
 const GuideComponent: React.FC<Props> = ({ gameId, userStakeLevel }) => {
     const { i18n, t } = useTranslation(["detail", "common"]);
@@ -38,6 +39,7 @@ const GuideComponent: React.FC<Props> = ({ gameId, userStakeLevel }) => {
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [heightGuide, setHeightGuide] = useState<number>((wrapperRef && wrapperRef?.current?.clientHeight) || 0);
     const [widthGuide, setWidthGuide] = useState<number>(0);
+    const [maxMenuHeight, setMaxMenuHeight] = useState<number>(0);
     const [gameConfigs, setGameConfigs] = useState<IGameConfigs>();
     const [selectedOption, setSelectedOption] = useState<TOption | null>();
     const [options, setOptions] = useState<TOption[]>();
@@ -62,9 +64,11 @@ const GuideComponent: React.FC<Props> = ({ gameId, userStakeLevel }) => {
     const updateDimension = () => {
         const iframeHeight = wrapperRef?.current?.clientHeight ?? 0;
         const iframeWidth = wrapperRef?.current?.clientWidth ?? 0;
+        const menuHeight = iframeHeight > MAX_MENU_HEIGHT ? MAX_MENU_HEIGHT : iframeHeight;
 
         setHeightGuide(iframeHeight);
         setWidthGuide(iframeWidth);
+        setMaxMenuHeight(menuHeight - ((footerRef && footerRef?.current?.clientHeight) || 0));
     };
 
     const hideSpinner = () => {
@@ -184,9 +188,11 @@ const GuideComponent: React.FC<Props> = ({ gameId, userStakeLevel }) => {
                 captureMenuScroll={true}
                 onMenuOpen={handleMenuOpen}
                 onMenuClose={handleMenuClose}
+                maxMenuHeight={maxMenuHeight}
+                hideSelectedOptions={false}
             />
         );
-    }, [selectedOption, options, i18n.language]);
+    }, [selectedOption, options, i18n.language, maxMenuHeight]);
 
     return (
         <>
