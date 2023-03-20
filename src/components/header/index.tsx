@@ -2,11 +2,12 @@ import React, { useState } from "react";
 
 import Styles from "./header.module.scss";
 import { useTranslation } from "next-i18next";
-import Languages from "../language-switcher";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { GameCategoryName } from "../../common/constants";
 import { ECategoryOther } from "../type";
 import Image from "next/image";
+const Languages = dynamic(() => import("../language-switcher"));
 
 type THeaderProps = {
     isOpenGameGuide: boolean;

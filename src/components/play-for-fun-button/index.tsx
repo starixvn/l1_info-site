@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "next-i18next";
-import Axios from "axios";
 import { LanguageLocaleMapper } from "../../common/constants";
-import * as _ from "lodash";
 
 type Props = {
     gameId: number;
@@ -16,7 +14,7 @@ const PlayForFunButton: React.FC<Props> = ({ gameId }) => {
     const { t, i18n } = useTranslation(["common", "detail"]);
     const [urlSSO, setUrlSSO] = useState<string>();
 
-    const playForFunAction = (event: any, gameId: number) => {
+    const playForFunAction = async (event: any, gameId: number) => {
         event && event.preventDefault();
         windowPlayForFun?.close();
         setUrlSSO("");
@@ -24,6 +22,7 @@ const PlayForFunButton: React.FC<Props> = ({ gameId }) => {
 
         let playerId = localStorage.getItem(playerIdKey);
         if (!playerId) {
+            const _ = (await import("lodash")).default;
             playerId = _.random(1, 100000000).toString();
             localStorage.setItem(playerIdKey, playerId);
         }
@@ -33,6 +32,8 @@ const PlayForFunButton: React.FC<Props> = ({ gameId }) => {
             browserUserAgent: navigator.userAgent,
             gameId,
         };
+
+        const Axios = (await import("axios")).default;
         Axios.post(`/api/play-for-fun`, request)
             .then((data) => data.data)
             .then((data) => {
@@ -50,7 +51,7 @@ const PlayForFunButton: React.FC<Props> = ({ gameId }) => {
     };
 
     return (
-        <button type="button" className="btn btn-primary" onClick={(event) => playForFunAction(event, gameId)}>
+        <button type="button" className="btn btn-primary" onClick={async (event) => playForFunAction(event, gameId)}>
             {t<string>("common:playForFun")}
         </button>
     );
