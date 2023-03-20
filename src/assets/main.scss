@@ -33,7 +33,7 @@ html {
 body {
     padding: 0;
     margin: 0;
-    background: var(--page-background) url(/static/images/home_bg.jpg) repeat-y;
+    background: var(--page-background) url(/static/images/home_bg.webp) repeat-y;
     color: var(--text-color);
     font: 500 1.6rem/1.5 var(--font-family);
     overscroll-behavior: contain;
@@ -215,6 +215,6 @@ label {
     margin-right: 3rem;
 }
 
-.overflow-hidden{
-    overflow: hidden!important;
+.overflow-hidden {
+    overflow: hidden !important;
 }

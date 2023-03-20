@@ -3,12 +3,10 @@ import { isMobileOnly } from "react-device-detect";
 import { useTranslation } from "next-i18next";
 import Link from "next/link";
 import dynamic from "next/dynamic";
-import Image from "next/image";
-
 import Styles from "./header.module.scss";
 import { GameCategoryName } from "../../common/constants";
 import { ECategoryOther } from "../type";
-
+import Image from "next/legacy/image";
 const Languages = dynamic(() => import("../language-switcher"));
 
 type THeaderProps = {
@@ -88,7 +86,7 @@ export const Header: React.FC<THeaderProps> = ({ menuItems, category = 0, isOpen
                                 onClick={() => onSelectCategory(ECategoryOther.contactUS)}
                             >
                                 <span className={`${Styles["menu-text"]}`}>
-                                    <Link className={Styles["menu-link"]} href="/contact">
+                                    <Link className={Styles["menu-link"]} href="/contact" aria-label="Link to Contact page">
                                         <span className={Styles["icon-contact"]} />
                                         <span className={Styles["text-contact"]}>{t<string>("contact")}</span>
                                     </Link>
