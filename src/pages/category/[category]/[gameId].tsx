@@ -3,10 +3,12 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { GetStaticPaths } from "next";
 import dynamic from "next/dynamic";
 
-import { locales } from "../../../common/constants";
+import { GameCategoryName, locales } from "../../../common/constants";
 import { GAMES_CATEGORY, GAMES_SORT } from "../../../components/data";
 import PageBase, { IStateBase, TPropsBase } from "../../../components/pageBase";
 import { IStaticProps } from "../../../components/type";
+import Head from "next/head";
+import appSettings from "../../../common/app-settings";
 
 const GameDetails = dynamic(() => import("../../../components/pages/game-detail"));
 
@@ -21,8 +23,18 @@ class DetailGame extends PageBase<TPropsBase, IStateBase> {
     }
 
     renderContent() {
-        const { game, gamesSimilar } = this.props;
-        return <GameDetails game={game[0]} gamesSimilar={gamesSimilar} />;
+        const { game, gamesSimilar, locale, category } = this.props;
+        const pathLanguage = locale === locales.vi ? "/vi" : "";
+        const pathCategory = `/category/${GameCategoryName[category]}/${game[0].gameId}`;
+
+        return (
+            <>
+                <Head>
+                    <link rel="canonical" href={`${appSettings.externalUrl}${pathLanguage}${pathCategory}`} />
+                </Head>
+                <GameDetails game={game[0]} gamesSimilar={gamesSimilar} />
+            </>
+        );
     }
 }
 
@@ -56,6 +68,7 @@ const getStaticProps = async ({ params, locale = "en" }: IStaticProps<IParamsDat
             game: [game],
             gamesSimilar,
             category: game.gameCategory,
+            locale,
             ...(await serverSideTranslations(locale, ["common", "detail"])),
         },
     };

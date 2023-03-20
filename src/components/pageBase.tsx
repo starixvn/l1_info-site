@@ -29,6 +29,7 @@ export type TPropsBase = {
     category: number;
     game: IGame[];
     gamesSimilar?: IGame[];
+    locale?: string;
 } & WithTranslation &
     WithRouterProps;
 

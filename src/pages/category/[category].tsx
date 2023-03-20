@@ -10,6 +10,7 @@ import { EGameCategory, IStaticProps } from "../../components/type";
 import { getKeyByValue } from "../../helpers/function-helper";
 import Head from "next/head";
 import appSettings from "../../common/app-settings";
+import { useTranslation } from "react-i18next";
 
 const Category = dynamic(() => import("../../components/pages/category"));
 
@@ -18,17 +19,18 @@ interface IParamsData {
 }
 
 const Categories = (props: TPropsBase) => {
-    if (props.category === EGameCategory.AllGames) {
-        return (
-            <>
-                <Head>
-                    <link rel="canonical" href={appSettings.externalUrl} />
-                </Head>
-                <Category {...props} />
-            </>
-        );
-    }
-    return <Category {...props} />;
+    const { i18n } = useTranslation();
+    const pathLanguage = i18n.language === locales.vi ? "/vi" : "";
+    const pathCategory = props.category === EGameCategory.AllGames ? "" : `/category/${GameCategoryName[props.category]}`;
+
+    return (
+        <>
+            <Head>
+                <link rel="canonical" href={`${appSettings.externalUrl}${pathLanguage}${pathCategory}`} />
+            </Head>
+            <Category {...props} />
+        </>
+    );
 };
 
 const getStaticPaths: GetStaticPaths = async () => {
