@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { isMobileOnly } from "react-device-detect";
+import { useTranslation } from "next-i18next";
+import Link from "next/link";
+import dynamic from "next/dynamic";
+import Image from "next/image";
 
 import Styles from "./header.module.scss";
-import { useTranslation } from "next-i18next";
-import dynamic from "next/dynamic";
-import Link from "next/link";
 import { GameCategoryName } from "../../common/constants";
 import { ECategoryOther } from "../type";
-import Image from "next/image";
+
 const Languages = dynamic(() => import("../language-switcher"));
 
 type THeaderProps = {
@@ -17,10 +19,18 @@ type THeaderProps = {
 export const Header: React.FC<THeaderProps> = ({ menuItems, category = 0, isOpenGameGuide }) => {
     const [selectCategory, setSelectCategory] = useState<number>(category);
     const { t } = useTranslation("common");
+    const wrapperRef = useRef<HTMLDivElement>(null);
 
     const onSelectCategory = (gameCategory: number) => {
         setSelectCategory(gameCategory);
     };
+
+    useEffect(() => {
+        if (wrapperRef?.current && isMobileOnly && !isOpenGameGuide) {
+            wrapperRef.current.scrollLeft =
+                (menuItems && menuItems.findIndex((category) => category === menuItems[selectCategory]) * 100 - 100) || 0;
+        }
+    }, [wrapperRef?.current, selectCategory]);
 
     return (
         <div id="header" className={Styles["header"]}>
@@ -38,9 +48,10 @@ export const Header: React.FC<THeaderProps> = ({ menuItems, category = 0, isOpen
                         />
                     </div>
                 </Link>
+
                 <div className={`${Styles["navbar-collapse"]} ${Styles["collapse"]}`} id="navbarNavDropdown">
                     {!isOpenGameGuide && (
-                        <div className={Styles["category-container"]}>
+                        <div ref={wrapperRef} className={Styles["category-container"]}>
                             <ul className={Styles["category-list"]}>
                                 {menuItems &&
                                     menuItems.map((gameCategory: number, index) => {
