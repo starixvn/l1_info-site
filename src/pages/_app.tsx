@@ -22,12 +22,22 @@ const App = ({ Component, pageProps }: AppProps) => {
     const addJSONLD = () => {
         return {
             __html: `{
-                "@context": "http://schema.org",
+                "@context": "https://schema.org",
                 "@type": "BreadcrumbList",
                 "itemListElement": [
-                    { "@type": "ListItem", position: 1, name: "Home", item: "https://www.saba.games" },
-                    { "@type": "ListItem", position: 2, name: "Dices", item: "https://www.saba.games/category/dices" },
-                ],
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "name": "SABA.games",
+                        "item": "https://www.saba.games/"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "name": "Dices Games",
+                        "item": "https://www.saba.games/category/dices"
+                    }
+                ]
           }`,
         };
     };
