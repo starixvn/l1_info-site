@@ -2,7 +2,6 @@ import React, { useEffect, useState, useMemo } from "react";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 import dynamic from "next/dynamic";
-import { v4 as uuidv4 } from "uuid";
 import Link from "next/link";
 import { Markup } from "interweave";
 
@@ -84,7 +83,7 @@ export const GameItems: React.FC<TGameItems> = ({ game, category }) => {
                     batchGame.map((game: IGame) => {
                         const gameDetail = t<string>(`detail:${game.gameId}.detail`);
                         return (
-                            <div className={Styles["game-container"]} key={uuidv4()}>
+                            <div className={Styles["game-container"]} key={game.gameId}>
                                 <h2 className={Styles["game-name"]} onClick={() => openDetail(game)}>
                                     {t<string>(`detail:${game.gameId}.displayedName`)}
                                 </h2>
@@ -144,7 +143,7 @@ export const GameItems: React.FC<TGameItems> = ({ game, category }) => {
                     })}
             </section>
         );
-    }, [batchGame]);
+    }, [batchGame, i18n.language, router.locale]);
 };
 
 export default GameItems;

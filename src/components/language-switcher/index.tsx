@@ -11,9 +11,10 @@ const Languages = () => {
     const { i18n } = useTranslation();
     const [isLoading, setIsLoading] = useState(true);
 
-    const handleLanguageChange = (lang: string) => {
-        i18n.changeLanguage(lang);
-        router.push(router.pathname, router.asPath, { locale: lang });
+    const handleLanguageChange = async (lang: string) => {
+        router.push(router.pathname, router.asPath, { locale: lang, shallow: true }).then(() => {
+            router.reload();
+        });
     };
 
     useEffect(() => {
