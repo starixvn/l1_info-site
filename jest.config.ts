@@ -1,15 +1,14 @@
-export default {
+import nextJest from "next/jest";
+
+const createJestConfig = nextJest({
+    // Provide the path to your Next.js app to load next.config.js and .env files in your test environment
+    dir: "./",
+});
+
+const customJestConfig = {
     collectCoverageFrom: ["**/*.{jsx,ts,tsx}"],
     moduleFileExtensions: ["ts", "tsx", "js"],
-    transform: {
-        "^.+\\.(js|jsx|ts|tsx)$": "<rootDir>/node_modules/babel-jest",
-    },
     testMatch: ["**/*.(test|spec).(ts|tsx)"],
-    globals: {
-        "ts-jest": {
-            useBabelrc: true,
-        },
-    },
     coveragePathIgnorePatterns: ["node_modules", ".d.ts", ".next", "coverage", "public"],
     coverageReporters: ["json", "lcov", "text", "text-summary"],
     transformIgnorePatterns: ["/node_modules/", "^.+\\.module\\.(css|sass|scss)$"],
@@ -21,3 +20,5 @@ export default {
     testEnvironment: "jest-environment-jsdom",
     setupFilesAfterEnv: ["jest-extended", "@testing-library/jest-dom/extend-expect", "./__mocks__/global.js"],
 };
+
+export default createJestConfig(customJestConfig);
