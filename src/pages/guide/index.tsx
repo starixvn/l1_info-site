@@ -44,7 +44,7 @@ export const GameGuide: React.FC = () => {
 
 export const getStaticProps = async ({ locale = "en" }) => ({
     props: {
-        ...(await serverSideTranslations(locale, ["common", "detail"])),
+        ...(await serverSideTranslations(locale, ["common", "detail", "seo"])),
     },
 });
 

@@ -33,7 +33,7 @@ const getStaticProps = async ({ params, locale = "en" }: IStaticProps<IParamsDat
             : GAMES_SORT.filter((game) => GameCategoryName[game.gameCategory] === params.category);
 
     const category = +getKeyByValue(GameCategoryName, params.category);
-    const translations = await serverSideTranslations(locale, ["common", "detail"]);
+    const translations = await serverSideTranslations(locale, ["common", "detail", "seo"]);
     return { props: { game, category, ...translations } };
 };
 

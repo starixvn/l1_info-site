@@ -48,6 +48,7 @@ export const Header: React.FC<THeaderProps> = ({ menuItems, category = 0, isOpen
                             width={19.4}
                             height={80}
                             loading="eager"
+                            blurDataURL={`/static/images/logo.svg`}
                         />
                     </div>
                 </Link>

@@ -27,7 +27,7 @@ const Home = (props: TPropsBase) => {
 };
 
 const getStaticProps = async ({ locale = "en" }) => {
-    const translations = await serverSideTranslations(locale, ["common", "detail"]);
+    const translations = await serverSideTranslations(locale, ["common", "detail", "seo"]);
     return { props: { game: GAMES_SORT, category: EGameCategory.AllGames, ...translations } };
 };
 

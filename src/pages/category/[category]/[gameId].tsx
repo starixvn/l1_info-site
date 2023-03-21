@@ -57,7 +57,7 @@ const getStaticProps = async ({ params, locale = "en" }: IStaticProps<IParamsDat
             game: [game],
             gamesSimilar,
             category: game.gameCategory,
-            ...(await serverSideTranslations(locale, ["common", "detail"])),
+            ...(await serverSideTranslations(locale, ["common", "detail", "seo"])),
         },
     };
 };
