@@ -7,7 +7,7 @@ type Props = {
 };
 
 const playerIdKey = "playerId";
-const windowName = "play4fun";
+export const windowNamePFF = "play4fun";
 let windowPlayForFun: Window | null = null;
 
 const PlayForFunButton: React.FC<Props> = ({ gameId }) => {
@@ -18,7 +18,7 @@ const PlayForFunButton: React.FC<Props> = ({ gameId }) => {
         event && event.preventDefault();
         windowPlayForFun?.close();
         setUrlSSO("");
-        windowPlayForFun = window.open("", windowName, "width=1280,height=860");
+        windowPlayForFun = window.open("", windowNamePFF, "width=1280,height=860");
 
         let playerId = localStorage.getItem(playerIdKey);
         if (!playerId) {
@@ -43,7 +43,7 @@ const PlayForFunButton: React.FC<Props> = ({ gameId }) => {
     };
 
     useEffect(() => {
-        urlSSO && windowPlayForFun && (windowPlayForFun.location = urlSSO);
+        urlSSO && windowPlayForFun && (windowPlayForFun.location.href = urlSSO);
     }, [urlSSO]);
 
     const showAlert = (obj: any) => {

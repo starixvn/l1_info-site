@@ -7,12 +7,17 @@ import { locales, Themes } from "../common/constants";
 import Head from "next/head";
 import appSettings from "../common/app-settings";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
+import { windowNamePFF } from "../components/play-for-fun-button";
 
 const App = ({ Component, pageProps }: AppProps) => {
     const { i18n } = useTranslation();
     const { t } = useTranslation("seo");
     const pathLanguage = i18n.language === locales.vi ? "/vi" : "";
     const router = useRouter();
+    useEffect(() => {
+        window.name === windowNamePFF && window.close();
+    }, []);
 
     const addJSONLD = () => {
         return {
