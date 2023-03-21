@@ -15,9 +15,11 @@ const App = ({ Component, pageProps }: AppProps) => {
     return (
         <ThemeProvider attribute="class" defaultTheme={Themes.infoSite} enableSystem={false} storageKey="info-site-mode">
             <Head>
-                <title>Saba Info Site</title>
+                <title>SABA.games - Online Casino Platform Provider</title>
                 <meta name="robots" content="all" />
                 <link rel="canonical" href={`${appSettings.externalUrl}${pathLanguage}${router.asPath}`} />
+                <link rel="preload" href="/static/fonts/SF-Pro-Display-Regular.otf" as="font" type="font/otf" crossOrigin=""></link>
+                <link rel="preload" href="/static/fonts/SF-Pro-Display-Semibold.otf" as="font" type="font/otf" crossOrigin=""></link>
             </Head>
             <Component {...pageProps} />
         </ThemeProvider>
