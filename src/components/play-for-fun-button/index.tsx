@@ -18,7 +18,8 @@ const PlayForFunButton: React.FC<Props> = ({ gameId }) => {
         event && event.preventDefault();
         windowPlayForFun?.close();
         setUrlSSO("");
-        windowPlayForFun = window.open("about:blank", windowName, "width=1280,height=860");
+        windowPlayForFun = window.open("", windowName, "width=1280,height=860");
+        registerEventBack();
 
         let playerId = localStorage.getItem(playerIdKey);
         if (!playerId) {
@@ -45,6 +46,12 @@ const PlayForFunButton: React.FC<Props> = ({ gameId }) => {
     useEffect(() => {
         urlSSO && windowPlayForFun && (windowPlayForFun.location = urlSSO);
     }, [urlSSO]);
+
+    const registerEventBack = () => {
+        windowPlayForFun?.addEventListener("popstate", () => {
+            windowPlayForFun?.close();
+        });
+    };
 
     const showAlert = (obj: any) => {
         window.alert(JSON.stringify(obj, null, 2));
