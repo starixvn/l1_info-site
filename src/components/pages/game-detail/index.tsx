@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useTranslation } from "next-i18next";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
@@ -41,8 +41,21 @@ const GameDetails: React.FC<TGameDetails> = ({ game, gamesSimilar }) => {
     const currentLang = router.locale !== "vi" ? `_${router.locale}` : "";
     const gameDetail = t<string>(`detail:${game.gameId}.detail`);
 
+    useEffect(() => {
+        const handleRouteChange = () => {
+            const element = document.getElementById("header");
+            element && element.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" });
+        };
+
+        router.events.on("routeChangeComplete", handleRouteChange);
+
+        return () => {
+            router.events.off("routeChangeComplete", handleRouteChange);
+        };
+    }, [game]);
+
     return (
-        <>
+        <div id="container-game-detail">
             <section className="container list-container">
                 <h1 className="d-none">Game Detail</h1>
                 <div className={Styles["game-detail-top"]}>
@@ -122,7 +135,7 @@ const GameDetails: React.FC<TGameDetails> = ({ game, gamesSimilar }) => {
                 </div>
                 <SimilarGames games={gamesSimilar ?? []} t={t} />
             </section>
-        </>
+        </div>
     );
 };
 

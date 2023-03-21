@@ -9,11 +9,12 @@ ul {
 }
 
 .container-home {
+    position: relative;
     cursor: auto;
     display: flex;
     flex-direction: column;
     height: 100%;
-    overflow-x: auto;
+    overflow: auto;
 }
 
 .footer {

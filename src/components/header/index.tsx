@@ -3,6 +3,7 @@ import { isMobileOnly } from "react-device-detect";
 import { useTranslation } from "next-i18next";
 import Link from "next/link";
 import dynamic from "next/dynamic";
+
 import Styles from "./header.module.scss";
 import { GameCategoryName } from "../../common/constants";
 import { ECategoryOther } from "../type";
