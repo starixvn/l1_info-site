@@ -22,3 +22,21 @@
     font-weight: 600;
     font-display: swap;
 }
+
+@font-face {
+    font-family: "Tahoma Fallback";
+    src: local(Tahoma);
+    size-adjust: 94%;
+    ascent-override: normal;
+    descent-override: normal;
+    line-gap-override: normal;
+}
+
+@font-face {
+    font-family: "Tahoma Semibold Fallback";
+    src: local(Tahoma);
+    size-adjust: 98%;
+    ascent-override: normal;
+    descent-override: normal;
+    line-gap-override: normal;
+}

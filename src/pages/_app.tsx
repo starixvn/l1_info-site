@@ -18,8 +18,20 @@ const App = ({ Component, pageProps }: AppProps) => {
                 <title>SABA.games - Online Casino Platform Provider</title>
                 <meta name="robots" content="all" />
                 <link rel="canonical" href={`${appSettings.externalUrl}${pathLanguage}${router.asPath}`} />
-                <link rel="preload" href="/static/fonts/SF-Pro-Display-Regular.otf" as="font" type="font/otf" crossOrigin=""></link>
-                <link rel="preload" href="/static/fonts/SF-Pro-Display-Semibold.otf" as="font" type="font/otf" crossOrigin=""></link>
+                <link
+                    rel="preload"
+                    href="/static/fonts/SF-Pro-Display-Regular.otf"
+                    as="font"
+                    type="font/otf"
+                    crossOrigin="anonymous"
+                ></link>
+                <link
+                    rel="preload"
+                    href="/static/fonts/SF-Pro-Display-Semibold.otf"
+                    as="font"
+                    type="font/otf"
+                    crossOrigin="anonymous"
+                ></link>
             </Head>
             <Component {...pageProps} />
         </ThemeProvider>
