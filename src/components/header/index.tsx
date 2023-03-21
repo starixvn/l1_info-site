@@ -25,6 +25,10 @@ export const Header: React.FC<THeaderProps> = ({ menuItems, category = 0, isOpen
     };
 
     useEffect(() => {
+        setSelectCategory(category);
+    }, [category]);
+
+    useEffect(() => {
         if (wrapperRef?.current && isMobileOnly && !isOpenGameGuide) {
             wrapperRef.current.scrollLeft =
                 (menuItems && menuItems.findIndex((category) => category === menuItems[selectCategory]) * 100 - 100) || 0;

@@ -12,6 +12,7 @@ import { IGameConfigs, TUserStakeLevel } from "../../type";
 import appSettings from "../../../common/app-settings";
 import { Container } from "../../pageBase";
 import { GAMES_SORT } from "../../data";
+import { GAMES } from "../../../common/constants";
 
 const Header = dynamic(() => import("../../header"));
 const Footer = dynamic(() => import("../../footer"));
@@ -27,7 +28,7 @@ type TOption = {
 };
 const MAX_MENU_HEIGHT = 300;
 
-const GuideComponent: React.FC<Props> = ({ gameId, userStakeLevel }) => {
+const GuideComponent: React.FC<Props> = ({ gameId = GAMES.BIG_SMALL, userStakeLevel }) => {
     const { i18n, t } = useTranslation(["detail", "common"]);
     const { theme } = useTheme();
     const { guideUrl } = appSettings;
@@ -139,7 +140,7 @@ const GuideComponent: React.FC<Props> = ({ gameId, userStakeLevel }) => {
         return () => {
             document.removeEventListener("visibilitychange", updateDimension);
         };
-    }, []);
+    }, [gameId]);
 
     const renderIframe = useMemo(() => {
         const minMaxBetParams = `&minBet=${userStakeLevel?.minBet}&maxBet=${userStakeLevel?.maxBet}`;

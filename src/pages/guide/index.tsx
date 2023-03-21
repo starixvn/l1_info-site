@@ -20,6 +20,21 @@ export const GameGuide: React.FC = () => {
         }
     }, [router.isReady]);
 
+    useEffect(() => {
+        const handlePopstate = () => {
+            const queryParams = new URLSearchParams(window.location.search);
+            const gameId = queryParams.get("gameId") || 0;
+            console.log("handlePopstate:", gameId); // log the query parameters
+            setGameId(+gameId);
+        };
+
+        window.addEventListener("popstate", handlePopstate);
+
+        return () => {
+            window.removeEventListener("popstate", handlePopstate);
+        };
+    }, []);
+
     if (isLoading) {
         return <></>;
     }
