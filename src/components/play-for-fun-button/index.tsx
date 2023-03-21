@@ -18,7 +18,7 @@ const PlayForFunButton: React.FC<Props> = ({ gameId }) => {
         event && event.preventDefault();
         windowPlayForFun?.close();
         setUrlSSO("");
-        windowPlayForFun = window.open("about:blank", windowName, "fullscreen=0");
+        windowPlayForFun = window.open("about:blank", windowName, "width=1280,height=860");
 
         let playerId = localStorage.getItem(playerIdKey);
         if (!playerId) {
