@@ -17,17 +17,17 @@ export const tw: IAppLandingPageResource = {
         },
         {
             title: "第2步",
-            content: "Select <span class='{0}'>Get the App</span> to redirect to App Store",
+            content: "Select <span class='{0}'>Get the App</span> to redirect to App Store.",
             image: "example-step2",
         },
         {
             title: "第3步",
-            content: "您將重定向到 App Store 上的<span class='{0}'>“VivaDzo”</span>，而不是“SABA.games”。點擊獲取以安裝“VivaDzo”應用程序。",
+            content: "您將重定向到 App Store 上的<span class='{0}'>VivaDzo</span>，而不是“SABA.games”。點擊獲取以安裝VivaDzo應用程序。",
             image: "example-step3",
         },
         {
             title: "第4步",
-            content: "打開<span class='{0}'>“VivaDzo”</span>以啟動“SABA.games”應用程序。",
+            content: "打開<span class='{0}'>VivaDzo</span>以啟動“SABA.games”應用程序。",
             image: "example-step4",
         },
         {

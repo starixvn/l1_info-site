@@ -3,7 +3,7 @@ import { IAppLandingPageResource } from "./types";
 export const vi: IAppLandingPageResource = {
     appDownload: "TẢI ỨNG DỤNG",
     introductions: [
-        '"Cung Cấp Nhiều Thể Loại Game Mang Đậm Tính Giải Trí,',
+        '"Cung Cấp Nhiều Thể Loại Game Mang Đậm Tính Giải Trí',
         `Và Luôn Có Các <span class='{0}'>Game Mới</span> Chờ Đón Bạn"`,
     ],
     descriptions: [
@@ -20,13 +20,13 @@ export const vi: IAppLandingPageResource = {
         },
         {
             title: "Bước 2",
-            content: "Select <span class='{0}'>Get the App</span> to redirect to App Store",
+            content: "Select <span class='{0}'>Get the App</span> to redirect to App Store.",
             image: "example-step2",
         },
         {
             title: "Bước 3",
             content:
-                "Bạn sẽ được chuyển tiếp đến ứng dụng <span class='{0}'>VivaDzo</span> trên App Store thay vì SABA.games. Bấm <span class='{0}'>Get</span> để cài ứng dụng VivaDzo trên iphone.",
+                "Bạn sẽ được chuyển tiếp đến ứng dụng <span class='{0}'>VivaDzo</span> trên App Store thay vì SABA.games. Bấm <span class='{0}'>NHẬN</span> để cài ứng dụng VivaDzo trên iphone.",
             image: "example-step3",
         },
         {

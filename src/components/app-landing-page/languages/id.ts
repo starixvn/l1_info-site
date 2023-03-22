@@ -8,7 +8,7 @@ export const id: IAppLandingPageResource = {
     ],
     descriptions: [
         "Hiburan Online Kasino Luar Biasa",
-        "Pemain dapat memilih untuk bermain melalui <span class='{0}'>Browser Web</span> atau <span class='{0}'>Aplikasi</span>.",
+        "Pemain dapat memilih untuk bermain melalui <span class='{0}'>Browser Web</span> atau <span class='{0}'>Aplikasi</span>",
         "Lebih Instan! Lebih nyaman!",
     ],
     installationGuide: "PETUNJUK INSTALASI",
@@ -20,17 +20,17 @@ export const id: IAppLandingPageResource = {
         },
         {
             title: "Langkah 2",
-            content: "Select <span class='{0}'>Get the App</span> to redirect to App Store",
+            content: "Select <span class='{0}'>Get the App</span> to redirect to App Store.",
             image: "example-step2",
         },
         {
             title: "Langkah 3",
-            content: `Anda akan dialihkan ke <span class='{0}'>"VivaDzo"</span> di App Store alih-alih "SABA.games". Ketuk DAPATKAN untuk menginstal aplikasi "VivaDzo".`,
+            content: `Anda akan dialihkan ke <span class='{0}'>VivaDzo</span> di App Store alih-alih "SABA.games". Ketuk <span class='{0}'>GET</span> untuk menginstal aplikasi VivaDzo.`,
             image: "example-step3",
         },
         {
             title: "Langkah 4",
-            content: `Buka <span class='{0}'>"VivaDzo"</span> untuk meluncurkan aplikasi "SABA.games".`,
+            content: `Buka <span class='{0}'>VivaDzo</span> untuk meluncurkan aplikasi "SABA.games".`,
             image: "example-step4",
         },
         {
