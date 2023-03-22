@@ -1,3 +1,4 @@
+import { withTranslation } from "next-i18next";
 import dynamic from "next/dynamic";
 import React from "react";
 
@@ -11,4 +12,4 @@ class ContactInfo extends PageBase<TPropsBase, IStateBase> {
     }
 }
 
-export default ContactInfo;
+export default withTranslation()(ContactInfo);

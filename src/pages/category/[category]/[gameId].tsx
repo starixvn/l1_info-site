@@ -7,6 +7,7 @@ import { locales } from "../../../common/constants";
 import { GAMES_CATEGORY, GAMES_SORT } from "../../../components/data";
 import PageBase, { IStateBase, TPropsBase } from "../../../components/pageBase";
 import { IStaticProps } from "../../../components/type";
+import { withTranslation } from "next-i18next";
 
 const GameDetails = dynamic(() => import("../../../components/pages/game-detail"));
 
@@ -15,19 +16,7 @@ interface IParamsData {
     gameId: string;
 }
 
-class DetailGame extends PageBase<TPropsBase, IStateBase> {
-    constructor(props: TPropsBase) {
-        super(props);
-    }
-
-    renderContent() {
-        const { game, gamesSimilar } = this.props;
-
-        return <GameDetails game={game[0]} gamesSimilar={gamesSimilar} />;
-    }
-}
-
-const getStaticPaths: GetStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths = async () => {
     const games = GAMES_CATEGORY.map((game) => Object.entries(game)[0]);
     const paths = Object.values(locales).flatMap((locale) =>
         games.map(([category, gameId]) => ({
@@ -39,7 +28,7 @@ const getStaticPaths: GetStaticPaths = async () => {
     return { paths, fallback: false };
 };
 
-const getStaticProps = async ({ params, locale = "en" }: IStaticProps<IParamsData>) => {
+export const getStaticProps = async ({ params, locale = "en" }: IStaticProps<IParamsData>) => {
     const { gameId } = params;
     const game = GAMES_SORT.find((data) => data.gameId === +gameId);
     if (!game) {
@@ -62,4 +51,16 @@ const getStaticProps = async ({ params, locale = "en" }: IStaticProps<IParamsDat
     };
 };
 
-export { DetailGame as default, getStaticPaths, getStaticProps };
+class DetailGame extends PageBase<TPropsBase, IStateBase> {
+    constructor(props: TPropsBase) {
+        super(props);
+    }
+
+    renderContent() {
+        const { game, gamesSimilar } = this.props;
+
+        return <GameDetails game={game[0]} gamesSimilar={gamesSimilar} />;
+    }
+}
+
+export default withTranslation()(DetailGame);

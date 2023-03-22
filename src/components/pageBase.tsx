@@ -3,6 +3,7 @@ import { WithTranslation } from "next-i18next";
 import { WithRouterProps } from "next/dist/client/with-router";
 import dynamic from "next/dynamic";
 import SSRProvider from "react-bootstrap/SSRProvider";
+import Head from "next/head";
 
 import { IGame } from "./data";
 import { EGameCategory } from "./type";
@@ -65,16 +66,21 @@ abstract class PageBase<P extends TPropsBase, S extends IStateBase> extends Reac
     }
 
     render() {
-        const { category } = this.props;
+        const { category, t } = this.props;
         const { menuItems, isFetchingGame, batch } = this.state;
         const gameContext = {
             isFetchingGame,
             batch,
         };
+
         return (
             <SSRProvider>
                 <GameContextProvider value={gameContext}>
                     <Container handleScroll={this.handleScroll}>
+                        <Head>
+                            <title key="title">{t<string>(`seo:title_${category}`)}</title>
+                            <meta key="description" name="description" content={t<string>(`seo:desc_${category}`)} />
+                        </Head>
                         <Header menuItems={menuItems} category={category} isOpenGameGuide={false} />
                         <div className="main-content">
                             <GameBanner />
