@@ -32,53 +32,53 @@ const App = ({ Component, pageProps }: AppProps) => {
                         "@type": "BreadcrumbList",
                         "itemListElement": [
                             {
-                                "@type": "ListItem",
-                                "position": 1,
-                                "name": "SABA.games",
-                                "item": "https://www.saba.games/"
+                            "@type": "ListItem",
+                            "position": 1,
+                            "name": "SABA.games",
+                            "item": "https://www.saba.games/"
                             },
                             {
-                                "@type": "ListItem",
-                                "position": 2,
-                                "name": "Dices Games",
-                                "item": "https://www.saba.games/category/dices"
-                            },
-                            {
-                                "@type": "ListItem",
-                                "position": 3,
-                                "name": "Casino Games",
-                                "item": "https://www.saba.games/category/casino"
-                            },
-                            {
-                                "@type": "ListItem",
-                                "position": 4,
-                                "name": "Others",
-                                "item": "https://www.saba.games/category/Others"
+                            "@type": "ListItem",
+                            "position": 2,
+                            "name": "Dices Games",
+                            "item": "https://www.saba.games/category/dices"
                             }
                         ]
                     },
                     {
                         "@type":"Organization",
-                        "@id":"https://www.saba.games/#organization",
                         "name":"SABA.games",
                         "url":"https://www.saba.games/",
-                        "logo":{
-                           "@type":"ImageObject",
-                           "inLanguage":"en-GB",
-                           "@id":"https://www.saba.games/#/schema/logo/image/",
-                           "url":"https://www.saba.games/static/images/logo.svg",
-                           "contentUrl":"https://www.saba.games/static/images/logo.svg",
-                           "width":175,
-                           "height":63,
-                           "caption":"SABA.games"
-                        },
-                        "image":{
-                           "@id":"https://www.saba.games/#/schema/logo/image/"
-                        }
+                        "logo": "https://www.saba.games/static/images/logo.png",
+                        "description": "SABA.games is a premium casino platform provider, offering a variety of exclusive online games with catchy graphics, dramatic sound effects, and engaging features."
                     }
                 ]
           }`,
         };
+    };
+
+    const renderGoogleAnalytic = () => {
+        if (appSettings.googleAnalyticId == null) {
+            return <></>;
+        }
+
+        return (
+            <>
+                <script async src={`https://www.googletagmanager.com/gtag/js?id=${appSettings.googleAnalyticId}`}></script>
+                <script
+                    dangerouslySetInnerHTML={{
+                        __html: `
+                            window.dataLayer = window.dataLayer || [];
+                            function gtag(){dataLayer.push(arguments);}
+                            gtag('js', new Date());
+                            gtag('config', '${appSettings.googleAnalyticId}', {
+                            page_path: window.location.pathname,
+                            });
+                        `,
+                    }}
+                />
+            </>
+        );
     };
 
     return (
@@ -98,10 +98,12 @@ const App = ({ Component, pageProps }: AppProps) => {
                 <meta key="og:image:width" property="og:image:width" content="1200" />
                 <meta key="og:image:height" property="og:image:height" content="630" />
                 <meta key="og:locale" property="og:locale" content="en_IE" />
+                <meta name="google-site-verification" content="MTU60dw0umBebOlilcIBFbkowmxwSeY_z6mAsYtqpwY" />
                 <link rel="canonical" href={canonicalUrl} />
                 <link rel="preload" href="/static/fonts/SF-Pro-Display-Regular.otf" as="font" crossOrigin="anonymous"></link>
                 <link rel="preload" href="/static/fonts/SF-Pro-Display-Semibold.otf" as="font" crossOrigin="anonymous"></link>
                 <script type="application/ld+json" dangerouslySetInnerHTML={addJSONLD()} />
+                {renderGoogleAnalytic()}
             </Head>
             <Component {...pageProps} />
         </>

@@ -34,6 +34,7 @@ export default interface AppSettings {
     gameSettings: { [id: string]: GameSettingProps };
     system: string;
     guideUrl: string;
+    googleAnalyticId: string;
     simulatorUrl: string;
     owApiUrl: string;
     operatorPFF: Operator;

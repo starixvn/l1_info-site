@@ -57,7 +57,9 @@ const GameDetails: React.FC<TGameDetails> = ({ game, gamesSimilar }) => {
     return (
         <div id="container-game-detail">
             <section className="container list-container">
-                <h1 className="d-none">{t<string>(`detail:${game.gameId}.displayedName`)}</h1>
+                <h1 className="d-none">
+                    {t<string>(`detail:${game.gameId}.displayedName`)} - SABA.games - Online Casino Platform Provider
+                </h1>
                 <div className={Styles["game-detail-top"]}>
                     <h2 className={Styles["game-name"]}>{t<string>(`detail:${game.gameId}.displayedName`)}</h2>
                     <div className={Styles["game-icon-container"]}>
