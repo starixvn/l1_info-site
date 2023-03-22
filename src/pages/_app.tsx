@@ -61,7 +61,7 @@ const App = ({ Component, pageProps }: AppProps) => {
                 <meta key="og:image:width" property="og:image:width" content="1200" />
                 <meta key="og:image:height" property="og:image:height" content="630" />
                 <meta key="og:locale" property="og:locale" content="en_IE" />
-                <link rel="canonical" href={`${appSettings.externalUrl}${pathLanguage}${router.asPath}`} />
+                <link rel="canonical" href={`${appSettings.externalUrl}${pathLanguage}${router.asPath}`.split("?")[0]} />
                 <link rel="preload" href="/static/fonts/SF-Pro-Display-Regular.otf" as="font" crossOrigin="anonymous"></link>
                 <link rel="preload" href="/static/fonts/SF-Pro-Display-Semibold.otf" as="font" crossOrigin="anonymous"></link>
                 <script type="application/ld+json" dangerouslySetInnerHTML={addJSONLD()} />
