@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/router";
-import { DropdownButton, Dropdown } from "react-bootstrap";
+import DropdownButton from "react-bootstrap/DropdownButton";
+import Dropdown from "react-bootstrap/Dropdown";
 import { useTranslation } from "next-i18next";
 import Image from "next/image";
 

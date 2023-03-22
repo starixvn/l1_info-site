@@ -2,7 +2,7 @@ import React from "react";
 import { WithTranslation } from "next-i18next";
 import { WithRouterProps } from "next/dist/client/with-router";
 import dynamic from "next/dynamic";
-import { SSRProvider } from "react-bootstrap";
+import SSRProvider from "react-bootstrap/SSRProvider";
 
 import { IGame } from "./data";
 import { EGameCategory } from "./type";

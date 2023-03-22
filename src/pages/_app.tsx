@@ -2,8 +2,7 @@ import "../assets/errors.scss";
 import "../assets/main.scss";
 import { AppProps } from "next/app";
 import { appWithTranslation, useTranslation } from "next-i18next";
-import { ThemeProvider } from "next-themes";
-import { GameTypeName, locales, Themes } from "../common/constants";
+import { GameTypeName, locales } from "../common/constants";
 import Head from "next/head";
 import appSettings from "../common/app-settings";
 import { useRouter } from "next/router";
@@ -48,7 +47,7 @@ const App = ({ Component, pageProps }: AppProps) => {
     };
 
     return (
-        <ThemeProvider attribute="class" defaultTheme={Themes.infoSite} enableSystem={false} storageKey="info-site-mode">
+        <>
             <Head>
                 <title key="title">{t<string>("main_title")}</title>
                 <meta name="robots" content="all" />
@@ -72,7 +71,7 @@ const App = ({ Component, pageProps }: AppProps) => {
                 <script type="application/ld+json" dangerouslySetInnerHTML={addJSONLD()} />
             </Head>
             <Component {...pageProps} />
-        </ThemeProvider>
+        </>
     );
 };
 

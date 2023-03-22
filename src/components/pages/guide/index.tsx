@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState, useMemo } from "react";
 import { v4 as uuidv4 } from "uuid";
-import { useTheme } from "next-themes";
 import { useTranslation } from "next-i18next";
 import { isMobileOnly, isIOS, browserVersion, useMobileOrientation } from "react-device-detect";
 import Select from "react-select";
@@ -12,7 +11,7 @@ import { IGameConfigs, TUserStakeLevel } from "../../type";
 import appSettings from "../../../common/app-settings";
 import { Container } from "../../pageBase";
 import { GAMES_SORT } from "../../data";
-import { GAMES } from "../../../common/constants";
+import { GAMES, Themes } from "../../../common/constants";
 
 const Header = dynamic(() => import("../../header"));
 const Footer = dynamic(() => import("../../footer"));
@@ -30,7 +29,6 @@ const MAX_MENU_HEIGHT = 300;
 
 const GuideComponent: React.FC<Props> = ({ gameId = GAMES.BIG_SMALL, userStakeLevel }) => {
     const { i18n, t } = useTranslation(["detail", "common"]);
-    const { theme } = useTheme();
     const { guideUrl } = appSettings;
     const router = useRouter();
     const wrapperRef = useRef<HTMLIFrameElement>(null);
@@ -144,7 +142,9 @@ const GuideComponent: React.FC<Props> = ({ gameId = GAMES.BIG_SMALL, userStakeLe
 
     const renderIframe = useMemo(() => {
         const minMaxBetParams = `&minBet=${userStakeLevel?.minBet}&maxBet=${userStakeLevel?.maxBet}`;
-        const srcPath = `${guideUrl}/${i18n.language}/?gId=${selectedOption?.value}&t=${theme}${minMaxBetParams}&f=sc&v=${Date.now()}`;
+        const srcPath = `${guideUrl}/${i18n.language}/?gId=${selectedOption?.value}&t=${
+            Themes.infoSite
+        }${minMaxBetParams}&f=sc&v=${Date.now()}`;
 
         return (
             <iframe
