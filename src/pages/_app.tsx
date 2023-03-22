@@ -3,18 +3,23 @@ import "../assets/main.scss";
 import { AppProps } from "next/app";
 import { appWithTranslation, useTranslation } from "next-i18next";
 import { ThemeProvider } from "next-themes";
-import { locales, Themes } from "../common/constants";
+import { GameTypeName, locales, Themes } from "../common/constants";
 import Head from "next/head";
 import appSettings from "../common/app-settings";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { windowNamePFF } from "../components/play-for-fun-button";
+import { EGameType } from "../components/type";
 
 const App = ({ Component, pageProps }: AppProps) => {
     const { i18n } = useTranslation();
     const { t } = useTranslation("seo");
-    const pathLanguage = i18n.language === locales.vi ? "/vi" : "";
     const router = useRouter();
+    const cleanPath = router.asPath.split("#")[0].split("?")[0];
+    const subPath = router.asPath === "/" || cleanPath === `/category/${GameTypeName[EGameType.AllGames]}` ? "" : cleanPath;
+    const pathLanguage = i18n.language === locales.vi ? "/vi" : "";
+    const canonicalUrl = `${appSettings.externalUrl}${pathLanguage}${subPath}`;
+
     useEffect(() => {
         window.name === windowNamePFF && window.close();
     }, []);
@@ -36,8 +41,8 @@ const App = ({ Component, pageProps }: AppProps) => {
                         "position": 2,
                         "name": "Dices Games",
                         "item": "https://www.saba.games/category/dices"
-                    }
-                ]
+                    },
+                ],
           }`,
         };
     };
@@ -61,7 +66,7 @@ const App = ({ Component, pageProps }: AppProps) => {
                 <meta key="og:image:width" property="og:image:width" content="1200" />
                 <meta key="og:image:height" property="og:image:height" content="630" />
                 <meta key="og:locale" property="og:locale" content="en_IE" />
-                <link rel="canonical" href={`${appSettings.externalUrl}${pathLanguage}${router.asPath}`.split("?")[0]} />
+                <link rel="canonical" href={canonicalUrl} />
                 <link rel="preload" href="/static/fonts/SF-Pro-Display-Regular.otf" as="font" crossOrigin="anonymous"></link>
                 <link rel="preload" href="/static/fonts/SF-Pro-Display-Semibold.otf" as="font" crossOrigin="anonymous"></link>
                 <script type="application/ld+json" dangerouslySetInnerHTML={addJSONLD()} />

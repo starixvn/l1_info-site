@@ -33,7 +33,6 @@ const playForFun = async (req: NextApiRequest, res: NextApiResponse) => {
 
     const responseBalance = await Axios.post(`${appSettings.owApiUrl}/SetDefaultBalance?playerId=${playerId}&operator=pff&balance=20000`);
     if (responseBalance.status !== 200) {
-        console.log({ responseBalance });
         return;
     }
     const responseSSO = await Axios.post(`${appSettings.simulatorUrl}/signin/sso`, request);
