@@ -40,8 +40,8 @@ const App = ({ Component, pageProps }: AppProps) => {
                         "position": 2,
                         "name": "Dices Games",
                         "item": "https://www.saba.games/category/dices"
-                    },
-                ],
+                    }
+                ]
           }`,
         };
     };
