@@ -9,7 +9,7 @@
     "guideUrl": "https://l1-guide-2.lumigame.com",
     "simulatorUrl": "https://l1-glbs2.lumigame.com",
     "owApiUrl": "https://l1-ows2.lumigame.com/SabaClub",
-    "isInforSite": false
+    "isInforSite": false,
     "operatorPFF": {
         "id": "PFF",
         "secret": "PFF123"
