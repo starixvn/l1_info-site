@@ -1,0 +1,11 @@
+{
+    "externalUrl": "https://www.saba.games",
+    "sentry": {
+        "dsn": "https://c8f93631be824a14b9f114f53e3a2bfc@sentry.lumigame.com/3",
+        "environment": "LOCAL_1"
+    },
+    "system": "L1",
+    "enableSourceMap": true,
+    "guideUrl": "https://l1-guide-1.lumigame.com",
+    "isInforSite": false
+}
