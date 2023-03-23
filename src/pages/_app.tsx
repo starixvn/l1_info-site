@@ -50,7 +50,7 @@ const App = ({ Component, pageProps }: AppProps) => {
                         "name":"SABA.games",
                         "url":"https://www.saba.games/",
                         "logo": "https://www.saba.games/static/images/logo.png",
-                        "description": "SABA.games is a premium casino platform provider, offering a variety of exclusive online games with catchy graphics, dramatic sound effects, and engaging features."
+                        "description": "SABA.games is a premium casino platform provider, offering a variety of exclusive online games."
                     }
                 ]
           }`,
@@ -102,6 +102,7 @@ const App = ({ Component, pageProps }: AppProps) => {
                 <link rel="canonical" href={canonicalUrl} />
                 <link rel="preload" href="/static/fonts/SF-Pro-Display-Regular.otf" as="font" crossOrigin="anonymous"></link>
                 <link rel="preload" href="/static/fonts/SF-Pro-Display-Semibold.otf" as="font" crossOrigin="anonymous"></link>
+                <link rel="icon" href="/favicon.ico"></link>
                 <script type="application/ld+json" dangerouslySetInnerHTML={addJSONLD()} />
                 {renderGoogleAnalytic()}
             </Head>

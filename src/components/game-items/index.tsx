@@ -8,6 +8,8 @@ import { GameCategoryName, GameTypeName, TagsName } from "../../common/constants
 import { IGame } from "../data";
 import Styles from "./game-item.module.scss";
 import { useGameContext } from "../../contexts/game-context";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const GameIcon = dynamic(() => import("../game-icon"));
 const LanguageIcons = dynamic(() => import("../icon"));
@@ -84,7 +86,7 @@ export const GameItems: React.FC<TGameItems> = ({ game, category }) => {
                         return (
                             <div className={Styles["game-container"]} key={game.gameId}>
                                 <h2 className={Styles["game-name"]} onClick={() => openDetail(game)}>
-                                    {t<string>(`detail:${game.gameId}.displayedName`)}
+                                    {t<string>(`detail:${game.gameId}.displayedName`) || <Skeleton />}
                                 </h2>
                                 <div className={Styles["game-play"]}>
                                     <GameIcon

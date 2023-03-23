@@ -25,8 +25,8 @@ const GameBanner = () => {
     const router = useRouter();
 
     useEffect(() => {
-        const nameMobile = [`banner-1_mobile_${router.locale}.jpg`, `banner-2_mobile_${router.locale}.jpg`];
-        const nameDesktop = [`banner-1_${router.locale}.jpg`, `banner-2_${router.locale}.jpg`];
+        const nameMobile = [`banner-1_mobile_${router.locale}.webp`, `banner-2_mobile_${router.locale}.webp`];
+        const nameDesktop = [`banner-1_${router.locale}.webp`, `banner-2_${router.locale}.webp`];
         setBanners(isMobileOnly ? nameMobile : nameDesktop);
     }, [router.locale]);
 
