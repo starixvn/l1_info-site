@@ -2,6 +2,7 @@ import "../assets/errors.scss";
 import "../assets/main.scss";
 import { AppProps } from "next/app";
 import { appWithTranslation, useTranslation } from "next-i18next";
+
 import { GameTypeName, locales } from "../common/constants";
 import Head from "next/head";
 import appSettings from "../common/app-settings";

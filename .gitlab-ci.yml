@@ -2,3 +2,48 @@ include:
   - project: "ci/core-cicd"
     ref: main
     file: "luminet.gitlab-ci.yml"
+
+.build_info_script: &build_info_script
+  stage: build
+  script:
+    - echo $DOCKER_FILE_PATH
+      - docker build
+      --target builder
+      --cache-from $CI_REGISTRY_IMAGE:$DEPLOY_ENV-$CI_REGISTRY_IMAGE_VERSION-builder
+      --cache-from $CI_REGISTRY_IMAGE:builder
+      -f $DOCKER_FILE_PATH/$DOCKER_FILE_NAME
+      --tag $CI_REGISTRY_IMAGE:$DEPLOY_ENV-$CI_REGISTRY_IMAGE_VERSION-builder
+      --build-arg BUILDKIT_INLINE_CACHE=1
+      --build-arg CI_JOB_TOKEN=$CI_JOB_TOKEN
+      --build-arg TRANSFORM_CONFIG=$TRANSFORM_CONFIG .
+      - docker tag $CI_REGISTRY_IMAGE:$DEPLOY_ENV-$CI_REGISTRY_IMAGE_VERSION-builder $CI_REGISTRY_IMAGE:builder
+      - docker build
+      --cache-from $CI_REGISTRY_IMAGE:$DEPLOY_ENV-$CI_REGISTRY_IMAGE_VERSION-builder
+      --cache-from $CI_REGISTRY_IMAGE:$DEPLOY_ENV-$CI_REGISTRY_IMAGE_VERSION
+      --cache-from $CI_REGISTRY_IMAGE:$DEPLOY_ENV-latest
+      -f $DOCKER_FILE_PATH/$DOCKER_FILE_NAME
+      --tag $CI_REGISTRY_IMAGE:$DEPLOY_ENV-$CI_REGISTRY_IMAGE_VERSION
+      --build-arg DEPLOY_ENV=$DEPLOY_ENV
+      --build-arg BUILDKIT_INLINE_CACHE=1
+      --build-arg CI_JOB_TOKEN=$CI_JOB_TOKEN
+      --build-arg TRANSFORM_CONFIG=$TRANSFORM_CONFIG .
+      - docker push $CI_REGISTRY_IMAGE:$DEPLOY_ENV-$CI_REGISTRY_IMAGE_VERSION
+      - docker tag $CI_REGISTRY_IMAGE:$DEPLOY_ENV-$CI_REGISTRY_IMAGE_VERSION $CI_REGISTRY_IMAGE:$DEPLOY_ENV-latest
+      - docker push $CI_REGISTRY_IMAGE:$DEPLOY_ENV-latest
+      - docker push $CI_REGISTRY_IMAGE:$DEPLOY_ENV-$CI_REGISTRY_IMAGE_VERSION-builder
+      - docker push $CI_REGISTRY_IMAGE:builder
+  tags:
+    - docker
+  artifacts:
+    paths:
+      - .next
+      - build
+    expire_in: 1 day
+cache:
+  - key: ${CI_COMMIT_REF_SLUG}
+    paths:
+      - node_modules/
+      - .next/cache/
+
+.build:default:image:multistage:
+  <<: *build_info_script

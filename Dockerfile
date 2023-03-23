@@ -2,16 +2,20 @@
 FROM hub.lumigame.com/docker-hub/library/node:18.14-alpine AS builder
 
 RUN apk add --no-cache libc6-compat
+RUN corepack enable && corepack prepare pnpm@latest --activate 
 WORKDIR /app
 
-COPY package.json yarn.lock .modprunerrc ./
-RUN yarn run reg && yarn install --production && npx mod-pruner prune --force 
+COPY package.json pnpm-lock.yaml ./
+RUN yarn run reg && pnpm fetch --prod
+RUN pnpm install --frozen-lockfile --prod
+RUN pnpm prune --prod
 
 COPY . .
-RUN yarn build
+RUN pnpm build
 
 # Production stage
 FROM hub.lumigame.com/docker-hub/library/node:18.14-alpine AS runner
+RUN corepack enable && corepack prepare pnpm@latest --activate 
 
 WORKDIR /app
 ENV NODE_ENV production
@@ -29,5 +33,9 @@ RUN addgroup -g 1001 -S nodejs && \
     chown -R nextjs:nodejs /app/.next
 
 USER nextjs
+
 EXPOSE 5000
-CMD ["yarn", "start"]
+
+ENV PORT 5000
+
+CMD ["pnpm", "start"]
