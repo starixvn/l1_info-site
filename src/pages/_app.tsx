@@ -102,7 +102,9 @@ const App = ({ Component, pageProps }: AppProps) => {
                 <link rel="canonical" href={canonicalUrl} />
                 <link rel="preload" href="/static/fonts/SF-Pro-Display-Regular.otf" as="font" crossOrigin="anonymous"></link>
                 <link rel="preload" href="/static/fonts/SF-Pro-Display-Semibold.otf" as="font" crossOrigin="anonymous"></link>
-                <link rel="icon" href="/favicon.ico"></link>
+                <link rel="apple-touch-icon" href="https://www.saba.games/static/images/logo.png"></link>
+                <link rel="shortcut icon" href="https://www.saba.games/favicon.ico" type="image/ico"></link>
+                <link rel="icon" href="https://www.saba.games/favicon.ico" type="image/ico"></link>
                 <script type="application/ld+json" dangerouslySetInnerHTML={addJSONLD()} />
                 {renderGoogleAnalytic()}
             </Head>

@@ -181,7 +181,7 @@ const Odds = {
 const GameConfigs = {
     betLevels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
     betMultiplier: 20,
-    coinValues: [1, 10, 20, 100, 200, 500, 2],
+    coinValues: [0.01, 0.1, 0.5],
     maxWinPerRound: 3,
     odds: Odds,
     coin: 0.01,
