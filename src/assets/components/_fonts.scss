@@ -82,3 +82,45 @@
         /* Safari, Android, iOS */ url("/static/fonts/roboto/Roboto-Bold.svg#Roboto") format("svg"); /* Legacy iOS */
     font-display: swap;
 }
+
+@font-face {
+    font-family: "Noto-Thai";
+    src: url("/static/fonts/noto/NotoSerifThai-Regular.ttf") format("truetype");
+    font-weight: 500;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Noto-Thai";
+    src: url("/static/fonts/noto/NotoSerifThai-Bold.ttf") format("truetype");
+    font-weight: 700;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Noto-ZH-CN";
+    src: url("/static/fonts/noto/NotoSerifZHCN-Regular.ttf") format("truetype");
+    font-weight: 500;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Noto-ZH-CN";
+    src: url("/static/fonts/noto/NotoSerifZHCN-Bold.ttf") format("truetype");
+    font-weight: 700;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Noto-ZH-TW";
+    src: url("/static/fonts/noto/NotoSerifZHTW-Regular.ttf") format("truetype");
+    font-weight: 500;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Noto-ZH-TW";
+    src: url("/static/fonts/noto/NotoSerifZHTW-Bold.ttf") format("truetype");
+    font-weight: 700;
+    font-display: swap;
+}

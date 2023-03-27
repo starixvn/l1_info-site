@@ -11,6 +11,28 @@ import AppLandingPageComponent from "../components/app-landing-page";
 
 const Dashboard = dynamic(() => import("../components/pages/dashboard"));
 
+const changeFontFamilyFollowLanguage = (locale: string) => {
+    let fontFamily = "";
+    switch (locale) {
+        case "th":
+            fontFamily = "Noto-Thai";
+            break;
+        case "zh_cn":
+            fontFamily = "Noto-ZH-CN";
+            break;
+        case "zh_tw":
+            fontFamily = "Noto-ZH-TW";
+            break;
+        default:
+            fontFamily = "Roboto";
+            break;
+    }
+
+    document.documentElement.style.fontFamily = fontFamily;
+    document.body.style.fontFamily = fontFamily;
+};
+
+
 const Home = (props: TPropsBase) => {
     const [isLoading, setIsLoading] = useState(true);
     const router = useRouter();
@@ -18,6 +40,10 @@ const Home = (props: TPropsBase) => {
     useEffect(() => {
         if (router.isReady) {
             setIsLoading(false);
+
+            if (!appSettings.isInforSite) {
+                changeFontFamilyFollowLanguage(router.query.language as string);
+            }
         }
     }, [router]);
 
