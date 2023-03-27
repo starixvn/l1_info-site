@@ -22,7 +22,7 @@ export const th: IAppLandingPageResource = {
         },
         {
             title: "ขั้้นตอนที่ 3",
-            content: `คุณจะถูกเปลี่ยนเส้นทางไปยัง <span class='{0}'>VivaDzo</span> ใน App Store แทน "SABA.games" แตะ <span class='{0}'>GET</span> เพื่อติดตั้งแอป VivaDzo`,
+            content: `คุณจะถูกเปลี่ยนเส้นทางไปยัง <span class='{0}'>VivaDzo</span> ใน App Store แทน "SABA.games" แตะ <span class='{0}'>GET</span> เพื่อติดตั้งแอป "VivaDzo"`,
             image: "example-step3",
         },
         {

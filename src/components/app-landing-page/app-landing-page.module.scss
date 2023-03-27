@@ -106,7 +106,8 @@
 
                 .title {
                     background-image: url("/static/images/app-download/label-step.png");
-                    background-size: cover;
+                    background-size: contain;
+                    background-repeat: no-repeat;
                     color: white;
                     margin-top: 30px;
                     margin-bottom: 10px;
@@ -115,7 +116,11 @@
                     border-radius: 20px;
                     display: inline-block;
                     font-size: 20px;
-                    padding:3px;
+                }
+
+                .padding{
+                    background-size: cover;
+                    padding-top: 6px;
                 }
 
                 .detail {

@@ -22,7 +22,7 @@ export const tw: IAppLandingPageResource = {
         },
         {
             title: "第3步",
-            content: "您將重定向到 App Store 上的<span class='{0}'>VivaDzo</span>，而不是“SABA.games”。點擊獲取以安裝VivaDzo應用程序。",
+            content: `您將重定向到 App Store 上的<span class='{0}'>VivaDzo</span>，而不是"SABA.games"。點擊獲取以安裝"VivaDzo"應用程序。`,
             image: "example-step3",
         },
         {

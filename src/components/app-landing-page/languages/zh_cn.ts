@@ -22,7 +22,7 @@ export const cn: IAppLandingPageResource = {
         },
         {
             title: "第3步",
-            content: "您将重定向到 App Store 上的<span class='{0}'>VivaDzo</span>，而不是“SABA.games”。 点击获取以安装VivaDzo应用程序。",
+            content: `您将重定向到 App Store 上的<span class='{0}'>VivaDzo</span>，而不是"SABA.games"。 点击获取以安装"VivaDzo"应用程序。`,
             image: "example-step3",
         },
         {

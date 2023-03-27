@@ -25,8 +25,7 @@ export const vi: IAppLandingPageResource = {
         },
         {
             title: "Bước 3",
-            content:
-                "Bạn sẽ được chuyển tiếp đến ứng dụng <span class='{0}'>VivaDzo</span> trên App Store thay vì SABA.games. Bấm <span class='{0}'>NHẬN</span> để cài ứng dụng VivaDzo trên iphone.",
+            content: `Bạn sẽ được chuyển tiếp đến ứng dụng <span class='{0}'>VivaDzo</span> trên App Store thay vì SABA.games. Bấm <span class='{0}'>NHẬN</span> để cài ứng dụng "VivaDzo" trên iphone.`,
             image: "example-step3",
         },
         {

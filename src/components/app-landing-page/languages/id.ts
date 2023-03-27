@@ -25,7 +25,7 @@ export const id: IAppLandingPageResource = {
         },
         {
             title: "Langkah 3",
-            content: `Anda akan dialihkan ke <span class='{0}'>VivaDzo</span> di App Store alih-alih "SABA.games". Ketuk <span class='{0}'>GET</span> untuk menginstal aplikasi VivaDzo.`,
+            content: `Anda akan dialihkan ke <span class='{0}'>VivaDzo</span> di App Store alih-alih "SABA.games". Ketuk <span class='{0}'>GET</span> untuk menginstal aplikasi "VivaDzo".`,
             image: "example-step3",
         },
         {

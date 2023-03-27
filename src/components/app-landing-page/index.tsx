@@ -104,7 +104,7 @@ const AppLandingPageComponent: React.FunctionComponent<{ locale: string }> = ({ 
                     <div className={Styles["title"]}>{resources.installationGuide}</div>
                     <img className={Styles["apple-logo"]} alt="" />
                 </div>
-                <InstallationGuide resources={resources} />
+                <InstallationGuide resources={resources} locale={locale} />
             </div>
             {
                 isMobile && (<div className={`${Styles["app-download"]} text-center`}  >
