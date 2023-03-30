@@ -4829,6 +4829,11 @@ react-transition-group@^4.3.0, react-transition-group@^4.4.2:
     loose-envify "^1.4.0"
     prop-types "^15.6.2"
 
+react-use-downloader@^1.2.4:
+  version "1.2.4"
+  resolved "https://npm.lumigame.com/react-use-downloader/-/react-use-downloader-1.2.4.tgz#ff23b4830b1194a6899565d7441c5c7991e5c491"
+  integrity sha512-ciPb5SSKaDymZoWdaHrNbJpa20riR0fgUni48cBTseoptAMG8SEATX33UCNPGwnpZ5BFybFdTCus37KLibj8oA==
+
 react@^18.2.0:
   version "18.2.0"
   resolved "https://npm.lumigame.com/react/-/react-18.2.0.tgz#555bd98592883255fa00de14f1151a917b5d77d5"

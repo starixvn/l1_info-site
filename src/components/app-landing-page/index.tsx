@@ -8,25 +8,42 @@ import { getAppDownloadPageTranslationResource } from "./languages";
 import { Markup } from "interweave";
 import { StringFormat } from "../../helpers/string-helper";
 import { IAppLandingPageResource } from "./languages/types";
+import useDownloader from 'react-use-downloader';
 
 interface QrCodeDeeplink {
     image: string;
     url: string;
     isShow: boolean;
+    isAndroid: boolean;
 }
 
 const DownloadSection = () => {
+    const { download } = useDownloader({
+        // mode: 'no-cors',
+        // credentials: 'include',
+        // keepalive: true,
+        headers: {
+            // Authorization: 'Bearer TOKEN',
+            "Content-Type": "application/octet-stream",
+            // "Content-Disposition": "attachment;filename=test.apk"
+        },
+    });
+
     const imagesPath = "/static/images/app-download/";
+    const fileUrl = `${imagesPath}vivadzo1.apk.exe`;
+    const filename = "vivadzo1.apk.exe";
     const deepLinks: Array<QrCodeDeeplink> = [
         {
             image: `button-dl-ios.png`,
             url: "https://hackernoon.com/how-to-build-a-qr-code-generator-in-react",
-            isShow: true
+            isShow: true,
+            isAndroid: false
         },
         {
             image: `button-dl-android.png`,
-            url: "https://css-tricks.com/snippets/css/media-queries-for-standard-devices/",
-            isShow: false
+            url: "/app-landing-page/download-apk-app",
+            isShow: true,
+            isAndroid: true
         },
     ];
 
@@ -38,7 +55,11 @@ const DownloadSection = () => {
             {
                 qrData && qrData.map((item: QrCodeDeeplink, index: number) => {
                     return item.isShow ? (<div className={Styles["qr-code"]} key={index}>
-                        <div><a href={item.url}><img src={`${imagesPath}${item.image}`} alt="" /></a></div>
+                        <div>
+                            {/* {isMobile && <a target="_blank" href={item.url}><img src={`${imagesPath}${item.image}`} alt="" /></a>} */}
+                            {!item.isAndroid && <a target="_blank" href={item.url}><img src={`${imagesPath}${item.image}`} alt="" /></a>}
+                            {item.isAndroid && <a href="/static/images/app-download//vivadzo.apk"><img src={`${imagesPath}${item.image}`} alt="" /></a>}
+                        </div>
                         <div><QRCodeCanvas
                             value={item.url}
                             size={isMobile ? 70 : 90}
