@@ -8,7 +8,6 @@ import { getAppDownloadPageTranslationResource } from "./languages";
 import { Markup } from "interweave";
 import { StringFormat } from "../../helpers/string-helper";
 import { IAppLandingPageResource } from "./languages/types";
-import useDownloader from 'react-use-downloader';
 
 interface QrCodeDeeplink {
     image: string;
@@ -18,20 +17,8 @@ interface QrCodeDeeplink {
 }
 
 const DownloadSection = () => {
-    const { download } = useDownloader({
-        // mode: 'no-cors',
-        // credentials: 'include',
-        // keepalive: true,
-        headers: {
-            // Authorization: 'Bearer TOKEN',
-            "Content-Type": "application/octet-stream",
-            // "Content-Disposition": "attachment;filename=test.apk"
-        },
-    });
-
     const imagesPath = "/static/images/app-download/";
-    const fileUrl = `${imagesPath}vivadzo1.apk.exe`;
-    const filename = "vivadzo1.apk.exe";
+    const apkPath = `${imagesPath}vivadzo.apk`
     const deepLinks: Array<QrCodeDeeplink> = [
         {
             image: `button-dl-ios.png`,
@@ -56,9 +43,8 @@ const DownloadSection = () => {
                 qrData && qrData.map((item: QrCodeDeeplink, index: number) => {
                     return item.isShow ? (<div className={Styles["qr-code"]} key={index}>
                         <div>
-                            {/* {isMobile && <a target="_blank" href={item.url}><img src={`${imagesPath}${item.image}`} alt="" /></a>} */}
                             {!item.isAndroid && <a target="_blank" href={item.url}><img src={`${imagesPath}${item.image}`} alt="" /></a>}
-                            {item.isAndroid && <a href="/static/images/app-download//vivadzo.apk"><img src={`${imagesPath}${item.image}`} alt="" /></a>}
+                            {item.isAndroid && <a href={apkPath}><img src={`${imagesPath}${item.image}`} alt="" /></a>}
                         </div>
                         <div><QRCodeCanvas
                             value={item.url}
