@@ -10,7 +10,7 @@ const InstallationGuide: React.FunctionComponent<{ resources: IAppLandingPageRes
         <div className={`row ${Styles["steps"]}`}>
             <div className="col-lg-1 col-xl-1" ></div>
             {
-                resources.steps.map((guide, index) => {
+                resources.steps.ios.map((guide, index) => {
                     return <div className={`col-xs-2 col-md-4 col-lg-2 col-xl-2 text-center ${Styles["step"]}`} key={index} >
                         <div className={`${Styles["content"]}`}>
                             <div ><span className={`${Styles["title"]} ${Styles[locale === "th" ? "padding" : ""]}`}> {guide.title}</span></div>

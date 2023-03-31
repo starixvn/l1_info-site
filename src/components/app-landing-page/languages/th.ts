@@ -9,31 +9,60 @@ export const th: IAppLandingPageResource = {
         "ทันใจยิ่งขึ้น! สะดวกกว่า!",
     ],
     installationGuide: "คู่มือการติดตั้ง",
-    steps: [
-        {
-            title: "ขั้้นตอนที่ 1",
-            content: "ใช้โทรศัพท์มือถือสแกน QR Code หรือแตะที่ไอคอน App Store เพื่อดาวน์โหลด",
-            image: "example-step1",
-        },
-        {
-            title: "ขั้้นตอนที่ 2",
-            content: "Select <span class='{0}'>Get the App</span> to redirect to App Store",
-            image: "example-step2",
-        },
-        {
-            title: "ขั้้นตอนที่ 3",
-            content: `คุณจะถูกเปลี่ยนเส้นทางไปยัง <span class='{0}'>VivaDzo</span> ใน App Store แทน "SABA.games" แตะ <span class='{0}'>GET</span> เพื่อติดตั้งแอป "VivaDzo"`,
-            image: "example-step3",
-        },
-        {
-            title: "ขั้้นตอนที่ 4",
-            content: `เปิด <span class='{0}'>VivaDzo</span> เพื่อเปิดแอป "SABA.games"`,
-            image: "example-step4",
-        },
-        {
-            title: "ขั้้นตอนที่ 5",
-            content: "โปรดใช้บัญชีเดิมพันที่อัพไลน์มอบให้เพื่อเข้าสู่ระบบ",
-            image: "example-step5",
-        },
-    ],
+    steps: {
+        android: [
+            {
+                title: "Step 1",
+                content: "",
+                image: "example-step1",
+            },
+            {
+                title: "Step 2",
+                content: "",
+                image: "example-step2",
+            },
+            {
+                title: "Step 3",
+                content: ``,
+                image: "example-step3",
+            },
+            {
+                title: "Step 4",
+                content: ``,
+                image: "example-step4",
+            },
+            {
+                title: "Step 5",
+                content: "",
+                image: "example-step5",
+            },
+        ],
+        ios: [
+            {
+                title: "ขั้้นตอนที่ 1",
+                content: "ใช้โทรศัพท์มือถือสแกน QR Code หรือแตะที่ไอคอน App Store เพื่อดาวน์โหลด",
+                image: "example-step1",
+            },
+            {
+                title: "ขั้้นตอนที่ 2",
+                content: "Select <span class='{0}'>Get the App</span> to redirect to App Store",
+                image: "example-step2",
+            },
+            {
+                title: "ขั้้นตอนที่ 3",
+                content: `คุณจะถูกเปลี่ยนเส้นทางไปยัง <span class='{0}'>VivaDzo</span> ใน App Store แทน "SABA.games" แตะ <span class='{0}'>GET</span> เพื่อติดตั้งแอป "VivaDzo"`,
+                image: "example-step3",
+            },
+            {
+                title: "ขั้้นตอนที่ 4",
+                content: `เปิด <span class='{0}'>VivaDzo</span> เพื่อเปิดแอป "SABA.games"`,
+                image: "example-step4",
+            },
+            {
+                title: "ขั้้นตอนที่ 5",
+                content: "โปรดใช้บัญชีเดิมพันที่อัพไลน์มอบให้เพื่อเข้าสู่ระบบ",
+                image: "example-step5",
+            },
+        ],
+    },
 };

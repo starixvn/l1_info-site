@@ -12,31 +12,60 @@ export const id: IAppLandingPageResource = {
         "Lebih Instan! Lebih nyaman!",
     ],
     installationGuide: "PETUNJUK INSTALASI",
-    steps: [
-        {
-            title: "Langkah 1",
-            content: "Gunakan ponsel untuk memindai kode QR atau Ketuk ikon App Store untuk mengunduh.",
-            image: "example-step1",
-        },
-        {
-            title: "Langkah 2",
-            content: "Select <span class='{0}'>Get the App</span> to redirect to App Store.",
-            image: "example-step2",
-        },
-        {
-            title: "Langkah 3",
-            content: `Anda akan dialihkan ke <span class='{0}'>VivaDzo</span> di App Store alih-alih "SABA.games". Ketuk <span class='{0}'>GET</span> untuk menginstal aplikasi "VivaDzo".`,
-            image: "example-step3",
-        },
-        {
-            title: "Langkah 4",
-            content: `Buka <span class='{0}'>VivaDzo</span> untuk meluncurkan aplikasi "SABA.games".`,
-            image: "example-step4",
-        },
-        {
-            title: "Langkah 5",
-            content: "Silakan gunakan akun taruhan yang diberikan oleh Upline Anda untuk login.",
-            image: "example-step5",
-        },
-    ],
+    steps: {
+        android: [
+            {
+                title: "Step 1",
+                content: "",
+                image: "example-step1",
+            },
+            {
+                title: "Step 2",
+                content: "",
+                image: "example-step2",
+            },
+            {
+                title: "Step 3",
+                content: ``,
+                image: "example-step3",
+            },
+            {
+                title: "Step 4",
+                content: ``,
+                image: "example-step4",
+            },
+            {
+                title: "Step 5",
+                content: "",
+                image: "example-step5",
+            },
+        ],
+        ios: [
+            {
+                title: "Langkah 1",
+                content: "Gunakan ponsel untuk memindai kode QR atau Ketuk ikon App Store untuk mengunduh.",
+                image: "example-step1",
+            },
+            {
+                title: "Langkah 2",
+                content: "Select <span class='{0}'>Get the App</span> to redirect to App Store.",
+                image: "example-step2",
+            },
+            {
+                title: "Langkah 3",
+                content: `Anda akan dialihkan ke <span class='{0}'>VivaDzo</span> di App Store alih-alih "SABA.games". Ketuk <span class='{0}'>GET</span> untuk menginstal aplikasi "VivaDzo".`,
+                image: "example-step3",
+            },
+            {
+                title: "Langkah 4",
+                content: `Buka <span class='{0}'>VivaDzo</span> untuk meluncurkan aplikasi "SABA.games".`,
+                image: "example-step4",
+            },
+            {
+                title: "Langkah 5",
+                content: "Silakan gunakan akun taruhan yang diberikan oleh Upline Anda untuk login.",
+                image: "example-step5",
+            },
+        ],
+    },
 };
