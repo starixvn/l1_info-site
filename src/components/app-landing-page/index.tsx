@@ -8,6 +8,7 @@ import { getAppDownloadPageTranslationResource } from "./languages";
 import { Markup } from "interweave";
 import { StringFormat } from "../../helpers/string-helper";
 import { IAppLandingPageResource } from "./languages/types";
+import { Col, Nav, Row, Tab, Tabs } from "react-bootstrap";
 
 interface QrCodeDeeplink {
     image: string;
@@ -18,7 +19,7 @@ interface QrCodeDeeplink {
 
 const DownloadSection = () => {
     const imagesPath = "/static/images/app-download/";
-    const apkPath = `${imagesPath}vivadzo.apk`
+    const apkPath = `${imagesPath}SABA.games.apk`
     const deepLinks: Array<QrCodeDeeplink> = [
         {
             image: `button-dl-ios.png`,
@@ -106,12 +107,22 @@ const AppLandingPageComponent: React.FunctionComponent<{ locale: string }> = ({ 
                     <DownloadSection />
                 </div>
             </div>
-            <div className="row text-center">
+            <div className="row text-center align-items-center">
                 <div className={`col-12 ${Styles["installation-guide"]}`}>
                     <div className={Styles["title"]}>{resources.installationGuide}</div>
-                    <img className={Styles["apple-logo"]} alt="" />
+                    <Tabs
+                        defaultActiveKey="ios"
+                        className={Styles["nav-tabs"]}
+                        justify
+                    >
+                        <Tab eventKey="ios" tabClassName={Styles["nav-link"]} title={<img className={Styles["ios-logo-apple"]} alt="" />}>
+                            <InstallationGuide stepsResources={resources.steps} isAndroid={false} locale={locale} id="ios-guide" />
+                        </Tab>
+                        <Tab eventKey="android" tabClassName={Styles["nav-link"]} title={<img className={Styles["ios-logo-android"]} alt="" />}>
+                            <InstallationGuide stepsResources={resources.steps} isAndroid={true} locale={locale} id="android-guide" />
+                        </Tab>
+                    </Tabs>
                 </div>
-                <InstallationGuide resources={resources} locale={locale} />
             </div>
             {
                 isMobile && (<div className={`${Styles["app-download"]} text-center`}  >

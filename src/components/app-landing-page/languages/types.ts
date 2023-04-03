@@ -1,6 +1,9 @@
 export interface StepDescription {
     title: string;
-    content: string;
+    content: {
+        android: string;
+        ios: string;
+    };
     image: string;
 }
 
@@ -9,8 +12,5 @@ export interface IAppLandingPageResource {
     introductions: Array<string>;
     descriptions: Array<string>;
     installationGuide: string;
-    steps: {
-        android: Array<StepDescription>;
-        ios: Array<StepDescription>;
-    };
+    steps: Array<StepDescription>;
 }

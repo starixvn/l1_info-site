@@ -1,5 +1,7 @@
 import { IAppLandingPageResource } from "./types";
 
+const step5Description = "Vui lòng đăng nhập bằng tài khoản được cấp bởi quản lý cấp trên của bạn.";
+
 export const vi: IAppLandingPageResource = {
     appDownload: "TẢI ỨNG DỤNG",
     introductions: [
@@ -12,60 +14,46 @@ export const vi: IAppLandingPageResource = {
         "Nhanh Chóng! Thuận Tiện!",
     ],
     installationGuide: "HƯỚNG DẪN CÀI ĐẶT",
-    steps: {
-        android: [
-            {
-                title: "Step 1",
-                content: "",
-                image: "example-step1",
+    steps: [
+        {
+            title: "Bước 1",
+            content: {
+                ios: "Dùng điện thoại để quét mã QR hoặc nhấn vào biểu tượng App Store để tải ứng dụng.",
+                android: "Dùng điện thoại để quét mã QR hoặc nhấn vào biểu tượng Google Play để tải ứng dụng.",
             },
-            {
-                title: "Step 2",
-                content: "",
-                image: "example-step2",
+            image: "example-step1",
+        },
+        {
+            title: "Bước 2",
+            content: {
+                ios: "Chọn <span class='{0}'>OK</span> để mở App Store.",
+                android: `Sau khi tệp tin được tải xuống, chọn <span class='{0}'>Open</span> để bắt đầu cài đặt`,
             },
-            {
-                title: "Step 3",
-                content: ``,
-                image: "example-step3",
+            image: "example-step2",
+        },
+        {
+            title: "Bước 3",
+            content: {
+                ios: `Bạn sẽ được chuyển tiếp đến ứng dụng <span class='{0}'>VivaDzo</span> trên App Store thay vì SABA.games. Bấm <span class='{0}'>NHẬN</span> để cài ứng dụng "VivaDzo" trên iphone.`,
+                android: `Chọn <span class='{0}'>Install</span> để tiếp tục.`,
             },
-            {
-                title: "Step 4",
-                content: ``,
-                image: "example-step4",
+            image: "example-step3",
+        },
+        {
+            title: "Bước 4",
+            content: {
+                ios: "Mở ứng dụng <span class='{0}'>VivaDzo</span> để bắt đầu trải nghiệm SABA.games.",
+                android: `Chọn <span class='{0}'>Open</span> để bắt đầu trải nghiệm SABA.games.`,
             },
-            {
-                title: "Step 5",
-                content: "",
-                image: "example-step5",
+            image: "example-step4",
+        },
+        {
+            title: "Bước 5",
+            content: {
+                ios: step5Description,
+                android: step5Description,
             },
-        ],
-        ios: [
-            {
-                title: "Bước 1",
-                content: "Dùng điện thoại để quét mã QR hoặc nhấn vào biểu tượng App Store để tải ứng dụng.",
-                image: "example-step1",
-            },
-            {
-                title: "Bước 2",
-                content: "Select <span class='{0}'>Get the App</span> to redirect to App Store.",
-                image: "example-step2",
-            },
-            {
-                title: "Bước 3",
-                content: `Bạn sẽ được chuyển tiếp đến ứng dụng <span class='{0}'>VivaDzo</span> trên App Store thay vì SABA.games. Bấm <span class='{0}'>NHẬN</span> để cài ứng dụng "VivaDzo" trên iphone.`,
-                image: "example-step3",
-            },
-            {
-                title: "Bước 4",
-                content: "Mở ứng dụng <span class='{0}'>VivaDzo</span> để bắt đầu trải nghiệm SABA.games.",
-                image: "example-step4",
-            },
-            {
-                title: "Bước 5",
-                content: "Vui lòng đăng nhập bằng tài khoản được cấp bởi quản lý cấp trên của bạn.",
-                image: "example-step5",
-            },
-        ],
-    },
+            image: "example-step5",
+        },
+    ],
 };
