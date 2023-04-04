@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
 import InstallationGuide from "./installationguide";
-import { isMobile, isMobileOnly } from "react-device-detect";
+import { isMobile, isMobileOnly, isIOS } from "react-device-detect";
 import Styles from "./app-landing-page.module.scss";
 import ScrollToTop from "react-scroll-to-top";
 import { QRCodeCanvas } from "qrcode.react";
 import { getAppDownloadPageTranslationResource } from "./languages";
 import { Markup } from "interweave";
 import { StringFormat } from "../../helpers/string-helper";
-import { IAppLandingPageResource } from "./languages/types";
-import { Col, Nav, Row, Tab, Tabs } from "react-bootstrap";
+import { Devices, IAppLandingPageResource } from "./languages/types";
+import { Tab, Tabs } from "react-bootstrap";
+import appSettings from "../../common/app-settings";
 
 interface QrCodeDeeplink {
     image: string;
@@ -29,7 +30,7 @@ const DownloadSection = () => {
         },
         {
             image: `button-dl-android.png`,
-            url: "/app-landing-page/download-apk-app",
+            url: `${appSettings.rootUrl}app-landing-page/download-apk-app`,
             isShow: true,
             isAndroid: true
         },
@@ -68,6 +69,11 @@ const AppLandingPageComponent: React.FunctionComponent<{ locale: string }> = ({ 
     useEffect(() => setResources(getAppDownloadPageTranslationResource(locale)), []);
 
     const hightlightText = Styles["highlight-text"];
+
+    const [selectTabKey, setselectTabKey] = useState<string | null>();
+    const handleSelect = (key: string | null) => {
+        setselectTabKey(key);
+    }
 
     return resources ? (
         <div className={Styles["container"]} >
@@ -109,17 +115,28 @@ const AppLandingPageComponent: React.FunctionComponent<{ locale: string }> = ({ 
             </div>
             <div className="row text-center align-items-center">
                 <div className={`col-12 ${Styles["installation-guide"]}`}>
-                    <div className={Styles["title"]}>{resources.installationGuide}</div>
+                    <label className={Styles["title"]}>{resources.installationGuide}</label>
                     <Tabs
-                        defaultActiveKey="ios"
+                        defaultActiveKey={!isMobile || isIOS ? Devices.IOS : Devices.Android}
                         className={Styles["nav-tabs"]}
+                        onSelect={device => handleSelect(device)}
                         justify
                     >
-                        <Tab eventKey="ios" tabClassName={Styles["nav-link"]} title={<img className={Styles["ios-logo-apple"]} alt="" />}>
-                            <InstallationGuide stepsResources={resources.steps} isAndroid={false} locale={locale} id="ios-guide" />
+                        <Tab eventKey={Devices.IOS} tabClassName={Styles["nav-link"]} title={<img className={Styles["ios-logo-apple"]} alt="" />}>
+                            <InstallationGuide {...{
+                                stepsResources: resources.steps,
+                                locale,
+                                device: Devices.IOS,
+                                isActive: selectTabKey === Devices.IOS
+                            }} />
                         </Tab>
-                        <Tab eventKey="android" tabClassName={Styles["nav-link"]} title={<img className={Styles["ios-logo-android"]} alt="" />}>
-                            <InstallationGuide stepsResources={resources.steps} isAndroid={true} locale={locale} id="android-guide" />
+                        <Tab eventKey={Devices.Android} tabClassName={Styles["nav-link"]} title={<img className={Styles["ios-logo-android"]} alt="" />}>
+                            <InstallationGuide  {...{
+                                stepsResources: resources.steps,
+                                locale,
+                                device: Devices.Android,
+                                isActive: selectTabKey === Devices.Android
+                            }} />
                         </Tab>
                     </Tabs>
                 </div>

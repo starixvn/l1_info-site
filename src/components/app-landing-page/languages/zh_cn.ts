@@ -15,7 +15,7 @@ export const cn: IAppLandingPageResource = {
             title: "第1步",
             content: {
                 ios: "使用手机扫描二维码或点击 App Store 图标下载。",
-                android: "使用手机扫描二维码或点击 App Store 图标下载。",
+                android: "使用手机扫描二维码或点击 Google Play 图标下载。",
             },
             image: "example-step1",
         },

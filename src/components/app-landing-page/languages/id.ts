@@ -1,5 +1,6 @@
 import { IAppLandingPageResource } from "./types";
 
+const step5Description = "Silakan gunakan akun taruhan yang diberikan oleh Upline Anda untuk login.";
 export const id: IAppLandingPageResource = {
     appDownload: "UNDUH APLIKASI",
     introductions: [
@@ -17,7 +18,7 @@ export const id: IAppLandingPageResource = {
             title: "Langkah 1",
             content: {
                 ios: "Gunakan ponsel untuk memindai kode QR atau Ketuk ikon App Store untuk mengunduh.",
-                android: "Gunakan ponsel untuk memindai kode QR atau Ketuk ikon App Store untuk mengunduh.",
+                android: "Gunakan ponsel untuk memindai kode QR atau Ketuk ikon Google Play untuk mengunduh.",
             },
             image: "example-step1",
         },
@@ -33,7 +34,7 @@ export const id: IAppLandingPageResource = {
             title: "Langkah 3",
             content: {
                 ios: `Anda akan dialihkan ke <span class='{0}'>VivaDzo</span> di App Store alih-alih "SABA.games". Ketuk <span class='{0}'>GET</span> untuk menginstal aplikasi "VivaDzo".`,
-                android: "Use phone to scan the QR code or Tap on App Store icon to download.",
+                android: `Pilih <span class='{0}'>"Install"</span> untuk melanjutkan.`,
             },
             image: "example-step3",
         },
@@ -41,15 +42,15 @@ export const id: IAppLandingPageResource = {
             title: "Langkah 4",
             content: {
                 ios: `Buka <span class='{0}'>VivaDzo</span> untuk meluncurkan aplikasi "SABA.games".`,
-                android: "Use phone to scan the QR code or Tap on App Store icon to download.",
+                android: `Pilih <span class='{0}'>"Open"</span> untuk meluncurkan aplikasi "SABA.games".`,
             },
             image: "example-step4",
         },
         {
             title: "Langkah 5",
             content: {
-                ios: "Silakan gunakan akun taruhan yang diberikan oleh Upline Anda untuk login.",
-                android: "Use phone to scan the QR code or Tap on App Store icon to download.",
+                ios: step5Description,
+                android: step5Description,
             },
             image: "example-step5",
         },

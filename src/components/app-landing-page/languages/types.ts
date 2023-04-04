@@ -14,3 +14,8 @@ export interface IAppLandingPageResource {
     installationGuide: string;
     steps: Array<StepDescription>;
 }
+
+export enum Devices {
+    IOS = "ios",
+    Android = "android",
+}

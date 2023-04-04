@@ -40,4 +40,5 @@ export default interface AppSettings {
     owApiUrl: string;
     operatorPFF: Operator;
     googleForm: IGoogleForm;
+    rootUrl: string;
 }

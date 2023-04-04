@@ -19,5 +19,6 @@
         "fieldBrandId": "1381540194",
         "fieldRemarksId": "1429060638",
         "fieldEmailId": "1967901460"
-    }
+    },
+    "rootUrl": "http://localhost:3001/"
 }

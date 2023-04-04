@@ -15,7 +15,7 @@ export const tw: IAppLandingPageResource = {
             title: "第1步",
             content: {
                 ios: "使用手機掃描二維碼或點擊 App Store 圖標下載。",
-                android: "使用手機掃描二維碼或點擊 App Store 圖標下載。",
+                android: "使用手機掃描二維碼或點擊 Google Play 圖標下載。",
             },
             image: "example-step1",
         },

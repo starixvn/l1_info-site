@@ -6,5 +6,6 @@
     },
     "system": "L1",
     "enableSourceMap": true,
-    "isInforSite": false
+    "isInforSite": false,
+    "rootUrl": "https://l1-appdownload2.lumigame.com"
 }

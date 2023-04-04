@@ -15,7 +15,7 @@ export const en: IAppLandingPageResource = {
             title: "Step 1",
             content: {
                 ios: "Use phone to scan the QR code or Tap on App Store icon to download.",
-                android: "Use phone to scan the QR code or Tap on App Store icon to download.",
+                android: "Use phone to scan the QR code or Tap on Google Play icon to download.",
             },
             image: "example-step1",
         },

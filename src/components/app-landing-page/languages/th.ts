@@ -16,7 +16,7 @@ export const th: IAppLandingPageResource = {
             title: "ขั้้นตอนที่ 1",
             content: {
                 ios: "ใช้โทรศัพท์มือถือสแกน QR Code หรือแตะที่ไอคอน App Store เพื่อดาวน์โหลด",
-                android: `ใช้โทรศัพท์สแกนรหัส QR หรือแตะที่ไอคอน App Store เพื่อดาวน์โหลด`,
+                android: `ใช้โทรศัพท์สแกนรหัส QR หรือแตะที่ไอคอน Google Play เพื่อดาวน์โหลด`,
             },
             image: "example-step1",
         },

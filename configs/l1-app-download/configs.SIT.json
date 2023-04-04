@@ -6,5 +6,6 @@
     },
     "system": "L1",
     "enableSourceMap": false,
-    "isInforSite": false
+    "isInforSite": false,
+    "rootUrl": "https://l1sitdownload.sgamesuat.com"
 }
