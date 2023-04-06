@@ -4,6 +4,7 @@ import React from "react";
 
 import { IGame } from "../data";
 import Styles from "./game-icon.module.scss";
+import { getLocale } from "../../helpers/function-helper";
 
 type TGameIconProps = {
     gameId: number;
@@ -18,6 +19,7 @@ type TGameIconProps = {
 export const GameIcon: React.FC<TGameIconProps> = ({ gameId, isSmallSize, isNew, game, openDetail, customClassName, isLink = false }) => {
     const router = useRouter();
     const clickable = isLink ? "clickable" : "";
+    const locale = getLocale(router.locale);
     return (
         <div
             className={`${Styles["game-icon"]} ${customClassName} ${isSmallSize ? Styles["icon-small"] : ""} ${clickable}`}
@@ -35,7 +37,7 @@ export const GameIcon: React.FC<TGameIconProps> = ({ gameId, isSmallSize, isNew,
 
                 <Image
                     className={Styles["icon-name"]}
-                    src={`/static/images/game-icon/icon-name-${gameId}_${router.locale}.png?v=1`}
+                    src={`/static/images/game-icon/icon-name-${gameId}_${locale}.png?v=1`}
                     alt="game-icon"
                     loading="lazy"
                     width={isSmallSize ? 118 : 200}

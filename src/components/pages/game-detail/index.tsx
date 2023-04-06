@@ -7,6 +7,7 @@ import Image from "next/image";
 import { GameTypeName, GameVolatility, TagsName } from "../../../common/constants";
 import { IGame } from "../../data";
 import Styles from "./game-detail.module.scss";
+import { getLocale } from "../../../helpers/function-helper";
 
 const GameIcon = dynamic(() => import("../../game-icon"));
 const SimilarGames = dynamic(() => import("../../similar-games"));
@@ -38,7 +39,8 @@ const DetailIcon: React.FC<{ icon: string; text: string; subpath?: string; forma
 const GameDetails: React.FC<TGameDetails> = ({ game, gamesSimilar }) => {
     const router = useRouter();
     const { t } = useTranslation(["common", "detail"]);
-    const currentLang = router.locale !== "vi" ? `_${router.locale}` : "";
+    const locale = getLocale(router.locale);
+    const currentLang = `_${locale}`;
     const gameDetail = t<string>(`detail:${game.gameId}.detail`);
 
     useEffect(() => {

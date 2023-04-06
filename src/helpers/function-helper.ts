@@ -1,3 +1,5 @@
+import { languageSupport, locales } from "../common/constants";
+
 const getKeyByValue = (object: Record<string, string>, value: string) => {
     return Object.keys(object).find((key) => object[key] === value) ?? 0;
 };
@@ -27,4 +29,12 @@ const isEmail = (email: string) => {
     return new RegExp(`^${regex}$`).test(email);
 };
 
-export { getKeyByValue, randomString, isEmail };
+const getLocale = (locale: string | undefined) => {
+    if (locale && !languageSupport.includes(locale)) {
+        return locales.en;
+    }
+
+    return locale || locales.en;
+};
+
+export { getKeyByValue, randomString, isEmail, getLocale };

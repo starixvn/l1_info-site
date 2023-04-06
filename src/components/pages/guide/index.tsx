@@ -12,6 +12,7 @@ import appSettings from "../../../common/app-settings";
 import { Container } from "../../pageBase";
 import { GAMES_SORT } from "../../data";
 import { GAMES, Themes } from "../../../common/constants";
+import { getLocale } from "../../../helpers/function-helper";
 
 const Header = dynamic(() => import("../../header"));
 const Footer = dynamic(() => import("../../footer"));
@@ -43,7 +44,6 @@ const GuideComponent: React.FC<Props> = ({ gameId = GAMES.BIG_SMALL, userStakeLe
     const [selectedOption, setSelectedOption] = useState<TOption | null>();
     const [options, setOptions] = useState<TOption[]>();
     const [isOpenMenu, setIsOpenMenu] = useState<boolean>(false);
-
     const orientation = useMobileOrientation();
 
     const handleMenuOpen = () => {
@@ -141,10 +141,9 @@ const GuideComponent: React.FC<Props> = ({ gameId = GAMES.BIG_SMALL, userStakeLe
     }, [gameId]);
 
     const renderIframe = useMemo(() => {
+        const locale = getLocale(i18n.language);
         const minMaxBetParams = `&minBet=${userStakeLevel?.minBet}&maxBet=${userStakeLevel?.maxBet}`;
-        const srcPath = `${guideUrl}/${i18n.language}/?gId=${selectedOption?.value}&t=${
-            Themes.infoSite
-        }${minMaxBetParams}&f=sc&v=${Date.now()}`;
+        const srcPath = `${guideUrl}/${locale}/?gId=${selectedOption?.value}&t=${Themes.infoSite}${minMaxBetParams}&f=sc&v=${Date.now()}`;
 
         return (
             <iframe

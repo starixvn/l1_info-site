@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { TObjectKeyValue } from "../components/type";
 import Image from "next/image";
+import { getLocale } from "../helpers/function-helper";
 
 const errorMsg: TObjectKeyValue = {
     en: "An error has occurred, please contact CSD for details.",
@@ -11,7 +12,7 @@ const errorMsg: TObjectKeyValue = {
 const Error = () => {
     const [isLoading, setIsLoading] = useState(true);
     const router = useRouter();
-    const locale = router.locale ? router.locale : "en";
+    const locale = getLocale(router.locale);
 
     useEffect(() => {
         setIsLoading(false);
