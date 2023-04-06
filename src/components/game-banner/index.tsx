@@ -3,6 +3,7 @@ import Slider from "react-slick";
 import { isMobileOnly } from "react-device-detect";
 import Image from "next/legacy/image";
 import { useRouter } from "next/router";
+import { getLocale } from "../../helpers/function-helper";
 
 const BannerItem: React.FC<{ name: string }> = ({ name }) => {
     return (
@@ -25,8 +26,9 @@ const GameBanner = () => {
     const router = useRouter();
 
     useEffect(() => {
-        const nameMobile = [`banner-1_mobile_${router.locale}.webp`, `banner-2_mobile_${router.locale}.webp`];
-        const nameDesktop = [`banner-1_${router.locale}.webp`, `banner-2_${router.locale}.webp`];
+        const locale = getLocale(router.locale);
+        const nameMobile = [`banner-1_mobile_${locale}.webp`, `banner-2_mobile_${locale}.webp`];
+        const nameDesktop = [`banner-1_${locale}.webp`, `banner-2_${locale}.webp`];
         setBanners(isMobileOnly ? nameMobile : nameDesktop);
     }, [router.locale]);
 

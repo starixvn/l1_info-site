@@ -1,13 +1,26 @@
 import { EGameCategory, EGameType, EVolatility, TObjectKeyValue } from "./../../components/type";
 import { ETags } from "../../components/type";
 
-const locales = { en: "en", vi: "vi" };
+const locales = { en: "en", vi: "vi", th: "th", id: "id", zh_cn: "zh_cn", zh_tw: "zh_tw" };
+const languageSupport = ["vi", "en"];
 
 export const languageMapper = { "en-US": "en", "vi-VN": "vi" };
 
 export const LanguageLocaleMapper: any = {
     en: "en-US",
     vi: "vi-VN",
+    th: "th-TH",
+    id: "id-ID",
+    zh_cn: "zh-CN",
+    zh_tw: "zh-TW",
+};
+export const LanguageTitle: any = {
+    en: "English",
+    vi: "Tiếng Việt",
+    th: "ภาษาไทย",
+    id: "Indonesian",
+    zh_cn: "简体中文",
+    zh_tw: "繁體中文",
 };
 
 const Themes = {
@@ -98,4 +111,4 @@ const GameCategoryName: TObjectKeyValue = {
     [EGameCategory.Others]: "others",
 };
 
-export { locales, Themes, GAMES, buildVersion, TagsName, GameTypeName, GameCategoryName, GameVolatility };
+export { locales, Themes, GAMES, buildVersion, TagsName, GameTypeName, GameCategoryName, GameVolatility, languageSupport };

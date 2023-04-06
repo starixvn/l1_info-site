@@ -2,9 +2,10 @@ import Image from "next/image";
 import React from "react";
 
 const LanguageIcons: React.FC = () => {
+    const icons = ["en", "vi", "zh_cn", "th", "id"];
     return (
         <span className="group-icon-languages">
-            {["en", "vi", "cn", "th", "id"].map((name) => {
+            {icons.map((name) => {
                 return (
                     <Image
                         key={name}

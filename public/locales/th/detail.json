@@ -1,0 +1,117 @@
+{
+    "1": {
+        "displayedName": "Big Small",
+        "detail": "Big Small or commonly known as Sicbo or Tai Sai, is a game played with three dice. The players place bets and predict the total points of the three dice are BIG or SMALL."
+    },
+    "2": {
+        "displayedName": "Se Die",
+        "detail": "Se Die is a popular game in Asian countries. The game is played with 4 colored buttons, each button has two sides colored in red and white. The objective of this game is to predict the outcome of 4 buttons. If the outcome matches the player’s bet, the player wins."
+    },
+    "3": {
+        "displayedName": "Fish Prawn Crab",
+        "detail": "Fish Prawn Crab, also known as Hoo Hey How, is a popular game in Asia using three dice. Each dice contains six unique symbols (fish, prawn, crab, rooster, gourd, and stag). There are 6 betting options available, one for each symbol. Players place bets on which symbols will appear. "
+    },
+    "6": {
+        "displayedName": "Turbo Odd Even",
+        "detail": "Turbo Odd Even is a simple dice game similar to Big Small. The game is played with three dice and the players predict the total points of the three dice is ODD or EVEN."
+    },
+    "7": {
+        "displayedName": "Dragon Tiger",
+        "detail": "Dragon Tiger is a simple card game. The game is played with one standard 52-cards deck (excluding the Joker). There are 3 betting options Dragon, Tiger, and Tie; the objective of this game is to predict the Dragon and the Tiger which hand will have a higher card value. The player can also bet for a Tie."
+    },
+    "8": {
+        "displayedName": "Keno Pro Max ",
+        "detail": "Keno Pro Max is a wildly popular number game that is played all over the world. The game is played with 20 balls drawn randomly from 80 numbered balls ranging from 1 to 80. Players place bets on one or more betting options shown on the game table. The total sum of the 20 numbered balls drawn will determine the player‘s win or loss."
+    },
+    "9": {
+        "displayedName": "Mini Se Die",
+        "detail": "Mini Se Die -  a new version with “Multiplay” feature that allows you to play 4 tables (Mini Se Die, Mini Se Die 2, Mini Se Die 3, and Mini Se Die 4) at the same time with many exciting new experiences. The game is played with 4 colored buttons, each button has two sides colored in red and white. The objective of this game is to predict the outcome of 4 buttons. If the outcome matches the player’s bet, the player wins."
+    },
+    "10": {
+        "displayedName": "Baccarat",
+        "detail": "Baccarat is one of the most often-played card games in the casino. The game is played with one standard 52-card deck (excluding the Joker). There are 7 betting options and Punters can bet on one or more betting options shown on the game table."
+    },
+    "21": {
+        "displayedName": "Roulette",
+        "detail": "Roulette is a simple yet fascinating gambling game. The game is played with a ball and a roulette wheel which consists of thirty-seven slots numbered from 0 to 36. Each slot is colored red or black, while the slot “0” is green. The players predict the number that the ball will finally rest after the wheel is spun. If the ball falls into the number you selected, you will win; otherwise, you lose."
+    },
+    "23": {
+        "displayedName": "Blackjack",
+        "detail": "Blackjack (also called “21”) is a fun and enjoyable casino card game. The game is played with  six standard decks of 52 cards (excluding the Joker) shuffled together. In Blackjack, the Player plays against the Dealer, and the object of the game is to have the total points of your cards as close to 21 as possible, without going over 21. The Player will win if the total points of your cards are closer to 21 than the Dealer's cards."
+    },
+    "25": {
+        "displayedName": "Sic Bo",
+        "detail": "Sic Bo is a casino dice game that is widely popular in Asia. The game is played with three standard dice. The objective of this game is to predict the outcome of the dice roll. The player can bet on specific dice outcomes and the total value of the dice. "
+    },
+    "26": {
+        "displayedName": "VIP Fish Prawn Crab",
+        "detail": "VIP Fish Prawn Crab is an enhanced version of the traditional game Fish Prawn Crab with a new graphic interface and more betting options. The game is played with three standard dice, and each die contains six unique symbols (fish, prawn, crab, rooster, gourd, and stag). The objective of the game is to predict the outcome of the dice roll, players place bets on which symbols will appear. "
+    },
+    "28": {
+        "displayedName": "Se Die War",
+        "detail": "Se Die War is a special version of the Se Die game. The game consists of 2 sets of buttons, one for the Banker and one for the Player. Each set includes 4 colored buttons, in which, each button has two sides colored in red and white. Players place bets on one or more betting options shown on the game table. The game determines the win or loss based on the number of red or white sites faced up in the result."
+    },
+    "29": {
+        "displayedName": "Four Guardians",
+        "detail": "“Four Guardians” is an online slot game, built on the legend of Four Holy Beasts as Dragon, Qilin, Turtle, and Phoenix. The game includes 5 reels and 3 rows, with 11 different symbols. Player will win if there are the same symbols located on the same payline that has been chosen. "
+    },
+    "31": {
+        "displayedName": "RNG Lottery",
+        "detail": "RNG Lottery is an online lottery game that is very popular in Vietnam. The player places bet on the favorite numbers, the game determines the win or loss by matching the numbers based on 27 results of 8 prizes."
+    },
+    "35": {
+        "displayedName": "Three Cards",
+        "detail": "Three Cards is another exciting card game that is played with one standard 52-card deck (excluding the Joker). There are 6 betting options including Red, Black, Diamonds (<span class='text-red'>♦</span>), Hearts (<span class='text-red'>♥</span>), Spades (♠), and Clubs (♣). The objective of this game is to predict the suit of 3 cards drawn for each round. If the outcome matches the player’s bet, the player wins. "
+    },
+    "38": {
+        "displayedName": "The Legend of Heroes",
+        "detail": "“The Legend of Heroes” is an online slot game with high-quality graphics, built on an ancient story - “Dragon King of Lạc”. The game includes 5 reels and 3 rows, with 11 different symbols. Player will win if there are the same symbols located on the same payline that has been chosen."
+    },
+    "39": {
+        "displayedName": "Casino Hold’em",
+        "detail": "Casino Hold’em is a variant of Texas Hold’em Poker. The game is played with a standard 52-card deck (excluding the Joker), and the cards are shuffled after each round. The Player will play against the Dealer and the object of this game is to achieve the best possible five-card poker hand using a combination of two hole cards and five community cards to beat the Dealer’s hand."
+    },
+    "42": {
+        "displayedName": "Texas Hold’em",
+        "detail": "Texas Hold’em is one of the world’s most popular poker games. The game is played with a standard 52-card deck (excluding the Joker), and the cards are reshuffled after each round. The objective of this game is to obtain a higher ranking Poker hand than the Dealer. Using your two hole cards combines with the five community cards to create the best possible five-card Poker hand."
+    },
+    "43": {
+        "displayedName": "BitCoin Master",
+        "detail": "Bitcoin Master is a new type of betting game that allows players to place bets based on Bitcoin value for the next 60 seconds. There are 4 options: Up, Down, Even, Odd."
+    },
+    "45": {
+        "displayedName": "Hi-Lo",
+        "detail": "Hi-Lo is a popular card game with the simplest of rules. The game is played with a standard 52-card deck (excluding the Joker). The aim of the game is to guess whether the next card to be dealt will be higher or lower than the current one."
+    },
+    "46": {
+        "displayedName": "Nightclub Lady",
+        "detail": "“Nightclub Lady” is an online slot game with a unique theme -“Hot Girls & Dance Club”, attractive gameplay, and gripping graphics that make the game hot and sexier than ever. The game includes 5 reels and 3 rows, with 11 different symbols. Player will win if there are the same symbols located on the same payline that has been chosen."
+    },
+    "47": {
+        "displayedName": "Treasure Island",
+        "detail": "Treasure Island is an online cascading slot game that has become extremely popular with online gamers as it offers multiple chances to win when compared to the older-style slot machines. The game consists of six reels, five rows, and ten different symbols. "
+    },
+    "48": {
+        "displayedName": "Blockchain Baccarat",
+        "detail": "Blockchain baccarat - a card game with Fairness Guarantees, the new breakthrough with blockchain technology. The game uses 8 decks of cards (416 cards, excluding the Joker). There are 7 betting options, and Punters can bet on one or more betting options shown on the game table."
+    },
+
+    "49": {
+        "displayedName": "Way to Goal",
+        "detail": "“Way to Goal” is a football-themed slot game, with attractive gameplay, and gripping graphics. The game includes 5 reels and 3 rows, with 11 different symbols. Player will win if the same symbols are located on the same payline that has been chosen. "
+    },
+    "50": {
+        "displayedName": "Big Small City",
+        "detail": "Big Small City - the “unbalanced betting pool” version of Big Small that consists of 4 tables: Las Vegas, Marina Bay, Macau, and Monte Carlo, in which Marina Bay and Monte Carlo are turbo versions with shortened betting time. Big Small City allows you to play 4 tables at the same time with many exciting new experiences. The game is played with three dice and the players place bets on whether the total points of the three dice are BIG or SMALL."
+    },
+
+    "52": {
+        "displayedName": "Mega Keno",
+        "detail": "“Mega Keno - Multiplay” is an RNG game with a new feature that allows you to play 8 tables (Mega Keno, Mega Keno 2, Keno Mini, Keno Mini 2, Keno North, Keno South, Keno West, Keno East) at the same time with many exciting new experiences."
+    },
+
+    "59": {
+        "displayedName": "Fruit Slot",
+        "detail": "The Fruit Slot game was inspired by the traditional fruit slot machine with many innovations to provide players with an attractive and thrilling gameplay experience."
+    }
+}
