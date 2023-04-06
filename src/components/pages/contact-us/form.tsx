@@ -1,5 +1,5 @@
 import dynamic from "next/dynamic";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import appSettings from "../../../common/app-settings";
@@ -26,11 +26,24 @@ const Intro = () => {
     );
 };
 
+const useAutosizeTextArea = (textAreaRef: HTMLTextAreaElement | null, value: string) => {
+    useEffect(() => {
+        if (textAreaRef) {
+            textAreaRef.style.height = "0px";
+            const scrollHeight = textAreaRef.scrollHeight;
+            console.log(scrollHeight);
+
+            textAreaRef.style.height = scrollHeight + "px";
+        }
+    }, [textAreaRef, value]);
+};
+
 const Form: React.FC = () => {
     const { t } = useTranslation("common");
     const { googleForm } = appSettings;
     const [brandName, setBrandName] = useState("");
     const [remarks, setRemarks] = useState("");
+    const textAreaRef = useRef<HTMLTextAreaElement>(null);
     const [email, setEmail] = useState("");
     const [status, setStatus] = useState<TStatus>({
         isSubmitSuccess: false,
@@ -105,6 +118,15 @@ const Form: React.FC = () => {
 
     const classFormGroup = "form-group";
     const classForControl = "form-control";
+
+    useAutosizeTextArea(textAreaRef.current, remarks);
+
+    const handleChange = (evt: React.ChangeEvent<HTMLTextAreaElement>) => {
+        const val = evt.target?.value;
+
+        setRemarks(val);
+    };
+
     return (
         <div className={Styles["contact-container"]}>
             {status.isSubmitting && (
@@ -134,13 +156,14 @@ const Form: React.FC = () => {
                         <label className={Styles["form-label"]} htmlFor="remarks">
                             {t("remarks")}
                         </label>
-                        <input
-                            className={Styles[classForControl]}
-                            type="text"
+                        <textarea
+                            className={`${Styles[classForControl]} ${Styles["resize-height"]}`}
                             name="remarks"
+                            rows={4}
                             value={remarks}
-                            onChange={(e) => setRemarks(e.target.value)}
+                            onChange={handleChange}
                             onFocus={() => resetStatusEmail()}
+                            ref={textAreaRef}
                         />
                     </div>
                     <div className={Styles[classFormGroup]}>
