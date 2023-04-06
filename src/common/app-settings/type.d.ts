@@ -41,4 +41,5 @@ export default interface AppSettings {
     operatorPFF: Operator;
     googleForm: IGoogleForm;
     rootUrl: string;
+    iosDeeplink: string;
 }

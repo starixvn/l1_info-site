@@ -6,5 +6,6 @@
     "system": "L2",
     "enableSourceMap": false,
     "isInforSite": false,
-    "rootUrl": ""
+    "rootUrl": "",
+    "iosDeeplink": ""
 }

@@ -7,5 +7,6 @@
     "system": "L1",
     "enableSourceMap": true,
     "isInforSite": false,
-    "rootUrl": "https://l1-appdownload1.lumigame.com"
+    "rootUrl": "https://l1-appdownload1.lumigame.com",
+    "iosDeeplink": ""
 }

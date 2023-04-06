@@ -24,7 +24,7 @@ const DownloadSection = () => {
     const deepLinks: Array<QrCodeDeeplink> = [
         {
             image: `button-dl-ios.png`,
-            url: "https://hackernoon.com/how-to-build-a-qr-code-generator-in-react",
+            url: appSettings.iosDeeplink,
             isShow: true,
             isAndroid: false
         },

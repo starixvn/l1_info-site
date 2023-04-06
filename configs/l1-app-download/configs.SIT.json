@@ -7,5 +7,6 @@
     "system": "L1",
     "enableSourceMap": false,
     "isInforSite": false,
-    "rootUrl": "https://l1sitdownload.sgamesuat.com"
+    "rootUrl": "https://l1sitdownload.sgamesuat.com",
+    "iosDeeplink": "https://vivazo-test.test-app.link/SIT?uri=https://l1sitconnectsite.sgamesuat.com/"
 }

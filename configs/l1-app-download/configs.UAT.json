@@ -7,5 +7,6 @@
     "system": "L1",
     "enableSourceMap": false,
     "isInforSite": false,
-    "rootUrl": "https://l1uatdownload.sgamesuat.com"
+    "rootUrl": "https://l1uatdownload.sgamesuat.com",
+    "iosDeeplink": ""
 }
