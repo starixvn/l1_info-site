@@ -30,7 +30,7 @@ const DownloadSection = () => {
         },
         {
             image: `button-dl-android.png`,
-            url: `${appSettings.rootUrl}app-landing-page/download-apk-app`,
+            url: `${appSettings.rootUrl}${apkPath}`,
             isShow: true,
             isAndroid: true
         },
