@@ -13,7 +13,8 @@
     "owApiUrl": "http://l2_ow_api_simulator_SIT:5000/SabaClub",
     "operatorPFF": {
         "id": "PFF",
-        "secret": "PFF123"
+        "secret": "PFF123",
+        "currency": "INH"
     },
     "googleForm": {
         "id": "1FAIpQLSfbuP1rEABaUGoUdfR_kdpF-wNjv2NoPpQ1wbDeBt1qxpSR4A",

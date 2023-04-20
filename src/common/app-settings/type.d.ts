@@ -19,6 +19,7 @@ interface SentryOptions {
 interface Operator {
     id: string;
     secret: string;
+    currency: string;
 }
 
 interface IGoogleForm {

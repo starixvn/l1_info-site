@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
 import { useTranslation } from "next-i18next";
+import React, { useEffect, useState } from "react";
 import { LanguageLocaleMapper } from "../../common/constants";
 
 type Props = {
@@ -37,6 +37,7 @@ const PlayForFunButton: React.FC<Props> = ({ gameId }) => {
         Axios.post(`/api/play-for-fun`, request)
             .then((data) => data.data)
             .then((data) => {
+                console.log("data", data);
                 data?.redirectUrl && setUrlSSO(`${data.redirectUrl}&ref=d_operator_opendirectly`);
             })
             .catch(showAlert);

@@ -8,7 +8,7 @@ const playForFun = async (req: NextApiRequest, res: NextApiResponse) => {
         playerId,
         playerName: `username_${playerId}`,
         language,
-        currency: "$US",
+        currency: appSettings.operatorPFF.currency,
         seq: "d,y,lumi",
         siteId: "4100300",
         siteName: "InfoSite",
