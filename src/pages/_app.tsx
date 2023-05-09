@@ -2,7 +2,7 @@ import "../assets/errors.scss";
 import "../assets/main.scss";
 import { AppProps } from "next/app";
 import { appWithTranslation, useTranslation } from "next-i18next";
-import { GameTypeName, locales } from "../common/constants";
+import { GameTypeName, locales, systemName } from "../common/constants";
 import Head from "next/head";
 import appSettings from "../common/app-settings";
 import { useRouter } from "next/router";
@@ -18,6 +18,9 @@ const App = ({ Component, pageProps }: AppProps) => {
     const subPath = router.asPath === "/" || cleanPath === `/category/${GameTypeName[EGameType.AllGames]}` ? "" : cleanPath;
     const pathLanguage = i18n.language === locales.vi ? "/vi" : "";
     const canonicalUrl = `${appSettings.externalUrl}${pathLanguage}${subPath}`;
+    const domain = `${appSettings.externalUrl}`;
+    const logoUrl = `${domain}/static/images/logo.svg`;
+    const faviconUrl = `/favicon-${systemName}.ico`;
 
     useEffect(() => {
         window.name === windowNamePFF && window.close();
@@ -81,6 +84,8 @@ const App = ({ Component, pageProps }: AppProps) => {
         );
     };
 
+    const system = getMetaData(`${systemName}`);
+
     return (
         <>
             <Head>
@@ -90,11 +95,11 @@ const App = ({ Component, pageProps }: AppProps) => {
                 <meta httpEquiv="Pragma" content="no-cache" />
                 <meta httpEquiv="Expires" content="-1" />
                 <meta name="theme-color" content="transparent" />
-                <meta key="og:url" property="og:url" content="https://www.saba.games" />
+                <meta key="og:url" property="og:url" content={domain} />
                 <meta key="og:type" property="og:type" content="website" />
-                <meta key="og:title" property="og:title" content={t<string>("title_0")} />
-                <meta key="og:description" property="og:description" content={t<string>("desc_0")} />
-                <meta key="og:image" property="og:image" content="https://www.saba.games/static/images/logo.svg" />
+                <meta key="og:title" property="og:title" content={t<string>(`title_0-${system}`)} />
+                <meta key="og:description" property="og:description" content={t<string>(`desc_0-${system}`)} />
+                <meta key="og:image" property="og:image" content={logoUrl} />
                 <meta key="og:image:width" property="og:image:width" content="1200" />
                 <meta key="og:image:height" property="og:image:height" content="630" />
                 <meta key="og:locale" property="og:locale" content="en_IE" />
@@ -102,9 +107,9 @@ const App = ({ Component, pageProps }: AppProps) => {
                 <link rel="canonical" href={canonicalUrl} />
                 <link rel="preload" href="/static/fonts/SF-Pro-Display-Regular.otf" as="font" crossOrigin="anonymous"></link>
                 <link rel="preload" href="/static/fonts/SF-Pro-Display-Semibold.otf" as="font" crossOrigin="anonymous"></link>
-                <link rel="apple-touch-icon" href="https://www.saba.games/static/images/logo.png"></link>
-                <link rel="shortcut icon" href="https://www.saba.games/favicon.ico" type="image/ico"></link>
-                <link rel="icon" href="https://www.saba.games/favicon.ico" type="image/ico"></link>
+                <link rel="apple-touch-icon" href={logoUrl}></link>
+                <link rel="shortcut icon" href={faviconUrl} type="image/ico"></link>
+                <link rel="icon" href={faviconUrl} type="image/ico"></link>
                 <script type="application/ld+json" dangerouslySetInnerHTML={addJSONLD()} />
                 {renderGoogleAnalytic()}
             </Head>
@@ -114,3 +119,15 @@ const App = ({ Component, pageProps }: AppProps) => {
 };
 
 export default appWithTranslation(App);
+
+type TMetaData = {
+    [systemName: string]: string;
+};
+
+export const getMetaData = (systemName: string) => {
+    const metaData: TMetaData = {
+        l1: "saba",
+        l2: "vgaming",
+    };
+    return metaData[systemName];
+};

@@ -1,5 +1,5 @@
 {
-    "externalUrl": "https://www.saba.games",
+    "externalUrl": "https://www.vgaming.io",
     "sentry": {
         "dsn": "https://c8f93631be824a14b9f114f53e3a2bfc@sentry.lumigame.com/3",
         "environment": "LOCAL_1"

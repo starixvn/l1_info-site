@@ -1,5 +1,6 @@
 import { EGameCategory, EGameType, EVolatility, TObjectKeyValue } from "./../../components/type";
 import { ETags } from "../../components/type";
+import appSettings from "../app-settings";
 
 const locales = { en: "en", vi: "vi", th: "th", id: "id", zh_cn: "zh_cn", zh_tw: "zh_tw" };
 const languageSupport = ["vi", "en"];
@@ -26,6 +27,12 @@ export const LanguageTitle: any = {
 const Themes = {
     light: "light",
     infoSite: "info-site",
+};
+
+const systemName = appSettings.system.toLocaleLowerCase();
+
+const isL1System = () => {
+    return systemName === "l1";
 };
 
 const GAMES = {
@@ -111,4 +118,4 @@ const GameCategoryName: TObjectKeyValue = {
     [EGameCategory.Others]: "others",
 };
 
-export { locales, Themes, GAMES, buildVersion, TagsName, GameTypeName, GameCategoryName, GameVolatility, languageSupport };
+export { locales, Themes, GAMES, systemName, buildVersion, TagsName, GameTypeName, GameCategoryName, GameVolatility, languageSupport };

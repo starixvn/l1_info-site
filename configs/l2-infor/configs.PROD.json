@@ -1,5 +1,5 @@
 {
-    "externalUrl": "https://www.saba.games",
+    "externalUrl": "https://www.vgaming.io",
     "sentry": {
         "dsn": "https://65f2ba49d2e04240b998eb783efc9315@sentry.sabagame.com/156",
         "environment": "PROD"

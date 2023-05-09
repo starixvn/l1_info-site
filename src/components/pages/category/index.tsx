@@ -10,7 +10,7 @@ class Category extends PageBase<TPropsBase, IStateBase> {
     renderContent() {
         return (
             <>
-                <h1 className="d-none">SABA.games - Online Casino Platform Provider</h1>
+                <h1 className="d-none">Online Casino Platform Provider</h1>
                 <GameItems game={this.props.game} category={this.props.category} />
             </>
         );

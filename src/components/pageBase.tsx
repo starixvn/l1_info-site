@@ -8,6 +8,8 @@ import Head from "next/head";
 import { IGame } from "./data";
 import { EGameCategory } from "./type";
 import { GameContextProvider } from "../contexts/game-context";
+import { systemName } from "../common/constants";
+import { getMetaData } from "../pages/_app";
 
 const Header = dynamic(() => import("./header"));
 const Footer = dynamic(() => import("./footer"));
@@ -73,13 +75,15 @@ abstract class PageBase<P extends TPropsBase, S extends IStateBase> extends Reac
             batch,
         };
 
+        const system = getMetaData(`${systemName}`);
+
         return (
             <SSRProvider>
                 <GameContextProvider value={gameContext}>
                     <Container handleScroll={this.handleScroll}>
                         <Head>
-                            <title key="title">{t<string>(`seo:title_${category}`)}</title>
-                            <meta key="description" name="description" content={t<string>(`seo:desc_${category}`)} />
+                            <title key="title">{t<string>(`seo:title_${category}-${system}`)}</title>
+                            <meta key="description" name="description" content={t<string>(`seo:desc_${category}-${system}`)} />
                         </Head>
                         <Header menuItems={menuItems} category={category} isOpenGameGuide={false} />
                         <div className="main-content">
