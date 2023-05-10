@@ -13,7 +13,7 @@
     "operatorPFF": {
         "id": "PFF",
         "secret": "PFF123",
-        "currency": "US$"
+        "currency": "$US"
     },
     "googleForm": {
         "id": "1FAIpQLSfbuP1rEABaUGoUdfR_kdpF-wNjv2NoPpQ1wbDeBt1qxpSR4A",

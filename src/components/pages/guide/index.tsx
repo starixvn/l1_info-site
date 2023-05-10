@@ -198,6 +198,7 @@ const GuideComponent: React.FC<Props> = ({ gameId = GAMES.BIG_SMALL, userStakeLe
         <>
             <Container>
                 <Header isOpenGameGuide={true} />
+                <h1 className="d-none">{t<string>(`common:game-rules`)}</h1>
                 <div className={`container ${Styles["container-guide"]}`} ref={wrapperRef}>
                     <div className={`d-flex align-items-center ${Styles["select-game"]}`}>
                         <span>Game</span>

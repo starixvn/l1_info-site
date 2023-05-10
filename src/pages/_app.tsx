@@ -105,8 +105,8 @@ const App = ({ Component, pageProps }: AppProps) => {
                 <meta key="og:locale" property="og:locale" content="en_IE" />
                 <meta name="google-site-verification" content="MTU60dw0umBebOlilcIBFbkowmxwSeY_z6mAsYtqpwY" />
                 <link rel="canonical" href={canonicalUrl} />
-                <link rel="preload" href="/static/fonts/SF-Pro-Display-Regular.otf" as="font" crossOrigin="anonymous"></link>
-                <link rel="preload" href="/static/fonts/SF-Pro-Display-Semibold.otf" as="font" crossOrigin="anonymous"></link>
+                {/* <link rel="preload" href="/static/fonts/SF-Pro-Display-Regular.otf" as="font" crossOrigin="anonymous"></link>
+                <link rel="preload" href="/static/fonts/SF-Pro-Display-Semibold.otf" as="font" crossOrigin="anonymous"></link> */}
                 <link rel="apple-touch-icon" href={logoUrl}></link>
                 <link rel="shortcut icon" href={faviconUrl} type="image/ico"></link>
                 <link rel="icon" href={faviconUrl} type="image/ico"></link>

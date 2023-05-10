@@ -264,16 +264,11 @@
 }
 
 .logo-container {
-    //height: 4.6rem;
-    width: 11.8rem;
-
     > span > span {
         padding-top: 5rem !important;
     }
 
     @media (min-width: 992px) {
-        width: 17.5rem;
-
         > span > span {
             padding-top: 7rem !important;
         }

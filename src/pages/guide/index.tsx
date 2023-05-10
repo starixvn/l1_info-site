@@ -4,6 +4,8 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import dynamic from "next/dynamic";
 
 import { UserStakeLevel } from "../../components/pages/guide/constants";
+import Head from "next/head";
+import { useTranslation } from "next-i18next";
 
 const GuideComponent = dynamic(() => import("../../components/pages/guide"));
 
@@ -11,6 +13,7 @@ export const GameGuide: React.FC = () => {
     const router = useRouter();
     const [isLoading, setIsLoading] = useState(true);
     const [gameId, setGameId] = useState<number>(0);
+    const { t } = useTranslation("common");
 
     useEffect(() => {
         if (router.isReady) {
@@ -38,7 +41,14 @@ export const GameGuide: React.FC = () => {
         return <></>;
     }
 
-    return <>{<GuideComponent gameId={gameId} userStakeLevel={UserStakeLevel}></GuideComponent>}</>;
+    return (
+        <>
+            <Head>
+                <title key="title">{t<string>(`common:game-rules`)}</title>
+            </Head>
+            <GuideComponent gameId={gameId} userStakeLevel={UserStakeLevel}></GuideComponent>
+        </>
+    );
 };
 
 export const getStaticProps = async ({ locale = "en" }) => ({

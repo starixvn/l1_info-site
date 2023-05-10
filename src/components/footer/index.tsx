@@ -10,8 +10,6 @@ const Footer: React.FC<{ setFooterRef?: Function }> = ({ setFooterRef }) => {
         setFooterRef && setFooterRef(footerRef);
     }, []);
 
-    console.log(`copyright-${systemName}`);
-
     return (
         <footer className="footer" id="footer" ref={footerRef}>
             © {t<string>("copyright")} {new Date().getUTCFullYear()} {t<string>(`copyright-${systemName}`)}

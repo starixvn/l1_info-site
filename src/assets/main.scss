@@ -116,8 +116,32 @@ label {
     border-radius: 1rem;
 }
 
+.system-l2 {
+    @media (min-width: 768px) {
+        padding-left: 1rem !important;
+    }
+}
+
 .navbar-brand {
     cursor: pointer;
+
+    .logo-l1 {
+        width: 11.8rem;
+    }
+
+    .logo-l2 {
+        width: 18.2rem;
+    }
+
+    @media (min-width: 992px) {
+        .logo-l1 {
+            width: 17.5rem;
+        }
+
+        .logo-l2 {
+            width: 27rem;
+        }
+    }
 }
 
 .dropdown-toggle::after {

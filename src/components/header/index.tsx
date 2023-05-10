@@ -5,7 +5,7 @@ import Link from "next/link";
 import dynamic from "next/dynamic";
 
 import Styles from "./header.module.scss";
-import { GameCategoryName } from "../../common/constants";
+import { GameCategoryName, systemName } from "../../common/constants";
 import { ECategoryOther } from "../type";
 import Image from "next/legacy/image";
 const Languages = dynamic(() => import("../language-switcher"));
@@ -37,18 +37,18 @@ export const Header: React.FC<THeaderProps> = ({ menuItems, category = 0, isOpen
 
     return (
         <div id="header" className={Styles["header"]}>
-            <nav className={`${Styles["navbar"]} ${Styles["navbar-expand"]}`}>
+            <nav className={`${Styles["navbar"]} ${Styles["navbar-expand"]} system-${systemName}`}>
                 <Link className="navbar-brand" href={"/"}>
-                    <div className={Styles["logo-container"]}>
+                    <div className={`${Styles["logo-container"]} logo-${systemName}`}>
                         <Image
                             className={Styles.logo}
-                            src={`/static/images/logo.svg`}
+                            src={`/static/images/logo-${systemName}.svg`}
                             alt="logo"
                             layout="responsive"
                             width={19.4}
                             height={80}
                             loading="eager"
-                            blurDataURL={`/static/images/logo.svg`}
+                            blurDataURL={`/static/images/logo${systemName}.svg`}
                         />
                     </div>
                 </Link>
