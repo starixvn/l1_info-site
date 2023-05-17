@@ -24,6 +24,8 @@
 .guide-iframe {
     margin-top: 2rem;
     padding-bottom: 7rem;
+    // background-image: url("/static/images/loader.svg");
+    // background-repeat: no-repeat;
 }
 
 .select-game {
@@ -41,10 +43,19 @@
     width: 30rem;
 }
 
-.block-hidden{
+.block-hidden {
     opacity: 0;
     left: 0;
     right: 0;
     bottom: 0;
     position: absolute;
+}
+
+.iframe_container {
+    background-image: url("/static/images/spinner.svg");
+    background-position: 50% 30%;
+    background-repeat: no-repeat;
+}
+.iframe_container iframe {
+    background: transparent;
 }

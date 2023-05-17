@@ -45,6 +45,7 @@ const GuideComponent: React.FC<Props> = ({ gameId = GAMES.BIG_SMALL, userStakeLe
     const [options, setOptions] = useState<TOption[]>();
     const [isOpenMenu, setIsOpenMenu] = useState<boolean>(false);
     const orientation = useMobileOrientation();
+    document.getElementsByTagName("body")[0].style.background = "white";
 
     const handleMenuOpen = () => {
         setIsOpenMenu(true);
@@ -143,7 +144,9 @@ const GuideComponent: React.FC<Props> = ({ gameId = GAMES.BIG_SMALL, userStakeLe
     const renderIframe = useMemo(() => {
         const locale = getLocale(i18n.language);
         const minMaxBetParams = `&minBet=${userStakeLevel?.minBet}&maxBet=${userStakeLevel?.maxBet}`;
-        const srcPath = `${guideUrl}/${locale}/?gId=${selectedOption?.value}&t=${Themes.infoSite}${minMaxBetParams}&f=sc&v=${Date.now()}`;
+        const srcPath = `${guideUrl}/${locale}/?gId=${selectedOption?.value}&t=${
+            Themes.infoSite
+        }${minMaxBetParams}&c=0&f=sc&v=${Date.now()}`;
 
         return (
             <iframe
@@ -205,12 +208,8 @@ const GuideComponent: React.FC<Props> = ({ gameId = GAMES.BIG_SMALL, userStakeLe
                         {renderSelect}
                     </div>
 
-                    {isLoading && (
-                        <div className={Styles["guide-loading"]}>
-                            <Loader></Loader>
-                        </div>
-                    )}
-                    {gameConfigs && renderIframe}
+                    <div className={Styles["iframe_container"]}>{gameConfigs && renderIframe}</div>
+
                     {isMobileOnly && isOpenMenu && renderBlockHidden()}
                 </div>
                 <Footer setFooterRef={setFooterRef} />
