@@ -11,56 +11,45 @@ import { Devices, IAppLandingPageResource } from "./languages/types";
 import { Tab, Tabs } from "react-bootstrap";
 import appSettings from "../../common/app-settings";
 
-interface QrCodeDeeplink {
-    image: string;
-    url: string;
-    isShow: boolean;
-    isAndroid: boolean;
+const imagesPath = "/static/images/app-download/";
+
+const QRCode: React.FC<{ url: string }> = ({ url }) => {
+    return (<div><QRCodeCanvas
+        value={url}
+        size={isMobile ? 70 : 90}
+        level={"L"}
+        includeMargin={true}
+    /></div>);
+};
+
+const AndroidSection = () => {
+    const apkPath = `${imagesPath}SABA.games.apk`;
+    return (<div className={Styles["qr-code"]}>
+        <div>
+            <a href={apkPath}><img src={`${imagesPath}button-dl-android.png`} alt="" /></a>
+        </div>
+        <QRCode url={`${appSettings.rootUrl}${apkPath}`} />
+    </div>);
+}
+
+const IOSSection = () => {
+    const iosPreviewLink = "https://apps.apple.com/us/app/vivadzo/id6446310346";
+    const buttonLink = isMobile && isIOS ? appSettings.iosDeeplink : iosPreviewLink;
+
+    return (<div className={Styles["qr-code"]}>
+        <div>
+            <a target="_blank" href={buttonLink}><img src={`${imagesPath}button-dl-ios.png`} alt="" /></a>
+        </div>
+        <QRCode url={appSettings.iosDeeplink} />
+    </div>);
 }
 
 const DownloadSection = () => {
-    const imagesPath = "/static/images/app-download/";
-    const apkPath = `${imagesPath}SABA.games.apk`
-    const deepLinks: Array<QrCodeDeeplink> = [
-        {
-            image: `button-dl-ios.png`,
-            url: appSettings.iosDeeplink,
-            isShow: true,
-            isAndroid: false
-        },
-        {
-            image: `button-dl-android.png`,
-            url: `${appSettings.rootUrl}${apkPath}`,
-            isShow: true,
-            isAndroid: true
-        },
-    ];
-
-    const [qrData, setQrData] = useState<Array<QrCodeDeeplink>>();
-    useEffect(() => setQrData(deepLinks), []);
-
-    return (
-        <div >
-            {
-                qrData && qrData.map((item: QrCodeDeeplink, index: number) => {
-                    return item.isShow ? (<div className={Styles["qr-code"]} key={index}>
-                        <div>
-                            {!item.isAndroid && <a target="_blank" href={item.url}><img src={`${imagesPath}${item.image}`} alt="" /></a>}
-                            {item.isAndroid && <a href={apkPath}><img src={`${imagesPath}${item.image}`} alt="" /></a>}
-                        </div>
-                        <div><QRCodeCanvas
-                            value={item.url}
-                            size={isMobile ? 70 : 90}
-                            level={"L"}
-                            includeMargin={true}
-                        /></div>
-                    </div>) : <div key={index}></div>;
-                })
-            }
-        </div >
-    );
+    return (<div>
+        <IOSSection />
+        <AndroidSection />
+    </div>)
 }
-
 const AppLandingPageComponent: React.FunctionComponent<{ locale: string }> = ({ locale }) => {
     const [isMobile, setIsMobile] = useState<boolean>();
     useEffect(() => setIsMobile(isMobileOnly), []);
