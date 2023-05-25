@@ -8,5 +8,5 @@
     "enableSourceMap": false,
     "isInforSite": false,
     "rootUrl": "https://taisaba.com",
-    "iosDeeplink": "https://vivaone.app.link/PROD?uri=https://connect.sabagame.com/login"
+    "iosDeeplink": "https://vivaone.test-app.link/PROD?uri=https://connect.sabagame.com/login"
 }
