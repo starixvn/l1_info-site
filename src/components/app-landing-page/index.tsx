@@ -16,8 +16,8 @@ const imagesPath = "/static/images/app-download/";
 const QRCode: React.FC<{ url: string }> = ({ url }) => {
     return (<div><QRCodeCanvas
         value={url}
-        size={isMobile ? 70 : 90}
-        level={"L"}
+        size={240}
+        level={"Q"}
         includeMargin={true}
     /></div>);
 };
@@ -44,12 +44,7 @@ const IOSSection = () => {
     </div>);
 }
 
-const DownloadSection = () => {
-    return (<div>
-        <IOSSection />
-        <AndroidSection />
-    </div>)
-}
+
 const AppLandingPageComponent: React.FunctionComponent<{ locale: string }> = ({ locale }) => {
     const [isMobile, setIsMobile] = useState<boolean>();
     useEffect(() => setIsMobile(isMobileOnly), []);
@@ -63,6 +58,7 @@ const AppLandingPageComponent: React.FunctionComponent<{ locale: string }> = ({ 
     const handleSelect = (key: string | null) => {
         setselectTabKey(key);
     }
+    const appDownloadClass = Styles["app-download"];
 
     return resources ? (
         <div className={Styles["container"]} >
@@ -86,7 +82,7 @@ const AppLandingPageComponent: React.FunctionComponent<{ locale: string }> = ({ 
                 </div>
             </div>
             <div className={`row ${Styles["margin-top-40"]}`}>
-                <div className={`col-md-6 col-xs-12  ${Styles["description"]}`}>
+                <div className={`col-xl-6 col-lg-12 col-md-12 col-xs-12  ${Styles["description"]}`}>
                     <ul>
                         {
                             resources.descriptions.map((description, index) => {
@@ -98,8 +94,11 @@ const AppLandingPageComponent: React.FunctionComponent<{ locale: string }> = ({ 
                         }
                     </ul>
                 </div>
-                <div className={`col-md-6 col-xs-12 order-first order-md-2 ${Styles["app-download"]}`}>
-                    <DownloadSection />
+                <div className={`col-xl-3 col-lg-6 col-md-6 col-xs-12 order-first order-md-2 ${appDownloadClass}`}>
+                    <IOSSection />
+                </div>
+                <div className={`col-xl-3 col-lg-6 col-md-6 col-xs-12 order-first order-md-2 ${appDownloadClass}`}>
+                    <AndroidSection />
                 </div>
             </div>
             <div className="row text-center align-items-center">
@@ -131,11 +130,14 @@ const AppLandingPageComponent: React.FunctionComponent<{ locale: string }> = ({ 
                 </div>
             </div>
             {
-                isMobile && (<div className={`${Styles["app-download"]} text-center`}  >
+                isMobile && (<div className={`${appDownloadClass} text-center`}  >
                     <div className={`${Styles["download-title"]}`} >
                         {resources.appDownload}
                     </div>
-                    <DownloadSection />
+                    <div>
+                        <IOSSection />
+                        <AndroidSection />
+                    </div>
                 </div>)
             }
             <ScrollToTop smooth component={<></>} className={Styles["sroll-to-top"]} />
