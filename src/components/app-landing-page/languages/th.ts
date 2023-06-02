@@ -39,8 +39,8 @@ export const th: IAppLandingPageResource = {
         {
             title: "ขั้้นตอนที่ 4",
             content: {
-                ios: `เปิด <span class='{0}'>VivaDzo</span> เพื่อเปิดแอป "SABA.games"`,
-                android: ` เลือก <span class='{0}'>"Open"</span> เพื่อเข้าสู่แอป "SABA.games"`,
+                ios: `เปิด "<span class='{0}'>VivaDzo</span>" เพื่อเปิดแอป "SABA.games" หากแอปไม่เปิดไปหน้า SABA.games - เข้าสู่ระบบ <span class='{0}'>(ขั้นตอนที่ 5)</span> อย่างถูกต้อง <span class='{0}'>โปรดสแกน</span> QR Code อีกครั้ง หรือ<span class='{0}'>แตะ</span>ที่ไอคอน App Store เพื่อแก้ไขปัญหา`,
+                android: `เลือก <span class='{0}'>"Open"</span> เพื่อเข้าสู่แอป "SABA.games"`,
             },
             image: "example-step4",
         },

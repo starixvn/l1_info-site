@@ -42,7 +42,7 @@ export const vi: IAppLandingPageResource = {
         {
             title: "Bước 4",
             content: {
-                ios: "Mở ứng dụng <span class='{0}'>VivaDzo</span> để bắt đầu trải nghiệm SABA.games.",
+                ios: `Mở ứng dụng <span class='{0}'>VivaDzo</span> để bắt đầu trải nghiệm SABA.games. Nếu bạn không thể truy cập giao diện đăng nhập SABA.games <span class='{0}'>(Bước 5)</span>. Vui lòng <span class='{0}'>quét</span> lại mã QR hoặc <span class='{0}'>nhấn</span> vào biểu tượng App Store để thử lại.`,
                 android: `Chọn <span class='{0}'>Open</span> để bắt đầu trải nghiệm SABA.games.`,
             },
             image: "example-step4",

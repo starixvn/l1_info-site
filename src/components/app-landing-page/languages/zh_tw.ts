@@ -38,7 +38,7 @@ export const tw: IAppLandingPageResource = {
         {
             title: "第4步",
             content: {
-                ios: "打開<span class='{0}'>VivaDzo</span>以啟動“SABA.games”應用程序。",
+                ios: `打開“<span class='{0}'>VivaDzo</span>”以啟動“SABA.games”應用程序。如果應用程序未正確打開 SABA.games - 登錄頁面 <span class='{0}'>（第5步）</span>。請<span class='{0}'>重新掃描</span>二維碼或<span class='{0}'>點擊</span> App Store 圖標來解決問題。`,
                 android: `選擇<span class='{0}'>Open</span>以啟動“SABA.games”應用程序。`,
             },
             image: "example-step4",

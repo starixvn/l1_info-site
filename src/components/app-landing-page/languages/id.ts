@@ -41,7 +41,7 @@ export const id: IAppLandingPageResource = {
         {
             title: "Langkah 4",
             content: {
-                ios: `Buka <span class='{0}'>VivaDzo</span> untuk meluncurkan aplikasi "SABA.games".`,
+                ios: `Buka "<span class='{0}'>VivaDzo</span>" untuk meluncurkan aplikasi "SABA.games". Jika Aplikasi tidak membuka SABA.games - halaman login <span class='{0}'>(Langkah 5)</span> dengan benar. Harap <span class='{0}'>pindai ulang</span> Kode QR atau <span class='{0}'>ketuk</span> ikon App Store untuk menyelesaikan masalah.`,
                 android: `Pilih <span class='{0}'>"Open"</span> untuk meluncurkan aplikasi "SABA.games".`,
             },
             image: "example-step4",

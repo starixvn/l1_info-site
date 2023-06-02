@@ -38,7 +38,7 @@ export const en: IAppLandingPageResource = {
         {
             title: "Step 4",
             content: {
-                ios: `Open <span class='{0}'>VivaDzo</span> to launch the "SABA.games" app.`,
+                ios: `Open <span class='{0}'>VivaDzo</span> to launch the "SABA.games" app. If the App does not open the SABA.games - login page <span class='{0}'>(Step 5)</span> properly. Please <span class='{0}'>rescan</span> the QR Code or <span class='{0}'>tap</span> on App Store icon to resolve the problem. `,
                 android: `Select <span class='{0}'>Open</span> to launch the "SABA.games" app.`,
             },
             image: "example-step4",
