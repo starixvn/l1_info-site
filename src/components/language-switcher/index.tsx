@@ -33,7 +33,7 @@ const Languages = () => {
         return (
             <div className={Styles["language-container"]}>
                 <Image className={Styles.flag} src={flagIcon} alt="game-icon" width={36} height={34} />
-                <DropdownButton className={Styles.dropdown} title={LanguageTitle[i18n.language]} variant="dark">
+                <DropdownButton align="end" className={Styles.dropdown} title={LanguageTitle[i18n.language]} variant="dark">
                     <Dropdown.Item className={Styles.item} onClick={() => handleLanguageChange("en")}>
                         <Image className={Styles.flag} src="/static/images/icon-languages/en.svg" alt="game-icon" width={36} height={26} />
                         {LanguageTitle.en}

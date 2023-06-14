@@ -10,6 +10,9 @@ import { StringFormat } from "../../helpers/string-helper";
 import { Devices, IAppLandingPageResource } from "./languages/types";
 import { Tab, Tabs } from "react-bootstrap";
 import appSettings from "../../common/app-settings";
+import { useRouter } from "next/router";
+import dynamic from "next/dynamic";
+const Languages = dynamic(() => import("../language-switcher"));
 
 const imagesPath = "/static/images/app-download/";
 
@@ -44,13 +47,22 @@ const IOSSection = () => {
     </div>);
 }
 
-
 const AppLandingPageComponent: React.FunctionComponent<{ locale: string }> = ({ locale }) => {
+    const router = useRouter();
+    const selectedLocale = locale ?? router.locale;
+
+    useEffect(() => {
+        if (router.isReady) {
+            const { pathname } = router;
+            router.push({ pathname, query: {} }, undefined, { locale: selectedLocale });
+        }
+    }, [router.isReady]);
+
     const [isMobile, setIsMobile] = useState<boolean>();
     useEffect(() => setIsMobile(isMobileOnly), []);
 
     const [resources, setResources] = useState<IAppLandingPageResource>();
-    useEffect(() => setResources(getAppDownloadPageTranslationResource(locale)), []);
+    useEffect(() => setResources(getAppDownloadPageTranslationResource(selectedLocale)), []);
 
     const hightlightText = Styles["highlight-text"];
 
@@ -63,8 +75,11 @@ const AppLandingPageComponent: React.FunctionComponent<{ locale: string }> = ({ 
     return resources ? (
         <div className={Styles["container"]} >
             <div className="row">
+                <div className={Styles["language-wrapper"]}> <Languages /></div>
+            </div>
+            <div className="row">
                 <div className="text-center">
-                    <img className={Styles["logo"]} alt="" />
+                    <div > <img className={Styles["logo"]} alt="" /></div>
                 </div>
             </div>
             <div className="row">
@@ -113,7 +128,7 @@ const AppLandingPageComponent: React.FunctionComponent<{ locale: string }> = ({ 
                         <Tab eventKey={Devices.IOS} tabClassName={Styles["nav-link"]} title={<img className={Styles["ios-logo-apple"]} alt="" />}>
                             <InstallationGuide {...{
                                 stepsResources: resources.steps,
-                                locale,
+                                locale: selectedLocale,
                                 device: Devices.IOS,
                                 isActive: selectTabKey === Devices.IOS
                             }} />
@@ -121,7 +136,7 @@ const AppLandingPageComponent: React.FunctionComponent<{ locale: string }> = ({ 
                         <Tab eventKey={Devices.Android} tabClassName={Styles["nav-link"]} title={<img className={Styles["ios-logo-android"]} alt="" />}>
                             <InstallationGuide  {...{
                                 stepsResources: resources.steps,
-                                locale,
+                                locale: selectedLocale,
                                 device: Devices.Android,
                                 isActive: selectTabKey === Devices.Android
                             }} />

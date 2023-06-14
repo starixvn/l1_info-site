@@ -11,6 +11,12 @@
         content: url("/static/images/app-download/logo-saba.png");
     }
 
+    .language-wrapper {
+		div:first-child {
+			float: right;
+		}
+	}
+
     .offer {
         font-size: 24px;
         font-weight: 400;
