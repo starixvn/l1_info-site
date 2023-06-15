@@ -7,6 +7,7 @@ import Image from "next/image";
 
 import Styles from "./languages.module.scss";
 import { LanguageTitle } from "../../common/constants";
+import appSettings from "../../common/app-settings";
 
 const Languages = () => {
     const router = useRouter();
@@ -14,9 +15,23 @@ const Languages = () => {
     const [isLoading, setIsLoading] = useState(true);
 
     const handleLanguageChange = async (lang: string) => {
-        router.push(router.pathname, router.asPath, { locale: lang, shallow: true }).then(() => {
-            router.reload();
-        });
+        if (appSettings.isInforSite) {
+            router.push(router.pathname, router.asPath, { locale: lang, shallow: true }).then(() => {
+                router.reload();
+            });
+        }
+        else {
+            const { pathname, query } = router;
+
+            const updatedQuery = {
+                ...query,
+                ["language"]: lang,
+            };
+
+            router.push({ pathname, query: updatedQuery }, undefined, { locale: lang }).then(() => {
+                router.reload();
+            });
+        }
     };
 
     useEffect(() => {
