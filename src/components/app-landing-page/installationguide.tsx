@@ -31,7 +31,7 @@ const InstallationGuide: React.FunctionComponent<InstallationGuideProps> = ({ st
         window.addEventListener("resize", handleResize);
 
         return () => window.removeEventListener("resize", handleResize);
-    }, [isActive]);
+    });
 
     return (
         <div role="tabpanel" className={`tab-pane row ${Styles["steps"]}`}>
