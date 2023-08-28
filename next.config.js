@@ -55,6 +55,10 @@ const nextConfig = {
                 source: "/category",
                 destination: "/category/allGames",
             },
+            {
+                source: "/health",
+                destination: "/api/healthcheck",
+            },
         ];
     },
 };
