@@ -1,11 +1,16 @@
 # Build stage
 FROM hub.lumigame.com/docker-hub/library/node:18.14-alpine AS builder
-
-RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
+ENV YARN_CACHE_FOLDER=/root/.yarn
+
+RUN --mount=type=cache,target=$YARN_CACHE_FOLDER \
+     yarn cache dir && yarn cache list
+
 COPY package.json yarn.lock .modprunerrc ./
-RUN yarn run reg && yarn install --production && npx mod-pruner prune --force 
+RUN yarn run reg
+RUN --mount=type=cache,target=$YARN_CACHE_FOLDER \
+     yarn install --frozen-lockfile --verbose
 
 COPY . .
 RUN yarn build
