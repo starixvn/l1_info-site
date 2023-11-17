@@ -14,12 +14,6 @@ const nextConfig = {
         return uuidv4();
     },
     i18n,
-    experimental: {
-        forceSwcTransforms: true,
-        swcMinify: true,
-        optimizeCss: true,
-        gzipSize: true,
-    },
     eslint: {
         ignoreDuringBuilds: true,
     },
