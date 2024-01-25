@@ -31,7 +31,7 @@ const playForFun = async (req: NextApiRequest, res: NextApiResponse) => {
         setDefaultBalance: false,
     };
 
-    const responseBalance = await Axios.post(`${appSettings.owApiUrl}/SetDefaultBalance?playerId=${playerId}&operator=pff&balance=20000`);
+    const responseBalance = await Axios.post(`${appSettings.owApiUrl}/SetDefaultBalance?playerId=${playerId}&operator=pff&balance=20000&siteId=4100300`);
     if (responseBalance.status !== 200) {
         return;
     }
