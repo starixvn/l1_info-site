@@ -27,7 +27,7 @@ const PlayForFunButton: React.FC<Props> = ({ gameId }) => {
             localStorage.setItem(playerIdKey, playerId);
         }
         const request = {
-            playerId: +playerId,
+            playerId: playerId,
             language: LanguageLocaleMapper[i18n.language],
             browserUserAgent: navigator.userAgent,
             gameId,
