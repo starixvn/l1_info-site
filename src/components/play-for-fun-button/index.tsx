@@ -1,6 +1,6 @@
 import { useTranslation } from "next-i18next";
 import React, { useEffect, useState } from "react";
-import { LanguageLocaleMapper } from "../../common/constants";
+import { LanguageLocaleMapper, isGameIdInMiniGames } from "../../common/constants";
 
 type Props = {
     gameId: number;
@@ -14,6 +14,7 @@ const PlayForFunButton: React.FC<Props> = ({ gameId }) => {
     const { t, i18n } = useTranslation(["common", "detail"]);
     const [urlSSO, setUrlSSO] = useState<string>();
 
+  
     const playForFunAction = async (event: any, gameId: number) => {
         event && event.preventDefault();
         windowPlayForFun?.close();
@@ -32,12 +33,12 @@ const PlayForFunButton: React.FC<Props> = ({ gameId }) => {
             browserUserAgent: navigator.userAgent,
             gameId,
         };
-
+        const ref = isGameIdInMiniGames(gameId) ? "d_operator_opendirectly" : "d_direct";
         const Axios = (await import("axios")).default;
         Axios.post(`/api/play-for-fun`, request)
             .then((data) => data.data)
             .then((data) => {
-                data?.redirectUrl && setUrlSSO(`${data.redirectUrl}&ref=d_direct`);
+                data?.redirectUrl && setUrlSSO(`${data.redirectUrl}&ref=${ref}`);
             })
             .catch(showAlert);
     };
@@ -58,3 +59,4 @@ const PlayForFunButton: React.FC<Props> = ({ gameId }) => {
 };
 
 export default PlayForFunButton;
+
