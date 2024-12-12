@@ -8,8 +8,8 @@
     "enableSourceMap": true,
     "guideUrl": "https://l2-guide-1.lumigame.com",
     "isInforSite": true,
-    "simulatorUrl": "http://l2_game_lobby_simulator_LOCAL_1:5000",
-    "owApiUrl": "http://l2_ow_api_simulator_LOCAL_1:5000/SabaClub",
+    "simulatorUrl": "http://l2-game-lobby-simulator-local1-service:5000",
+    "owApiUrl": "http://l2-ow-api-simulator-local1-service:5000/SabaClub",
     "operatorPFF": {
         "id": "PFF",
         "secret": "PFF123",
