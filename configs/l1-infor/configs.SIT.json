@@ -8,8 +8,8 @@
     "enableSourceMap": false,
     "guideUrl": "https://l1guidessit.sgamesuat.com",
     "isInforSite": true,
-    "simulatorUrl": "http://l1_game_lobby_simulator_sit:5000",
-    "owApiUrl": "http://l1_ow_api_simulator_sit:5000/SabaClub",
+    "simulatorUrl": "http://l1-game-lobby-simulator-sit-service:5000",
+    "owApiUrl": "http://l1-ow-api-simulator-sit-service:5000/SabaClub",
     "operatorPFF": {
         "id": "PFF",
         "secret": "PFF123",
